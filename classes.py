@@ -222,8 +222,11 @@ if __name__ == "__main__":
     optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=8, num_nurses=3, total_time=100, arrival_prob=0.5)
     best_policy = optimizer.run()
     # Run final simulation with best policy and print results
-    sim = ERSimulation(num_nurses=3, total_time=100, arrival_prob=0.3, triage_policy=best_policy, verbose=True, seed=42)
+    sim = ERSimulation(num_nurses=3, total_time=100, arrival_prob=0.3, triage_policy=best_policy, verbose=True, seed=69)
     metrics = sim.run()
     print("\nFinal simulation metrics:")
     for k, v in metrics.items():
         print(f"{k}: {v}")
+    print("\nTriage policy weights used in cost function:")
+    for key, value in best_policy.items():
+        print(f"{key}: {value}")
