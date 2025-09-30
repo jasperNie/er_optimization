@@ -143,7 +143,7 @@ class ERSimulation:
 
 
 class EvolutionaryTriageOptimizer:
-    def __init__(self, num_generations=20, population_size=10, num_nurses=2, total_time=30, arrival_prob=0.5):
+    def __init__(self, num_generations, population_size, num_nurses, total_time, arrival_prob):
         self.num_generations = num_generations
         self.population_size = population_size
         self.num_nurses = num_nurses
@@ -214,7 +214,7 @@ class EvolutionaryTriageOptimizer:
 
 # Example usage: Run evolutionary optimizer
 if __name__ == "__main__":
-    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=8, num_nurses=3, total_time=60, arrival_prob=0.5)
+    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=2, total_time=60, arrival_prob=0.5)
     best_policy = optimizer.run()
     # Run final simulation with best policy and print results
     print("\n--- Running final simulation with explainable triage ---")
