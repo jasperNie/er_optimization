@@ -146,7 +146,7 @@ class ERSimulation:
 
 
 class EvolutionaryTriageOptimizer:
-    def __init__(self, num_generations=20, population_size=10, num_nurses=2, total_time=30, arrival_prob=0.5, seed=123):
+    def __init__(self, num_generations=20, population_size=100, num_nurses=2, total_time=30, arrival_prob=0.5, seed=123):
         self.num_generations = num_generations
         self.population_size = population_size
         self.num_nurses = num_nurses
@@ -196,33 +196,30 @@ class EvolutionaryTriageOptimizer:
         for gen in range(self.num_generations):
             # Evaluate fitness
             fitnesses = [self.evaluate(p) for p in population]
-            # Select best policies
-            sorted_pop = [p for _, p in sorted(zip(fitnesses, population), key=lambda x: x[0])]
-            population = sorted_pop[:self.population_size//2]
-            # Generate new population
+            # Select best policy only
+            best_idx = min(range(len(fitnesses)), key=lambda i: fitnesses[i])
+            best_policy = population[best_idx]
+            best_fitness = fitnesses[best_idx]
+            print(f"Generation {gen+1}: Best avg_weighted_wait = {best_fitness:.2f}")
+            # Generate new population: mutate/crossover from best_policy only
+            population = [best_policy]
             while len(population) < self.population_size:
                 if random.random() < 0.5:
-                    # Mutation
-                    parent = random.choice(population)
-                    child = self.mutate(parent)
+                    child = self.mutate(best_policy)
                 else:
-                    # Crossover
-                    p1, p2 = random.sample(population, 2)
-                    child = self.crossover(p1, p2)
+                    # Crossover with itself (degenerates to mutation)
+                    child = self.crossover(best_policy, self.random_policy())
                 population.append(child)
-            print(f"Generation {gen+1}: Best avg_weighted_wait = {fitnesses[0]:.2f}")
-        # Final best policy
-        best_policy = population[0]
         print("Best triage policy:", best_policy)
         return best_policy
 
 
 # Example usage: Run evolutionary optimizer
 if __name__ == "__main__":
-    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=8, num_nurses=3, total_time=100, arrival_prob=0.5)
+    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=3, total_time=100, arrival_prob=0.5, seed=123)
     best_policy = optimizer.run()
-    # Run final simulation with best policy and print results
-    sim = ERSimulation(num_nurses=3, total_time=100, arrival_prob=0.3, triage_policy=best_policy, verbose=True, seed=69)
+    # Run final simulation with best policy and print results (same seed as training)
+    sim = ERSimulation(num_nurses=3, total_time=100, arrival_prob=0.3, triage_policy=best_policy, verbose=True, seed=2025)
     metrics = sim.run()
     print("\nFinal simulation metrics:")
     for k, v in metrics.items():
