@@ -1,0 +1,201 @@
+Generation 1: Best avg_weighted_wait = 28.99
+  Best policy weights: {'severity': 0.7007, 'deterioration': 1.4552, 'wait_time': 0.5269}
+Generation 2: Best avg_weighted_wait = 28.72
+  Best policy weights: {'severity': 1.5281, 'deterioration': 1.6745, 'wait_time': 0.5049}
+Generation 3: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 4: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 5: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 6: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 7: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 8: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 9: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 10: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 11: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 12: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 13: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 14: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 15: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 16: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 17: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 18: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 19: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 20: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 21: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 22: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 23: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 24: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 25: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 26: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 27: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 28: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 29: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 30: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 31: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 32: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 33: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 34: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 35: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 36: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 37: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 38: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 39: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 40: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 41: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 42: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 43: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 44: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 45: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 46: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 47: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 48: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 49: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 50: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 51: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 52: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 53: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 54: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 55: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 56: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 57: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 58: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 59: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 60: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 61: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 62: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 63: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 64: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 65: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 66: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 67: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 68: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 69: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 70: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 71: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 72: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 73: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 74: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 75: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 76: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 77: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 78: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 79: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 80: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 81: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 82: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 83: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 84: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 85: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 86: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 87: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 88: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 89: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 90: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 91: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 92: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 93: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 94: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 95: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 96: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 97: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 98: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 99: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Generation 100: Best avg_weighted_wait = 28.07
+  Best policy weights: {'severity': 1.1573, 'deterioration': 1.5442, 'wait_time': 0.3756}
+Best triage policy: {'severity': 1.157283837611946, 'deterioration': 1.5442436706653933, 'wait_time': 0.37555158610375594}

@@ -56,21 +56,34 @@ class ERSimulation:
         if seed is not None:
             random.seed(seed)
         # Pre-generate patient arrivals and attributes for each timestep
+        import math
         self.patient_arrivals = []  # List of (timestep, Patient) or None
         for t in range(self.total_time):
-            if random.random() < self.arrival_prob:
-                severity = random.randint(1, 5)
-                deterioration = round(random.uniform(0.1, 0.5), 2)
-                treatment_time = random.randint(5, 15)
+            # More realistic, time-varying and bursty arrival probability
+            base_prob = self.arrival_prob
+            time_factor = 0.15 * (1 + math.sin(2 * math.pi * t / 24))  # daily cycle
+            burst = 0.15 if random.random() < 0.05 else 0  # occasional burst
+            prob = min(1.0, max(0.0, base_prob + time_factor + burst))
+            if random.random() < prob:
+                # Correlate severity, deterioration, and treatment time
+                severity = random.choices([1,2,3,4,5], weights=[0.1,0.15,0.25,0.25,0.25])[0]
+                det_base = 0.1 + 0.15 * (severity-1)
+                deterioration = round(random.uniform(det_base, min(0.6, det_base+0.15)), 2)
+                treat_base = 5 + 2 * severity
+                treatment_time = random.randint(treat_base, treat_base+5)
                 patient = Patient(self.next_patient_id, severity, deterioration, treatment_time)
                 self.next_patient_id += 1
                 self.patient_arrivals.append(patient)
             else:
                 self.patient_arrivals.append(None)
         if self.verbose:
-            print("\n[ERSimulation] Pre-generated patients (None = no arrival):")
+            self.print_arrivals()
+
+    def print_arrivals(self, file_path="arrivals_log.txt"):
+        with open(file_path, "w") as f:
+            f.write("[ERSimulation] Pre-generated patients (None = no arrival):\n")
             for t, p in enumerate(self.patient_arrivals, 1):
-                print(f"t={t}: {p}")
+                f.write(f"t={t}: {p}\n")
 
     def step(self):
         self.time += 1
@@ -94,16 +107,27 @@ class ERSimulation:
         # 3. Update waiting patients
         for patient in self.waiting_patients:
             patient.wait_time += 1
+            # Deterioration: probabilistically increase severity
+            if patient.severity < 5:
+                if random.random() < patient.deterioration_chance:
+                    patient.severity += 1
+                    # Lower deterioration chance after upgrade to avoid rapid jumps
+                    patient.deterioration_chance = max(0.01, patient.deterioration_chance * 0.5)
+                    # Optionally, log this event (uncomment if needed):
+                    # print(f"[t={self.time}] Patient {patient.id} deteriorated to severity {patient.severity}")
 
         # 4. Assign free nurses (using triage policy)
         free_nurses = [n for n in self.nurses if n.current_patient is None]
         if free_nurses and self.waiting_patients:
             def triage_score(p):
-                return (
-                    self.triage_policy['severity'] * p.severity +
-                    self.triage_policy['deterioration'] * p.deterioration_chance +
-                    self.triage_policy['wait_time'] * (p.wait_time + 1)
-                )
+                if callable(self.triage_policy):
+                    return self.triage_policy(p)
+                else:
+                    return (
+                        self.triage_policy['severity'] * p.severity +
+                        self.triage_policy['deterioration'] * p.deterioration_chance +
+                        self.triage_policy['wait_time'] * (p.wait_time + 1)
+                    )
             self.waiting_patients.sort(key=triage_score, reverse=True)
             for nurse in free_nurses:
                 if self.waiting_patients:
@@ -146,7 +170,7 @@ class ERSimulation:
 
 
 class EvolutionaryTriageOptimizer:
-    def __init__(self, num_generations=20, population_size=100, num_nurses=2, total_time=30, arrival_prob=0.5, seed=123):
+    def __init__(self, num_generations=20, population_size=100, num_nurses=3, total_time=30, arrival_prob=0.5, seed=123):
         self.num_generations = num_generations
         self.population_size = population_size
         self.num_nurses = num_nurses
@@ -190,40 +214,134 @@ class EvolutionaryTriageOptimizer:
             return float('inf')
         return result['avg_weighted_wait']
 
-    def run(self):
+    def run(self, gen_log_path="generation_log.txt"):
+        import sys
         # Initialize population
         population = [self.random_policy() for _ in range(self.population_size)]
-        for gen in range(self.num_generations):
-            # Evaluate fitness
-            fitnesses = [self.evaluate(p) for p in population]
-            # Select best policy only
-            best_idx = min(range(len(fitnesses)), key=lambda i: fitnesses[i])
-            best_policy = population[best_idx]
-            best_fitness = fitnesses[best_idx]
-            print(f"Generation {gen+1}: Best avg_weighted_wait = {best_fitness:.2f}")
-            # Generate new population: mutate/crossover from best_policy only
-            population = [best_policy]
-            while len(population) < self.population_size:
-                if random.random() < 0.5:
-                    child = self.mutate(best_policy)
-                else:
-                    # Crossover with itself (degenerates to mutation)
-                    child = self.crossover(best_policy, self.random_policy())
-                population.append(child)
-        print("Best triage policy:", best_policy)
+        print("Running simulation (evolutionary optimization)...")
+        elite_size = 5
+        with open(gen_log_path, "w") as gen_log:
+            for gen in range(self.num_generations):
+                # Loading bar: print every 5 generations or last gen
+                if (gen+1) % 5 == 0 or gen == self.num_generations-1:
+                    bar_len = 40
+                    progress = int(bar_len * (gen+1) / self.num_generations)
+                    bar = '[' + '#' * progress + '-' * (bar_len - progress) + ']'
+                    print(f"Gen {gen+1:3d}/{self.num_generations} {bar}", end='\r', flush=True)
+                # Evaluate fitness
+                fitnesses = [self.evaluate(p) for p in population]
+                # Select elites
+                elite_indices = sorted(range(len(fitnesses)), key=lambda i: fitnesses[i])[:elite_size]
+                elites = [population[i] for i in elite_indices]
+                best_policy = elites[0]
+                best_fitness = fitnesses[elite_indices[0]]
+                gen_log.write(f"Generation {gen+1}: Best avg_weighted_wait = {best_fitness:.2f}\n")
+                gen_log.write(f"  Best policy weights: {{'severity': {best_policy['severity']:.4f}, 'deterioration': {best_policy['deterioration']:.4f}, 'wait_time': {best_policy['wait_time']:.4f}}}\n")
+                # Generate new population: keep elites, fill rest with mutated/crossover children from elites
+                new_population = elites[:]
+                while len(new_population) < self.population_size:
+                    parent1 = random.choice(elites)
+                    parent2 = random.choice(elites)
+                    child = self.crossover(parent1, parent2)
+                    child = self.mutate(child)
+                    new_population.append(child)
+                population = new_population
+            # Print final bar
+            print(f"Gen {self.num_generations:3d}/{self.num_generations} [{'#'*40}] Done.{' '*10}")
+            gen_log.write(f"Best triage policy: {best_policy}\n")
         return best_policy
 
 
 # Example usage: Run evolutionary optimizer
 if __name__ == "__main__":
-    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=3, total_time=100, arrival_prob=0.5, seed=123)
-    best_policy = optimizer.run()
-    # Run final simulation with best policy and print results (same seed as training)
-    sim = ERSimulation(num_nurses=3, total_time=100, arrival_prob=0.3, triage_policy=best_policy, verbose=True, seed=2025)
-    metrics = sim.run()
-    print("\nFinal simulation metrics:")
-    for k, v in metrics.items():
-        print(f"{k}: {v}")
-    print("\nTriage policy weights used in cost function:")
-    for key, value in best_policy.items():
-        print(f"{key}: {value}")
+    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=3, total_time=100, arrival_prob=0.5, seed=2025)
+    best_policy = optimizer.run(gen_log_path="generation_log.txt")
+
+    # --- MTS and ESI comparison ---
+    def mts_policy(patient):
+        if patient is None:
+            return 0
+        v = getattr(patient, 'vitals', {})
+        if v.get('spo2', 100) < 85 or v.get('hr', 0) > 140 or v.get('bp_sys', 0) < 70:
+            return 5
+        if hasattr(patient, 'presenting') and patient.presenting in ('shortness_of_breath', 'chest_pain'):
+            if v.get('spo2', 100) < 92 or v.get('hr', 0) > 110:
+                return 4
+            return 3
+        if hasattr(patient, 'presenting') and patient.presenting in ('abdominal_pain',):
+            return 3
+        if hasattr(patient, 'presenting') and patient.presenting in ('minor_injury', 'headache'):
+            return 2
+        return 1
+
+    def esi_policy(patient):
+        if patient is None:
+            return 0
+        v = getattr(patient, 'vitals', {})
+        if v.get('spo2', 100) < 85 or v.get('hr', 0) > 140 or v.get('bp_sys', 0) < 70:
+            return 5
+        if v.get('spo2', 100) < 92 or v.get('hr', 0) > 120 or v.get('rr', 0) > 25:
+            return 4
+        resources = getattr(patient, 'expected_resources', 1)
+        if resources == 0:
+            return 1
+        if resources == 1:
+            return 2
+        if resources >= 2:
+            if v.get('hr', 0) > 120 or v.get('rr', 0) > 24 or v.get('spo2', 100) < 92:
+                return 4
+            return 3
+
+    # Generate arrivals ONCE for all policies
+    import math
+    random.seed(2025)
+    arrivals = []
+    patient_id = 0
+    for t in range(100):
+        base_prob = 0.3
+        time_factor = 0.15 * (1 + math.sin(2 * math.pi * t / 24))
+        burst = 0.15 if random.random() < 0.05 else 0
+        prob = min(1.0, max(0.0, base_prob + time_factor + burst))
+        if random.random() < prob:
+            severity = random.choices([1,2,3,4,5], weights=[0.1,0.15,0.25,0.25,0.25])[0]
+            det_base = 0.1 + 0.15 * (severity-1)
+            deterioration = round(random.uniform(det_base, min(0.6, det_base+0.15)), 2)
+            treat_base = 5 + 2 * severity
+            treatment_time = random.randint(treat_base, treat_base+5)
+            presenting = random.choice(['chest_pain', 'abdominal_pain', 'shortness_of_breath', 'minor_injury', 'headache'])
+            vitals = {
+                'hr': random.randint(50, 130),
+                'rr': random.randint(12, 30),
+                'spo2': random.randint(88, 100),
+                'bp_sys': random.randint(90, 160)
+            }
+            expected_resources = random.choice([0, 1, 2, 3])
+            p = Patient(patient_id, severity, deterioration, treatment_time)
+            patient_id += 1
+            p.presenting = presenting
+            p.vitals = vitals
+            p.expected_resources = expected_resources
+            arrivals.append(p)
+        else:
+            arrivals.append(None)
+
+    # Run all three policies on the same arrivals
+    for name, policy, verbose in [
+        ('Optimized', best_policy, True),
+        ('MTS', mts_policy, False),
+        ('ESI', esi_policy, False)
+    ]:
+        sim = ERSimulation(num_nurses=5, total_time=100, arrival_prob=0, triage_policy=policy, verbose=False, seed=2025)
+        sim.patient_arrivals = arrivals.copy()
+        if verbose:
+            sim.print_arrivals(file_path="arrivals_log.txt")
+        metrics = sim.run()
+        print(f"\n{name} policy metrics:")
+        if name == 'Optimized':
+            print("Triage policy weights used in cost function:")
+            if isinstance(best_policy, dict):
+                for k, v in best_policy.items():
+                    print(f"{k}: {v}")
+        print("--------------------------")
+        for k, v in metrics.items():
+            print(f"{k}: {v}")
