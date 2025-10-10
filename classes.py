@@ -254,7 +254,7 @@ class EvolutionaryTriageOptimizer:
 
 # Example usage: Run evolutionary optimizer
 if __name__ == "__main__":
-    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=3, total_time=100, arrival_prob=0.5, seed=2025)
+    optimizer = EvolutionaryTriageOptimizer(num_generations=100, population_size=100, num_nurses=3, total_time=120, arrival_prob=0.5, seed=2025)
     best_policy = optimizer.run(gen_log_path="generation_log.txt")
 
     # --- MTS and ESI comparison ---
@@ -297,7 +297,8 @@ if __name__ == "__main__":
     random.seed(2025)
     arrivals = []
     patient_id = 0
-    for t in range(optimizer.total_time):
+    total_time = optimizer.total_time if 'optimizer' in locals() else 120
+    for t in range(total_time):
         base_prob = 0.3
         time_factor = 0.15 * (1 + math.sin(2 * math.pi * t / 24))
         burst = 0.15 if random.random() < 0.05 else 0
@@ -345,3 +346,10 @@ if __name__ == "__main__":
         print("--------------------------")
         for k, v in metrics.items():
             print(f"{k}: {v}")
+        # Print unattended patients and their remaining treatment time
+        if sim.waiting_patients:
+            print("Unattended patients (ID, severity, treatment_time left):")
+            for p in sim.waiting_patients:
+                print(f"  ID: {p.id}, severity: {p.severity}, treatment_time: {p.treatment_time}")
+        else:
+            print("All patients attended.")

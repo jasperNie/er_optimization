@@ -99,3 +99,23 @@ t=97: None
 t=98: Patient(47, sev=3, det=0.43, treat=11, wait=0)
 t=99: None
 t=100: None
+t=101: None
+t=102: None
+t=103: Patient(48, sev=4, det=0.58, treat=14, wait=0)
+t=104: None
+t=105: Patient(49, sev=2, det=0.32, treat=14, wait=0)
+t=106: Patient(50, sev=4, det=0.59, treat=14, wait=0)
+t=107: Patient(51, sev=4, det=0.57, treat=13, wait=0)
+t=108: Patient(52, sev=3, det=0.48, treat=12, wait=0)
+t=109: Patient(53, sev=5, det=0.60, treat=15, wait=0)
+t=110: Patient(54, sev=5, det=0.69, treat=19, wait=0)
+t=111: Patient(55, sev=5, det=0.64, treat=17, wait=0)
+t=112: Patient(56, sev=5, det=0.65, treat=18, wait=0)
+t=113: None
+t=114: Patient(57, sev=2, det=0.39, treat=9, wait=0)
+t=115: None
+t=116: None
+t=117: None
+t=118: Patient(58, sev=5, det=0.60, treat=15, wait=0)
+t=119: None
+t=120: None
