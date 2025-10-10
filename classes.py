@@ -89,7 +89,7 @@ class ERSimulation:
         self.time += 1
 
         # 1. New patient arrivals (use pre-generated list)
-        if self.time <= self.total_time:
+        if self.time <= len(self.patient_arrivals):
             new_patient = self.patient_arrivals[self.time - 1]
             if new_patient is not None:
                 self.waiting_patients.append(new_patient)
@@ -297,7 +297,7 @@ if __name__ == "__main__":
     random.seed(2025)
     arrivals = []
     patient_id = 0
-    for t in range(100):
+    for t in range(optimizer.total_time):
         base_prob = 0.3
         time_factor = 0.15 * (1 + math.sin(2 * math.pi * t / 24))
         burst = 0.15 if random.random() < 0.05 else 0
@@ -331,7 +331,7 @@ if __name__ == "__main__":
         ('MTS', mts_policy, False),
         ('ESI', esi_policy, False)
     ]:
-        sim = ERSimulation(num_nurses=5, total_time=100, arrival_prob=0, triage_policy=policy, verbose=False, seed=2025)
+        sim = ERSimulation(num_nurses=5, total_time=120, arrival_prob=0, triage_policy=policy, verbose=False, seed=2025)
         sim.patient_arrivals = arrivals.copy()
         if verbose:
             sim.print_arrivals(file_path="arrivals_log.txt")
