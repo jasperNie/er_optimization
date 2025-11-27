@@ -186,14 +186,13 @@ er_optimization/
 ├── classes.py                 # Core simulation engine
 ├── triage_policies.py         # ESI/MTS baseline implementations
 ├── run_evaluation.py          # Main execution script
+├── enhanced_evaluation.py     # Comprehensive testing framework
 ├── optimizers/
 │   ├── linear_elite_optimizer.py      # Basic evolutionary approach
 │   ├── linear_tournament_optimizer.py # Tournament selection variant
 │   ├── advanced_optimizer.py          # Non-linear mathematical features
 │   ├── hybrid_optimizer.py            # Multi-strategy co-evolution
 │   └── neural_optimizer.py            # Neural network evolution (WINNER)
-├── evaluations/
-│   └── enhanced_evaluation.py         # Comprehensive testing framework
 ├── logs/                              # Training progress logs
 └── old_files/                         # Deprecated implementations
 ```

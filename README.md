@@ -142,6 +142,7 @@ Nurse 3 (Night Shift):
 
 ### Core Files
 - `run_evaluation.py` - Main script to run everything
+- `enhanced_evaluation.py` - Comprehensive testing framework
 - `classes.py` - Simulation engine (Patient, Nurse, ERSimulation)
 - `triage_policies.py` - Baseline algorithms (ESI, MTS)
 
@@ -153,7 +154,7 @@ Nurse 3 (Night Shift):
 - `optimizers/neural_optimizer.py` - **Winner** - Neural network evolution
 
 ### Evaluation & Logs
-- `evaluations/enhanced_evaluation.py` - Comprehensive testing framework
+- `enhanced_evaluation.py` - Comprehensive testing framework with dual baseline comparison
 - `logs/evaluation_results.txt` - Latest performance rankings and analysis
 - `logs/train_*.txt` - Training progress for each algorithm
 - `logs/patient_arrivals/` - Detailed patient arrival logs (training/testing)
