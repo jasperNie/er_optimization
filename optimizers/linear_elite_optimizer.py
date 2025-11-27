@@ -51,11 +51,10 @@ class EvolutionaryTriageOptimizer:
         import sys
         # Initialize population
         population = [self.random_policy() for _ in range(self.population_size)]
-        print("Running simulation (evolutionary optimization)...")
         elite_size = 5
         with open(gen_log_path, "w") as gen_log:
             for gen in range(self.num_generations):
-                # Loading bar: print every 5 generations or last gen
+                # Progress bar: show training progress
                 if (gen+1) % 5 == 0 or gen == self.num_generations-1:
                     bar_len = 40
                     progress = int(bar_len * (gen+1) / self.num_generations)
@@ -79,7 +78,7 @@ class EvolutionaryTriageOptimizer:
                     child = self.mutate(child)
                     new_population.append(child)
                 population = new_population
-            # Print final bar
+            # Final completion message
             print(f"Gen {self.num_generations:3d}/{self.num_generations} [{'#'*40}] Done.{' '*10}")
-            gen_log.write(f"Best triage policy: {best_policy}\n")
+            gen_log.write(f"Best triage policy: {best_policy}\\n")
         return best_policy

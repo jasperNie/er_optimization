@@ -1,0 +1,58 @@
+Fair Advanced Evolutionary Triage Optimization Log
+==================================================
+Using only fair parameters: severity, deterioration, wait_time + advanced math
+
+Generation   1: Best fitness = 34.751
+  Population diversity: 12.864
+  Fitness stagnation: 0 generations
+  Best policy snippet: severity=3.994, deterioration=0.504, urgency_multiplier=3.483
+
+Generation  21: Best fitness = 27.634
+  Population diversity: 8.950
+  Fitness stagnation: 5 generations
+  Best policy snippet: severity=4.449, deterioration=0.914, urgency_multiplier=1.290
+
+Generation  41: Best fitness = 26.668
+  Population diversity: 10.518
+  Fitness stagnation: 12 generations
+  Best policy snippet: severity=4.153, deterioration=4.449, urgency_multiplier=1.150
+
+Generation  61: Best fitness = 26.811
+  Population diversity: 7.692
+  Fitness stagnation: 32 generations
+  Best policy snippet: severity=5.000, deterioration=4.710, urgency_multiplier=1.000
+
+Generation  81: Best fitness = 26.302
+  Population diversity: 6.976
+  Fitness stagnation: 8 generations
+  Best policy snippet: severity=4.387, deterioration=4.200, urgency_multiplier=1.000
+
+Generation 100: Best fitness = 26.287
+  Population diversity: 5.843
+  Fitness stagnation: 1 generations
+  Best policy snippet: severity=4.246, deterioration=4.200, urgency_multiplier=1.000
+
+
+==================================================
+FAIR OPTIMIZATION COMPLETE
+Best fitness achieved: 26.287
+Final robust evaluation: 36.657
+Total generations with stagnation: 1
+
+Best policy parameters:
+  severity: 4.2456
+  deterioration_boost: 3.0167
+  queue_pressure: 1.1639
+  day_shift_bonus: 0.7463
+  efficiency_factor: 1.4356
+  night_shift_penalty: 0.7753
+  wait_threshold: 21.7746
+  deterioration_threshold: 0.2012
+  wait_time: 0.1078
+  severity_threshold: 3.5810
+  severity_power: 0.5618
+  deterioration: 4.1997
+  deterioration_power: 1.4168
+  urgency_multiplier: 1.0000
+  wait_penalty_factor: 1.0000
+  evening_shift_bonus: 0.7099

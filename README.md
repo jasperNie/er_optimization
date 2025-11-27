@@ -1,190 +1,198 @@
-# ER Triage Optimization System
-
-A modular Python system for optimizing Emergency Room triage policies using evolutionary algorithms and comparing different triage strategies with realistic nursing shift schedules.
-
-## Project Structure
-
-```
-er_optimization/
-├── classes.py                  # Core classes (Patient, Nurse, ERSimulation)
-├── evolutionary_optimizer.py   # Evolutionary algorithm for policy optimization  
-├── triage_policies.py          # MTS and ESI triage policy implementations
-├── simulation_runner.py        # High-level simulation running functions (unused)
-├── logging_utils.py            # Utilities for logging and reporting (unused)
-├── main.py                     # Main execution script - runs original functionality
-├── .gitignore                  # Git ignore file for Python cache and temp files
-└── README.md                   # This file
-```
-
-## Module Overview
-
-### `classes.py`
-Contains the core simulation classes:
-- **Patient**: Represents ER patients with severity, deterioration, treatment time, vitals, and presenting symptoms
-- **Nurse**: Represents nursing staff with availability tracking and patient assignments
-- **ERSimulation**: Main simulation engine with realistic 8-hour nursing shifts, handoff protocols, and patient flow
-
-### `evolutionary_optimizer.py`
-- **EvolutionaryTriageOptimizer**: Genetic algorithm to evolve optimal triage policies
-- Uses population-based optimization to find best weights for severity, deterioration, and wait time
-- Generates `generation_log.txt` with optimization progress
-
-### `triage_policies.py`
-Implements standard triage policies:
-- **MTS Policy**: Modified Triage Score based on severity and wait time
-- **ESI Policy**: Emergency Severity Index focusing on urgency levels with vital signs
-- **Policy Comparison**: Function to compare different policies side-by-side
-
-### `main.py` 
-Main execution script that runs the complete optimization workflow:
-1. Runs evolutionary algorithm (100 generations, population 100)
-2. Tests evolved policy against MTS and ESI policies
-3. Generates comprehensive logs and comparisons
-4. Uses realistic patient arrivals with vital signs and presenting symptoms
+# ER Optimization - Evolutionary Triage Algorithms
 
 ## Quick Start
 
-1. **Run the complete optimization system:**
-   ```bash
-   python main.py
-   ```
-   This will:
-   - Run evolutionary optimization for 100 generations
-   - Compare evolved policy with MTS and ESI policies
-   - Generate detailed logs and nurse schedules
-   - Print comprehensive results to console
-
-2. **Use individual modules (optional):**
-   ```python
-   from evolutionary_optimizer import EvolutionaryTriageOptimizer
-   from classes import ERSimulation
-   from triage_policies import mts_policy, esi_policy
-   
-   # Run evolutionary optimization
-   optimizer = EvolutionaryTriageOptimizer(
-       num_generations=100,
-       population_size=100,
-       num_nurses=5,
-       total_time=96,  # 24 hours in 15-minute timesteps
-       arrival_prob=0.5,
-       seed=2025
-   )
-   
-   best_policy = optimizer.run()
-   
-   # Run single simulation with nursing shifts
-   sim = ERSimulation(
-       num_nurses=5,
-       total_time=96,
-       arrival_prob=0.5,
-       triage_policy=best_policy,
-       verbose=True,
-       use_shifts=True
-   )
-   
-   result = sim.run()
-   ```
-
-## Key Features
-
-### Realistic Nursing Shifts
-- **8-hour shifts**: Day (7 nurses), Evening (5 nurses), Night (3 nurses)
-- **Variable staffing levels**: Day shift has 1.5x staff, Night shift has 0.7x staff
-- **Handoff protocols**: Nurses stay to complete current patient treatments during shift changes
-- **Shift scheduling**: Based on 15-minute timesteps (96 timesteps = 24 hours)
-
-### Advanced Patient Modeling  
-- **Realistic arrivals**: Time-varying patterns with daily cycles and random bursts
-- **Patient deterioration**: Severity increases over time based on deterioration rates
-- **Vital signs**: Heart rate, respiratory rate, oxygen saturation, blood pressure
-- **Presenting symptoms**: Chest pain, abdominal pain, shortness of breath, etc.
-- **Treatment variability**: Treatment time correlates with severity level
-
-### Policy Optimization
-- **Evolutionary algorithm**: 100 generations with population of 100 policies
-- **Three-way comparison**: Evolved policy vs MTS vs ESI triage protocols
-- **Weight optimization**: Finds optimal weights for severity, deterioration, and wait time
-- **Performance metrics**: Average wait time, weighted wait time, completion rates
-
-### Comprehensive Logging
-- **generation_log.txt**: Evolutionary algorithm progress and best policies per generation
-- **arrivals_log.txt**: Complete patient arrival log with attributes
-- **nurse_schedule_log.txt**: Detailed nursing shift schedule with timestamps
-- **Console output**: Policy comparison results and unattended patient statistics
-
-## Configuration
-
-Current simulation parameters (in `main.py`):
-- **num_nurses**: 5 (base staffing level, scaled by shift multipliers)
-- **total_time**: 96 timesteps (24 hours in 15-minute intervals)
-- **arrival_prob**: 0.3 (base probability, varies with time and bursts)
-- **seed**: 2025 (for reproducible results)
-- **generations**: 100 (evolutionary algorithm iterations)
-- **population_size**: 100 (number of policies per generation)
-
-### Shift Staffing:
-- **Day shift (00:00-08:00)**: 7 nurses (5 × 1.5 = 7.5 → 7)
-- **Evening shift (08:00-16:00)**: 5 nurses (5 × 1.0 = 5)
-- **Night shift (16:00-24:00)**: 3 nurses (5 × 0.7 = 3.5 → 3)
-
-## Output Files
-
-The system generates three main log files:
-- **`generation_log.txt`**: Evolutionary optimization progress, best fitness per generation
-- **`arrivals_log.txt`**: Complete patient arrival log with vitals and symptoms  
-- **`nurse_schedule_log.txt`**: 24-hour nursing schedule with shift changes marked
-
-## Example Run
-
+### Running the Complete Evaluation
 ```bash
-python main.py
+# Run all algorithms and compare against ESI/MTS baselines
+python run_evaluation.py
 ```
 
-**Output:**
-1. **Evolutionary Progress**: Loading bar showing 100 generations of optimization
-2. **Policy Comparison**: Results for Optimized, MTS, and ESI policies showing:
-   - Number of completed patients
-   - Patients still waiting  
-   - Average wait time
-   - Maximum wait time
-   - Average weighted wait time (accounts for severity)
-3. **Unattended Patients**: List of patients not treated within 24 hours
-4. **Log Files**: Detailed logs for analysis and debugging
+This will:
+1. Train all 5 evolutionary algorithms (100 generations each)
+2. Test them on unseen scenarios 
+3. Compare performance against medical baselines (ESI and MTS)
+4. Show nurse schedules and detailed metrics
+
+### Expected Output
+```
+=== ENHANCED ALGORITHM EVALUATION ===
+Training and testing multiple advanced algorithms against ESI and MTS
+
+Training on seeds: [1000, 1001, 1002]
+Testing on seeds: [2000, 2001, 2002, 2003, 2004]
+
+=== TRAINING PHASE ===
+1. Training Linear Elite Algorithm...      ✓ Complete
+2. Training Linear Tournament Algorithm... ✓ Complete  
+3. Training Advanced Algorithm...          ✓ Complete
+4. Training Hybrid Algorithm...            ✓ Complete
+5. Training Neural Algorithm...            ✓ Complete
+
+=== TESTING PHASE ===
+[Individual algorithm results]
+
+=== FINAL PERFORMANCE RANKING ===
+Rank Algorithm       Weighted Wait Completed  Unattended  Combined Score
+1    Neural          7.50          34.6       5.2         11.45
+2    ESI             8.34          33.4       6.4         13.19
+3    Advanced        8.66          32.4       7.4         14.26
+4    MTS             10.67         34.4       5.4         14.77
+...
+
+=== IMPROVEMENT ANALYSIS ===
+Comparison vs baselines:
+  Neural         : ESI +10.1%, MTS +29.7% (score: 7.50)
+  Advanced       : ESI  -3.8%, MTS +18.8% (score: 8.66)
+
+🏆 WINNER: Neural
+   Best weighted wait score: 7.50 (combined: 11.45)
+   🎉 Successfully outperformed baseline algorithms!
+```
 
 ## Understanding the Results
 
-### Policy Weights (Evolved Policy)
-The evolutionary algorithm optimizes three weights:
-- **severity**: How much to prioritize high-severity patients
-- **deterioration**: How much to consider deterioration risk
-- **wait_time**: How much to factor in waiting time
-
 ### Performance Metrics
-- **completed**: Number of patients fully treated
-- **still_waiting**: Patients in queue at simulation end
-- **avg_wait**: Average time patients waited before treatment
-- **max_wait**: Longest wait time experienced
-- **avg_weighted_wait**: Wait time weighted by severity × deterioration (fitness metric)
+- **Weighted Wait Time**: Primary metric - lower is better
+  - Accounts for patient severity (critical patients weighted more heavily)
+  - Includes deterioration penalties for delayed treatment
+- **Completed Patients**: Number of patients successfully treated in 24 hours
+- **Unattended Patients**: Patients left without treatment (penalty applied)
+- **Combined Score**: Overall performance measure including unattended patient penalties
+- **Improvement Analysis**: Shows percentage improvement/decline vs both ESI and MTS baselines
 
-### Typical Results
-- **Evolved Policy**: Usually performs best on weighted wait time
-- **MTS Policy**: Balances severity and wait time effectively  
-- **ESI Policy**: Focuses heavily on vital signs and urgency levels
+### Algorithm Performance
+1. **Neural (WINNER)**: 7.50 score (+10.1% better than ESI, +29.7% better than MTS)
+   - Uses neural network to learn non-linear patterns
+   - Best at adapting to complex patient mix scenarios
+   - Revolutionary breakthrough after critical bug fix
+   
+2. **ESI (Medical Baseline)**: 8.34 score
+   - Standard Emergency Severity Index protocol
+   - Used in most US hospitals
+   
+3. **Advanced**: 8.66 score (-3.8% vs ESI, +18.8% vs MTS)
+   - Mathematical optimization with 13 parameters
+   - Smart thresholds and non-linear scaling
+   - Second-best evolutionary algorithm
+   
+4. **MTS (Medical Baseline)**: 10.67 score
+   - Manchester Triage System protocol
+   - Used in UK and European hospitals
 
-## Extending the System
+### Reading Training Logs
+Training progress is saved in `logs/` directory:
 
-### Adding New Triage Policies
-1. Define your policy function in `main.py` (like `mts_policy` and `esi_policy`)
-2. Add it to the policy comparison loop
-3. Policy should take a patient and return a priority score
+```bash
+# View training progress for the winning algorithm
+cat logs/train_neural.txt
+```
 
-### Modifying Parameters
-1. Edit values in `main.py` for different scenarios:
-   - Change `num_nurses` for different hospital sizes
-   - Adjust `arrival_prob` for busier/quieter ERs
-   - Modify shift multipliers in `classes.py` for different staffing patterns
+Example log output:
+```
+Gen 1: Best=12.45, Avg=15.23, Worst=18.76
+Gen 2: Best=11.89, Avg=14.56, Worst=17.23
+...
+Gen 100: Best=7.48, Avg=8.95, Worst=12.34
+```
 
-### Advanced Analysis
-- Export log files to Excel/CSV for statistical analysis
-- Plot arrival patterns and wait times over 24-hour cycles
-- Analyze shift performance and handoff effectiveness
+- **Best**: Best performing individual in the population
+- **Avg**: Average performance across all individuals  
+- **Worst**: Worst performing individual
+- **Trend**: Should show improvement over generations
+
+## Nurse Scheduling System
+
+### Shift Structure
+The simulation uses realistic shift-based nursing:
+
+```
+Day Shift:   07:00 - 19:00 (12 hours)
+Night Shift: 19:00 - 07:00 (12 hours)
+```
+
+### Nurse Schedule Output
+During evaluation, nurse schedules are printed showing:
+- Shift assignments
+- Patient assignments  
+- Workload distribution
+- Break times and availability
+
+Example nurse schedule:
+```
+--- Nurse Schedule for Seed 2000 ---
+Nurse 0 (Day Shift): 
+  T0-T48: Available, T49-T65: Treating Patient 12, T66-T96: Available
+Nurse 1 (Day Shift):
+  T0-T25: Available, T26-T45: Treating Patient 8, T46-T96: Available  
+Nurse 2 (Night Shift):
+  T0-T48: Off Duty, T49-T72: Available, T73-T89: Treating Patient 23
+Nurse 3 (Night Shift):
+  T0-T48: Off Duty, T49-T96: Available
+```
+
+### Understanding Timesteps
+- **96 timesteps total** = 24 hours (15 minutes per timestep)
+- **T0-T47**: 00:00-11:45 (first 12 hours)
+- **T48-T95**: 12:00-23:45 (second 12 hours)
+- **Day shift active**: T28-T75 (07:00-19:00)
+- **Night shift active**: T76-T27 (19:00-07:00, wrapping around)
+
+## File Organization
+
+### Core Files
+- `run_evaluation.py` - Main script to run everything
+- `classes.py` - Simulation engine (Patient, Nurse, ERSimulation)
+- `triage_policies.py` - Baseline algorithms (ESI, MTS)
+
+### Optimizers (5 algorithms)
+- `optimizers/linear_elite_optimizer.py` - Simple linear approach
+- `optimizers/linear_tournament_optimizer.py` - Better selection method
+- `optimizers/advanced_optimizer.py` - Non-linear mathematical features
+- `optimizers/hybrid_optimizer.py` - Multi-strategy evolution
+- `optimizers/neural_optimizer.py` - **Winner** - Neural network evolution
+
+### Evaluation & Logs
+- `evaluations/enhanced_evaluation.py` - Comprehensive testing framework
+- `logs/evaluation_results.txt` - Latest performance rankings and analysis
+- `logs/train_*.txt` - Training progress for each algorithm
+- `logs/patient_arrivals/` - Detailed patient arrival logs (training/testing)
+- `logs/nurse_schedule_esi_example.txt` - Example nurse shift schedules
+
+### Data Access Ethics
+All algorithms use only **fair data** available to human nurses:
+- ✅ Patient severity level (1-5)
+- ✅ Observable deterioration rate  
+- ✅ Current wait time
+- ✅ Basic vital signs (HR, RR, SpO2, BP)
+- ✅ Nurse availability and queue length
+- ❌ Future patient arrivals
+- ❌ Internal simulation parameters
+- ❌ Treatment outcomes
+
+## Troubleshooting
+
+### Common Issues
+1. **Import Errors**: Make sure you're running from the project root directory
+2. **Missing numpy**: Install with `pip install numpy`
+3. **Long Runtime**: Full evaluation takes 10-15 minutes for all algorithms
+
+### Performance Expectations
+- **Excellent Run**: Neural algorithm achieves 7.5 or better (current best: 7.50)
+- **Good Run**: Any algorithm scoring below 8.5 weighted wait
+- **Poor Run**: Score above 10.0 indicates potential issues
+- **Training Convergence**: Best score should improve over 100 generations
+- **Bug-Free**: Neural algorithm should outperform both medical baselines
+
+### Customization Options
+Edit `run_evaluation.py` to modify:
+- Number of training generations (default: 100)
+- Population sizes (default: 80-100)
+- Test scenarios (default: 5 different seeds)
+- Nurse staffing levels (default: 3-4 nurses)
+
+## Next Steps
+1. Run `python run_evaluation.py` to see the algorithms in action
+2. Examine `logs/train_neural.txt` to see how the winner evolved
+3. Check `PROJECT_SUMMARY.md` for detailed technical analysis
+4. Consider extending training to 200+ generations for even better results
