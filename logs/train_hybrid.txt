@@ -10,68 +10,68 @@ Generation   1: Best fitness = 24.809
     wait_focused: 30.874
     smart_hybrid: 30.751
 
-Generation  16: Best fitness = 23.587
+Generation  16: Best fitness = 23.405
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 28.829
-    deterioration_first: 27.204
-    balanced: 29.163
-    wait_focused: 29.939
-    smart_hybrid: 29.528
+    severity_first: 28.728
+    deterioration_first: 27.606
+    balanced: 29.178
+    wait_focused: 30.229
+    smart_hybrid: 29.405
 
-Generation  31: Best fitness = 21.162
+Generation  31: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 27.888
-    deterioration_first: 22.899
-    balanced: 28.752
-    wait_focused: 28.489
-    smart_hybrid: 27.501
+    severity_first: 29.505
+    deterioration_first: 23.021
+    balanced: 27.620
+    wait_focused: 29.623
+    smart_hybrid: 29.131
 
 Generation  46: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 29.828
-    deterioration_first: 23.431
-    balanced: 28.611
-    wait_focused: 29.633
-    smart_hybrid: 28.905
+    severity_first: 29.524
+    deterioration_first: 23.001
+    balanced: 28.712
+    wait_focused: 29.368
+    smart_hybrid: 28.624
 
 Generation  61: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 29.830
-    deterioration_first: 22.368
-    balanced: 28.437
-    wait_focused: 29.940
-    smart_hybrid: 27.627
+    severity_first: 29.621
+    deterioration_first: 22.349
+    balanced: 28.579
+    wait_focused: 30.018
+    smart_hybrid: 28.506
 
 Generation  76: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 29.864
-    deterioration_first: 22.609
-    balanced: 28.657
-    wait_focused: 30.030
-    smart_hybrid: 28.669
+    severity_first: 29.708
+    deterioration_first: 22.584
+    balanced: 28.577
+    wait_focused: 29.802
+    smart_hybrid: 28.362
 
 Generation  91: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 29.896
-    deterioration_first: 22.641
-    balanced: 28.703
-    wait_focused: 29.902
-    smart_hybrid: 28.823
+    severity_first: 29.773
+    deterioration_first: 22.491
+    balanced: 28.415
+    wait_focused: 30.174
+    smart_hybrid: 28.435
 
 Generation 100: Best fitness = 20.513
   Best strategy: deterioration_first
   Strategy performance (avg fitness last 10 gen):
-    severity_first: 29.943
-    deterioration_first: 23.245
-    balanced: 28.467
-    wait_focused: 29.611
-    smart_hybrid: 28.513
+    severity_first: 29.743
+    deterioration_first: 22.410
+    balanced: 28.510
+    wait_focused: 30.174
+    smart_hybrid: 28.648
 
 
 ==================================================
@@ -80,16 +80,16 @@ Best fitness achieved: 20.513
 Winning strategy: deterioration_first
 
 Final strategy performance summary:
-  severity_first : avg=29.370, best=24.844
-  deterioration_first: avg=23.603, best=20.513
-  balanced       : avg=28.960, best=24.352
-  wait_focused   : avg=29.698, best=25.834
-  smart_hybrid   : avg=28.751, best=23.536
+  severity_first : avg=29.101, best=24.844
+  deterioration_first: avg=23.429, best=20.513
+  balanced       : avg=28.599, best=23.676
+  wait_focused   : avg=29.995, best=25.276
+  smart_hybrid   : avg=28.976, best=24.784
 
 Best policy parameters:
   strategy_type: deterioration_first
-  severity: 2.1058
-  deterioration: 3.3417
-  wait_time: 0.3832
-  deterioration_threshold: 0.4571
-  prevention_bonus: 11.7185
+  severity: 2.9290
+  deterioration: 3.1624
+  wait_time: 0.5083
+  deterioration_threshold: 0.4636
+  prevention_bonus: 24.8723

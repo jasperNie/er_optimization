@@ -13,6 +13,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from optimizers.neural_optimizer import FairNeuralEvolutionOptimizer
 from classes import ERSimulation
+from enhanced_evaluation import generate_arrivals, log_patient_arrivals
 import statistics
 
 def explain_patient_decision(chosen_patient_str, chosen_score, alt_patient_str, alt_score):
@@ -124,7 +125,7 @@ def full_training_multi_seed_explanation():
     
     # Full training parameters (same as enhanced_evaluation.py)
     training_params = {
-        'num_nurses': 3,
+        'num_nurses': 4,  # Same as enhanced_evaluation testing
         'total_time': 96,
         'arrival_prob': 0.3,
         'seed': 1000  # Use first training seed from enhanced_evaluation
@@ -146,6 +147,14 @@ def full_training_multi_seed_explanation():
     
     # Test seeds (same as enhanced_evaluation.py)
     test_seeds = [2000, 3000, 4000, 5000, 6000, 7000]  # 6 seeds like in enhanced_evaluation
+    
+    # Generate and log patient arrivals for all test seeds
+    print("\n📋 Logging patient arrivals for test seeds...")
+    for seed in test_seeds:
+        arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/testing", "Testing")
+    print("   Patient arrival logs saved to logs/patient_arrivals/testing/")
+    
     all_results = []
     
     for seed_idx, test_seed in enumerate(test_seeds, 1):
@@ -245,6 +254,7 @@ def full_training_multi_seed_explanation():
         
         # Run simulation with this seed (same parameters as enhanced_evaluation)
         sim = ExplainableSimulation(
+            num_nurses=4,  # Same as enhanced_evaluation testing
             total_time=96,  # 24 hours
             arrival_prob=0.3,  # Same as enhanced_evaluation
             triage_policy=neural_policy,
@@ -351,6 +361,7 @@ def full_training_multi_seed_explanation():
     for test_seed in test_seeds:
         # ESI baseline
         esi_sim = ERSimulation(
+            num_nurses=4,  # Same as enhanced_evaluation
             total_time=96,
             arrival_prob=0.3,  # Same as enhanced_evaluation
             triage_policy={'severity': 1.0, 'deterioration': 0.0, 'wait_time': 0.0},
@@ -362,6 +373,7 @@ def full_training_multi_seed_explanation():
         
         # MTS baseline
         mts_sim = ERSimulation(
+            num_nurses=4,  # Same as enhanced_evaluation
             total_time=96,
             arrival_prob=0.3,  # Same as enhanced_evaluation
             triage_policy={'severity': 0.0, 'deterioration': 0.0, 'wait_time': 1.0},
@@ -376,9 +388,22 @@ def full_training_multi_seed_explanation():
     mts_avg_weighted = statistics.mean([r['avg_weighted_wait'] for r in mts_results])
     neural_avg_weighted = statistics.mean(weighted_waits)
     
-    print(f"   🤖 Neural Network: {neural_avg_weighted:.2f} hours weighted wait")
-    print(f"   🏥 ESI (severity):  {esi_avg_weighted:.2f} hours weighted wait")
-    print(f"   ⏱️ MTS (wait time): {mts_avg_weighted:.2f} hours weighted wait")
+    # Also get average wait times (not just weighted)
+    esi_avg_wait = statistics.mean([r['avg_wait'] for r in esi_results])
+    mts_avg_wait = statistics.mean([r['avg_wait'] for r in mts_results])
+    neural_avg_wait = statistics.mean(avg_waits)
+    
+    # Convert from timesteps to hours (15 minutes per timestep)
+    neural_avg_weighted_hours = neural_avg_weighted * 15 / 60  # timesteps * 15 min / 60 min/hour
+    neural_avg_wait_hours = neural_avg_wait * 15 / 60
+    esi_avg_weighted_hours = esi_avg_weighted * 15 / 60
+    esi_avg_wait_hours = esi_avg_wait * 15 / 60
+    mts_avg_weighted_hours = mts_avg_weighted * 15 / 60
+    mts_avg_wait_hours = mts_avg_wait * 15 / 60
+    
+    print(f"   🤖 Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   🏥 ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   ⏱️ MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
     
     if neural_avg_weighted < esi_avg_weighted:
         improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
@@ -445,17 +470,24 @@ def full_training_multi_seed_explanation():
         
         # Add baseline comparison to file
         f.write(f"BASELINE COMPARISON:\n")
-        f.write(f"   Neural Network: {neural_avg_weighted:.2f} hours\n")
-        f.write(f"   ESI Baseline: {esi_avg_weighted:.2f} hours\n")
-        f.write(f"   MTS Baseline: {mts_avg_weighted:.2f} hours\n")
+        f.write(f"   Neural Network: {neural_avg_weighted_hours:.2f} hours weighted ({neural_avg_wait_hours:.2f} hours avg)\n")
+        f.write(f"   ESI Baseline: {esi_avg_weighted_hours:.2f} hours weighted ({esi_avg_wait_hours:.2f} hours avg)\n")
+        f.write(f"   MTS Baseline: {mts_avg_weighted_hours:.2f} hours weighted ({mts_avg_wait_hours:.2f} hours avg)\n")
         if neural_avg_weighted < esi_avg_weighted:
             improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
-            f.write(f"   -> Neural beats ESI by {improvement:.1f}%\n")
+            f.write(f"   -> Neural beats ESI by {improvement:.1f}% (weighted wait)\n")
         if neural_avg_weighted < mts_avg_weighted:
             improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
-            f.write(f"   -> Neural beats MTS by {improvement:.1f}%\n")
+            f.write(f"   -> Neural beats MTS by {improvement:.1f}% (weighted wait)\n")
+        if neural_avg_wait < esi_avg_wait:
+            improvement = ((esi_avg_wait - neural_avg_wait) / esi_avg_wait) * 100
+            f.write(f"   -> Neural beats ESI by {improvement:.1f}% (average wait)\n")
+        if neural_avg_wait < mts_avg_wait:
+            improvement = ((mts_avg_wait - neural_avg_wait) / mts_avg_wait) * 100
+            f.write(f"   -> Neural beats MTS by {improvement:.1f}% (average wait)\n")
     
     print(f"   📄 Results saved to: logs/analysis_logs/comprehensive_neural_evaluation.txt")
+    print(f"   📋 Patient arrivals saved to: logs/patient_arrivals/testing/")
     
     print(f"\n✅ COMPREHENSIVE EVALUATION COMPLETE!")
     print("=" * 80)
