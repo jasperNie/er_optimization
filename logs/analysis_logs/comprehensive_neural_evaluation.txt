@@ -1,0 +1,207 @@
+================================================================================
+   COMPREHENSIVE NEURAL NETWORK EVALUATION RESULTS
+================================================================================
+
+🔧 TRAINING CONFIGURATION:
+   Generations: 100
+   Population: 80
+   Training seed: 1000
+   Test seeds: 6
+   Simulation: 24 hours (96 timesteps of 15 minutes each)
+
+SEED 2000 RESULTS:
+   Patients treated: 26
+   Patients waiting: 15
+   Average wait: 3.07 timesteps (46 minutes)
+   Weighted wait: 2.60 timesteps (39 minutes)
+   Decisions explained: 25
+   ALL TRIAGE DECISIONS:
+     1. t=04:45: Patient 7 chosen over Patient 4: close call: severity edge to Patient 7 (3 vs 5), wait time edge to Patient 4, deterioration edge to Patient 4, treatment speed edge to Patient 7 (margin: +0.009, confidence: low)
+     2. t=05:30: Patient 9 chosen over Patient 4: close call: severity edge to Patient 9 (1 vs 5), wait time edge to Patient 4, deterioration edge to Patient 4, treatment speed edge to Patient 9 (margin: +0.083, confidence: moderate)
+     3. t=06:15: Patient 10 chosen over Patient 6: higher severity (level 4 vs 3), deteriorating faster (0.23 vs 0.17 rate) (margin: +0.053, confidence: moderate)
+     4. t=07:15: Patient 11 chosen over Patient 8: close call: same severity (level 5), wait time edge to Patient 8, similar deterioration rates (~0.28), similar treatment times (~225min) (margin: +0.113, confidence: high)
+     5. t=07:45: Patient 12 chosen over Patient 6: deteriorating faster (0.28 vs 0.04 rate) (margin: +0.182, confidence: high)
+     6. t=09:45: Patient 18 chosen over Patient 16: close call: same severity (level 5), wait time edge to Patient 16, similar deterioration rates (~0.11), similar treatment times (~165min) (margin: +0.038, confidence: low)
+     7. t=10:45: Patient 19 chosen over Patient 16: close call: same severity (level 5), wait time edge to Patient 16, similar deterioration rates (~0.10), similar treatment times (~165min) (margin: +0.093, confidence: moderate)
+     8. t=11:00: Patient 20 chosen over Patient 16: deteriorating faster (0.29 vs 0.12 rate) (margin: +0.147, confidence: high)
+     9. t=12:00: Patient 21 chosen over Patient 16: close call: severity edge to Patient 21 (1 vs 5), wait time edge to Patient 16, similar deterioration rates (~0.10), treatment speed edge to Patient 21 (margin: +0.156, confidence: high)
+     10. t=12:30: Patient 22 chosen over Patient 23: longer wait (30min vs 15min) (margin: +0.146, confidence: high)
+     11. t=13:30: Patient 25 chosen over Patient 24: close call: severity edge to Patient 25 (1 vs 3), similar wait times (~15min), deterioration edge to Patient 24, similar treatment times (~135min) (margin: +0.227, confidence: high)
+     12. t=14:00: Patient 24 chosen over Patient 26: higher severity (level 4 vs 3), much longer wait (60min vs 15min) (margin: +0.105, confidence: high)
+     13. t=14:45: Patient 27 chosen over Patient 26: close call: same severity (level 4), wait time edge to Patient 26, similar deterioration rates (~0.28), treatment speed edge to Patient 27 (margin: +0.030, confidence: low)
+     14. t=15:00: Patient 28 chosen over Patient 26: close call: severity edge to Patient 28 (3 vs 4), wait time edge to Patient 26, deterioration edge to Patient 26, treatment speed edge to Patient 28 (margin: +0.080, confidence: moderate)
+     15. t=15:45: Patient 29 chosen over Patient 31: higher severity (level 5 vs 2), longer wait (45min vs 15min) (margin: +0.027, confidence: low)
+     16. t=16:45: Patient 32 chosen over Patient 31: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.118, confidence: high)
+     17. t=17:15: Patient 31 chosen over Patient 33: higher severity (level 5 vs 4), much longer wait (105min vs 30min) (margin: +0.034, confidence: low)
+     18. t=17:45: Patient 34 chosen over Patient 33: deteriorating faster (0.28 vs 0.11 rate) (margin: +0.038, confidence: low)
+     19. t=20:00: Patient 33 chosen over Patient 36: higher severity (level 5 vs 4), much longer wait (195min vs 15min) (margin: +0.003, confidence: low)
+     20. t=20:15: Patient 36 chosen over Patient 30: deteriorating faster (0.57 vs 0.03 rate) (margin: +0.083, confidence: moderate)
+     21. t=20:30: Patient 37 chosen over Patient 17: deteriorating faster (0.32 vs 0.01 rate) (margin: +0.229, confidence: high)
+     22. t=22:15: Patient 38 chosen over Patient 17: deteriorating faster (0.10 vs 0.01 rate) (margin: +0.170, confidence: high)
+     23. t=23:00: Patient 41 chosen over Patient 40: quicker treatment (225min vs 240min) (margin: +0.001, confidence: low)
+     24. t=23:30: Patient 39 chosen over Patient 42: higher severity (level 5 vs 2), much longer wait (75min vs 30min) (margin: +0.042, confidence: low)
+     25. t=24:00: Patient 43 chosen over Patient 44: higher severity (level 5 vs 2), longer wait (45min vs 15min) (margin: +0.002, confidence: low)
+
+SEED 3000 RESULTS:
+   Patients treated: 24
+   Patients waiting: 22
+   Average wait: 7.18 timesteps (108 minutes)
+   Weighted wait: 3.66 timesteps (55 minutes)
+   Decisions explained: 22
+   ALL TRIAGE DECISIONS:
+     1. t=03:15: Patient 5 chosen over Patient 8: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.21 rate), much longer wait (60min vs 15min) (margin: +0.042, confidence: low)
+     2. t=05:15: Patient 10 chosen over Patient 11: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.17 rate), longer wait (75min vs 60min) (margin: +0.039, confidence: low)
+     3. t=06:00: Patient 15 chosen over Patient 11: deteriorating faster (0.29 vs 0.04 rate) (margin: +0.086, confidence: moderate)
+     4. t=06:15: Patient 11 chosen over Patient 14: higher severity (level 5 vs 3), much longer wait (120min vs 75min) (margin: +0.024, confidence: low)
+     5. t=07:45: Patient 20 chosen over Patient 19: close call: same severity (level 3), similar wait times (~45min), similar deterioration rates (~0.17), similar treatment times (~195min) (margin: +0.013, confidence: low)
+     6. t=08:30: Patient 19 chosen over Patient 18: quicker treatment (165min vs 195min) (margin: +0.030, confidence: low)
+     7. t=09:45: Patient 25 chosen over Patient 26: longer wait (30min vs 15min) (margin: +0.061, confidence: moderate)
+     8. t=10:00: Patient 27 chosen over Patient 26: deteriorating faster (0.28 vs 0.11 rate) (margin: +0.001, confidence: low)
+     9. t=11:00: Patient 28 chosen over Patient 26: deteriorating faster (0.28 vs 0.11 rate) (margin: +0.038, confidence: low)
+     10. t=11:15: Patient 26 chosen over Patient 22: close call: same severity (level 5), wait time edge to Patient 22, similar deterioration rates (~0.11), similar treatment times (~195min) (margin: +0.127, confidence: high)
+     11. t=12:15: Patient 30 chosen over Patient 29: higher severity (level 5 vs 4) (margin: +0.145, confidence: high)
+     12. t=13:30: Patient 29 chosen over Patient 24: deteriorating faster (0.24 vs 0.12 rate) (margin: +0.025, confidence: low)
+     13. t=14:30: Patient 36 chosen over Patient 37: higher severity (level 5 vs 1), longer wait (45min vs 15min) (margin: +0.027, confidence: low)
+     14. t=15:30: Patient 37 chosen over Patient 38: much longer wait (75min vs 15min) (margin: +0.002, confidence: low)
+     15. t=16:45: Patient 39 chosen over Patient 14: deteriorating faster (0.34 vs 0.04 rate) (margin: +0.111, confidence: high)
+     16. t=18:00: Patient 40 chosen over Patient 41: higher severity (level 5 vs 3), much longer wait (75min vs 30min) (margin: +0.038, confidence: low)
+     17. t=18:15: Patient 41 chosen over Patient 14: deteriorating faster (0.17 vs 0.04 rate) (margin: +0.200, confidence: high)
+     18. t=18:30: Patient 14 chosen over Patient 23: much longer wait (810min vs 630min) (margin: +0.001, confidence: low)
+     19. t=19:00: Patient 42 chosen over Patient 23: deteriorating faster (0.23 vs 0.05 rate) (margin: +0.264, confidence: high)
+     20. t=21:00: Patient 43 chosen over Patient 23: deteriorating faster (0.30 vs 0.05 rate) (margin: +0.205, confidence: high)
+     21. t=21:15: Patient 44 chosen over Patient 23: deteriorating faster (0.26 vs 0.05 rate) (margin: +0.199, confidence: high)
+     22. t=21:45: Patient 45 chosen over Patient 23: close call: same severity (level 5), wait time edge to Patient 23, deterioration edge to Patient 45, similar treatment times (~180min) (margin: +0.306, confidence: high)
+
+SEED 4000 RESULTS:
+   Patients treated: 27
+   Patients waiting: 19
+   Average wait: 7.39 timesteps (111 minutes)
+   Weighted wait: 4.10 timesteps (62 minutes)
+   Decisions explained: 22
+   ALL TRIAGE DECISIONS:
+     1. t=03:15: Patient 7 chosen over Patient 10: higher severity (level 5 vs 4), much longer wait (90min vs 15min) (margin: +0.012, confidence: low)
+     2. t=03:45: Patient 10 chosen over Patient 4: deteriorating faster (0.27 vs 0.12 rate) (margin: +0.033, confidence: low)
+     3. t=04:00: Patient 4 chosen over Patient 5: longer wait (180min vs 165min), quicker treatment (195min vs 225min) (margin: +0.052, confidence: moderate)
+     4. t=04:15: Patient 6 chosen over Patient 11: higher severity (level 5 vs 3), much longer wait (165min vs 15min) (margin: +0.083, confidence: moderate)
+     5. t=06:30: Patient 18 chosen over Patient 16: close call: same severity (level 5), wait time edge to Patient 16, similar deterioration rates (~0.29), treatment speed edge to Patient 18 (margin: +0.037, confidence: low)
+     6. t=07:15: Patient 16 chosen over Patient 11: deteriorating faster (0.29 vs 0.10 rate) (margin: +0.091, confidence: moderate)
+     7. t=08:00: Patient 21 chosen over Patient 12: higher severity (level 5 vs 3) (margin: +0.264, confidence: high)
+     8. t=10:15: Patient 28 chosen over Patient 25: deteriorating faster (0.28 vs 0.12 rate) (margin: +0.038, confidence: low)
+     9. t=11:00: Patient 27 chosen over Patient 26: quicker treatment (210min vs 240min) (margin: +0.017, confidence: low)
+     10. t=11:45: Patient 30 chosen over Patient 29: higher severity (level 4 vs 3), deteriorating faster (0.27 vs 0.18 rate) (margin: +0.009, confidence: low)
+     11. t=13:00: Patient 32 chosen over Patient 31: quicker treatment (210min vs 240min) (margin: +0.015, confidence: low)
+     12. t=13:45: Patient 31 chosen over Patient 29: higher severity (level 5 vs 4) (margin: +0.171, confidence: high)
+     13. t=14:30: Patient 35 chosen over Patient 34: higher severity (level 5 vs 3), deteriorating faster (0.67 vs 0.44 rate) (margin: +0.052, confidence: moderate)
+     14. t=16:30: Patient 38 chosen over Patient 39: higher severity (level 5 vs 4), longer wait (90min vs 60min) (margin: +0.081, confidence: moderate)
+     15. t=17:15: Patient 39 chosen over Patient 40: higher severity (level 5 vs 4), much longer wait (105min vs 30min) (margin: +0.028, confidence: low)
+     16. t=17:45: Patient 40 chosen over Patient 41: higher severity (level 5 vs 4), longer wait (60min vs 30min) (margin: +0.084, confidence: moderate)
+     17. t=19:15: Patient 43 chosen over Patient 42: close call: same severity (level 5), wait time edge to Patient 42, similar deterioration rates (~0.29), similar treatment times (~270min) (margin: +0.034, confidence: low)
+     18. t=19:30: Patient 42 chosen over Patient 41: deteriorating faster (0.29 vs 0.13 rate) (margin: +0.022, confidence: low)
+     19. t=20:45: Patient 46 chosen over Patient 41: deteriorating faster (0.48 vs 0.13 rate) (margin: +0.067, confidence: moderate)
+     20. t=23:30: Patient 49 chosen over Patient 48: deteriorating faster (0.62 vs 0.12 rate) (margin: +0.074, confidence: moderate)
+     21. t=23:45: Patient 48 chosen over Patient 47: higher severity (level 5 vs 3), deteriorating faster (0.12 vs 0.06 rate) (margin: +0.113, confidence: high)
+     22. t=24:00: Patient 12 chosen over Patient 19: much longer wait (1185min vs 1050min) (margin: +0.000, confidence: low)
+
+SEED 5000 RESULTS:
+   Patients treated: 25
+   Patients waiting: 8
+   Average wait: 9.48 timesteps (142 minutes)
+   Weighted wait: 4.83 timesteps (72 minutes)
+   Decisions explained: 22
+   ALL TRIAGE DECISIONS:
+     1. t=05:00: Patient 5 chosen over Patient 4: close call: same severity (level 5), wait time edge to Patient 4, similar deterioration rates (~0.10), similar treatment times (~225min) (margin: +0.040, confidence: low)
+     2. t=05:30: Patient 8 chosen over Patient 7: close call: same severity (level 3), wait time edge to Patient 7, similar deterioration rates (~0.15), similar treatment times (~135min) (margin: +0.036, confidence: low)
+     3. t=07:30: Patient 10 chosen over Patient 9: deteriorating faster (0.15 vs 0.07 rate), quicker treatment (165min vs 180min) (margin: +0.040, confidence: low)
+     4. t=07:45: Patient 11 chosen over Patient 9: deteriorating faster (0.20 vs 0.07 rate) (margin: +0.047, confidence: low)
+     5. t=08:45: Patient 13 chosen over Patient 12: quicker treatment (165min vs 180min) (margin: +0.049, confidence: low)
+     6. t=10:15: Patient 17 chosen over Patient 16: close call: same severity (level 5), similar wait times (~60min), similar deterioration rates (~0.13), similar treatment times (~195min) (margin: +0.018, confidence: low)
+     7. t=10:30: Patient 16 chosen over Patient 19: higher severity (level 5 vs 2), much longer wait (90min vs 30min) (margin: +0.052, confidence: moderate)
+     8. t=10:45: Patient 19 chosen over Patient 12: deteriorating faster (0.28 vs 0.17 rate) (margin: +0.126, confidence: high)
+     9. t=11:30: Patient 20 chosen over Patient 7: deteriorating faster (0.32 vs 0.04 rate) (margin: +0.126, confidence: high)
+     10. t=13:15: Patient 23 chosen over Patient 22: much quicker treatment (210min vs 270min) (margin: +0.035, confidence: low)
+     11. t=13:30: Patient 22 chosen over Patient 21: close call: same severity (level 5), similar wait times (~105min), similar deterioration rates (~0.29), similar treatment times (~270min) (margin: +0.016, confidence: low)
+     12. t=14:45: Patient 25 chosen over Patient 26: much longer wait (75min vs 15min) (margin: +0.026, confidence: low)
+     13. t=16:45: Patient 27 chosen over Patient 28: longer wait (75min vs 60min) (margin: +0.166, confidence: high)
+     14. t=17:30: Patient 30 chosen over Patient 29: higher severity (level 5 vs 2), deteriorating faster (0.64 vs 0.35 rate) (margin: +0.051, confidence: moderate)
+     15. t=18:00: Patient 29 chosen over Patient 7: close call: severity edge to Patient 29 (4 vs 5), wait time edge to Patient 7, similar deterioration rates (~0.09), similar treatment times (~150min) (margin: +0.155, confidence: high)
+     16. t=18:15: Patient 31 chosen over Patient 7: deteriorating faster (0.29 vs 0.04 rate) (margin: +0.308, confidence: high)
+     17. t=18:30: Patient 7 chosen over Patient 12: much longer wait (825min vs 645min) (margin: +0.000, confidence: low)
+     18. t=20:30: Patient 33 chosen over Patient 32: higher severity (level 4 vs 3) (margin: +0.182, confidence: high)
+     19. t=21:00: Patient 32 chosen over Patient 12: deteriorating faster (0.25 vs 0.04 rate) (margin: +0.105, confidence: high)
+     20. t=22:00: Patient 12 chosen over Patient 4: close call: same severity (level 5), wait time edge to Patient 4, deterioration edge to Patient 4, similar treatment times (~180min) (margin: +0.005, confidence: low)
+     21. t=22:15: Patient 4 chosen over Patient 6: much longer wait (1125min vs 1065min) (margin: +0.370, confidence: high)
+     22. t=23:45: Patient 35 chosen over Patient 34: close call: same severity (level 5), wait time edge to Patient 34, deterioration edge to Patient 34, similar treatment times (~225min) (margin: +0.054, confidence: moderate)
+
+SEED 6000 RESULTS:
+   Patients treated: 25
+   Patients waiting: 18
+   Average wait: 5.07 timesteps (76 minutes)
+   Weighted wait: 4.33 timesteps (65 minutes)
+   Decisions explained: 21
+   ALL TRIAGE DECISIONS:
+     1. t=02:30: Patient 4 chosen over Patient 5: higher severity (level 5 vs 4), much longer wait (75min vs 15min) (margin: +0.349, confidence: high)
+     2. t=03:30: Patient 5 chosen over Patient 7: higher severity (level 5 vs 4), much longer wait (75min vs 15min) (margin: +0.025, confidence: low)
+     3. t=05:00: Patient 7 chosen over Patient 6: higher severity (level 5 vs 2) (margin: +0.097, confidence: moderate)
+     4. t=06:00: Patient 11 chosen over Patient 10: close call: severity edge to Patient 11 (1 vs 2), wait time edge to Patient 10, deterioration edge to Patient 10, similar treatment times (~150min) (margin: +0.148, confidence: high)
+     5. t=06:15: Patient 13 chosen over Patient 8: close call: same severity (level 4), wait time edge to Patient 8, similar deterioration rates (~0.24), similar treatment times (~210min) (margin: +0.132, confidence: high)
+     6. t=08:00: Patient 10 chosen over Patient 8: close call: severity edge to Patient 10 (3 vs 5), wait time edge to Patient 8, similar deterioration rates (~0.12), similar treatment times (~180min) (margin: +0.001, confidence: low)
+     7. t=08:30: Patient 17 chosen over Patient 8: deteriorating faster (0.19 vs 0.11 rate) (margin: +0.227, confidence: high)
+     8. t=09:45: Patient 20 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.154, confidence: high)
+     9. t=10:45: Patient 23 chosen over Patient 18: deteriorating faster (0.20 vs 0.07 rate) (margin: +0.150, confidence: high)
+     10. t=11:00: Patient 24 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.62 vs 0.07 rate) (margin: +0.046, confidence: low)
+     11. t=12:00: Patient 26 chosen over Patient 25: quicker treatment (240min vs 270min) (margin: +0.019, confidence: low)
+     12. t=13:00: Patient 25 chosen over Patient 27: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.09 rate), longer wait (105min vs 75min) (margin: +0.046, confidence: low)
+     13. t=13:15: Patient 27 chosen over Patient 22: close call: severity edge to Patient 27 (4 vs 5), wait time edge to Patient 22, similar deterioration rates (~0.09), treatment speed edge to Patient 27 (margin: +0.030, confidence: low)
+     14. t=15:30: Patient 30 chosen over Patient 31: much longer wait (120min vs 75min) (margin: +0.094, confidence: moderate)
+     15. t=16:00: Patient 32 chosen over Patient 18: deteriorating faster (0.15 vs 0.04 rate) (margin: +0.210, confidence: high)
+     16. t=17:30: Patient 36 chosen over Patient 35: higher severity (level 4 vs 2) (margin: +0.029, confidence: low)
+     17. t=18:15: Patient 34 chosen over Patient 33: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.08 rate) (margin: +0.095, confidence: moderate)
+     18. t=18:30: Patient 37 chosen over Patient 33: deteriorating faster (0.17 vs 0.08 rate) (margin: +0.154, confidence: high)
+     19. t=20:45: Patient 40 chosen over Patient 39: quicker treatment (255min vs 285min) (margin: +0.011, confidence: low)
+     20. t=21:30: Patient 42 chosen over Patient 41: close call: same severity (level 5), wait time edge to Patient 41, similar deterioration rates (~0.67), similar treatment times (~225min) (margin: +0.110, confidence: high)
+     21. t=22:45: Patient 44 chosen over Patient 43: close call: same severity (level 5), similar wait times (~45min), similar deterioration rates (~0.29), treatment speed edge to Patient 43 (margin: +0.016, confidence: low)
+
+SEED 7000 RESULTS:
+   Patients treated: 27
+   Patients waiting: 17
+   Average wait: 3.97 timesteps (60 minutes)
+   Weighted wait: 4.01 timesteps (60 minutes)
+   Decisions explained: 25
+   ALL TRIAGE DECISIONS:
+     1. t=02:30: Patient 5 chosen over Patient 4: higher severity (level 5 vs 4) (margin: +0.116, confidence: high)
+     2. t=03:00: Patient 6 chosen over Patient 4: close call: same severity (level 4), wait time edge to Patient 4, similar deterioration rates (~0.21), similar treatment times (~165min) (margin: +0.037, confidence: low)
+     3. t=03:45: Patient 8 chosen over Patient 4: deteriorating faster (0.28 vs 0.11 rate) (margin: +0.115, confidence: high)
+     4. t=04:00: Patient 4 chosen over Patient 7: much longer wait (135min vs 45min) (margin: +0.216, confidence: high)
+     5. t=05:45: Patient 9 chosen over Patient 11: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.15 rate), longer wait (90min vs 60min) (margin: +0.019, confidence: low)
+     6. t=06:30: Patient 13 chosen over Patient 11: close call: same severity (level 4), wait time edge to Patient 11, similar deterioration rates (~0.07), similar treatment times (~165min) (margin: +0.068, confidence: moderate)
+     7. t=06:45: Patient 15 chosen over Patient 11: deteriorating faster (0.27 vs 0.08 rate) (margin: +0.086, confidence: moderate)
+     8. t=08:15: Patient 18 chosen over Patient 17: quicker treatment (240min vs 270min) (margin: +0.018, confidence: low)
+     9. t=09:15: Patient 20 chosen over Patient 19: deteriorating faster (0.29 vs 0.13 rate) (margin: +0.002, confidence: low)
+     10. t=10:00: Patient 19 chosen over Patient 21: higher severity (level 5 vs 4), much longer wait (120min vs 45min) (margin: +0.021, confidence: low)
+     11. t=10:15: Patient 21 chosen over Patient 17: close call: severity edge to Patient 21 (4 vs 5), wait time edge to Patient 17, deterioration edge to Patient 17, similar treatment times (~240min) (margin: +0.032, confidence: low)
+     12. t=12:15: Patient 25 chosen over Patient 24: close call: same severity (level 5), wait time edge to Patient 24, similar deterioration rates (~0.29), similar treatment times (~210min) (margin: +0.054, confidence: moderate)
+     13. t=13:00: Patient 27 chosen over Patient 24: close call: severity edge to Patient 27 (4 vs 5), wait time edge to Patient 24, similar deterioration rates (~0.27), similar treatment times (~195min) (margin: +0.055, confidence: moderate)
+     14. t=13:45: Patient 24 chosen over Patient 23: deteriorating faster (0.29 vs 0.13 rate), quicker treatment (195min vs 225min) (margin: +0.005, confidence: low)
+     15. t=14:15: Patient 30 chosen over Patient 29: close call: same severity (level 5), wait time edge to Patient 29, similar deterioration rates (~0.28), similar treatment times (~225min) (margin: +0.037, confidence: low)
+     16. t=15:45: Patient 34 chosen over Patient 32: higher severity (level 5 vs 2) (margin: +0.092, confidence: moderate)
+     17. t=16:15: Patient 32 chosen over Patient 33: higher severity (level 2 vs 1), longer wait (75min vs 60min) (margin: +0.008, confidence: low)
+     18. t=17:00: Patient 33 chosen over Patient 29: close call: severity edge to Patient 33 (2 vs 5), wait time edge to Patient 29, deterioration edge to Patient 29, treatment speed edge to Patient 33 (margin: +0.098, confidence: moderate)
+     19. t=18:00: Patient 37 chosen over Patient 36: close call: same severity (level 3), wait time edge to Patient 36, similar deterioration rates (~0.14), treatment speed edge to Patient 37 (margin: +0.051, confidence: moderate)
+     20. t=18:45: Patient 39 chosen over Patient 38: close call: same severity (level 4), wait time edge to Patient 38, similar deterioration rates (~0.24), similar treatment times (~195min) (margin: +0.032, confidence: low)
+     21. t=19:45: Patient 41 chosen over Patient 38: deteriorating faster (0.30 vs 0.12 rate) (margin: +0.070, confidence: moderate)
+     22. t=20:30: Patient 40 chosen over Patient 42: higher severity (level 5 vs 4), much longer wait (90min vs 45min) (margin: +0.072, confidence: moderate)
+     23. t=22:00: Patient 43 chosen over Patient 42: deteriorating faster (0.60 vs 0.11 rate) (margin: +0.006, confidence: low)
+     24. t=23:15: Patient 45 chosen over Patient 44: quicker treatment (225min vs 240min) (margin: +0.057, confidence: moderate)
+     25. t=23:30: Patient 42 chosen over Patient 22: deteriorating faster (0.11 vs 0.02 rate) (margin: +0.078, confidence: moderate)
+
+AGGREGATE STATISTICS:
+   Mean patients treated: 25.7 +/- 1.2
+   Mean weighted wait: 3.92 +/- 0.76 hours
+   Total decisions explained: 137
+
+BASELINE COMPARISON:
+   Neural Network: 3.92 hours
+   ESI Baseline: 26.90 hours
+   MTS Baseline: 26.89 hours
+   -> Neural beats ESI by 85.4%
+   -> Neural beats MTS by 85.4%

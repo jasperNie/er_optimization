@@ -94,8 +94,11 @@ class FairNeuralEvolutionOptimizer:
             # Input to hidden layer
             hidden_input = np.dot(features, policy['w1']) + policy['b1']
             
-            # Check for numerical issues
-            if not np.all(np.isfinite(hidden_input)):
+            # Check for numerical issues with safer approach
+            try:
+                if not np.all(np.isfinite(hidden_input)):
+                    return 1.0
+            except (ValueError, TypeError, KeyboardInterrupt):
                 return 1.0
             
             # Apply activations
@@ -103,22 +106,31 @@ class FairNeuralEvolutionOptimizer:
             for i in range(len(hidden_input)):
                 hidden_output[i] = self.activate(hidden_input[i], policy['activations'][i])
             
-            # Check for numerical issues
-            if not np.all(np.isfinite(hidden_output)):
+            # Check for numerical issues with safer approach
+            try:
+                if not np.all(np.isfinite(hidden_output)):
+                    return 1.0
+            except (ValueError, TypeError, KeyboardInterrupt):
                 return 1.0
             
             # Hidden to output layer
             output_input = np.dot(hidden_output, policy['w2']) + policy['b2']
             
-            # Check for numerical issues
-            if not np.all(np.isfinite(output_input)):
+            # Check for numerical issues with safer approach
+            try:
+                if not np.all(np.isfinite(output_input)):
+                    return 1.0
+            except (ValueError, TypeError, KeyboardInterrupt):
                 return 1.0
             
             # Final output (always positive for triage score)
             output = np.maximum(0.1, output_input[0]) * policy['output_scale']
             
-            # Final sanity check
-            if not np.isfinite(output) or output <= 0:
+            # Final sanity check with safer approach
+            try:
+                if not np.isfinite(output) or output <= 0:
+                    return 1.0
+            except (ValueError, TypeError, KeyboardInterrupt):
                 return 1.0
                 
             # Apply urgency boost for critical cases (using fair severity data)
