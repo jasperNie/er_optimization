@@ -3,38 +3,38 @@ Fair Neural Evolution Optimization Log
 Fair network architecture: 6 -> 6 -> 1
 Input features: severity, deterioration, wait_time, time_of_day, queue_length, nurse_availability
 
-Generation   1: Best=2.070, Avg=3.358
+Generation   1: Best=33.593, Avg=35.789
   Mutation rate: 0.150
-  Best policy output_scale: 0.938
+  Best policy output_scale: 1.192
 
-Generation  21: Best=1.844, Avg=2.557
+Generation  21: Best=31.614, Avg=35.204
   Mutation rate: 0.135
-  Best policy output_scale: 1.183
+  Best policy output_scale: 0.949
 
-Generation  41: Best=1.844, Avg=2.228
+Generation  41: Best=31.505, Avg=34.940
   Mutation rate: 0.120
-  Best policy output_scale: 1.183
+  Best policy output_scale: 0.788
 
-Generation  61: Best=1.844, Avg=2.200
+Generation  61: Best=31.505, Avg=34.611
   Mutation rate: 0.105
-  Best policy output_scale: 1.183
+  Best policy output_scale: 0.788
 
-Generation  81: Best=1.807, Avg=2.248
+Generation  81: Best=31.505, Avg=34.714
   Mutation rate: 0.090
-  Best policy output_scale: 1.051
+  Best policy output_scale: 0.788
 
-Generation 100: Best=1.807, Avg=2.087
+Generation 100: Best=31.505, Avg=34.397
   Mutation rate: 0.076
-  Best policy output_scale: 1.051
+  Best policy output_scale: 0.788
 
 
 ==================================================
 FAIR NEURAL EVOLUTION COMPLETE
-Best training fitness: 1.807
-Average final test fitness: 5.275
+Best training fitness: 31.505
+Average final test fitness: 45.787
 
 Best fair network architecture summary:
-  Hidden layer activations: [1 2 1 2 1 2]
-  Output scale: 1.0512
-  Urgency boost: 1.0613
+  Hidden layer activations: [0 1 0 2 2 0]
+  Output scale: 0.7879
+  Urgency boost: 2.5376
   Weight matrix shapes: w1=(6, 6), w2=(6, 1)

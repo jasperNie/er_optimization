@@ -259,7 +259,7 @@ class ERSimulation:
         if self.started_patients:
             waits = [wait for _, wait in self.started_patients]
             weighted_waits = [
-                wait * p.severity * p.deterioration_chance
+                wait * p.severity * (1 + p.deterioration_chance)
                 for p, wait in self.started_patients
             ]
             avg_wait = statistics.mean(waits)
@@ -271,7 +271,7 @@ class ERSimulation:
                 sev_patients = [(p, wait) for p, wait in self.started_patients if p.severity == severity]
                 if sev_patients:
                     sev_waits = [wait for _, wait in sev_patients]
-                    sev_weighted_waits = [wait * p.severity * p.deterioration_chance for p, wait in sev_patients]
+                    sev_weighted_waits = [wait * p.severity * (1 + p.deterioration_chance) for p, wait in sev_patients]
                     severity_metrics[f'sev_{severity}'] = {
                         'count': len(sev_patients),
                         'avg_wait': statistics.mean(sev_waits),
