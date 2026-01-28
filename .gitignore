@@ -1,8 +1,17 @@
 # Python cache files
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Temporary files only (keep development history)
+temp_*.py
+temp_*.txt
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
 *.so
 .Python
 build/

@@ -264,20 +264,51 @@ class ERSimulation:
             ]
             avg_wait = statistics.mean(waits)
             avg_weighted_wait = statistics.mean(weighted_waits)
+            
+            # Calculate severity-specific metrics
+            severity_metrics = {}
+            for severity in range(1, 6):  # Severity levels 1-5
+                sev_patients = [(p, wait) for p, wait in self.started_patients if p.severity == severity]
+                if sev_patients:
+                    sev_waits = [wait for _, wait in sev_patients]
+                    sev_weighted_waits = [wait * p.severity * p.deterioration_chance for p, wait in sev_patients]
+                    severity_metrics[f'sev_{severity}'] = {
+                        'count': len(sev_patients),
+                        'avg_wait': statistics.mean(sev_waits),
+                        'avg_weighted_wait': statistics.mean(sev_weighted_waits)
+                    }
+                else:
+                    severity_metrics[f'sev_{severity}'] = {
+                        'count': 0,
+                        'avg_wait': 0,
+                        'avg_weighted_wait': 0
+                    }
+            
             return {
                 'completed': len(self.completed_patients),
                 'still_waiting': len(self.waiting_patients),
                 'avg_wait': avg_wait,
                 'max_wait': max(waits),
-                'avg_weighted_wait': avg_weighted_wait
+                'avg_weighted_wait': avg_weighted_wait,
+                'severity_metrics': severity_metrics
             }
         else:
+            # No patients treated - initialize empty severity metrics
+            severity_metrics = {}
+            for severity in range(1, 6):
+                severity_metrics[f'sev_{severity}'] = {
+                    'count': 0,
+                    'avg_wait': 0,
+                    'avg_weighted_wait': 0
+                }
+            
             return {
                 'completed': 0,
                 'still_waiting': len(self.waiting_patients),
                 'avg_wait': None,
                 'max_wait': None,
-                'avg_weighted_wait': None
+                'avg_weighted_wait': None,
+                'severity_metrics': severity_metrics
             }
 
 

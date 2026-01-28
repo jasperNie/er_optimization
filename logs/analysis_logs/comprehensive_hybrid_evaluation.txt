@@ -1,0 +1,269 @@
+================================================================================
+   COMPREHENSIVE HYBRID TRIAGE POLICY EVALUATION RESULTS
+================================================================================
+
+🔧 TRAINING CONFIGURATION:
+   Generations: 100
+   Population: 80
+   Training seed: 1000
+   Test seeds: 6
+   Confidence threshold: 0.0001
+   Simulation: 24 hours (96 timesteps of 15 minutes each)
+
+SEED 2000 RESULTS:
+   Patients treated: 37
+   Patients waiting: 2
+   Average wait: 4.21 timesteps (63 minutes)
+   Weighted wait: 6.04 timesteps (91 minutes)
+   Decisions explained: 26
+   ESI average wait: 5.07 timesteps (76 minutes)
+   ESI weighted wait: 3.77 timesteps (57 minutes)
+   MTS average wait: 4.83 timesteps (72 minutes)
+   MTS weighted wait: 4.69 timesteps (70 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=04:45: Patient(6, sev=3, det=0.17, treat=9, wait=2) chosen over Patient(7, sev=2, det=0.39, treat=10, wait=1): hybrid score 1.072 vs 0.998 (margin: +0.074, confidence: moderate)
+     2. t=05:30: Patient(8, sev=5, det=0.29, treat=14, wait=2) chosen over Patient(9, sev=1, det=0.15, treat=9, wait=1): hybrid score 1.153 vs 1.131 (margin: +0.022, confidence: low)
+     3. t=06:00: Patient(9, sev=1, det=0.15, treat=9, wait=3) chosen over Patient(7, sev=3, det=0.20, treat=10, wait=6): hybrid score 1.117 vs 1.040 (margin: +0.077, confidence: moderate)
+     4. t=06:15: Patient(7, sev=3, det=0.20, treat=10, wait=7) chosen over Patient(10, sev=4, det=0.23, treat=14, wait=3): hybrid score 1.033 vs 1.029 (margin: +0.004, confidence: low)
+     5. t=07:00: Patient(11, sev=5, det=0.28, treat=15, wait=2) chosen over Patient(10, sev=4, det=0.23, treat=14, wait=6): hybrid score 1.153 vs 1.009 (margin: +0.145, confidence: high)
+     6. t=08:15: Patient(14, sev=4, det=0.24, treat=12, wait=3) chosen over Patient(15, sev=2, det=0.39, treat=13, wait=2): hybrid score 1.028 vs 0.984 (margin: +0.044, confidence: low)
+     7. t=08:45: Patient(16, sev=3, det=0.46, treat=13, wait=1) chosen over Patient(15, sev=2, det=0.39, treat=13, wait=4): hybrid score 0.976 vs 0.957 (margin: +0.018, confidence: low)
+     8. t=09:00: Patient(17, sev=1, det=0.12, treat=9, wait=1) chosen over Patient(15, sev=2, det=0.39, treat=13, wait=5): hybrid score 1.135 vs 0.944 (margin: +0.191, confidence: high)
+     9. t=10:30: Patient(18, sev=5, det=0.11, treat=11, wait=6) chosen over Patient(15, sev=5, det=0.05, treat=13, wait=11): hybrid score 1.146 vs 1.115 (margin: +0.031, confidence: low)
+     10. t=10:45: Patient(19, sev=5, det=0.10, treat=11, wait=4) chosen over Patient(15, sev=5, det=0.05, treat=13, wait=12): hybrid score 1.163 vs 1.107 (margin: +0.056, confidence: moderate)
+     11. t=11:15: Patient(21, sev=1, det=0.10, treat=8, wait=1) chosen over Patient(15, sev=5, det=0.05, treat=13, wait=14): hybrid score 1.137 vs 1.091 (margin: +0.046, confidence: low)
+     12. t=11:30: Patient(20, sev=4, det=0.59, treat=15, wait=3) chosen over Patient(13, sev=5, det=0.64, treat=18, wait=17): hybrid score 0.858 vs 0.772 (margin: +0.086, confidence: moderate)
+     13. t=13:15: Patient(22, sev=1, det=0.11, treat=10, wait=5) chosen over Patient(24, sev=4, det=0.23, treat=11, wait=1): hybrid score 1.108 vs 1.043 (margin: +0.065, confidence: moderate)
+     14. t=13:30: Patient(25, sev=1, det=0.15, treat=9, wait=1) chosen over Patient(23, sev=5, det=0.63, treat=20, wait=5): hybrid score 1.131 vs 0.968 (margin: +0.163, confidence: high)
+     15. t=14:30: Patient(26, sev=4, det=0.26, treat=15, wait=3) chosen over Patient(23, sev=5, det=0.63, treat=20, wait=9): hybrid score 1.027 vs 0.907 (margin: +0.120, confidence: high)
+     16. t=15:15: Patient(28, sev=5, det=0.05, treat=9, wait=3) chosen over Patient(29, sev=5, det=0.30, treat=17, wait=1): hybrid score 1.179 vs 1.159 (margin: +0.020, confidence: low)
+     17. t=15:45: Patient(29, sev=5, det=0.30, treat=17, wait=3) chosen over Patient(31, sev=2, det=0.29, treat=13, wait=1): hybrid score 1.143 vs 1.088 (margin: +0.055, confidence: moderate)
+     18. t=16:00: Patient(30, sev=3, det=0.14, treat=10, wait=3) chosen over Patient(27, sev=4, det=0.28, treat=12, wait=7): hybrid score 1.068 vs 0.997 (margin: +0.071, confidence: moderate)
+     19. t=16:30: Patient(32, sev=5, det=0.28, treat=14, wait=2) chosen over Patient(27, sev=5, det=0.14, treat=12, wait=9): hybrid score 1.154 vs 1.119 (margin: +0.035, confidence: low)
+     20. t=17:30: Patient(27, sev=5, det=0.14, treat=12, wait=13) chosen over Patient(33, sev=4, det=0.22, treat=16, wait=3): hybrid score 1.087 vs 1.031 (margin: +0.056, confidence: moderate)
+     21. t=18:15: Patient(35, sev=5, det=0.69, treat=20, wait=2) chosen over Patient(34, sev=5, det=0.28, treat=18, wait=3): hybrid score 5.049 vs 4.998 (margin: +0.051, confidence: moderate)
+     22. t=18:30: Patient(34, sev=5, det=0.28, treat=18, wait=4) chosen over Patient(33, sev=5, det=0.11, treat=16, wait=7): hybrid score 4.988 vs 4.941 (margin: +0.047, confidence: low)
+     23. t=19:00: Patient(33, sev=5, det=0.11, treat=16, wait=9) chosen over Patient(23, sev=5, det=0.63, treat=20, wait=27): hybrid score 1.122 vs 0.634 (margin: +0.488, confidence: high)
+     24. t=20:00: Patient(36, sev=5, det=0.28, treat=13, wait=1) chosen over Patient(23, sev=5, det=0.63, treat=20, wait=31): hybrid score 5.019 vs 4.753 (margin: +0.266, confidence: high)
+     25. t=23:00: Patient(39, sev=5, det=0.14, treat=11, wait=3) chosen over Patient(38, sev=2, det=0.10, treat=12, wait=9): hybrid score 1.166 vs 1.058 (margin: +0.108, confidence: high)
+     26. t=23:15: Patient(42, sev=2, det=0.31, treat=12, wait=1) chosen over Patient(41, sev=4, det=0.24, treat=15, wait=2): hybrid score 1.086 vs 1.036 (margin: +0.050, confidence: moderate)
+
+SEED 3000 RESULTS:
+   Patients treated: 35
+   Patients waiting: 9
+   Average wait: 8.20 timesteps (123 minutes)
+   Weighted wait: 13.17 timesteps (198 minutes)
+   Decisions explained: 32
+   ESI average wait: 17.64 timesteps (265 minutes)
+   ESI weighted wait: 23.93 timesteps (359 minutes)
+   MTS average wait: 18.92 timesteps (284 minutes)
+   MTS weighted wait: 30.29 timesteps (454 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=03:15: Patient(6, sev=4, det=0.23, treat=16, wait=3) chosen over Patient(8, sev=3, det=0.43, treat=13, wait=1): hybrid score 1.029 vs 1.009 (margin: +0.020, confidence: low)
+     2. t=04:45: Patient(10, sev=5, det=0.28, treat=13, wait=3) chosen over Patient(11, sev=3, det=0.17, treat=14, wait=2): hybrid score 1.146 vs 1.071 (margin: +0.075, confidence: moderate)
+     3. t=05:15: Patient(14, sev=2, det=0.33, treat=13, wait=1) chosen over Patient(11, sev=3, det=0.17, treat=14, wait=4): hybrid score 1.066 vs 1.057 (margin: +0.009, confidence: low)
+     4. t=06:00: Patient(8, sev=5, det=0.11, treat=13, wait=12) chosen over Patient(11, sev=3, det=0.17, treat=14, wait=7): hybrid score 1.099 vs 1.036 (margin: +0.063, confidence: moderate)
+     5. t=06:15: Patient(15, sev=5, det=0.29, treat=16, wait=2) chosen over Patient(11, sev=3, det=0.17, treat=14, wait=8): hybrid score 1.153 vs 1.029 (margin: +0.123, confidence: high)
+     6. t=07:00: Patient(19, sev=3, det=0.14, treat=11, wait=1) chosen over Patient(17, sev=5, det=0.61, treat=19, wait=3): hybrid score 1.081 vs 1.025 (margin: +0.056, confidence: moderate)
+     7. t=07:15: Patient(20, sev=3, det=0.17, treat=13, wait=1) chosen over Patient(18, sev=4, det=0.23, treat=13, wait=3): hybrid score 1.077 vs 1.029 (margin: +0.048, confidence: low)
+     8. t=08:00: Patient(18, sev=5, det=0.12, treat=13, wait=6) chosen over Patient(21, sev=5, det=0.62, treat=17, wait=2): hybrid score 1.145 vs 1.027 (margin: +0.118, confidence: high)
+     9. t=08:30: Patient(11, sev=5, det=0.04, treat=14, wait=17) chosen over Patient(22, sev=4, det=0.25, treat=12, wait=3): hybrid score 1.068 vs 1.028 (margin: +0.041, confidence: low)
+     10. t=09:15: Patient(22, sev=5, det=0.12, treat=12, wait=6) chosen over Patient(23, sev=3, det=0.19, treat=12, wait=5): hybrid score 1.144 vs 1.048 (margin: +0.096, confidence: moderate)
+     11. t=09:45: Patient(25, sev=1, det=0.14, treat=10, wait=2) chosen over Patient(26, sev=4, det=0.23, treat=13, wait=1): hybrid score 1.125 vs 1.044 (margin: +0.081, confidence: moderate)
+     12. t=10:15: Patient(26, sev=4, det=0.23, treat=13, wait=3) chosen over Patient(24, sev=4, det=0.23, treat=13, wait=5): hybrid score 1.031 vs 1.016 (margin: +0.015, confidence: low)
+     13. t=10:30: Patient(28, sev=5, det=0.28, treat=18, wait=1) chosen over Patient(24, sev=4, det=0.23, treat=13, wait=6): hybrid score 1.161 vs 1.009 (margin: +0.152, confidence: high)
+     14. t=11:15: Patient(29, sev=4, det=0.24, treat=13, wait=2) chosen over Patient(24, sev=4, det=0.23, treat=13, wait=9): hybrid score 1.036 vs 0.988 (margin: +0.047, confidence: low)
+     15. t=12:00: Patient(27, sev=5, det=0.28, treat=14, wait=9) chosen over Patient(24, sev=5, det=0.12, treat=13, wait=12): hybrid score 1.099 vs 1.098 (margin: +0.001, confidence: low)
+     16. t=12:15: Patient(24, sev=5, det=0.12, treat=13, wait=13) chosen over Patient(30, sev=4, det=0.25, treat=13, wait=4): hybrid score 1.090 vs 1.021 (margin: +0.069, confidence: moderate)
+     17. t=13:30: Patient(34, sev=5, det=0.66, treat=19, wait=4) chosen over Patient(31, sev=5, det=0.62, treat=16, wait=8): hybrid score 0.945 vs 0.935 (margin: +0.010, confidence: low)
+     18. t=14:30: Patient(37, sev=1, det=0.23, treat=11, wait=1) chosen over Patient(23, sev=5, det=0.05, treat=12, wait=26): hybrid score 1.121 vs 0.997 (margin: +0.123, confidence: high)
+     19. t=15:00: Patient(36, sev=5, det=0.28, treat=14, wait=5) chosen over Patient(23, sev=5, det=0.05, treat=12, wait=28): hybrid score 1.131 vs 0.982 (margin: +0.149, confidence: high)
+     20. t=15:30: Patient(35, sev=5, det=0.69, treat=20, wait=8) chosen over Patient(33, sev=5, det=0.69, treat=15, wait=13): hybrid score 4.989 vs 4.939 (margin: +0.050, confidence: low)
+     21. t=17:15: Patient(38, sev=5, det=0.10, treat=12, wait=8) chosen over Patient(39, sev=3, det=0.17, treat=9, wait=6): hybrid score 1.131 vs 1.043 (margin: +0.088, confidence: moderate)
+     22. t=18:15: Patient(41, sev=3, det=0.17, treat=12, wait=3) chosen over Patient(39, sev=3, det=0.17, treat=9, wait=10): hybrid score 1.063 vs 1.016 (margin: +0.048, confidence: low)
+     23. t=18:30: Patient(39, sev=3, det=0.17, treat=9, wait=11) chosen over Patient(40, sev=4, det=0.20, treat=12, wait=7): hybrid score 1.009 vs 1.006 (margin: +0.003, confidence: low)
+     24. t=19:15: Patient(42, sev=1, det=0.23, treat=11, wait=2) chosen over Patient(40, sev=4, det=0.20, treat=12, wait=10): hybrid score 1.108 vs 0.985 (margin: +0.123, confidence: high)
+     25. t=19:45: Patient(43, sev=5, det=0.30, treat=13, wait=2) chosen over Patient(40, sev=5, det=0.10, treat=12, wait=12): hybrid score 1.151 vs 1.100 (margin: +0.052, confidence: moderate)
+     26. t=20:15: Patient(40, sev=5, det=0.10, treat=12, wait=14) chosen over Patient(31, sev=5, det=0.62, treat=16, wait=35): hybrid score 4.870 vs 4.712 (margin: +0.158, confidence: high)
+     27. t=20:30: Patient(31, sev=5, det=0.62, treat=16, wait=36) chosen over Patient(21, sev=5, det=0.62, treat=17, wait=52): hybrid score 4.702 vs 4.542 (margin: +0.160, confidence: high)
+     28. t=20:45: Patient(21, sev=5, det=0.62, treat=17, wait=53) chosen over Patient(23, sev=5, det=0.05, treat=12, wait=51): hybrid score 4.532 vs 4.495 (margin: +0.037, confidence: low)
+     29. t=21:15: Patient(23, sev=5, det=0.05, treat=12, wait=53) chosen over Patient(17, sev=5, det=0.61, treat=19, wait=60): hybrid score 4.475 vs 4.461 (margin: +0.014, confidence: low)
+     30. t=22:00: Patient(45, sev=4, det=0.20, treat=12, wait=3) chosen over Patient(44, sev=3, det=0.52, treat=12, wait=4): hybrid score 1.033 vs 0.867 (margin: +0.166, confidence: high)
+     31. t=23:00: Patient(46, sev=5, det=0.29, treat=17, wait=4) chosen over Patient(44, sev=5, det=0.13, treat=12, wait=8): hybrid score 1.136 vs 1.127 (margin: +0.009, confidence: low)
+     32. t=23:15: Patient(44, sev=5, det=0.13, treat=12, wait=9) chosen over Patient(48, sev=5, det=0.61, treat=19, wait=3): hybrid score 1.120 vs 1.025 (margin: +0.095, confidence: moderate)
+
+SEED 4000 RESULTS:
+   Patients treated: 38
+   Patients waiting: 6
+   Average wait: 5.32 timesteps (80 minutes)
+   Weighted wait: 8.07 timesteps (121 minutes)
+   Decisions explained: 33
+   ESI average wait: 14.61 timesteps (219 minutes)
+   ESI weighted wait: 16.49 timesteps (247 minutes)
+   MTS average wait: 14.98 timesteps (225 minutes)
+   MTS weighted wait: 17.88 timesteps (268 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=03:15: Patient(7, sev=5, det=0.28, treat=16, wait=6) chosen over Patient(10, sev=4, det=0.27, treat=11, wait=1): hybrid score 1.122 vs 1.039 (margin: +0.083, confidence: moderate)
+     2. t=03:45: Patient(10, sev=4, det=0.27, treat=11, wait=3) chosen over Patient(6, sev=4, det=0.27, treat=15, wait=9): hybrid score 1.025 vs 0.984 (margin: +0.041, confidence: low)
+     3. t=04:00: Patient(6, sev=4, det=0.27, treat=15, wait=10) chosen over Patient(9, sev=5, det=0.67, treat=19, wait=5): hybrid score 0.977 vs 0.916 (margin: +0.061, confidence: moderate)
+     4. t=04:15: Patient(11, sev=3, det=0.42, treat=12, wait=1) chosen over Patient(9, sev=5, det=0.67, treat=19, wait=6): hybrid score 1.021 vs 0.901 (margin: +0.120, confidence: high)
+     5. t=04:30: Patient(12, sev=2, det=0.10, treat=9, wait=1) chosen over Patient(9, sev=5, det=0.67, treat=19, wait=7): hybrid score 1.112 vs 0.886 (margin: +0.226, confidence: high)
+     6. t=05:15: Patient(13, sev=3, det=0.14, treat=14, wait=3) chosen over Patient(14, sev=5, det=0.64, treat=16, wait=2): hybrid score 1.068 vs 1.001 (margin: +0.067, confidence: moderate)
+     7. t=06:30: Patient(18, sev=5, det=0.29, treat=15, wait=2) chosen over Patient(16, sev=5, det=0.29, treat=18, wait=4): hybrid score 1.152 vs 1.136 (margin: +0.016, confidence: low)
+     8. t=06:45: Patient(16, sev=5, det=0.29, treat=18, wait=5) chosen over Patient(19, sev=1, det=0.25, treat=8, wait=1): hybrid score 1.128 vs 1.099 (margin: +0.029, confidence: low)
+     9. t=07:15: Patient(19, sev=2, det=0.12, treat=8, wait=3) chosen over Patient(20, sev=5, det=0.70, treat=17, wait=1): hybrid score 1.095 vs 0.939 (margin: +0.157, confidence: high)
+     10. t=07:45: Patient(21, sev=5, det=0.10, treat=12, wait=2) chosen over Patient(17, sev=5, det=0.65, treat=17, wait=8): hybrid score 1.179 vs 0.896 (margin: +0.282, confidence: high)
+     11. t=08:45: Patient(22, sev=5, det=0.28, treat=16, wait=3) chosen over Patient(17, sev=5, det=0.65, treat=17, wait=12): hybrid score 1.146 vs 0.835 (margin: +0.311, confidence: high)
+     12. t=09:15: Patient(24, sev=2, det=0.38, treat=14, wait=1) chosen over Patient(23, sev=3, det=0.53, treat=11, wait=2): hybrid score 1.009 vs 0.883 (margin: +0.126, confidence: high)
+     13. t=10:15: Patient(27, sev=5, det=0.12, treat=14, wait=2) chosen over Patient(26, sev=5, det=0.11, treat=16, wait=3): hybrid score 1.176 vs 1.170 (margin: +0.006, confidence: low)
+     14. t=10:45: Patient(26, sev=5, det=0.11, treat=16, wait=5) chosen over Patient(28, sev=5, det=0.28, treat=14, wait=3): hybrid score 1.154 vs 1.146 (margin: +0.008, confidence: low)
+     15. t=11:15: Patient(28, sev=5, det=0.28, treat=14, wait=5) chosen over Patient(25, sev=5, det=0.12, treat=11, wait=8): hybrid score 1.130 vs 1.129 (margin: +0.001, confidence: low)
+     16. t=11:30: Patient(25, sev=5, det=0.12, treat=11, wait=9) chosen over Patient(29, sev=2, det=0.37, treat=9, wait=3): hybrid score 1.121 vs 0.994 (margin: +0.128, confidence: high)
+     17. t=12:45: Patient(30, sev=5, det=0.13, treat=11, wait=5) chosen over Patient(23, sev=5, det=0.13, treat=11, wait=16): hybrid score 1.151 vs 1.064 (margin: +0.087, confidence: moderate)
+     18. t=13:45: Patient(32, sev=5, det=0.14, treat=14, wait=6) chosen over Patient(31, sev=5, det=0.13, treat=16, wait=7): hybrid score 1.143 vs 1.135 (margin: +0.008, confidence: low)
+     19. t=14:15: Patient(31, sev=5, det=0.13, treat=16, wait=9) chosen over Patient(29, sev=3, det=0.18, treat=9, wait=14): hybrid score 1.119 vs 0.986 (margin: +0.133, confidence: high)
+     20. t=14:45: Patient(36, sev=1, det=0.23, treat=7, wait=1) chosen over Patient(29, sev=3, det=0.18, treat=9, wait=16): hybrid score 1.121 vs 0.973 (margin: +0.148, confidence: high)
+     21. t=15:30: Patient(38, sev=4, det=0.22, treat=11, wait=2) chosen over Patient(37, sev=4, det=0.20, treat=12, wait=3): hybrid score 1.038 vs 1.033 (margin: +0.005, confidence: low)
+     22. t=16:30: Patient(39, sev=5, det=0.14, treat=14, wait=4) chosen over Patient(34, sev=5, det=0.11, treat=11, wait=11): hybrid score 1.158 vs 1.107 (margin: +0.052, confidence: moderate)
+     23. t=17:00: Patient(34, sev=5, det=0.11, treat=11, wait=13) chosen over Patient(40, sev=3, det=0.50, treat=12, wait=1): hybrid score 1.091 vs 0.930 (margin: +0.161, confidence: high)
+     24. t=17:15: Patient(40, sev=4, det=0.25, treat=12, wait=2) chosen over Patient(35, sev=5, det=0.67, treat=20, wait=12): hybrid score 1.034 vs 0.810 (margin: +0.225, confidence: high)
+     25. t=18:15: Patient(42, sev=5, det=0.29, treat=17, wait=2) chosen over Patient(41, sev=4, det=0.27, treat=11, wait=4): hybrid score 1.153 vs 1.019 (margin: +0.134, confidence: high)
+     26. t=18:30: Patient(43, sev=5, det=0.29, treat=18, wait=1) chosen over Patient(35, sev=5, det=0.67, treat=20, wait=17): hybrid score 1.160 vs 0.734 (margin: +0.427, confidence: high)
+     27. t=19:45: Patient(44, sev=5, det=0.63, treat=17, wait=4) chosen over Patient(45, sev=5, det=0.69, treat=18, wait=2): hybrid score 0.983 vs 0.936 (margin: +0.047, confidence: low)
+     28. t=20:00: Patient(45, sev=5, det=0.69, treat=18, wait=3) chosen over Patient(35, sev=5, det=0.67, treat=20, wait=23): hybrid score 0.921 vs 0.643 (margin: +0.278, confidence: high)
+     29. t=20:15: Patient(35, sev=5, det=0.67, treat=20, wait=24) chosen over Patient(33, sev=5, det=0.68, treat=20, wait=29): hybrid score 0.628 vs 0.540 (margin: +0.088, confidence: moderate)
+     30. t=21:00: Patient(33, sev=5, det=0.68, treat=20, wait=32) chosen over Patient(17, sev=5, det=0.65, treat=17, wait=61): hybrid score 4.748 vs 4.455 (margin: +0.293, confidence: high)
+     31. t=22:30: Patient(47, sev=1, det=0.23, treat=10, wait=6) chosen over Patient(48, sev=4, det=0.23, treat=12, wait=4): hybrid score 1.054 vs 1.023 (margin: +0.031, confidence: low)
+     32. t=23:00: Patient(46, sev=5, det=0.12, treat=13, wait=10) chosen over Patient(48, sev=4, det=0.23, treat=12, wait=6): hybrid score 1.113 vs 1.009 (margin: +0.104, confidence: high)
+     33. t=24:00: Patient(49, sev=5, det=0.62, treat=17, wait=3) chosen over Patient(48, sev=4, det=0.23, treat=12, wait=10): hybrid score 1.012 vs 0.982 (margin: +0.030, confidence: low)
+
+SEED 5000 RESULTS:
+   Patients treated: 29
+   Patients waiting: 2
+   Average wait: 8.23 timesteps (123 minutes)
+   Weighted wait: 19.70 timesteps (296 minutes)
+   Decisions explained: 22
+   ESI average wait: 5.49 timesteps (82 minutes)
+   ESI weighted wait: 5.53 timesteps (83 minutes)
+   MTS average wait: 5.11 timesteps (77 minutes)
+   MTS weighted wait: 7.62 timesteps (114 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=05:00: Patient(7, sev=2, det=0.32, treat=10, wait=1) chosen over Patient(6, sev=5, det=0.60, treat=16, wait=2): hybrid score 1.077 vs 1.053 (margin: +0.025, confidence: low)
+     2. t=05:30: Patient(8, sev=2, det=0.31, treat=9, wait=1) chosen over Patient(6, sev=5, det=0.60, treat=16, wait=4): hybrid score 1.086 vs 1.022 (margin: +0.064, confidence: moderate)
+     3. t=07:00: Patient(9, sev=2, det=0.30, treat=12, wait=1) chosen over Patient(6, sev=5, det=0.60, treat=16, wait=10): hybrid score 1.087 vs 0.930 (margin: +0.157, confidence: high)
+     4. t=07:30: Patient(11, sev=3, det=0.20, treat=11, wait=1) chosen over Patient(10, sev=4, det=0.08, treat=11, wait=2): hybrid score 1.075 vs 1.056 (margin: +0.019, confidence: low)
+     5. t=10:00: Patient(17, sev=5, det=0.13, treat=13, wait=3) chosen over Patient(16, sev=5, det=0.13, treat=11, wait=4): hybrid score 1.167 vs 1.159 (margin: +0.008, confidence: low)
+     6. t=10:15: Patient(16, sev=5, det=0.13, treat=11, wait=5) chosen over Patient(19, sev=3, det=0.14, treat=11, wait=1): hybrid score 1.151 vs 1.082 (margin: +0.070, confidence: moderate)
+     7. t=11:00: Patient(20, sev=3, det=0.16, treat=13, wait=1) chosen over Patient(13, sev=3, det=0.06, treat=11, wait=12): hybrid score 1.079 vs 1.015 (margin: +0.064, confidence: moderate)
+     8. t=11:45: Patient(13, sev=3, det=0.06, treat=11, wait=15) chosen over Patient(18, sev=5, det=0.60, treat=20, wait=9): hybrid score 0.995 vs 0.945 (margin: +0.049, confidence: low)
+     9. t=13:00: Patient(22, sev=5, det=0.29, treat=18, wait=5) chosen over Patient(21, sev=5, det=0.28, treat=16, wait=6): hybrid score 1.128 vs 1.123 (margin: +0.006, confidence: low)
+     10. t=13:15: Patient(23, sev=5, det=0.11, treat=14, wait=5) chosen over Patient(24, sev=5, det=0.69, treat=17, wait=1): hybrid score 1.154 vs 0.952 (margin: +0.202, confidence: high)
+     11. t=14:15: Patient(25, sev=4, det=0.07, treat=14, wait=3) chosen over Patient(24, sev=5, det=0.69, treat=17, wait=5): hybrid score 1.050 vs 0.890 (margin: +0.159, confidence: high)
+     12. t=14:30: Patient(24, sev=5, det=0.69, treat=17, wait=6) chosen over Patient(18, sev=5, det=0.60, treat=20, wait=20): hybrid score 0.875 vs 0.778 (margin: +0.097, confidence: moderate)
+     13. t=16:45: Patient(27, sev=2, det=0.09, treat=7, wait=5) chosen over Patient(28, sev=5, det=0.67, treat=17, wait=4): hybrid score 1.086 vs 0.932 (margin: +0.154, confidence: high)
+     14. t=17:00: Patient(29, sev=2, det=0.35, treat=10, wait=1) chosen over Patient(28, sev=5, det=0.67, treat=17, wait=5): hybrid score 1.043 vs 0.916 (margin: +0.127, confidence: high)
+     15. t=17:30: Patient(30, sev=5, det=0.64, treat=18, wait=1) chosen over Patient(28, sev=5, det=0.67, treat=17, wait=7): hybrid score 1.016 vs 0.886 (margin: +0.131, confidence: high)
+     16. t=17:45: Patient(28, sev=5, det=0.67, treat=17, wait=8) chosen over Patient(26, sev=5, det=0.64, treat=16, wait=13): hybrid score 0.870 vs 0.833 (margin: +0.038, confidence: low)
+     17. t=18:30: Patient(31, sev=5, det=0.29, treat=16, wait=2) chosen over Patient(26, sev=5, det=0.64, treat=16, wait=16): hybrid score 1.152 vs 0.787 (margin: +0.365, confidence: high)
+     18. t=18:45: Patient(26, sev=5, det=0.64, treat=16, wait=17) chosen over Patient(18, sev=5, det=0.60, treat=20, wait=37): hybrid score 4.894 vs 4.690 (margin: +0.204, confidence: high)
+     19. t=19:30: Patient(18, sev=5, det=0.60, treat=20, wait=40) chosen over Patient(15, sev=5, det=0.61, treat=20, wait=44): hybrid score 4.660 vs 4.621 (margin: +0.039, confidence: low)
+     20. t=22:00: Patient(33, sev=5, det=0.12, treat=13, wait=8) chosen over Patient(32, sev=5, det=0.12, treat=11, wait=11): hybrid score 1.130 vs 1.104 (margin: +0.025, confidence: low)
+     21. t=22:30: Patient(15, sev=5, det=0.61, treat=20, wait=56) chosen over Patient(14, sev=5, det=0.65, treat=19, wait=57): hybrid score 4.501 vs 4.495 (margin: +0.006, confidence: low)
+     22. t=24:00: Patient(34, sev=5, det=0.28, treat=17, wait=5) chosen over Patient(35, sev=4, det=0.20, treat=15, wait=3): hybrid score 1.131 vs 1.033 (margin: +0.098, confidence: moderate)
+
+SEED 6000 RESULTS:
+   Patients treated: 34
+   Patients waiting: 7
+   Average wait: 4.15 timesteps (62 minutes)
+   Weighted wait: 7.31 timesteps (110 minutes)
+   Decisions explained: 26
+   ESI average wait: 9.08 timesteps (136 minutes)
+   ESI weighted wait: 8.26 timesteps (124 minutes)
+   MTS average wait: 9.32 timesteps (140 minutes)
+   MTS weighted wait: 14.98 timesteps (225 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=05:00: Patient(8, sev=5, det=0.11, treat=14, wait=4) chosen over Patient(9, sev=5, det=0.65, treat=16, wait=1): hybrid score 1.162 vs 1.003 (margin: +0.158, confidence: high)
+     2. t=05:15: Patient(10, sev=2, det=0.25, treat=12, wait=1) chosen over Patient(9, sev=5, det=0.65, treat=16, wait=2): hybrid score 1.093 vs 0.988 (margin: +0.105, confidence: high)
+     3. t=05:45: Patient(11, sev=1, det=0.13, treat=10, wait=1) chosen over Patient(9, sev=5, det=0.65, treat=16, wait=4): hybrid score 1.133 vs 0.957 (margin: +0.176, confidence: high)
+     4. t=06:00: Patient(12, sev=5, det=0.64, treat=19, wait=1) chosen over Patient(9, sev=5, det=0.65, treat=16, wait=5): hybrid score 1.016 vs 0.942 (margin: +0.074, confidence: moderate)
+     5. t=07:00: Patient(13, sev=4, det=0.24, treat=14, wait=4) chosen over Patient(14, sev=5, det=0.67, treat=17, wait=2): hybrid score 1.021 vs 0.962 (margin: +0.059, confidence: moderate)
+     6. t=08:15: Patient(16, sev=5, det=0.66, treat=18, wait=3) chosen over Patient(15, sev=5, det=0.68, treat=19, wait=5): hybrid score 0.960 vs 0.903 (margin: +0.056, confidence: moderate)
+     7. t=08:30: Patient(17, sev=1, det=0.19, treat=9, wait=1) chosen over Patient(9, sev=5, det=0.65, treat=16, wait=15): hybrid score 1.126 vs 0.790 (margin: +0.336, confidence: high)
+     8. t=10:30: Patient(22, sev=4, det=0.27, treat=16, wait=2) chosen over Patient(21, sev=4, det=0.21, treat=14, wait=3): hybrid score 1.033 vs 1.032 (margin: +0.001, confidence: low)
+     9. t=10:45: Patient(21, sev=4, det=0.21, treat=14, wait=4) chosen over Patient(18, sev=2, det=0.28, treat=9, wait=9): hybrid score 1.025 vs 1.014 (margin: +0.011, confidence: low)
+     10. t=11:15: Patient(20, sev=5, det=0.28, treat=14, wait=7) chosen over Patient(23, sev=3, det=0.20, treat=9, wait=3): hybrid score 1.114 vs 1.061 (margin: +0.053, confidence: moderate)
+     11. t=12:45: Patient(26, sev=5, det=0.28, treat=16, wait=5) chosen over Patient(25, sev=5, det=0.29, treat=18, wait=6): hybrid score 1.130 vs 1.120 (margin: +0.009, confidence: low)
+     12. t=13:00: Patient(25, sev=5, det=0.29, treat=18, wait=7) chosen over Patient(29, sev=5, det=0.61, treat=20, wait=2): hybrid score 1.113 vs 1.040 (margin: +0.073, confidence: moderate)
+     13. t=14:15: Patient(30, sev=2, det=0.12, treat=12, wait=3) chosen over Patient(27, sev=4, det=0.09, treat=11, wait=10): hybrid score 1.096 vs 0.999 (margin: +0.097, confidence: moderate)
+     14. t=14:30: Patient(27, sev=5, det=0.04, treat=11, wait=11) chosen over Patient(31, sev=5, det=0.62, treat=19, wait=1): hybrid score 1.116 vs 1.042 (margin: +0.073, confidence: moderate)
+     15. t=14:45: Patient(31, sev=5, det=0.62, treat=19, wait=2) chosen over Patient(23, sev=4, det=0.10, treat=9, wait=17): hybrid score 1.027 vs 0.950 (margin: +0.077, confidence: moderate)
+     16. t=16:45: Patient(34, sev=5, det=0.29, treat=18, wait=2) chosen over Patient(33, sev=3, det=0.16, treat=12, wait=3): hybrid score 1.153 vs 1.065 (margin: +0.087, confidence: moderate)
+     17. t=17:15: Patient(36, sev=3, det=0.18, treat=13, wait=1) chosen over Patient(35, sev=3, det=0.16, treat=11, wait=2): hybrid score 1.076 vs 1.072 (margin: +0.004, confidence: low)
+     18. t=17:30: Patient(32, sev=3, det=0.15, treat=10, wait=8) chosen over Patient(33, sev=4, det=0.08, treat=12, wait=6): hybrid score 1.031 vs 1.028 (margin: +0.004, confidence: low)
+     19. t=18:00: Patient(33, sev=5, det=0.04, treat=12, wait=8) chosen over Patient(28, sev=5, det=0.62, treat=17, wait=23): hybrid score 4.924 vs 4.832 (margin: +0.092, confidence: moderate)
+     20. t=19:30: Patient(37, sev=4, det=0.09, treat=12, wait=5) chosen over Patient(39, sev=5, det=0.64, treat=19, wait=2): hybrid score 1.034 vs 1.001 (margin: +0.033, confidence: low)
+     21. t=20:00: Patient(39, sev=5, det=0.64, treat=19, wait=4) chosen over Patient(38, sev=5, det=0.63, treat=16, wait=5): hybrid score 0.970 vs 0.968 (margin: +0.002, confidence: low)
+     22. t=20:30: Patient(40, sev=5, det=0.66, treat=17, wait=5) chosen over Patient(28, sev=5, det=0.62, treat=17, wait=33): hybrid score 5.016 vs 4.732 (margin: +0.284, confidence: high)
+     23. t=21:00: Patient(41, sev=5, det=0.70, treat=17, wait=1) chosen over Patient(28, sev=5, det=0.62, treat=17, wait=35): hybrid score 5.060 vs 4.712 (margin: +0.348, confidence: high)
+     24. t=21:15: Patient(28, sev=5, det=0.62, treat=17, wait=36) chosen over Patient(24, sev=5, det=0.62, treat=18, wait=42): hybrid score 4.702 vs 4.642 (margin: +0.060, confidence: moderate)
+     25. t=22:30: Patient(44, sev=5, det=0.29, treat=18, wait=2) chosen over Patient(43, sev=5, det=0.28, treat=15, wait=3): hybrid score 1.152 vs 1.146 (margin: +0.006, confidence: low)
+     26. t=24:00: Patient(45, sev=5, det=0.28, treat=14, wait=5) chosen over Patient(43, sev=5, det=0.28, treat=15, wait=9): hybrid score 1.130 vs 1.099 (margin: +0.031, confidence: low)
+
+SEED 7000 RESULTS:
+   Patients treated: 38
+   Patients waiting: 4
+   Average wait: 3.95 timesteps (59 minutes)
+   Weighted wait: 6.48 timesteps (97 minutes)
+   Decisions explained: 29
+   ESI average wait: 8.90 timesteps (134 minutes)
+   ESI weighted wait: 7.06 timesteps (106 minutes)
+   MTS average wait: 8.98 timesteps (135 minutes)
+   MTS weighted wait: 10.85 timesteps (163 minutes)
+   ALL HYBRID TRIAGE DECISIONS:
+     1. t=05:15: Patient(11, sev=3, det=0.15, treat=10, wait=2) chosen over Patient(12, sev=5, det=0.64, treat=17, wait=1): hybrid score 1.073 vs 1.016 (margin: +0.056, confidence: moderate)
+     2. t=06:15: Patient(13, sev=4, det=0.07, treat=11, wait=2) chosen over Patient(12, sev=5, det=0.64, treat=17, wait=5): hybrid score 1.057 vs 0.955 (margin: +0.101, confidence: high)
+     3. t=07:30: Patient(15, sev=4, det=0.07, treat=14, wait=4) chosen over Patient(16, sev=3, det=0.41, treat=12, wait=2): hybrid score 1.043 vs 1.019 (margin: +0.025, confidence: low)
+     4. t=07:45: Patient(17, sev=5, det=0.28, treat=18, wait=1) chosen over Patient(16, sev=3, det=0.41, treat=12, wait=3): hybrid score 1.162 vs 1.005 (margin: +0.157, confidence: high)
+     5. t=08:15: Patient(18, sev=5, det=0.28, treat=16, wait=2) chosen over Patient(16, sev=4, det=0.20, treat=12, wait=5): hybrid score 1.153 vs 1.019 (margin: +0.134, confidence: high)
+     6. t=08:30: Patient(20, sev=5, det=0.29, treat=18, wait=1) chosen over Patient(16, sev=5, det=0.10, treat=12, wait=6): hybrid score 1.160 vs 1.147 (margin: +0.013, confidence: low)
+     7. t=08:45: Patient(16, sev=5, det=0.10, treat=12, wait=7) chosen over Patient(19, sev=4, det=0.26, treat=12, wait=3): hybrid score 1.139 vs 1.026 (margin: +0.113, confidence: high)
+     8. t=09:00: Patient(19, sev=5, det=0.13, treat=12, wait=4) chosen over Patient(14, sev=5, det=0.66, treat=19, wait=11): hybrid score 1.159 vs 0.838 (margin: +0.322, confidence: high)
+     9. t=11:00: Patient(23, sev=5, det=0.13, treat=15, wait=3) chosen over Patient(24, sev=5, det=0.29, treat=13, wait=2): hybrid score 1.167 vs 1.152 (margin: +0.015, confidence: low)
+     10. t=11:45: Patient(25, sev=5, det=0.29, treat=14, wait=2) chosen over Patient(24, sev=5, det=0.29, treat=13, wait=5): hybrid score 1.152 vs 1.128 (margin: +0.024, confidence: low)
+     11. t=12:00: Patient(24, sev=5, det=0.29, treat=13, wait=6) chosen over Patient(21, sev=5, det=0.10, treat=16, wait=11): hybrid score 1.120 vs 1.107 (margin: +0.013, confidence: low)
+     12. t=12:15: Patient(21, sev=5, det=0.10, treat=16, wait=12) chosen over Patient(26, sev=3, det=0.17, treat=11, wait=1): hybrid score 1.099 vs 1.078 (margin: +0.021, confidence: low)
+     13. t=13:00: Patient(22, sev=3, det=0.06, treat=10, wait=14) chosen over Patient(27, sev=3, det=0.53, treat=13, wait=1): hybrid score 1.001 vs 0.896 (margin: +0.105, confidence: high)
+     14. t=14:45: Patient(30, sev=5, det=0.28, treat=15, wait=4) chosen over Patient(27, sev=5, det=0.13, treat=13, wait=8): hybrid score 1.138 vs 1.127 (margin: +0.010, confidence: low)
+     15. t=15:00: Patient(27, sev=5, det=0.13, treat=13, wait=9) chosen over Patient(29, sev=5, det=0.30, treat=13, wait=7): hybrid score 1.119 vs 1.112 (margin: +0.007, confidence: low)
+     16. t=15:15: Patient(29, sev=5, det=0.30, treat=13, wait=8) chosen over Patient(32, sev=2, det=0.26, treat=14, wait=1): hybrid score 1.104 vs 1.092 (margin: +0.012, confidence: low)
+     17. t=15:30: Patient(33, sev=2, det=0.12, treat=7, wait=1) chosen over Patient(31, sev=5, det=0.68, treat=19, wait=6): hybrid score 1.110 vs 0.888 (margin: +0.222, confidence: high)
+     18. t=16:15: Patient(34, sev=5, det=0.29, treat=16, wait=3) chosen over Patient(35, sev=5, det=0.68, treat=19, wait=2): hybrid score 1.144 vs 0.949 (margin: +0.195, confidence: high)
+     19. t=17:15: Patient(36, sev=3, det=0.15, treat=13, wait=1) chosen over Patient(35, sev=5, det=0.68, treat=19, wait=6): hybrid score 1.080 vs 0.888 (margin: +0.192, confidence: high)
+     20. t=18:15: Patient(37, sev=2, det=0.27, treat=10, wait=2) chosen over Patient(38, sev=3, det=0.49, treat=15, wait=1): hybrid score 1.084 vs 0.942 (margin: +0.143, confidence: high)
+     21. t=18:30: Patient(38, sev=3, det=0.49, treat=15, wait=2) chosen over Patient(35, sev=5, det=0.68, treat=19, wait=11): hybrid score 0.928 vs 0.812 (margin: +0.116, confidence: high)
+     22. t=18:45: Patient(39, sev=3, det=0.49, treat=13, wait=1) chosen over Patient(31, sev=5, det=0.68, treat=19, wait=19): hybrid score 0.942 vs 0.691 (margin: +0.251, confidence: high)
+     23. t=20:15: Patient(41, sev=5, det=0.30, treat=14, wait=4) chosen over Patient(40, sev=3, det=0.19, treat=11, wait=5): hybrid score 1.135 vs 1.048 (margin: +0.088, confidence: moderate)
+     24. t=20:30: Patient(40, sev=3, det=0.19, treat=11, wait=6) chosen over Patient(42, sev=4, det=0.23, treat=15, wait=3): hybrid score 1.041 vs 1.031 (margin: +0.010, confidence: low)
+     25. t=20:45: Patient(42, sev=4, det=0.23, treat=15, wait=4) chosen over Patient(31, sev=5, det=0.68, treat=19, wait=27): hybrid score 1.024 vs 0.570 (margin: +0.454, confidence: high)
+     26. t=22:00: Patient(43, sev=5, det=0.60, treat=16, wait=4) chosen over Patient(31, sev=5, det=0.68, treat=19, wait=32): hybrid score 5.020 vs 4.748 (margin: +0.272, confidence: high)
+     27. t=22:15: Patient(31, sev=5, det=0.68, treat=19, wait=33) chosen over Patient(28, sev=5, det=0.69, treat=15, wait=37): hybrid score 4.738 vs 4.699 (margin: +0.039, confidence: low)
+     28. t=23:15: Patient(45, sev=5, det=0.29, treat=15, wait=3) chosen over Patient(44, sev=5, det=0.61, treat=16, wait=4): hybrid score 1.144 vs 1.009 (margin: +0.135, confidence: high)
+     29. t=23:45: Patient(46, sev=5, det=0.67, treat=16, wait=1) chosen over Patient(28, sev=5, det=0.69, treat=15, wait=43): hybrid score 5.057 vs 4.639 (margin: +0.418, confidence: high)
+
+AGGREGATE STATISTICS:
+   Mean patients treated: 35.2 +/- 3.4
+   Mean weighted wait: 10.13 +/- 5.35 hours
+   Total decisions explained: 168
+
+BASELINE COMPARISON:
+   Hybrid Policy: 2.53 hours weighted (1.42 hours avg)
+   ESI Baseline: 2.71 hours weighted (2.53 hours avg)
+   MTS Baseline: 3.60 hours weighted (2.59 hours avg)
+
+BASELINE PERFORMANCE DETAILS:
+   ESI average wait: 10.13 timesteps (152 minutes)
+   ESI weighted wait: 10.84 timesteps (163 minutes)
+   MTS average wait: 10.36 timesteps (155 minutes)
+   MTS weighted wait: 14.39 timesteps (216 minutes)
+   -> Hybrid beats ESI by 6.5% (weighted wait)
+   -> Hybrid beats MTS by 29.6% (weighted wait)

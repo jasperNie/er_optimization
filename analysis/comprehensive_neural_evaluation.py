@@ -156,6 +156,8 @@ def full_training_multi_seed_explanation():
     print("   Patient arrival logs saved to logs/patient_arrivals/testing/")
     
     all_results = []
+    all_esi_results = []  # Store baseline results for aggregate analysis
+    all_mts_results = []  # Store baseline results for aggregate analysis
     
     for seed_idx, test_seed in enumerate(test_seeds, 1):
         print(f"\nSEED {seed_idx}/6: Testing with seed {test_seed}")
@@ -269,6 +271,33 @@ def full_training_multi_seed_explanation():
         result['total_decisions'] = sim.decision_count
         all_results.append(result)
         
+        # Run baseline comparisons for this seed
+        esi_sim = ERSimulation(
+            num_nurses=4,
+            total_time=96,
+            arrival_prob=0.3,
+            triage_policy={'severity': 1.0, 'deterioration': 0.0, 'wait_time': 0.0},
+            verbose=False,
+            seed=test_seed,
+            use_shifts=True
+        )
+        esi_result = esi_sim.run()
+        
+        mts_sim = ERSimulation(
+            num_nurses=4,
+            total_time=96,
+            arrival_prob=0.3,
+            triage_policy={'severity': 0.0, 'deterioration': 0.0, 'wait_time': 1.0},
+            verbose=False,
+            seed=test_seed,
+            use_shifts=True
+        )
+        mts_result = mts_sim.run()
+        
+        # Store baseline results for aggregate analysis
+        all_esi_results.append(esi_result)
+        all_mts_results.append(mts_result)
+        
         # Print summary for this seed
         print(f"\n📊 SEED {test_seed} RESULTS:")
         print(f"   Patients treated: {result['completed']}")
@@ -276,6 +305,10 @@ def full_training_multi_seed_explanation():
         print(f"   Average wait time: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
         print(f"   Weighted wait time: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)")
         print(f"   Decisions explained: {result['total_decisions']}")
+        print(f"   ESI average wait: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} minutes)")
+        print(f"   ESI weighted wait: {esi_result['avg_weighted_wait']:.2f} timesteps ({esi_result['avg_weighted_wait']*15:.0f} minutes)")
+        print(f"   MTS average wait: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} minutes)")
+        print(f"   MTS weighted wait: {mts_result['avg_weighted_wait']:.2f} timesteps ({mts_result['avg_weighted_wait']*15:.0f} minutes)")
         
         # Show sample explanations for interesting decisions
         if result['total_decisions'] > 0:
@@ -354,34 +387,9 @@ def full_training_multi_seed_explanation():
     print(f"\n⚖️ BASELINE COMPARISON (averaged across all seeds):")
     print("─" * 50)
     
-    # Run ESI and MTS baselines with same seeds
-    esi_results = []
-    mts_results = []
-    
-    for test_seed in test_seeds:
-        # ESI baseline
-        esi_sim = ERSimulation(
-            num_nurses=4,  # Same as enhanced_evaluation
-            total_time=96,
-            arrival_prob=0.3,  # Same as enhanced_evaluation
-            triage_policy={'severity': 1.0, 'deterioration': 0.0, 'wait_time': 0.0},
-            verbose=False,
-            seed=test_seed,
-            use_shifts=True
-        )
-        esi_results.append(esi_sim.run())
-        
-        # MTS baseline
-        mts_sim = ERSimulation(
-            num_nurses=4,  # Same as enhanced_evaluation
-            total_time=96,
-            arrival_prob=0.3,  # Same as enhanced_evaluation
-            triage_policy={'severity': 0.0, 'deterioration': 0.0, 'wait_time': 1.0},
-            verbose=False,
-            seed=test_seed,
-            use_shifts=True
-        )
-        mts_results.append(mts_sim.run())
+    # Use the baseline results computed during individual seed evaluation
+    esi_results = all_esi_results
+    mts_results = all_mts_results
     
     # Calculate improvements
     esi_avg_weighted = statistics.mean([r['avg_weighted_wait'] for r in esi_results])
@@ -404,6 +412,12 @@ def full_training_multi_seed_explanation():
     print(f"   🤖 Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)")
     print(f"   🏥 ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
     print(f"   ⏱️ MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
+    
+    print(f"\n📊 BASELINE PERFORMANCE DETAILS:")
+    print(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)")
+    print(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)")
+    print(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)")
+    print(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)")
     
     if neural_avg_weighted < esi_avg_weighted:
         improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
@@ -436,6 +450,15 @@ def full_training_multi_seed_explanation():
             f.write(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)\n")
             f.write(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)\n")
             f.write(f"   Decisions explained: {result['total_decisions']}\n")
+            
+            # Add baseline performance for this seed
+            result_index = next(i for i, r in enumerate(all_results) if r['seed'] == result['seed'])
+            esi_seed_result = all_esi_results[result_index]
+            mts_seed_result = all_mts_results[result_index]
+            f.write(f"   ESI average wait: {esi_seed_result['avg_wait']:.2f} timesteps ({esi_seed_result['avg_wait']*15:.0f} minutes)\n")
+            f.write(f"   ESI weighted wait: {esi_seed_result['avg_weighted_wait']:.2f} timesteps ({esi_seed_result['avg_weighted_wait']*15:.0f} minutes)\n")
+            f.write(f"   MTS average wait: {mts_seed_result['avg_wait']:.2f} timesteps ({mts_seed_result['avg_wait']*15:.0f} minutes)\n")
+            f.write(f"   MTS weighted wait: {mts_seed_result['avg_weighted_wait']:.2f} timesteps ({mts_seed_result['avg_weighted_wait']*15:.0f} minutes)\n")
             
             if result['explanations']:
                 f.write(f"   ALL TRIAGE DECISIONS:\n")
@@ -473,18 +496,19 @@ def full_training_multi_seed_explanation():
         f.write(f"   Neural Network: {neural_avg_weighted_hours:.2f} hours weighted ({neural_avg_wait_hours:.2f} hours avg)\n")
         f.write(f"   ESI Baseline: {esi_avg_weighted_hours:.2f} hours weighted ({esi_avg_wait_hours:.2f} hours avg)\n")
         f.write(f"   MTS Baseline: {mts_avg_weighted_hours:.2f} hours weighted ({mts_avg_wait_hours:.2f} hours avg)\n")
+        
+        f.write(f"\nBASELINE PERFORMANCE DETAILS:\n")
+        f.write(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)\n")
+        f.write(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)\n")
+        f.write(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)\n")
+        f.write(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)\n")
+        
         if neural_avg_weighted < esi_avg_weighted:
             improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
             f.write(f"   -> Neural beats ESI by {improvement:.1f}% (weighted wait)\n")
         if neural_avg_weighted < mts_avg_weighted:
             improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
             f.write(f"   -> Neural beats MTS by {improvement:.1f}% (weighted wait)\n")
-        if neural_avg_wait < esi_avg_wait:
-            improvement = ((esi_avg_wait - neural_avg_wait) / esi_avg_wait) * 100
-            f.write(f"   -> Neural beats ESI by {improvement:.1f}% (average wait)\n")
-        if neural_avg_wait < mts_avg_wait:
-            improvement = ((mts_avg_wait - neural_avg_wait) / mts_avg_wait) * 100
-            f.write(f"   -> Neural beats MTS by {improvement:.1f}% (average wait)\n")
     
     print(f"   📄 Results saved to: logs/analysis_logs/comprehensive_neural_evaluation.txt")
     print(f"   📋 Patient arrivals saved to: logs/patient_arrivals/testing/")
