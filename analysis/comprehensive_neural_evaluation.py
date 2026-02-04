@@ -114,21 +114,39 @@ def full_training_multi_seed_explanation():
     Full training followed by multi-seed evaluation with explanations
     """
     
+    # Expanded training and testing parameters
+    training_seeds = list(range(8000, 8050))  # 50 training seeds (8000-8049)
+    test_seeds = list(range(9000, 9100))  # 100 test seeds (9000-9099)
+    
     print("\n" + "=" * 80)
     print("   COMPREHENSIVE NEURAL NETWORK EVALUATION WITH EXPLANATIONS")
     print("=" * 80)
+    print(f"Training on {len(training_seeds)} seeds: {training_seeds[0]}-{training_seeds[-1]}")
+    print(f"Testing on {len(test_seeds)} seeds: {test_seeds[0]}-{test_seeds[-1]}")
     
     # Phase 1: Full Training (same parameters as enhanced_evaluation.py)
-    print("\n📈 PHASE 1: FULL NEURAL NETWORK TRAINING")
+    print("\nPHASE 1: FULL NEURAL NETWORK TRAINING")
     print("─" * 50)
     print("Training with full parameters (100 generations, 80 population)...")
     
-    # Full training parameters (same as enhanced_evaluation.py)
+    # Log training seed arrivals for full documentation
+    print("\n📋 Logging patient arrivals for training seeds...")
+    
+    # Import from enhanced_evaluation for compatibility
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from enhanced_evaluation import generate_arrivals, log_patient_arrivals
+    
+    for seed in training_seeds:
+        arrivals = generate_arrivals(96, 0.3, seed)
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/neural_training", "Neural Training")
+    print("   Training patient arrival logs saved to logs/patient_arrivals/neural_training/")
+    
+    # Full training parameters with expanded seed set
     training_params = {
         'num_nurses': 4,  # Same as enhanced_evaluation testing
         'total_time': 96,
         'arrival_prob': 0.3,
-        'seed': 1000  # Use first training seed from enhanced_evaluation
+        'seed': training_seeds[0]  # Use first training seed
     }
     
     optimizer = FairNeuralEvolutionOptimizer(
@@ -142,11 +160,18 @@ def full_training_multi_seed_explanation():
     print("Full training complete!")
     
     # Phase 2: Multi-seed evaluation with explanations
-    print(f"\n🔬 PHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
+    print(f"\nPHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
     print("─" * 60)
     
-    # Test seeds (same as enhanced_evaluation.py)
-    test_seeds = [2000, 3000, 4000, 5000, 6000, 7000]  # 6 seeds like in enhanced_evaluation
+    # Log testing seed arrivals for full documentation
+    print("\n📋 Logging patient arrivals for test seeds...")
+    
+    for seed in test_seeds:
+        arrivals = generate_arrivals(96, 0.3, seed)
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/neural_testing", "Neural Testing")
+    print("   Testing patient arrival logs saved to logs/patient_arrivals/neural_testing/")
+    
+
     
     # Generate and log patient arrivals for all test seeds
     print("\n📋 Logging patient arrivals for test seeds...")
@@ -160,7 +185,7 @@ def full_training_multi_seed_explanation():
     all_mts_results = []  # Store baseline results for aggregate analysis
     
     for seed_idx, test_seed in enumerate(test_seeds, 1):
-        print(f"\nSEED {seed_idx}/6: Testing with seed {test_seed}")
+        print(f"\n🧪 SEED {seed_idx}/100: Testing with seed {test_seed}")
         print("-" * 50)
         
         # Create explainable simulation for this seed
@@ -254,6 +279,13 @@ def full_training_multi_seed_explanation():
                         self.waiting_patients.remove(patient)
                         assignments += 1
         
+        # CRITICAL FIX: Generate identical arrivals for all three simulations
+        # This ensures fair comparison between neural network and baselines
+        arrivals = generate_arrivals(96, 0.3, test_seed)
+        
+        # Log patient arrivals for traceability
+        log_patient_arrivals(arrivals, test_seed, "logs/patient_arrivals/neural_testing", f"Neural Testing Seed {test_seed}")
+        
         # Run simulation with this seed (same parameters as enhanced_evaluation)
         sim = ExplainableSimulation(
             num_nurses=4,  # Same as enhanced_evaluation testing
@@ -264,6 +296,8 @@ def full_training_multi_seed_explanation():
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals
+        sim.patient_arrivals = arrivals
         
         result = sim.run()
         result['seed'] = test_seed
@@ -271,7 +305,7 @@ def full_training_multi_seed_explanation():
         result['total_decisions'] = sim.decision_count
         all_results.append(result)
         
-        # Run baseline comparisons for this seed
+        # Run baseline comparisons for this seed with IDENTICAL arrivals
         esi_sim = ERSimulation(
             num_nurses=4,
             total_time=96,
@@ -281,6 +315,8 @@ def full_training_multi_seed_explanation():
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals
+        esi_sim.patient_arrivals = arrivals.copy()
         esi_result = esi_sim.run()
         
         mts_sim = ERSimulation(
@@ -292,6 +328,8 @@ def full_training_multi_seed_explanation():
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals
+        mts_sim.patient_arrivals = arrivals.copy()
         mts_result = mts_sim.run()
         
         # Store baseline results for aggregate analysis
@@ -299,7 +337,7 @@ def full_training_multi_seed_explanation():
         all_mts_results.append(mts_result)
         
         # Print summary for this seed
-        print(f"\n📊 SEED {test_seed} RESULTS:")
+        print(f"\nSEED {test_seed} RESULTS:")
         print(f"   Patients treated: {result['completed']}")
         print(f"   Patients waiting: {result['still_waiting']}")
         print(f"   Average wait time: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
@@ -341,7 +379,7 @@ def full_training_multi_seed_explanation():
                     minutes = timestep_minutes % 60
                     time_str = f"{hours:02d}:{minutes:02d}"
                     print(f"     {decision_count}. t={time_str}: {decision['chosen']} (only patient waiting)")    # Phase 3: Aggregate Analysis
-    print(f"\n📈 PHASE 3: AGGREGATE ANALYSIS ACROSS ALL SEEDS")
+    print(f"\nPHASE 3: AGGREGATE ANALYSIS ACROSS ALL SEEDS")
     print("─" * 60)
     
     # Overall statistics
@@ -350,7 +388,7 @@ def full_training_multi_seed_explanation():
     weighted_waits = [r['avg_weighted_wait'] for r in all_results]
     total_decisions = [r['total_decisions'] for r in all_results]
     
-    print(f"\n🎯 PERFORMANCE STATISTICS (across {len(test_seeds)} seeds):")
+    print(f"\nPERFORMANCE STATISTICS (across {len(test_seeds)} seeds):")
     print(f"   Patients treated: {statistics.mean(completed_counts):.1f} ± {statistics.stdev(completed_counts):.1f}")
     print(f"   Average wait time: {statistics.mean(avg_waits):.2f} ± {statistics.stdev(avg_waits):.2f} timesteps ({statistics.mean(avg_waits)*15:.0f} ± {statistics.stdev(avg_waits)*15:.0f} minutes)")
     print(f"   Weighted wait time: {statistics.mean(weighted_waits):.2f} ± {statistics.stdev(weighted_waits):.2f} timesteps ({statistics.mean(weighted_waits)*15:.0f} ± {statistics.stdev(weighted_waits)*15:.0f} minutes)")
@@ -413,7 +451,7 @@ def full_training_multi_seed_explanation():
     print(f"   🏥 ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
     print(f"   ⏱️ MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
     
-    print(f"\n📊 BASELINE PERFORMANCE DETAILS:")
+    print(f"\nBASELINE PERFORMANCE DETAILS:")
     print(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)")
     print(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)")
     print(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)")
@@ -421,11 +459,11 @@ def full_training_multi_seed_explanation():
     
     if neural_avg_weighted < esi_avg_weighted:
         improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
-        print(f"   ✅ Neural beats ESI by {improvement:.1f}%")
+        print(f"   Neural beats ESI by {improvement:.1f}%")
     
     if neural_avg_weighted < mts_avg_weighted:
         improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
-        print(f"   ✅ Neural beats MTS by {improvement:.1f}%")
+        print(f"   Neural beats MTS by {improvement:.1f}%")
     
     # Save detailed results
     print(f"\n💾 SAVING DETAILED RESULTS:")
@@ -436,11 +474,11 @@ def full_training_multi_seed_explanation():
         f.write("   COMPREHENSIVE NEURAL NETWORK EVALUATION RESULTS\n")
         f.write("=" * 80 + "\n\n")
         
-        f.write(f"🔧 TRAINING CONFIGURATION:\n")
+        f.write(f"TRAINING CONFIGURATION:\n")
         f.write(f"   Generations: 100\n")
         f.write(f"   Population: 80\n")
-        f.write(f"   Training seed: 1000\n")
-        f.write(f"   Test seeds: {len(test_seeds)}\n")
+        f.write(f"   Training seeds: {len(training_seeds)} seeds ({training_seeds[0]}-{training_seeds[-1]})\n")
+        f.write(f"   Test seeds: {len(test_seeds)} seeds ({test_seeds[0]}-{test_seeds[-1]})\n")
         f.write(f"   Simulation: 24 hours (96 timesteps of 15 minutes each)\n\n")
         
         for i, result in enumerate(all_results):
@@ -513,7 +551,7 @@ def full_training_multi_seed_explanation():
     print(f"   📄 Results saved to: logs/analysis_logs/comprehensive_neural_evaluation.txt")
     print(f"   📋 Patient arrivals saved to: logs/patient_arrivals/testing/")
     
-    print(f"\n✅ COMPREHENSIVE EVALUATION COMPLETE!")
+    print(f"\nCOMPREHENSIVE EVALUATION COMPLETE!")
     print("=" * 80)
     print("=" * 50)
     print("The neural network has been fully trained and tested across")

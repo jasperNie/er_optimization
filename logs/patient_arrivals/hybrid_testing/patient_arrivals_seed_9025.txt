@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Hybrid Testing
+Seed: 9025
+Total timesteps: 96
+============================================================
+
+T 0: Patient 0 | Sev:2 Det:0.40 Treat:12min minor_injury | HR:108 SpO2:97 Res:2
+T 1: No arrival
+T 2: No arrival
+T 3: No arrival
+T 4: No arrival
+T 5: Patient 1 | Sev:4 Det:0.57 Treat:14min headache | HR:59 SpO2:92 Res:0
+T 6: No arrival
+T 7: No arrival
+T 8: Patient 2 | Sev:1 Det:0.18 Treat:8min headache | HR:129 SpO2:92 Res:3
+T 9: No arrival
+T10: Patient 3 | Sev:3 Det:0.46 Treat:15min shortness_of_breath | HR:67 SpO2:98 Res:0
+T11: Patient 4 | Sev:3 Det:0.55 Treat:15min chest_pain | HR:105 SpO2:96 Res:1
+T12: No arrival
+T13: Patient 5 | Sev:5 Det:0.63 Treat:16min abdominal_pain | HR:83 SpO2:96 Res:1
+T14: Patient 6 | Sev:5 Det:0.70 Treat:20min minor_injury | HR:64 SpO2:97 Res:2
+T15: No arrival
+T16: Patient 7 | Sev:2 Det:0.36 Treat:9min abdominal_pain | HR:122 SpO2:96 Res:2
+T17: Patient 8 | Sev:1 Det:0.11 Treat:11min chest_pain | HR:124 SpO2:98 Res:3
+T18: Patient 9 | Sev:3 Det:0.45 Treat:13min abdominal_pain | HR:109 SpO2:89 Res:2
+T19: Patient 10 | Sev:5 Det:0.62 Treat:18min chest_pain | HR:114 SpO2:93 Res:0
+T20: Patient 11 | Sev:1 Det:0.16 Treat:11min minor_injury | HR:64 SpO2:99 Res:3
+T21: No arrival
+T22: Patient 12 | Sev:1 Det:0.14 Treat:8min headache | HR:71 SpO2:99 Res:0
+T23: Patient 13 | Sev:3 Det:0.42 Treat:11min minor_injury | HR:120 SpO2:100 Res:2
+T24: No arrival
+T25: Patient 14 | Sev:5 Det:0.61 Treat:19min shortness_of_breath | HR:99 SpO2:93 Res:0
+T26: No arrival
+T27: No arrival
+T28: Patient 15 | Sev:5 Det:0.70 Treat:18min headache | HR:57 SpO2:95 Res:2
+T29: Patient 16 | Sev:4 Det:0.55 Treat:15min minor_injury | HR:77 SpO2:90 Res:2
+T30: No arrival
+T31: Patient 17 | Sev:5 Det:0.65 Treat:15min chest_pain | HR:95 SpO2:99 Res:2
+T32: No arrival
+T33: No arrival
+T34: Patient 18 | Sev:3 Det:0.53 Treat:13min shortness_of_breath | HR:104 SpO2:90 Res:2
+T35: No arrival
+T36: No arrival
+T37: Patient 19 | Sev:5 Det:0.70 Treat:19min abdominal_pain | HR:119 SpO2:90 Res:2
+T38: No arrival
+T39: No arrival
+T40: No arrival
+T41: Patient 20 | Sev:5 Det:0.63 Treat:17min headache | HR:68 SpO2:99 Res:3
+T42: No arrival
+T43: Patient 21 | Sev:3 Det:0.52 Treat:15min abdominal_pain | HR:76 SpO2:98 Res:0
+T44: No arrival
+T45: No arrival
+T46: No arrival
+T47: Patient 22 | Sev:4 Det:0.57 Treat:13min headache | HR:127 SpO2:95 Res:1
+T48: No arrival
+T49: No arrival
+T50: Patient 23 | Sev:3 Det:0.44 Treat:14min minor_injury | HR:87 SpO2:88 Res:1
+T51: No arrival
+T52: No arrival
+T53: No arrival
+T54: No arrival
+T55: Patient 24 | Sev:1 Det:0.20 Treat:12min chest_pain | HR:73 SpO2:88 Res:0
+T56: No arrival
+T57: Patient 25 | Sev:5 Det:0.67 Treat:19min headache | HR:61 SpO2:97 Res:1
+T58: No arrival
+T59: No arrival
+T60: No arrival
+T61: No arrival
+T62: No arrival
+T63: No arrival
+T64: Patient 26 | Sev:5 Det:0.70 Treat:16min chest_pain | HR:93 SpO2:90 Res:0
+T65: No arrival
+T66: No arrival
+T67: Patient 27 | Sev:5 Det:0.62 Treat:19min abdominal_pain | HR:54 SpO2:92 Res:3
+T68: No arrival
+T69: No arrival
+T70: Patient 28 | Sev:2 Det:0.31 Treat:10min chest_pain | HR:129 SpO2:89 Res:0
+T71: No arrival
+T72: No arrival
+T73: No arrival
+T74: No arrival
+T75: No arrival
+T76: Patient 29 | Sev:2 Det:0.34 Treat:9min headache | HR:122 SpO2:90 Res:2
+T77: Patient 30 | Sev:1 Det:0.17 Treat:10min abdominal_pain | HR:115 SpO2:95 Res:0
+T78: Patient 31 | Sev:5 Det:0.69 Treat:15min chest_pain | HR:60 SpO2:98 Res:3
+T79: No arrival
+T80: No arrival
+T81: No arrival
+T82: No arrival
+T83: Patient 32 | Sev:3 Det:0.50 Treat:11min abdominal_pain | HR:108 SpO2:100 Res:0
+T84: No arrival
+T85: No arrival
+T86: Patient 33 | Sev:4 Det:0.58 Treat:18min chest_pain | HR:71 SpO2:96 Res:3
+T87: No arrival
+T88: Patient 34 | Sev:5 Det:0.66 Treat:18min headache | HR:66 SpO2:89 Res:2
+T89: No arrival
+T90: No arrival
+T91: No arrival
+T92: Patient 35 | Sev:3 Det:0.46 Treat:14min shortness_of_breath | HR:54 SpO2:99 Res:1
+T93: No arrival
+T94: No arrival
+T95: No arrival
+
+SUMMARY
+Total patients arrived: 36
+Arrival rate: 37.5%

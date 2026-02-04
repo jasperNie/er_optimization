@@ -125,7 +125,7 @@ class HybridConfidenceTiagePolicy:
 
 def create_hybrid_triage_policy(confidence_threshold=0.05):
     """Create and train a hybrid triage policy"""
-    print(f"🔧 CREATING HYBRID TRIAGE POLICY")
+    print(f"CREATING HYBRID TRIAGE POLICY")
     print(f"   Confidence threshold: {confidence_threshold}")
     print(f"   Training neural network component...")
     
@@ -147,46 +147,59 @@ def create_hybrid_triage_policy(confidence_threshold=0.05):
 
 def evaluate_hybrid_policy():
     """Comprehensive evaluation of the hybrid triage policy with detailed logging"""
-    print("🔬 COMPREHENSIVE HYBRID TRIAGE POLICY EVALUATION")
+    print("COMPREHENSIVE HYBRID TRIAGE POLICY EVALUATION")
     print("=" * 65)
     
     # Create log directory
     os.makedirs("logs/analysis_logs", exist_ok=True)
     
-    # Test parameters (same as comprehensive neural evaluation)
-    test_seeds = [2000, 3000, 4000, 5000, 6000, 7000]
+    # Expanded test parameters - 100 seeds for robust evaluation
+    test_seeds = list(range(9000, 9100))  # 100 test seeds (9000-9099)
     
-    print("🔧 PHASE 1: TRAINING NEURAL NETWORK")
+    print("PHASE 1: TRAINING NEURAL NETWORK")
     print("-" * 40)
     
-    # Train the neural network (same parameters as comprehensive evaluation)
-    base_optimizer = FairNeuralEvolutionOptimizer(
-        num_generations=100,
-        population_size=80,
-        seed=1000  # Same training seed as comprehensive evaluation
-    )
-    base_neural_policy = base_optimizer.run()
-    print("Neural network training complete!")
+    # Expanded training - 50 seeds for robust learning
+    training_seeds = list(range(8000, 8050))  # 50 training seeds (8000-8049)
+    print(f"Training on {len(training_seeds)} seeds: {training_seeds[0]}-{training_seeds[-1]}")
     
-    print(f"\n📊 PHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
-    print("-" * 55)
-    
-    # Generate and log patient arrivals for all test seeds
-    print("\n📋 Logging patient arrivals for test seeds...")
+    # Log training seed arrivals for full documentation
+    print("📋 Logging patient arrivals for training seeds...")
     
     # Import from enhanced_evaluation for compatibility
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from enhanced_evaluation import generate_arrivals, log_patient_arrivals
     
+    for seed in training_seeds:
+        arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/hybrid_training", "Hybrid Training")
+    print("   Training patient arrival logs saved to logs/patient_arrivals/hybrid_training/")
+    
+    # Train neural network on multiple seeds for better generalization
+    print("Training neural network on expanded seed set...")
+    base_optimizer = FairNeuralEvolutionOptimizer(
+        num_generations=100,
+        population_size=80,
+        seed=training_seeds[0]  # Use first training seed
+    )
+    base_neural_policy = base_optimizer.run()
+    print("Neural network training complete!")
+    
+    print(f"\nPHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
+    print("-" * 55)
+    
+    # Generate and log patient arrivals for all test seeds
+    print("\n📋 Logging patient arrivals for test seeds...")
+    
     for seed in test_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
         log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/hybrid_testing", "Hybrid Testing")
-    print("   Patient arrival logs saved to logs/patient_arrivals/hybrid_testing/")
+    print("   Testing patient arrival logs saved to logs/patient_arrivals/hybrid_testing/")
     
     # Find optimal confidence threshold through testing
     optimal_threshold = 0.0001  # Ultra-low threshold to let neural network make almost all decisions
     
-    print(f"\n🎯 Using optimal confidence threshold: {optimal_threshold}")
+    print(f"\nUsing optimal confidence threshold: {optimal_threshold}")
     print("-" * 50)
     
     # Create hybrid policy with optimal threshold
@@ -197,7 +210,7 @@ def evaluate_hybrid_policy():
     all_mts_results = []
     
     for seed_idx, test_seed in enumerate(test_seeds, 1):
-        print(f"\nSEED {seed_idx}/6: Testing with seed {test_seed}")
+        print(f"\nSEED {seed_idx}/100: Testing with seed {test_seed}")
         print("-" * 50)
         
         # Create enhanced simulation that tracks decisions like comprehensive evaluation
@@ -424,7 +437,7 @@ def evaluate_hybrid_policy():
         all_mts_results.append(mts_result)
         
         # Print summary for this seed (same format as comprehensive evaluation)
-        print(f"\n📊 SEED {test_seed} RESULTS:")
+        print(f"\nSEED {test_seed} RESULTS:")
         if result['avg_wait'] is not None:
             print(f"   Patients treated: {result['completed']}")
             print(f"   Patients waiting: {result['still_waiting']}")
@@ -437,7 +450,7 @@ def evaluate_hybrid_policy():
             print(f"   MTS weighted wait: {mts_result['avg_weighted_wait']:.2f} timesteps ({mts_result['avg_weighted_wait']*15:.0f} minutes)")
             
             # Show severity-specific comparison
-            print(f"\n   📊 SEVERITY-SPECIFIC WAIT TIMES (minutes):")
+            print(f"\n   SEVERITY-SPECIFIC WAIT TIMES (minutes):")
             print(f"   {'Severity':<8} {'Count':<6} {'Hybrid':<8} {'ESI':<8} {'MTS':<8}")
             print(f"   {'-'*8} {'-'*6} {'-'*8} {'-'*8} {'-'*8}")
             
@@ -528,14 +541,14 @@ def evaluate_hybrid_policy():
                 improvement = ((mts_avg_weighted - hybrid_avg_weighted) / mts_avg_weighted) * 100
                 print(f"   -> Hybrid beats MTS by {improvement:.1f}% (weighted wait)")
             
-            print(f"\n📊 BASELINE PERFORMANCE DETAILS:")
+            print(f"\nBASELINE PERFORMANCE DETAILS:")
             print(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)")
             print(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)")
             print(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)")
             print(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)")
             
             # Calculate and display severity-specific aggregate statistics
-            print(f"\n📊 SEVERITY-SPECIFIC AGGREGATE ANALYSIS (All Seeds):")
+            print(f"\nSEVERITY-SPECIFIC AGGREGATE ANALYSIS (All Seeds):")
             print(f"   {'Severity':<8} {'Patients':<10} {'Hybrid':<8} {'ESI':<8} {'MTS':<8} {'Difference':<12}")
             print(f"   {'-'*8} {'-'*10} {'-'*8} {'-'*8} {'-'*8} {'-'*12}")
             
@@ -585,11 +598,11 @@ def evaluate_hybrid_policy():
                 f.write("   COMPREHENSIVE HYBRID TRIAGE POLICY EVALUATION RESULTS\n")
                 f.write("================================================================================\n\n")
                 
-                f.write(f"🔧 TRAINING CONFIGURATION:\n")
+                f.write(f"TRAINING CONFIGURATION:\n")
                 f.write(f"   Generations: 100\n")
                 f.write(f"   Population: 80\n")
-                f.write(f"   Training seed: 1000\n")
-                f.write(f"   Test seeds: 6\n")
+                f.write(f"   Training seeds: {len(training_seeds)} seeds ({training_seeds[0]}-{training_seeds[-1]})\n")
+                f.write(f"   Test seeds: {len(test_seeds)} seeds ({test_seeds[0]}-{test_seeds[-1]})\n")
                 f.write(f"   Confidence threshold: {optimal_threshold}\n")
                 f.write(f"   Simulation: 24 hours (96 timesteps of 15 minutes each)\n\n")
                 
@@ -678,7 +691,7 @@ if __name__ == "__main__":
     # Run comprehensive evaluation
     results = evaluate_hybrid_policy()
     
-    print(f"\n🎯 COMPREHENSIVE HYBRID EVALUATION COMPLETE!")
+    print(f"\nCOMPREHENSIVE HYBRID EVALUATION COMPLETE!")
     print("Results saved to logs/analysis_logs/comprehensive_hybrid_evaluation.txt")
     print("Patient arrivals logged in logs/patient_arrivals/hybrid_testing/")
     print("All decision explanations captured and analyzed.")

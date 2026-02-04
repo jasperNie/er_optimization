@@ -49,8 +49,15 @@ class ERSimulation:
         self.verbose = verbose
         self.seed = seed
         self.use_shifts = use_shifts
+        
+        # CRITICAL FIX: Use separate RNG for patient generation vs deterioration
+        # This ensures identical patient populations regardless of triage policy
         if seed is not None:
             random.seed(seed)
+            # Create separate RNG for deterioration that won't be affected by triage policy
+            self.deterioration_rng = random.Random(seed + 999999)
+        else:
+            self.deterioration_rng = random.Random()
         
         # Nursing schedule: 8-hour shifts (1 timestep = 15 minutes)
         # 8 hours = 32 timesteps (8 * 60 / 15 = 32)
@@ -220,9 +227,15 @@ class ERSimulation:
         # 4. Update waiting patients
         for patient in self.waiting_patients:
             patient.wait_time += 1
-            # Deterioration: probabilistically increase severity
+            # CRITICAL FIX: Make deterioration completely deterministic per patient per timestep
+            # Use patient ID + current time + base seed to create unique, deterministic seed
+            # This ensures identical deterioration patterns regardless of triage order
             if patient.severity < 5:
-                if random.random() < patient.deterioration_chance:
+                # Create deterministic seed unique to this patient at this timestep
+                patient_time_seed = hash((patient.id, self.time, self.seed or 0)) % (2**32)
+                patient_rng = random.Random(patient_time_seed)
+                
+                if patient_rng.random() < patient.deterioration_chance:
                     patient.severity += 1
                     # Lower deterioration chance after upgrade to avoid rapid jumps
                     patient.deterioration_chance = max(0.01, patient.deterioration_chance * 0.5)
