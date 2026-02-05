@@ -177,14 +177,14 @@ def seed_9001_wait_times_chart(output_dir):
     # Seed 9001 specific data with all 5 severities
     np.random.seed(9001)
     
-    severities = ['Severity 1\n(Critical)', 'Severity 2\n(Urgent)', 'Severity 3\n(Less Urgent)', 
-                 'Severity 4\n(Standard)', 'Severity 5\n(Non-urgent)']
+    severities = ['Severity 1\n(Non-urgent)', 'Severity 2\n(Standard)', 'Severity 3\n(Less Urgent)', 
+                 'Severity 4\n(Urgent)', 'Severity 5\n(Critical)']
     
-    # Realistic wait times based on our evaluation patterns
-    neural_waits = [1.8, 7.2, 15.4, 28.7, 42.1]
-    hybrid_waits = [2.1, 7.8, 14.9, 26.3, 39.8]
-    esi_waits = [6.8, 22.1, 38.4, 58.7, 78.2]
-    mts_waits = [9.4, 28.7, 45.1, 68.3, 89.6]
+    # Realistic wait times based on our evaluation patterns (reversed to match proper severity ordering)
+    neural_waits = [42.1, 28.7, 15.4, 7.2, 1.8]
+    hybrid_waits = [39.8, 26.3, 14.9, 7.8, 2.1]
+    esi_waits = [78.2, 58.7, 38.4, 22.1, 6.8]
+    mts_waits = [89.6, 68.3, 45.1, 28.7, 9.4]
     
     x = np.arange(len(severities))
     width = 0.2
