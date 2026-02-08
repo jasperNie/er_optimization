@@ -15,6 +15,86 @@ from optimizers.neural_optimizer import FairNeuralEvolutionOptimizer
 from classes import ERSimulation
 import statistics
 
+def format_decision_explanation(chosen, alt, chosen_score, alt_score):
+    """
+    Format a human-readable explanation for why one patient was chosen over another
+    """
+    # Handle cases where patient data might be incomplete
+    if not isinstance(chosen, dict) or not isinstance(alt, dict):
+        chosen_patient_str = str(chosen) if not isinstance(chosen, dict) else f"Patient {chosen.get('id', '?')}"
+        alt_patient_str = str(alt) if not isinstance(alt, dict) else f"Patient {alt.get('id', '?')}"
+        return f"Chose {chosen_patient_str} (score: {chosen_score:.3f}) over {alt_patient_str} (score: {alt_score:.3f})"
+    
+    score_diff = chosen_score - alt_score
+    
+    # Convert timesteps to minutes for display
+    chosen_wait_min = chosen['wait_time'] * 15
+    alt_wait_min = alt['wait_time'] * 15
+    chosen_treat_min = chosen['treatment_time'] * 15
+    alt_treat_min = alt['treatment_time'] * 15
+    
+    # Determine the PRIMARY reason for the decision based on strongest factors
+    primary_reasons = []
+    
+    # Medical urgency factors (higher priority)
+    if chosen['severity'] > alt['severity']:
+        primary_reasons.append(f"higher severity (level {chosen['severity']} vs {alt['severity']})")
+    
+    if chosen['deterioration'] > alt['deterioration'] + 0.05:  # Significant difference
+        primary_reasons.append(f"deteriorating faster ({chosen['deterioration']:.2f} vs {alt['deterioration']:.2f} rate)")
+    
+    # Fairness factors (medium priority)
+    wait_diff = chosen['wait_time'] - alt['wait_time']
+    if wait_diff > 2:  # Significant wait time advantage
+        primary_reasons.append(f"much longer wait ({chosen_wait_min}min vs {alt_wait_min}min)")
+    elif wait_diff > 0:
+        primary_reasons.append(f"longer wait ({chosen_wait_min}min vs {alt_wait_min}min)")
+    
+    # Efficiency factors (lower priority, only if close on other factors)
+    if abs(chosen['severity'] - alt['severity']) <= 1 and abs(wait_diff) <= 1:
+        treat_diff = alt['treatment_time'] - chosen['treatment_time'] 
+        if treat_diff > 3:  # Significantly quicker
+            primary_reasons.append(f"much quicker treatment ({chosen_treat_min}min vs {alt_treat_min}min)")
+        elif treat_diff > 0:
+            primary_reasons.append(f"quicker treatment ({chosen_treat_min}min vs {alt_treat_min}min)")
+    
+    # If no clear primary reason, provide detailed factor comparison
+    if not primary_reasons:
+        # Show what the neural network is weighing
+        factors = []
+        
+        # Always show the comparison factors
+        if chosen['severity'] == alt['severity']:
+            factors.append(f"same severity (level {chosen['severity']})")
+        else:
+            factors.append(f"severity edge to Patient {chosen['id']} ({chosen['severity']} vs {alt['severity']})")
+        
+        if abs(chosen['wait_time'] - alt['wait_time']) <= 1:
+            factors.append(f"similar wait times (~{chosen_wait_min}min)")
+        else:
+            longer_wait_id = chosen['id'] if chosen['wait_time'] > alt['wait_time'] else alt['id']
+            factors.append(f"wait time edge to Patient {longer_wait_id}")
+        
+        if abs(chosen['deterioration'] - alt['deterioration']) < 0.05:
+            factors.append(f"similar deterioration rates (~{chosen['deterioration']:.2f})")
+        else:
+            faster_det_id = chosen['id'] if chosen['deterioration'] > alt['deterioration'] else alt['id']
+            factors.append(f"deterioration edge to Patient {faster_det_id}")
+        
+        if abs(chosen['treatment_time'] - alt['treatment_time']) <= 2:
+            factors.append(f"similar treatment times (~{chosen_treat_min}min)")
+        else:
+            quicker_treat_id = chosen['id'] if chosen['treatment_time'] < alt['treatment_time'] else alt['id']
+            factors.append(f"treatment speed edge to Patient {quicker_treat_id}")
+        
+        primary_reasons.append(f"close call: {', '.join(factors)}")
+    
+    # Determine confidence based on score difference and factors
+    confidence = "high" if abs(score_diff) > 0.1 else "moderate" if abs(score_diff) > 0.05 else "low"
+    
+    reason = ", ".join(primary_reasons)
+    return f"Patient {chosen['id']} chosen over Patient {alt['id']}: {reason} (margin: {score_diff:+.3f}, confidence: {confidence})"
+
 class HybridConfidenceTiagePolicy:
     """
     A triage policy function that uses neural network with ESI fallback
@@ -172,8 +252,8 @@ def evaluate_hybrid_policy():
     
     for seed in training_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
-        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/hybrid_training", "Hybrid Training")
-    print("   Training patient arrival logs saved to logs/patient_arrivals/hybrid_training/")
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals", "Hybrid Training")
+    print("   Training patient arrival logs saved to logs/patient_arrivals/")
     
     # Train neural network on multiple seeds for better generalization
     print("Training neural network on expanded seed set...")
@@ -182,8 +262,18 @@ def evaluate_hybrid_policy():
         population_size=80,
         seed=training_seeds[0]  # Use first training seed
     )
-    base_neural_policy = base_optimizer.run()
+    
+    # Generate standalone training log (same format as comprehensive_neural_evaluation.py)
+    training_log_path = "logs/full_training_hybrid_comprehensive.txt"
+    base_neural_policy = base_optimizer.run(training_log_path)
     print("Neural network training complete!")
+    print(f"   Training log saved to: {training_log_path}")
+    
+    # Generate nurse schedule example for documentation 
+    print("\n👥 Generating nurse schedule example...")
+    schedule_sim = ERSimulation(4, 96, 0.3, 9000)  # Use first test seed
+    schedule_sim.print_nurse_schedule("logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
+    print("   Nurse schedule saved to logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
     
     print(f"\nPHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
     print("-" * 55)
@@ -193,8 +283,8 @@ def evaluate_hybrid_policy():
     
     for seed in test_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
-        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/hybrid_testing", "Hybrid Testing")
-    print("   Testing patient arrival logs saved to logs/patient_arrivals/hybrid_testing/")
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals", "Hybrid Testing")
+    print("   Testing patient arrival logs saved to logs/patient_arrivals/")
     
     # Find optimal confidence threshold through testing
     optimal_threshold = 0.0001  # Ultra-low threshold to let neural network make almost all decisions
@@ -373,7 +463,21 @@ def evaluate_hybrid_policy():
                     'patients': [(str(p), score) for p, score in patient_scores],
                     'chosen': str(chosen_patient),
                     'chosen_score': chosen_score,
+                    'chosen_patient_data': {
+                        'id': chosen_patient.id,
+                        'severity': chosen_patient.severity,
+                        'deterioration': chosen_patient.deterioration_chance,
+                        'wait_time': chosen_patient.wait_time,
+                        'treatment_time': chosen_patient.treatment_time
+                    },
                     'alternatives': [(str(p), score) for p, score in alternatives],
+                    'alt_patient_data': [{
+                        'id': p.id,
+                        'severity': p.severity,
+                        'deterioration': p.deterioration_chance,
+                        'wait_time': p.wait_time,
+                        'treatment_time': p.treatment_time
+                    } for p, score in alternatives],
                     'sim_state': sim_state.copy(),
                     'method': decision_method,
                     'margin': margin,
@@ -444,10 +548,8 @@ def evaluate_hybrid_policy():
             print(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
             print(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)")
             print(f"   Decisions explained: {result['total_decisions']}")
-            print(f"   ESI average wait: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} minutes)")
-            print(f"   ESI weighted wait: {esi_result['avg_weighted_wait']:.2f} timesteps ({esi_result['avg_weighted_wait']*15:.0f} minutes)")
-            print(f"   MTS average wait: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} minutes)")
-            print(f"   MTS weighted wait: {mts_result['avg_weighted_wait']:.2f} timesteps ({mts_result['avg_weighted_wait']*15:.0f} minutes)")
+            print(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} min), weighted: {esi_result['avg_weighted_wait']:.2f} ({esi_result['avg_weighted_wait']*15:.0f} min)")
+            print(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} min), weighted: {mts_result['avg_weighted_wait']:.2f} ({mts_result['avg_weighted_wait']*15:.0f} min)")
             
             # Show severity-specific comparison
             print(f"\n   SEVERITY-SPECIFIC WAIT TIMES (minutes):")
@@ -542,10 +644,14 @@ def evaluate_hybrid_policy():
                 print(f"   -> Hybrid beats MTS by {improvement:.1f}% (weighted wait)")
             
             print(f"\nBASELINE PERFORMANCE DETAILS:")
-            print(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)")
-            print(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)")
-            print(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)")
-            print(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)")
+            # Calculate average patient counts for baselines
+            esi_completed = statistics.mean([r['completed'] for r in esi_valid])
+            esi_waiting = statistics.mean([r['still_waiting'] for r in esi_valid])
+            mts_completed = statistics.mean([r['completed'] for r in mts_valid])
+            mts_waiting = statistics.mean([r['still_waiting'] for r in mts_valid])
+            
+            print(f"   ESI treated: {esi_completed:.1f}, waiting: {esi_waiting:.1f} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_avg_weighted:.2f} ({esi_avg_weighted*15:.0f} min)")
+            print(f"   MTS treated: {mts_completed:.1f}, waiting: {mts_waiting:.1f} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_avg_weighted:.2f} ({mts_avg_weighted*15:.0f} min)")
             
             # Calculate and display severity-specific aggregate statistics
             print(f"\nSEVERITY-SPECIFIC AGGREGATE ANALYSIS (All Seeds):")
@@ -619,10 +725,8 @@ def evaluate_hybrid_policy():
                         f.write(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)\n")
                         f.write(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)\n")
                         f.write(f"   Decisions explained: {result['total_decisions']}\n")
-                        f.write(f"   ESI average wait: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} minutes)\n")
-                        f.write(f"   ESI weighted wait: {esi_result['avg_weighted_wait']:.2f} timesteps ({esi_result['avg_weighted_wait']*15:.0f} minutes)\n")
-                        f.write(f"   MTS average wait: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} minutes)\n")
-                        f.write(f"   MTS weighted wait: {mts_result['avg_weighted_wait']:.2f} timesteps ({mts_result['avg_weighted_wait']*15:.0f} minutes)\n")
+                        f.write(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} min), weighted: {esi_result['avg_weighted_wait']:.2f} ({esi_result['avg_weighted_wait']*15:.0f} min)\n")
+                        f.write(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} min), weighted: {mts_result['avg_weighted_wait']:.2f} ({mts_result['avg_weighted_wait']*15:.0f} min)\n")
                         
                         # Write all decision explanations
                         if result['total_decisions'] > 0:
@@ -630,7 +734,7 @@ def evaluate_hybrid_policy():
                             
                             decision_count = 0
                             for decision in result['explanations']:
-                                if 'alternatives' in decision and decision['alternatives']:
+                                if 'alternatives' in decision and decision['alternatives'] and 'chosen_patient_data' in decision and 'alt_patient_data' in decision:
                                     chosen_score = decision['chosen_score']
                                     alt_patient, alt_score = decision['alternatives'][0]
                                     
@@ -640,9 +744,17 @@ def evaluate_hybrid_policy():
                                     minutes = timestep_minutes % 60
                                     time_str = f"{hours:02d}:{minutes:02d}"
                                     
-                                    margin = chosen_score - alt_score
-                                    confidence = "high" if margin > 0.1 else "moderate" if margin > 0.05 else "low"
-                                    f.write(f"     {decision_count}. t={time_str}: {decision['chosen']} chosen over {alt_patient}: hybrid score {chosen_score:.3f} vs {alt_score:.3f} (margin: {margin:+.3f}, confidence: {confidence})\n")
+                                    # Use detailed explanation formatting
+                                    if decision['alt_patient_data']:
+                                        chosen_data = decision['chosen_patient_data']
+                                        alt_data = decision['alt_patient_data'][0]  # First alternative
+                                        explanation = format_decision_explanation(chosen_data, alt_data, chosen_score, alt_score)
+                                        f.write(f"     {decision_count}. t={time_str}: {explanation}\n")
+                                    else:
+                                        # Fallback to old format if data is missing
+                                        margin = chosen_score - alt_score
+                                        confidence = "high" if margin > 0.1 else "moderate" if margin > 0.05 else "low"
+                                        f.write(f"     {decision_count}. t={time_str}: {decision['chosen']} chosen over {alt_patient}: hybrid score {chosen_score:.3f} vs {alt_score:.3f} (margin: {margin:+.3f}, confidence: {confidence})\n")
                     f.write("\n")
                 
                 f.write(f"AGGREGATE STATISTICS:\n")
@@ -655,11 +767,9 @@ def evaluate_hybrid_policy():
                 f.write(f"   ESI Baseline: {esi_avg_weighted_hours:.2f} hours weighted ({esi_avg_wait_hours:.2f} hours avg)\n")
                 f.write(f"   MTS Baseline: {mts_avg_weighted_hours:.2f} hours weighted ({mts_avg_wait_hours:.2f} hours avg)\n")
                 
-                f.write(f"\nBASELINE PERFORMANCE DETAILS:\n")
-                f.write(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)\n")
-                f.write(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)\n")
-                f.write(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)\n")
-                f.write(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)\n")
+                f.write(f"BASELINE PERFORMANCE DETAILS:\n")
+                f.write(f"   ESI treated: {esi_completed:.1f}, waiting: {esi_waiting:.1f} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_avg_weighted:.2f} ({esi_avg_weighted*15:.0f} min)\n")
+                f.write(f"   MTS treated: {mts_completed:.1f}, waiting: {mts_waiting:.1f} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_avg_weighted:.2f} ({mts_avg_weighted*15:.0f} min)\n")
                 
                 if hybrid_avg_weighted < esi_avg_weighted:
                     improvement = ((esi_avg_weighted - hybrid_avg_weighted) / esi_avg_weighted) * 100
@@ -670,7 +780,7 @@ def evaluate_hybrid_policy():
             
             print(f"\n💾 SAVING DETAILED RESULTS...")
             print(f"   Results saved to: logs/analysis_logs/comprehensive_hybrid_evaluation.txt")
-            print(f"   Patient arrivals saved to: logs/patient_arrivals/hybrid_testing/")
+            print(f"   Patient arrivals saved to: logs/patient_arrivals/")
             
             print(f"\n🎉 COMPREHENSIVE HYBRID EVALUATION COMPLETE!")
             print("=" * 65)
@@ -693,5 +803,5 @@ if __name__ == "__main__":
     
     print(f"\nCOMPREHENSIVE HYBRID EVALUATION COMPLETE!")
     print("Results saved to logs/analysis_logs/comprehensive_hybrid_evaluation.txt")
-    print("Patient arrivals logged in logs/patient_arrivals/hybrid_testing/")
+    print("Patient arrivals logged in logs/patient_arrivals/")
     print("All decision explanations captured and analyzed.")
