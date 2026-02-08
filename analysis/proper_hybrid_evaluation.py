@@ -8,11 +8,15 @@ import sys
 import os
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+import statistics
+from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from optimizers.neural_optimizer import FairNeuralEvolutionOptimizer
 from classes import ERSimulation
+from enhanced_evaluation import generate_arrivals, log_patient_arrivals
 import statistics
 
 def format_decision_explanation(chosen, alt, chosen_score, alt_score):
@@ -244,7 +248,7 @@ def evaluate_hybrid_policy():
     print(f"Training on {len(training_seeds)} seeds: {training_seeds[0]}-{training_seeds[-1]}")
     
     # Log training seed arrivals for full documentation
-    print("📋 Logging patient arrivals for training seeds...")
+    print("Logging patient arrivals for training seeds...")
     
     # Import from enhanced_evaluation for compatibility
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -270,7 +274,7 @@ def evaluate_hybrid_policy():
     print(f"   Training log saved to: {training_log_path}")
     
     # Generate nurse schedule example for documentation 
-    print("\n👥 Generating nurse schedule example...")
+    print("\nGenerating nurse schedule example...")
     schedule_sim = ERSimulation(4, 96, 0.3, 9000)  # Use first test seed
     schedule_sim.print_nurse_schedule("logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
     print("   Nurse schedule saved to logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
@@ -279,7 +283,7 @@ def evaluate_hybrid_policy():
     print("-" * 55)
     
     # Generate and log patient arrivals for all test seeds
-    print("\n📋 Logging patient arrivals for test seeds...")
+    print("\nLogging patient arrivals for test seeds...")
     
     for seed in test_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
@@ -309,6 +313,8 @@ def evaluate_hybrid_policy():
                 super().__init__(*args, **kwargs)
                 self.explanation_log = []
                 self.decision_count = 0
+                self.esi_fallback_count = 0  # Track ESI fallbacks
+                self.neural_decision_count = 0  # Track neural decisions
                 
             def step(self):
                 """Enhanced step with decision explanations"""
@@ -431,14 +437,18 @@ def evaluate_hybrid_policy():
                         esi_scores.sort(key=lambda x: x[1], reverse=True)
                         patient_scores = esi_scores
                         decision_method = "ESI_fallback"
+                        self.esi_fallback_count += 1  # Count ESI fallback
                     else:
                         # Use neural network decision
                         patient_scores = neural_scores
                         decision_method = "neural"
+                        self.neural_decision_count += 1  # Count neural decision
                 else:
                     # Single patient or empty, use neural
                     patient_scores = neural_scores
                     decision_method = "neural"
+                    if len(self.waiting_patients) > 0:  # Only count if there's actually a decision
+                        self.neural_decision_count += 1
                 
                 # Log this decision for explanation
                 self.decision_count += 1
@@ -496,6 +506,9 @@ def evaluate_hybrid_policy():
                         self.waiting_patients.remove(patient)
                         assignments += 1
         
+        # Generate arrivals for this seed (identical to neural evaluation)
+        arrivals = generate_arrivals(96, 0.3, test_seed)
+        
         # Run hybrid simulation
         sim = HybridExplainableSimulation(
             num_nurses=4,  # Same as comprehensive_neural_evaluation
@@ -506,36 +519,48 @@ def evaluate_hybrid_policy():
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals for fair comparison
+        sim.patient_arrivals = arrivals.copy()
         
         result = sim.run()
         result['seed'] = test_seed
         result['explanations'] = sim.explanation_log
         result['total_decisions'] = sim.decision_count
+        result['esi_fallback_count'] = sim.esi_fallback_count
+        result['neural_decision_count'] = sim.neural_decision_count
         all_results.append(result)
         
-        # Run baseline comparisons
+        # Run baseline comparisons with IDENTICAL arrivals
+        # Import proper ESI policy  
+        from triage_policies import esi_policy
         esi_sim = ERSimulation(
             num_nurses=4,
             total_time=96,
             arrival_prob=0.3,
-            triage_policy={'severity': 1.0, 'deterioration': 0.0, 'wait_time': 0.0},
+            triage_policy=esi_policy,
             verbose=False,
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals
+        esi_sim.patient_arrivals = arrivals.copy()
         esi_result = esi_sim.run()
         esi_result['seed'] = test_seed
         all_esi_results.append(esi_result)
         
+        # Import proper MTS policy
+        from triage_policies import mts_policy
         mts_sim = ERSimulation(
             num_nurses=4,
             total_time=96,
             arrival_prob=0.3,
-            triage_policy={'severity': 0.0, 'deterioration': 0.0, 'wait_time': 1.0},
+            triage_policy=mts_policy,
             verbose=False,
             seed=test_seed,
             use_shifts=True
         )
+        # Use identical arrivals
+        mts_sim.patient_arrivals = arrivals.copy()
         mts_result = mts_sim.run()
         mts_result['seed'] = test_seed
         all_mts_results.append(mts_result)
@@ -548,6 +573,8 @@ def evaluate_hybrid_policy():
             print(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
             print(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)")
             print(f"   Decisions explained: {result['total_decisions']}")
+            print(f"   Neural decisions: {result['neural_decision_count']} ({result['neural_decision_count']/result['total_decisions']*100:.1f}%)")
+            print(f"   ESI fallbacks: {result['esi_fallback_count']} ({result['esi_fallback_count']/result['total_decisions']*100:.1f}%)")
             print(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} min), weighted: {esi_result['avg_weighted_wait']:.2f} ({esi_result['avg_weighted_wait']*15:.0f} min)")
             print(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} min), weighted: {mts_result['avg_weighted_wait']:.2f} ({mts_result['avg_weighted_wait']*15:.0f} min)")
             
@@ -594,8 +621,8 @@ def evaluate_hybrid_policy():
                     method = decision.get('method', 'hybrid')
                     method_display = f" [{method}]" if method == 'ESI_fallback' else ""
                     print(f"     {decision_count}. t={time_str}: {decision['chosen']} chosen over {alt_patient}: score {chosen_score:.3f} vs {alt_score:.3f} (margin: {margin:+.3f}, confidence: {confidence}){method_display}")    # Calculate aggregate statistics (same as comprehensive evaluation)
-    print(f"\n🔍 PHASE 3: AGGREGATE ANALYSIS ACROSS ALL SEEDS")
-    print("─" * 60)
+    print(f"\nPHASE 3: AGGREGATE ANALYSIS ACROSS ALL SEEDS")
+    print("-" * 60)
     
     completed_counts = [r['completed'] for r in all_results]
     valid_results = [r for r in all_results if r['avg_wait'] is not None]
@@ -604,11 +631,20 @@ def evaluate_hybrid_policy():
         avg_waits = [r['avg_wait'] for r in valid_results]
         weighted_waits = [r['avg_weighted_wait'] for r in valid_results]
         total_decisions = [r['total_decisions'] for r in all_results]
+        neural_decisions = [r['neural_decision_count'] for r in all_results]
+        esi_fallbacks = [r['esi_fallback_count'] for r in all_results]
+        
+        total_neural = sum(neural_decisions)
+        total_esi = sum(esi_fallbacks)
+        total_all_decisions = sum(total_decisions)
         
         print(f"\nAGGREGATE STATISTICS:")
         print(f"   Mean patients treated: {statistics.mean(completed_counts):.1f} +/- {statistics.stdev(completed_counts):.1f}")
         print(f"   Mean weighted wait: {statistics.mean(weighted_waits):.2f} +/- {statistics.stdev(weighted_waits):.2f} timesteps ({statistics.mean(weighted_waits)*15:.0f} minutes)")
         print(f"   Total decisions explained: {statistics.mean(total_decisions):.1f}")
+        print(f"   DECISION BREAKDOWN:")
+        print(f"     Neural decisions: {total_neural}/{total_all_decisions} ({total_neural/total_all_decisions*100:.1f}%)")
+        print(f"     ESI fallbacks: {total_esi}/{total_all_decisions} ({total_esi/total_all_decisions*100:.1f}%)")
         
         # Calculate baseline comparisons
         esi_valid = [r for r in all_esi_results if r['avg_wait'] is not None]
@@ -637,11 +673,13 @@ def evaluate_hybrid_policy():
             print(f"   MTS Baseline: {mts_avg_weighted_hours:.2f} hours weighted ({mts_avg_wait_hours:.2f} hours avg)")
             
             if hybrid_avg_weighted < esi_avg_weighted:
-                improvement = ((esi_avg_weighted - hybrid_avg_weighted) / esi_avg_weighted) * 100
-                print(f"   -> Hybrid beats ESI by {improvement:.1f}% (weighted wait)")
+                weighted_improvement = ((esi_avg_weighted - hybrid_avg_weighted) / esi_avg_weighted) * 100
+                avg_improvement = ((esi_avg_wait - hybrid_avg_wait) / esi_avg_wait) * 100
+                print(f"   -> Hybrid beats ESI by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)")
             if hybrid_avg_weighted < mts_avg_weighted:
-                improvement = ((mts_avg_weighted - hybrid_avg_weighted) / mts_avg_weighted) * 100
-                print(f"   -> Hybrid beats MTS by {improvement:.1f}% (weighted wait)")
+                weighted_improvement = ((mts_avg_weighted - hybrid_avg_weighted) / mts_avg_weighted) * 100
+                avg_improvement = ((mts_avg_wait - hybrid_avg_wait) / mts_avg_wait) * 100
+                print(f"   -> Hybrid beats MTS by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)")
             
             print(f"\nBASELINE PERFORMANCE DETAILS:")
             # Calculate average patient counts for baselines
@@ -725,6 +763,8 @@ def evaluate_hybrid_policy():
                         f.write(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)\n")
                         f.write(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)\n")
                         f.write(f"   Decisions explained: {result['total_decisions']}\n")
+                        f.write(f"   Neural decisions: {result['neural_decision_count']} ({result['neural_decision_count']/result['total_decisions']*100:.1f}%)\n")
+                        f.write(f"   ESI fallbacks: {result['esi_fallback_count']} ({result['esi_fallback_count']/result['total_decisions']*100:.1f}%)\n")
                         f.write(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} min), weighted: {esi_result['avg_weighted_wait']:.2f} ({esi_result['avg_weighted_wait']*15:.0f} min)\n")
                         f.write(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} min), weighted: {mts_result['avg_weighted_wait']:.2f} ({mts_result['avg_weighted_wait']*15:.0f} min)\n")
                         
@@ -760,7 +800,10 @@ def evaluate_hybrid_policy():
                 f.write(f"AGGREGATE STATISTICS:\n")
                 f.write(f"   Mean patients treated: {statistics.mean(completed_counts):.1f} +/- {statistics.stdev(completed_counts):.1f}\n")
                 f.write(f"   Mean weighted wait: {statistics.mean(weighted_waits):.2f} +/- {statistics.stdev(weighted_waits):.2f} hours\n")
-                f.write(f"   Total decisions explained: {sum(total_decisions)}\n\n")
+                f.write(f"   Total decisions explained: {sum(total_decisions)}\n")
+                f.write(f"   DECISION BREAKDOWN:\n")
+                f.write(f"     Neural decisions: {total_neural}/{total_all_decisions} ({total_neural/total_all_decisions*100:.1f}%)\n")
+                f.write(f"     ESI fallbacks: {total_esi}/{total_all_decisions} ({total_esi/total_all_decisions*100:.1f}%)\n\n")
                 
                 f.write(f"BASELINE COMPARISON:\n")
                 f.write(f"   Hybrid Policy: {hybrid_avg_weighted_hours:.2f} hours weighted ({hybrid_avg_wait_hours:.2f} hours avg)\n")
@@ -772,18 +815,117 @@ def evaluate_hybrid_policy():
                 f.write(f"   MTS treated: {mts_completed:.1f}, waiting: {mts_waiting:.1f} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_avg_weighted:.2f} ({mts_avg_weighted*15:.0f} min)\n")
                 
                 if hybrid_avg_weighted < esi_avg_weighted:
-                    improvement = ((esi_avg_weighted - hybrid_avg_weighted) / esi_avg_weighted) * 100
-                    f.write(f"   -> Hybrid beats ESI by {improvement:.1f}% (weighted wait)\n")
+                    weighted_improvement = ((esi_avg_weighted - hybrid_avg_weighted) / esi_avg_weighted) * 100
+                    avg_improvement = ((esi_avg_wait - hybrid_avg_wait) / esi_avg_wait) * 100
+                    f.write(f"   -> Hybrid beats ESI by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)\n")
                 if hybrid_avg_weighted < mts_avg_weighted:
-                    improvement = ((mts_avg_weighted - hybrid_avg_weighted) / mts_avg_weighted) * 100
-                    f.write(f"   -> Hybrid beats MTS by {improvement:.1f}% (weighted wait)\n")
+                    weighted_improvement = ((mts_avg_weighted - hybrid_avg_weighted) / mts_avg_weighted) * 100
+                    avg_improvement = ((mts_avg_wait - hybrid_avg_wait) / mts_avg_wait) * 100
+                    f.write(f"   -> Hybrid beats MTS by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)\n")
             
-            print(f"\n💾 SAVING DETAILED RESULTS...")
+            print(f"\nSAVING DETAILED RESULTS...")
             print(f"   Results saved to: logs/analysis_logs/comprehensive_hybrid_evaluation.txt")
             print(f"   Patient arrivals saved to: logs/patient_arrivals/")
             
-            print(f"\n🎉 COMPREHENSIVE HYBRID EVALUATION COMPLETE!")
+            # Generate comprehensive visualizations in organized subdirectories
+            print("\nGENERATING HYBRID EVALUATION VISUALIZATIONS...")
+            
+            # Create output directory
+            output_dir = "report_visualizations/hybrid_evaluation"
+            os.makedirs(output_dir, exist_ok=True)
+            print(f"   Using output directory: {output_dir}")
+            
+            # Chart 1: Performance Comparison with both weighted and average wait times
+            plt.figure(figsize=(12, 6))
+            policies = ['Hybrid', 'ESI', 'MTS']
+            weighted_times = [hybrid_avg_weighted_hours, esi_avg_weighted_hours, mts_avg_weighted_hours]
+            average_times = [hybrid_avg_wait_hours, esi_avg_wait_hours, mts_avg_wait_hours]
+            
+            x = np.arange(len(policies))
+            width = 0.35
+            
+            bars1 = plt.bar(x - width/2, weighted_times, width, label='Weighted Wait Time',
+                           color=['#1F618D', '#C0392B', '#D68910'], alpha=0.8)
+            bars2 = plt.bar(x + width/2, average_times, width, label='Average Wait Time',
+                           color=['#2E86C1', '#E74C3C', '#F39C12'], alpha=0.8)
+            
+            plt.title('Performance Comparison (Lower is Better)', fontsize=16, fontweight='bold')
+            plt.xlabel('Triage Policy', fontsize=12, fontweight='bold')
+            plt.ylabel('Wait Time (Hours)', fontsize=12, fontweight='bold')
+            plt.legend(fontsize=11)
+            plt.grid(axis='y', alpha=0.3)
+            
+            # Add value labels
+            for bar in bars1:
+                height = bar.get_height()
+                plt.annotate(f'{height:.2f}h', xy=(bar.get_x() + bar.get_width()/2, height),
+                            xytext=(0, 3), textcoords="offset points", ha='center', va='bottom',
+                            fontweight='bold', fontsize=10)
+            for bar in bars2:
+                height = bar.get_height()
+                plt.annotate(f'{height:.2f}h', xy=(bar.get_x() + bar.get_width()/2, height),
+                            xytext=(0, 3), textcoords="offset points", ha='center', va='bottom',
+                            fontweight='bold', fontsize=10)
+            
+            plt.tight_layout()
+            chart1_path = f"{output_dir}/1_performance_comparison.png"
+            plt.savefig(chart1_path, dpi=300, bbox_inches='tight')
+            plt.close()
+            print(f"   Performance comparison saved: {chart1_path}")
+            
+            # Chart 2: Decision breakdown pie chart
+            plt.figure(figsize=(8, 8))
+            neural_pct = (total_neural / total_all_decisions) * 100
+            esi_pct = (total_esi / total_all_decisions) * 100
+            plt.pie([neural_pct, esi_pct], labels=['Neural Network', 'ESI Fallback'], 
+                   colors=['#27AE60', '#E67E22'], autopct='%1.1f%%', startangle=90)
+            plt.title(f'Decision Method Distribution ({total_all_decisions} total decisions)', 
+                     fontsize=16, fontweight='bold')
+            plt.tight_layout()
+            chart2_path = f"{output_dir}/2_decision_breakdown.png"
+            plt.savefig(chart2_path, dpi=300, bbox_inches='tight')
+            plt.close()
+            print(f"   Decision breakdown saved: {chart2_path}")
+            
+            # Chart 3: Patient treatment distribution
+            plt.figure(figsize=(10, 6))
+            patients_treated = completed_counts
+            plt.hist(patients_treated, bins=15, color='#8E44AD', alpha=0.7, edgecolor='black')
+            plt.title('Patient Treatment Distribution (Across 100 Seeds)', fontsize=16, fontweight='bold')
+            plt.xlabel('Patients Treated per Seed')
+            plt.ylabel('Frequency')
+            plt.axvline(statistics.mean(patients_treated), color='red', linestyle='--', 
+                       label=f'Mean: {statistics.mean(patients_treated):.1f}')
+            plt.legend()
+            plt.grid(alpha=0.3)
+            plt.tight_layout()
+            chart3_path = f"{output_dir}/3_patient_treatment.png"
+            plt.savefig(chart3_path, dpi=300, bbox_inches='tight')
+            plt.close()
+            print(f"   Patient treatment saved: {chart3_path}")
+            
+            # Chart 4: Wait time distribution
+            plt.figure(figsize=(10, 6))
+            wait_times_all = weighted_waits
+            plt.hist(wait_times_all, bins=15, color='#16A085', alpha=0.7, edgecolor='black')
+            plt.title('Wait Time Distribution (Across 100 Seeds)', fontsize=16, fontweight='bold')
+            plt.xlabel('Weighted Wait Time (Timesteps)')
+            plt.ylabel('Frequency')
+            plt.axvline(statistics.mean(wait_times_all), color='red', linestyle='--', 
+                       label=f'Mean: {statistics.mean(wait_times_all):.1f}')
+            plt.legend()
+            plt.grid(alpha=0.3)
+            plt.tight_layout()
+            chart4_path = f"{output_dir}/4_wait_time_distribution.png"
+            plt.savefig(chart4_path, dpi=300, bbox_inches='tight')
+            plt.close()
+            print(f"   Wait time distribution saved: {chart4_path}")
+            
+            print(f"\nAll charts generated successfully in: {output_dir}/")
+            
+            print(f"\nCOMPREHENSIVE HYBRID EVALUATION COMPLETE!")
             print("=" * 65)
+            print("All decision explanations captured and analyzed.")
             
             return {
                 'hybrid_weighted_wait': hybrid_avg_weighted_hours,

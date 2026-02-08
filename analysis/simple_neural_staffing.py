@@ -6,6 +6,8 @@ Runs comprehensive_neural_evaluation.py with different nurse counts to test staf
 
 import subprocess
 import sys
+import matplotlib.pyplot as plt
+import numpy as np
 from pathlib import Path
 
 def run_neural_with_nurses(nurse_count, scenario_name):
@@ -79,6 +81,12 @@ def run_neural_with_nurses(nurse_count, scenario_name):
         f'"logs/neural_train_{scenario_name.lower()}.txt"'
     )
     
+    # Update chart output directory to be unique for this scenario
+    modified_content = modified_content.replace(
+        '"report_visualizations/neural_evaluation"',
+        f'"report_visualizations/neural_evaluation_{nurse_count}nurses"'
+    )
+    
     # Write to temporary file
     temp_script = Path(__file__).parent / f"temp_neural_{nurse_count}nurses.py"
     with open(temp_script, 'w') as f:
@@ -91,7 +99,7 @@ def run_neural_with_nurses(nurse_count, scenario_name):
         ], cwd=Path(__file__).parent.parent)
         
         if result.returncode == 0:
-            print(f"✅ {scenario_name} completed successfully!")
+            print(f"{scenario_name} completed successfully!")
         else:
             print(f"❌ {scenario_name} failed with return code {result.returncode}")
             
@@ -136,10 +144,81 @@ def main():
     
     print("\nGenerated analysis logs:")
     logs_dir = Path(__file__).parent.parent / "logs" / "analysis_logs"
+    generated_logs = []
     for nurse_count, scenario_name in scenarios:
         log_file = logs_dir / f"neural_staffing_{scenario_name.lower()}_{nurse_count}nurses.txt"
         if log_file.exists():
             print(f"  {log_file}")
+            generated_logs.append(str(log_file))
+    
+    # Generate staffing comparison visualization
+    print("\nGENERATING NEURAL STAFFING VISUALIZATION...")
+    
+    # Parse results from log files
+    staffing_data = []
+    scenario_names = ['Understaffed (2)', 'Standard (3)', 'Original (4)', 'Well Staffed (5)', 'Extra Staffed (6)']
+    
+    for i, log_file in enumerate(generated_logs):
+        try:
+            with open(log_file, 'r') as f:
+                content = f.read()
+                # Extract weighted wait time from aggregate statistics
+                lines = content.split('\n')
+                for line in lines:
+                    if 'Neural Policy:' in line and 'hours weighted' in line:
+                        try:
+                            # Extract hours from "Neural Policy: X.XX hours weighted"
+                            hours_str = line.split('hours weighted')[0].split(':')[-1].strip()
+                            hours = float(hours_str)
+                            staffing_data.append({'scenario': scenario_names[i], 'nurses': scenarios[i][0], 'wait_time': hours})
+                            break
+                        except:
+                            pass
+        except:
+            pass
+    
+    if staffing_data:
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+        
+        # 1. Wait time by staffing level
+        nurses = [d['nurses'] for d in staffing_data]
+        wait_times = [d['wait_time'] for d in staffing_data]
+        colors = plt.cm.viridis(np.linspace(0, 1, len(nurses)))
+        
+        bars = ax1.bar(nurses, wait_times, color=colors, alpha=0.8, edgecolor='black')
+        ax1.set_title('Neural Network Performance\nby Staffing Level', fontsize=14, fontweight='bold')
+        ax1.set_xlabel('Number of Nurses')
+        ax1.set_ylabel('Weighted Wait Time (Hours)')
+        ax1.grid(axis='y', alpha=0.3)
+        ax1.set_xticks(nurses)
+        
+        for bar, time in zip(bars, wait_times):
+            ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.05, 
+                    f'{time:.1f}h', ha='center', fontweight='bold')
+        
+        # 2. Efficiency improvement
+        if len(wait_times) > 1:
+            efficiency = [(wait_times[0] - wt) / wait_times[0] * 100 for wt in wait_times]
+            ax2.plot(nurses, efficiency, 'o-', linewidth=3, markersize=8, color='#E74C3C')
+            ax2.set_title('Staffing Efficiency\n(% Improvement from 2 Nurses)', fontsize=14, fontweight='bold')
+            ax2.set_xlabel('Number of Nurses')
+            ax2.set_ylabel('Wait Time Reduction (%)')
+            ax2.grid(alpha=0.3)
+            ax2.set_xticks(nurses)
+            
+            for i, (x, y) in enumerate(zip(nurses, efficiency)):
+                ax2.text(x, y + 2, f'{y:.1f}%', ha='center', fontweight='bold')
+        
+        plt.tight_layout()
+        chart_file = 'report_visualizations/neural_staffing_charts.png'
+        import os
+        os.makedirs('report_visualizations', exist_ok=True)
+        plt.savefig(chart_file, dpi=300, bbox_inches='tight')
+        print(f"Visualization saved to: {chart_file}")
+        plt.close()
+    else:
+        print("Individual charts generated for each staffing scenario!")
+        print("   Check report_visualizations/ subdirectories for detailed charts by nurse count.")
 
 if __name__ == "__main__":
     main()
