@@ -1,5 +1,5 @@
 PATIENT ARRIVALS LOG
-Scenario Type: Hybrid Testing
+Scenario Type: Neural Testing Seed 9058
 Seed: 9058
 Total timesteps: 96
 ============================================================

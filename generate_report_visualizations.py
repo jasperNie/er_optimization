@@ -48,8 +48,8 @@ def performance_comparison_bar_chart(output_dir):
         ax.text(bar.get_x() + bar.get_width()/2., height + 0.5,
                 f'{value:.1f}h', ha='center', va='bottom', fontweight='bold', fontsize=11)
     
-    # Add improvement percentages
-    improvements = ['67.4% better\nthan ESI', '35.4% better\nthan ESI', 'Baseline', 'Baseline']
+    # Add improvement percentages (calculated: (ESI - system) / ESI * 100)
+    improvements = ['67.5% better\nthan ESI', '68.2% better\nthan ESI', 'Baseline', 'Baseline']
     for i, (bar, improvement) in enumerate(zip(bars, improvements)):
         if i < 2:  # Only for Neural and Hybrid
             ax.text(bar.get_x() + bar.get_width()/2., bar.get_height()/2,
@@ -88,11 +88,12 @@ def patient_flow_simulation_chart(output_dir):
     # Cumulative arrivals
     cumulative_arrivals = np.cumsum(arrival_rate)
     
-    # Simulate different triage system processing
-    neural_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.95)
-    hybrid_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.93)
-    esi_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.75)
-    mts_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.68)
+    # Simulate different triage system processing (based on wait time performance)
+    # Neural/Hybrid ~3x better than ESI, ~4.5x better than MTS
+    neural_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.97)
+    hybrid_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.98)
+    esi_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.67)
+    mts_processed = np.minimum(cumulative_arrivals, cumulative_arrivals * 0.52)
     
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10))
     
@@ -177,14 +178,14 @@ def seed_9001_wait_times_chart(output_dir):
     # Seed 9001 specific data with all 5 severities
     np.random.seed(9001)
     
-    severities = ['Severity 1\n(Critical)', 'Severity 2\n(Urgent)', 'Severity 3\n(Less Urgent)', 
-                 'Severity 4\n(Standard)', 'Severity 5\n(Non-urgent)']
+    severities = ['Severity 1\n(Non-urgent)', 'Severity 2\n(Standard)', 'Severity 3\n(Less Urgent)', 
+                 'Severity 4\n(Urgent)', 'Severity 5\n(Critical)']
     
-    # Realistic wait times based on our evaluation patterns
-    neural_waits = [1.8, 7.2, 15.4, 28.7, 42.1]
-    hybrid_waits = [2.1, 7.8, 14.9, 26.3, 39.8]
-    esi_waits = [6.8, 22.1, 38.4, 58.7, 78.2]
-    mts_waits = [9.4, 28.7, 45.1, 68.3, 89.6]
+    # Realistic wait times based on our evaluation patterns (5=most urgent, 1=least urgent)
+    neural_waits = [42.1, 28.7, 15.4, 7.2, 1.8]
+    hybrid_waits = [39.8, 26.3, 14.9, 7.8, 2.1]
+    esi_waits = [78.2, 58.7, 38.4, 22.1, 6.8]
+    mts_waits = [89.6, 68.3, 45.1, 28.7, 9.4]
     
     x = np.arange(len(severities))
     width = 0.2
@@ -323,12 +324,13 @@ def hybrid_decision_breakdown_chart(output_dir):
     """Show how Hybrid System makes decisions: Neural vs ESI fallback"""
     fig, ax = plt.subplots(figsize=(10, 8))
     
-    # Hybrid system decision source data
-    total_hybrid_decisions = 2600
-    neural_confident_decisions = int(total_hybrid_decisions * 0.65)  # ~65% use neural
-    esi_fallback_decisions = total_hybrid_decisions - neural_confident_decisions  # ~35% use ESI
+    # NOTE: This is conceptual - actual decision method tracking not implemented in current logs
+    # Based on code analysis: ultra-low confidence threshold (0.0001) means almost all decisions are neural
+    total_hybrid_decisions = 2597
+    neural_confident_decisions = int(total_hybrid_decisions * 0.98)  # ~98% use neural (ultra-low threshold)
+    esi_fallback_decisions = total_hybrid_decisions - neural_confident_decisions  # ~2% use ESI fallback for safety
     
-    hybrid_sources = ['Neural Network\nComponent', 'ESI Fallback\nComponent']
+    hybrid_sources = ['Neural Network\nComponent', 'ESI Fallback\nComponent\n(Safety Override)']
     hybrid_counts = [neural_confident_decisions, esi_fallback_decisions]
     hybrid_percentages = [neural_confident_decisions/total_hybrid_decisions*100, 
                          esi_fallback_decisions/total_hybrid_decisions*100]
@@ -357,10 +359,13 @@ def hybrid_decision_breakdown_chart(output_dir):
     
     # Add explanation box
     explanation_text = ("Hybrid System Decision Logic:\n\n"
-                       "• High ML Confidence → Use Neural Network\n"
-                       "• Low ML Confidence → Fall back to ESI\n\n"
-                       "This ensures clinical safety while leveraging\n"
-                       "machine learning when predictions are reliable.")
+                       "• Ultra-low confidence threshold (0.0001)\n"
+                       "• Neural network makes ~98% of decisions\n"
+                       "• ESI fallback only for safety overrides\n"
+                       "• Clinical validation prevents dangerous choices\n\n"
+                       "NOTE: Percentages are conceptual based on\n"
+                       "code analysis - actual method tracking not\n"
+                       "implemented in current evaluation logs.")
     
     ax.text(0.98, 0.98, explanation_text, transform=ax.transAxes,
             verticalalignment='top', horizontalalignment='right',

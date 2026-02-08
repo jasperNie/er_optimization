@@ -1,5 +1,5 @@
 PATIENT ARRIVALS LOG
-Scenario Type: Hybrid Training
+Scenario Type: Neural Training
 Seed: 8012
 Total timesteps: 96
 ============================================================

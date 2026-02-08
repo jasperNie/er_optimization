@@ -459,9 +459,9 @@ def full_training_multi_seed_explanation():
     mts_avg_weighted_hours = mts_avg_weighted * 15 / 60
     mts_avg_wait_hours = mts_avg_wait * 15 / 60
     
-   Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)\n"
-    print(f"   ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)\n")
-    print(f"   MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)\n")
+    print(f"   Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
     
     print(f"\nBASELINE PERFORMANCE DETAILS:")
     # Calculate average patient counts for baselines
