@@ -210,11 +210,7 @@ def main():
                 ax2.text(x, y + 2, f'{y:.1f}%', ha='center', fontweight='bold')
         
         plt.tight_layout()
-        chart_file = 'report_visualizations/neural_staffing_charts.png'
-        import os
-        os.makedirs('report_visualizations', exist_ok=True)
-        plt.savefig(chart_file, dpi=300, bbox_inches='tight')
-        print(f"Visualization saved to: {chart_file}")
+        # Chart generation removed
         plt.close()
     else:
         print("Individual charts generated for each staffing scenario!")

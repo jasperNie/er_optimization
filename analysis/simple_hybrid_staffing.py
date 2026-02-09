@@ -236,10 +236,7 @@ def main():
                 ax4.text(x, y + 2, f'{y:.1f}%', ha='center', fontweight='bold')
         
         plt.tight_layout()
-        chart_file = 'report_visualizations/hybrid_staffing_charts.png'
-        os.makedirs('report_visualizations', exist_ok=True)
-        plt.savefig(chart_file, dpi=300, bbox_inches='tight')
-        print(f"Visualization saved to: {chart_file}")
+        # Chart generation removed
         plt.close()
     else:
         print("Could not parse hybrid staffing data for visualization")

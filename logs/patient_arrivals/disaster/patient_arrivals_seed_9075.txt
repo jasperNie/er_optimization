@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Disaster Testing
+Seed: 9075
+Total timesteps: 96
+============================================================
+
+T 0: No arrival
+T 1: No arrival
+T 2: No arrival
+T 3: No arrival
+T 4: Patient 0 | Sev:3 Det:0.45 Treat:12min chest_pain | HR:113 SpO2:92 Res:0
+T 5: Patient 1 | Sev:3 Det:0.51 Treat:14min shortness_of_breath | HR:85 SpO2:93 Res:3
+T 6: No arrival
+T 7: Patient 2 | Sev:3 Det:0.44 Treat:11min minor_injury | HR:91 SpO2:97 Res:3
+T 8: No arrival
+T 9: No arrival
+T10: Patient 3 | Sev:5 Det:0.68 Treat:20min chest_pain | HR:118 SpO2:95 Res:1
+T11: Patient 4 | Sev:5 Det:0.63 Treat:17min headache | HR:101 SpO2:93 Res:0
+T12: No arrival
+T13: No arrival
+T14: No arrival
+T15: Patient 5 | Sev:4 Det:0.59 Treat:17min minor_injury | HR:121 SpO2:95 Res:1
+T16: Patient 6 | Sev:4 Det:0.57 Treat:18min minor_injury | HR:108 SpO2:89 Res:3
+T17: Patient 7 | Sev:4 Det:0.57 Treat:15min minor_injury | HR:131 SpO2:93 Res:2
+T18: Patient 8 | Sev:5 Det:0.64 Treat:15min abdominal_pain | HR:130 SpO2:96 Res:2
+T19: No arrival
+T20: Patient 9 | Sev:2 Det:0.25 Treat:13min abdominal_pain | HR:79 SpO2:96 Res:3
+T21: No arrival
+T22: No arrival
+T23: Patient 10 | Sev:3 Det:0.44 Treat:12min abdominal_pain | HR:104 SpO2:95 Res:2
+T24: No arrival
+T25: Patient 11 | Sev:5 Det:0.70 Treat:18min minor_injury | HR:137 SpO2:89 Res:1
+T26: No arrival
+T27: No arrival
+T28: No arrival
+T29: No arrival
+T30: Patient 12 | Sev:4 Det:0.56 Treat:17min minor_injury | HR:109 SpO2:96 Res:2
+T31: No arrival
+T32: Patient 13 | Sev:1 Det:0.11 Treat:10min headache | HR:78 SpO2:96 Res:0
+T33: No arrival
+T34: No arrival
+T35: No arrival
+T36: Patient 14 | Sev:3 Det:0.53 Treat:16min headache | HR:87 SpO2:93 Res:0
+T37: No arrival
+T38: Patient 15 | Sev:5 Det:0.65 Treat:16min abdominal_pain | HR:109 SpO2:92 Res:3
+T39: Patient 16 | Sev:3 Det:0.46 Treat:14min shortness_of_breath | HR:117 SpO2:97 Res:0
+T40: Patient 17 | Sev:5 Det:0.63 Treat:20min abdominal_pain | HR:100 SpO2:93 Res:3
+T41: Patient 18 | Sev:5 Det:0.62 Treat:16min minor_injury | HR:112 SpO2:89 Res:3
+T42: No arrival
+T43: No arrival
+T44: Patient 19 | Sev:4 Det:0.57 Treat:15min minor_injury | HR:113 SpO2:96 Res:3
+T45: No arrival
+T46: No arrival
+T47: No arrival
+T48: Patient 20 | Sev:2 Det:0.35 Treat:10min chest_pain | HR:95 SpO2:97 Res:3
+T49: No arrival
+T50: No arrival
+T51: No arrival
+T52: Patient 21 | Sev:5 Det:0.62 Treat:18min chest_pain | HR:123 SpO2:89 Res:3
+T53: No arrival
+T54: No arrival
+T55: No arrival
+T56: No arrival
+T57: Patient 22 | Sev:5 Det:0.63 Treat:15min abdominal_pain | HR:101 SpO2:93 Res:3
+T58: No arrival
+T59: Patient 23 | Sev:5 Det:0.61 Treat:19min minor_injury | HR:123 SpO2:90 Res:0
+T60: Patient 24 | Sev:4 Det:0.58 Treat:15min abdominal_pain | HR:122 SpO2:88 Res:1
+T61: No arrival
+T62: No arrival
+T63: No arrival
+T64: Patient 25 | Sev:5 Det:0.70 Treat:22min head_injury | HR:144 SpO2:90 Res:2
+T65: Patient 26 | Sev:5 Det:0.69 Treat:20min burns | HR:113 SpO2:95 Res:2
+T66: Patient 27 | Sev:2 Det:0.31 Treat:16min burns | HR:79 SpO2:99 Res:1
+T67: Patient 28 | Sev:3 Det:0.55 Treat:17min burns | HR:117 SpO2:92 Res:2
+T68: Patient 29 | Sev:3 Det:0.47 Treat:21min chest_pain | HR:93 SpO2:93 Res:1
+T69: Patient 30 | Sev:4 Det:0.57 Treat:21min crush_injury | HR:125 SpO2:87 Res:0
+T70: Patient 31 | Sev:4 Det:0.58 Treat:21min head_injury | HR:141 SpO2:91 Res:3
+T71: Patient 32 | Sev:5 Det:0.67 Treat:24min head_injury | HR:148 SpO2:86 Res:2
+T72: Patient 33 | Sev:5 Det:0.65 Treat:21min major_trauma | HR:124 SpO2:86 Res:3
+T73: Patient 34 | Sev:3 Det:0.51 Treat:19min chest_pain | HR:111 SpO2:92 Res:0
+T74: Patient 35 | Sev:5 Det:0.67 Treat:20min major_trauma | HR:143 SpO2:88 Res:2
+T75: Patient 36 | Sev:5 Det:0.64 Treat:20min burns | HR:120 SpO2:95 Res:1
+T76: Patient 37 | Sev:5 Det:0.70 Treat:23min crush_injury | HR:125 SpO2:95 Res:1
+T77: Patient 38 | Sev:4 Det:0.55 Treat:21min burns | HR:125 SpO2:86 Res:2
+T78: Patient 39 | Sev:5 Det:0.61 Treat:21min chest_pain | HR:138 SpO2:93 Res:2
+T79: Patient 40 | Sev:4 Det:0.56 Treat:22min major_trauma | HR:136 SpO2:90 Res:3
+T80: Patient 41 | Sev:4 Det:0.57 Treat:20min head_injury | HR:131 SpO2:90 Res:3
+T81: Patient 42 | Sev:5 Det:0.68 Treat:25min chest_pain | HR:115 SpO2:95 Res:3
+T82: Patient 43 | Sev:2 Det:0.34 Treat:16min chest_pain | HR:74 SpO2:97 Res:0
+T83: Patient 44 | Sev:3 Det:0.40 Treat:21min chest_pain | HR:110 SpO2:93 Res:2
+T84: No arrival
+T85: No arrival
+T86: No arrival
+T87: No arrival
+T88: Patient 45 | Sev:4 Det:0.55 Treat:16min minor_injury | HR:135 SpO2:94 Res:0
+T89: No arrival
+T90: No arrival
+T91: No arrival
+T92: No arrival
+T93: No arrival
+T94: Patient 46 | Sev:2 Det:0.35 Treat:10min shortness_of_breath | HR:94 SpO2:100 Res:1
+T95: Patient 47 | Sev:1 Det:0.23 Treat:12min minor_injury | HR:69 SpO2:97 Res:0
+
+SUMMARY
+Total patients arrived: 48
+Arrival rate: 50.0%
