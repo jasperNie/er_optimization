@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Flu_Season Testing
+Seed: 9036
+Total timesteps: 96
+============================================================
+
+T 0: No arrival
+T 1: Patient 0 | Sev:4 Det:0.58 Treat:15min cough | HR:101 SpO2:91 Res:2
+T 2: Patient 1 | Sev:2 Det:0.33 Treat:7min cough | HR:81 SpO2:100 Res:1
+T 3: No arrival
+T 4: Patient 2 | Sev:2 Det:0.31 Treat:7min fever | HR:67 SpO2:100 Res:0
+T 5: Patient 3 | Sev:4 Det:0.55 Treat:18min flu_like_symptoms | HR:123 SpO2:90 Res:0
+T 6: No arrival
+T 7: No arrival
+T 8: No arrival
+T 9: Patient 4 | Sev:3 Det:0.52 Treat:16min respiratory_distress | HR:80 SpO2:97 Res:3
+T10: No arrival
+T11: No arrival
+T12: No arrival
+T13: No arrival
+T14: No arrival
+T15: No arrival
+T16: Patient 5 | Sev:1 Det:0.25 Treat:8min respiratory_distress | HR:83 SpO2:97 Res:1
+T17: No arrival
+T18: No arrival
+T19: No arrival
+T20: No arrival
+T21: Patient 6 | Sev:2 Det:0.32 Treat:10min respiratory_distress | HR:82 SpO2:98 Res:2
+T22: No arrival
+T23: No arrival
+T24: No arrival
+T25: No arrival
+T26: No arrival
+T27: Patient 7 | Sev:3 Det:0.48 Treat:15min flu_like_symptoms | HR:104 SpO2:92 Res:1
+T28: No arrival
+T29: No arrival
+T30: No arrival
+T31: Patient 8 | Sev:3 Det:0.41 Treat:11min respiratory_distress | HR:96 SpO2:97 Res:0
+T32: Patient 9 | Sev:2 Det:0.40 Treat:8min cough | HR:90 SpO2:100 Res:0
+T33: No arrival
+T34: No arrival
+T35: No arrival
+T36: Patient 10 | Sev:5 Det:0.65 Treat:16min respiratory_distress | HR:120 SpO2:92 Res:1
+T37: Patient 11 | Sev:4 Det:0.59 Treat:15min shortness_of_breath | HR:103 SpO2:90 Res:3
+T38: Patient 12 | Sev:3 Det:0.55 Treat:13min flu_like_symptoms | HR:86 SpO2:94 Res:1
+T39: Patient 13 | Sev:2 Det:0.36 Treat:8min flu_like_symptoms | HR:82 SpO2:100 Res:1
+T40: No arrival
+T41: No arrival
+T42: No arrival
+T43: Patient 14 | Sev:4 Det:0.57 Treat:18min respiratory_distress | HR:126 SpO2:94 Res:1
+T44: No arrival
+T45: Patient 15 | Sev:4 Det:0.59 Treat:17min fever | HR:108 SpO2:89 Res:1
+T46: No arrival
+T47: Patient 16 | Sev:2 Det:0.35 Treat:8min cough | HR:72 SpO2:100 Res:2
+T48: Patient 17 | Sev:3 Det:0.46 Treat:12min shortness_of_breath | HR:113 SpO2:95 Res:0
+T49: Patient 18 | Sev:3 Det:0.50 Treat:12min shortness_of_breath | HR:108 SpO2:96 Res:0
+T50: Patient 19 | Sev:2 Det:0.29 Treat:10min respiratory_distress | HR:81 SpO2:96 Res:0
+T51: No arrival
+T52: No arrival
+T53: Patient 20 | Sev:3 Det:0.46 Treat:16min cough | HR:97 SpO2:98 Res:2
+T54: No arrival
+T55: Patient 21 | Sev:1 Det:0.20 Treat:5min fever | HR:69 SpO2:99 Res:2
+T56: Patient 22 | Sev:4 Det:0.59 Treat:15min flu_like_symptoms | HR:105 SpO2:96 Res:2
+T57: No arrival
+T58: Patient 23 | Sev:1 Det:0.20 Treat:5min cough | HR:77 SpO2:100 Res:2
+T59: Patient 24 | Sev:3 Det:0.42 Treat:16min cough | HR:115 SpO2:92 Res:0
+T60: Patient 25 | Sev:3 Det:0.45 Treat:12min fever | HR:99 SpO2:96 Res:0
+T61: No arrival
+T62: No arrival
+T63: No arrival
+T64: Patient 26 | Sev:3 Det:0.45 Treat:13min flu_like_symptoms | HR:106 SpO2:96 Res:1
+T65: Patient 27 | Sev:3 Det:0.50 Treat:12min respiratory_distress | HR:93 SpO2:97 Res:1
+T66: No arrival
+T67: No arrival
+T68: No arrival
+T69: Patient 28 | Sev:2 Det:0.31 Treat:11min cough | HR:80 SpO2:99 Res:1
+T70: Patient 29 | Sev:4 Det:0.59 Treat:14min fever | HR:104 SpO2:92 Res:3
+T71: No arrival
+T72: Patient 30 | Sev:1 Det:0.16 Treat:5min flu_like_symptoms | HR:100 SpO2:100 Res:0
+T73: Patient 31 | Sev:3 Det:0.41 Treat:11min cough | HR:117 SpO2:95 Res:0
+T74: No arrival
+T75: No arrival
+T76: No arrival
+T77: No arrival
+T78: No arrival
+T79: No arrival
+T80: No arrival
+T81: Patient 32 | Sev:4 Det:0.55 Treat:14min cough | HR:108 SpO2:92 Res:3
+T82: No arrival
+T83: No arrival
+T84: Patient 33 | Sev:4 Det:0.58 Treat:15min cough | HR:134 SpO2:95 Res:0
+T85: No arrival
+T86: Patient 34 | Sev:4 Det:0.59 Treat:18min respiratory_distress | HR:117 SpO2:88 Res:3
+T87: No arrival
+T88: No arrival
+T89: No arrival
+T90: No arrival
+T91: No arrival
+T92: No arrival
+T93: No arrival
+T94: No arrival
+T95: No arrival
+
+SUMMARY
+Total patients arrived: 35
+Arrival rate: 36.5%

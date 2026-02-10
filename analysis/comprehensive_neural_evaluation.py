@@ -8,6 +8,9 @@ import sys
 import os
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+import statistics
+from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -130,7 +133,7 @@ def full_training_multi_seed_explanation():
     print("Training with full parameters (100 generations, 80 population)...")
     
     # Log training seed arrivals for full documentation
-    print("\n📋 Logging patient arrivals for training seeds...")
+    print("\nLogging patient arrivals for training seeds...")
     
     # Import from enhanced_evaluation for compatibility
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -138,8 +141,8 @@ def full_training_multi_seed_explanation():
     
     for seed in training_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)
-        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/neural_training", "Neural Training")
-    print("   Training patient arrival logs saved to logs/patient_arrivals/neural_training/")
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals", "Neural Training")
+    print("   Training patient arrival logs saved to logs/patient_arrivals/")
     
     # Full training parameters with expanded seed set
     training_params = {
@@ -159,17 +162,24 @@ def full_training_multi_seed_explanation():
     neural_policy = optimizer.run("logs/full_training_comprehensive.txt")
     print("Full training complete!")
     
+    # Generate nurse schedule example for documentation
+    print("\n👥 Generating nurse schedule example...")
+    from classes import ERSimulation
+    schedule_sim = ERSimulation(4, 96, 0.3, 9000)  # Use first test seed
+    schedule_sim.print_nurse_schedule("logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
+    print("   Nurse schedule saved to logs/nurse_schedules/nurse_schedule_base_4_nurses_original.txt")
+    
     # Phase 2: Multi-seed evaluation with explanations
     print(f"\nPHASE 2: MULTI-SEED EVALUATION WITH EXPLANATIONS")
     print("─" * 60)
     
     # Log testing seed arrivals for full documentation
-    print("\n📋 Logging patient arrivals for test seeds...")
+    print("\\nLogging patient arrivals for test seeds...")
     
     for seed in test_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)
-        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/neural_testing", "Neural Testing")
-    print("   Testing patient arrival logs saved to logs/patient_arrivals/neural_testing/")
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals", "Neural Testing")
+    print("   Testing patient arrival logs saved to logs/patient_arrivals/")
     
 
     
@@ -177,8 +187,8 @@ def full_training_multi_seed_explanation():
     print("\n📋 Logging patient arrivals for test seeds...")
     for seed in test_seeds:
         arrivals = generate_arrivals(96, 0.3, seed)  # Same parameters
-        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals/testing", "Testing")
-    print("   Patient arrival logs saved to logs/patient_arrivals/testing/")
+        log_patient_arrivals(arrivals, seed, "logs/patient_arrivals", "Testing")
+    print("   Patient arrival logs saved to logs/patient_arrivals/")
     
     all_results = []
     all_esi_results = []  # Store baseline results for aggregate analysis
@@ -284,7 +294,7 @@ def full_training_multi_seed_explanation():
         arrivals = generate_arrivals(96, 0.3, test_seed)
         
         # Log patient arrivals for traceability
-        log_patient_arrivals(arrivals, test_seed, "logs/patient_arrivals/neural_testing", f"Neural Testing Seed {test_seed}")
+        log_patient_arrivals(arrivals, test_seed, "logs/patient_arrivals", f"Neural Testing Seed {test_seed}")
         
         # Run simulation with this seed (same parameters as enhanced_evaluation)
         sim = ExplainableSimulation(
@@ -306,11 +316,13 @@ def full_training_multi_seed_explanation():
         all_results.append(result)
         
         # Run baseline comparisons for this seed with IDENTICAL arrivals
+        # Import proper ESI policy
+        from triage_policies import esi_policy
         esi_sim = ERSimulation(
             num_nurses=4,
             total_time=96,
             arrival_prob=0.3,
-            triage_policy={'severity': 1.0, 'deterioration': 0.0, 'wait_time': 0.0},
+            triage_policy=esi_policy,
             verbose=False,
             seed=test_seed,
             use_shifts=True
@@ -319,11 +331,13 @@ def full_training_multi_seed_explanation():
         esi_sim.patient_arrivals = arrivals.copy()
         esi_result = esi_sim.run()
         
+        # Import proper MTS policy
+        from triage_policies import mts_policy
         mts_sim = ERSimulation(
             num_nurses=4,
             total_time=96,
             arrival_prob=0.3,
-            triage_policy={'severity': 0.0, 'deterioration': 0.0, 'wait_time': 1.0},
+            triage_policy=mts_policy,
             verbose=False,
             seed=test_seed,
             use_shifts=True
@@ -340,13 +354,11 @@ def full_training_multi_seed_explanation():
         print(f"\nSEED {test_seed} RESULTS:")
         print(f"   Patients treated: {result['completed']}")
         print(f"   Patients waiting: {result['still_waiting']}")
-        print(f"   Average wait time: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
-        print(f"   Weighted wait time: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)")
+        print(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)")
+        print(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)")
         print(f"   Decisions explained: {result['total_decisions']}")
-        print(f"   ESI average wait: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} minutes)")
-        print(f"   ESI weighted wait: {esi_result['avg_weighted_wait']:.2f} timesteps ({esi_result['avg_weighted_wait']*15:.0f} minutes)")
-        print(f"   MTS average wait: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} minutes)")
-        print(f"   MTS weighted wait: {mts_result['avg_weighted_wait']:.2f} timesteps ({mts_result['avg_weighted_wait']*15:.0f} minutes)")
+        print(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_result['avg_wait']:.2f} timesteps ({esi_result['avg_wait']*15:.0f} min), weighted: {esi_result['avg_weighted_wait']:.2f} ({esi_result['avg_weighted_wait']*15:.0f} min)")
+        print(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_result['avg_wait']:.2f} timesteps ({mts_result['avg_wait']*15:.0f} min), weighted: {mts_result['avg_weighted_wait']:.2f} ({mts_result['avg_weighted_wait']*15:.0f} min)")
         
         # Show sample explanations for interesting decisions
         if result['total_decisions'] > 0:
@@ -395,7 +407,7 @@ def full_training_multi_seed_explanation():
     print(f"   Decisions explained: {statistics.mean(total_decisions):.1f} ± {statistics.stdev(total_decisions):.1f}")
     
     # Decision pattern analysis
-    print(f"\n🧠 DECISION PATTERN ANALYSIS:")
+    print(f"\nDECISION PATTERN ANALYSIS:")
     print("─" * 40)
     
     all_decisions = []
@@ -422,7 +434,7 @@ def full_training_multi_seed_explanation():
             print(f"   Least confident decision margin: {min(margins):.3f}")
     
     # Compare with baselines across all seeds
-    print(f"\n⚖️ BASELINE COMPARISON (averaged across all seeds):")
+    print(f"\nBASELINE COMPARISON (averaged across all seeds):")
     print("─" * 50)
     
     # Use the baseline results computed during individual seed evaluation
@@ -447,26 +459,32 @@ def full_training_multi_seed_explanation():
     mts_avg_weighted_hours = mts_avg_weighted * 15 / 60
     mts_avg_wait_hours = mts_avg_wait * 15 / 60
     
-    print(f"   🤖 Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)")
-    print(f"   🏥 ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
-    print(f"   ⏱️ MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   Neural Network: {neural_avg_weighted_hours:.2f} hours weighted wait ({neural_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   ESI (severity):  {esi_avg_weighted_hours:.2f} hours weighted wait ({esi_avg_wait_hours:.2f} hours avg wait)")
+    print(f"   MTS (wait time): {mts_avg_weighted_hours:.2f} hours weighted wait ({mts_avg_wait_hours:.2f} hours avg wait)")
     
     print(f"\nBASELINE PERFORMANCE DETAILS:")
-    print(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)")
-    print(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)")
-    print(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)")
-    print(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)")
+    # Calculate average patient counts for baselines
+    esi_completed = statistics.mean([r['completed'] for r in esi_results])
+    esi_waiting = statistics.mean([r['still_waiting'] for r in esi_results])
+    mts_completed = statistics.mean([r['completed'] for r in mts_results])
+    mts_waiting = statistics.mean([r['still_waiting'] for r in mts_results])
+    
+    print(f"   ESI treated: {esi_completed:.1f}, waiting: {esi_waiting:.1f} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_avg_weighted:.2f} ({esi_avg_weighted*15:.0f} min)")
+    print(f"   MTS treated: {mts_completed:.1f}, waiting: {mts_waiting:.1f} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_avg_weighted:.2f} ({mts_avg_weighted*15:.0f} min)")
     
     if neural_avg_weighted < esi_avg_weighted:
-        improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
-        print(f"   Neural beats ESI by {improvement:.1f}%")
+        weighted_improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
+        avg_improvement = ((esi_avg_wait - neural_avg_wait) / esi_avg_wait) * 100
+        print(f"   -> Neural beats ESI by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)")
     
     if neural_avg_weighted < mts_avg_weighted:
-        improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
-        print(f"   Neural beats MTS by {improvement:.1f}%")
+        weighted_improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
+        avg_improvement = ((mts_avg_wait - neural_avg_wait) / mts_avg_wait) * 100
+        print(f"   -> Neural beats MTS by {weighted_improvement:.1f}% (weighted wait) and {avg_improvement:.1f}% (avg wait)")
     
     # Save detailed results
-    print(f"\n💾 SAVING DETAILED RESULTS:")
+    print(f"\nSAVING DETAILED RESULTS:")
     print("─" * 30)
     
     with open("logs/analysis_logs/comprehensive_neural_evaluation.txt", "w", encoding='utf-8') as f:
@@ -493,10 +511,8 @@ def full_training_multi_seed_explanation():
             result_index = next(i for i, r in enumerate(all_results) if r['seed'] == result['seed'])
             esi_seed_result = all_esi_results[result_index]
             mts_seed_result = all_mts_results[result_index]
-            f.write(f"   ESI average wait: {esi_seed_result['avg_wait']:.2f} timesteps ({esi_seed_result['avg_wait']*15:.0f} minutes)\n")
-            f.write(f"   ESI weighted wait: {esi_seed_result['avg_weighted_wait']:.2f} timesteps ({esi_seed_result['avg_weighted_wait']*15:.0f} minutes)\n")
-            f.write(f"   MTS average wait: {mts_seed_result['avg_wait']:.2f} timesteps ({mts_seed_result['avg_wait']*15:.0f} minutes)\n")
-            f.write(f"   MTS weighted wait: {mts_seed_result['avg_weighted_wait']:.2f} timesteps ({mts_seed_result['avg_weighted_wait']*15:.0f} minutes)\n")
+            f.write(f"   ESI treated: {esi_seed_result['completed']}, waiting: {esi_seed_result['still_waiting']} | avg: {esi_seed_result['avg_wait']:.2f} timesteps ({esi_seed_result['avg_wait']*15:.0f} min), weighted: {esi_seed_result['avg_weighted_wait']:.2f} ({esi_seed_result['avg_weighted_wait']*15:.0f} min)\n")
+            f.write(f"   MTS treated: {mts_seed_result['completed']}, waiting: {mts_seed_result['still_waiting']} | avg: {mts_seed_result['avg_wait']:.2f} timesteps ({mts_seed_result['avg_wait']*15:.0f} min), weighted: {mts_seed_result['avg_weighted_wait']:.2f} ({mts_seed_result['avg_weighted_wait']*15:.0f} min)\n")
             
             if result['explanations']:
                 f.write(f"   ALL TRIAGE DECISIONS:\n")
@@ -536,10 +552,8 @@ def full_training_multi_seed_explanation():
         f.write(f"   MTS Baseline: {mts_avg_weighted_hours:.2f} hours weighted ({mts_avg_wait_hours:.2f} hours avg)\n")
         
         f.write(f"\nBASELINE PERFORMANCE DETAILS:\n")
-        f.write(f"   ESI average wait: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} minutes)\n")
-        f.write(f"   ESI weighted wait: {esi_avg_weighted:.2f} timesteps ({esi_avg_weighted*15:.0f} minutes)\n")
-        f.write(f"   MTS average wait: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} minutes)\n")
-        f.write(f"   MTS weighted wait: {mts_avg_weighted:.2f} timesteps ({mts_avg_weighted*15:.0f} minutes)\n")
+        f.write(f"   ESI treated: {esi_completed:.1f}, waiting: {esi_waiting:.1f} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_avg_weighted:.2f} ({esi_avg_weighted*15:.0f} min)\n")
+        f.write(f"   MTS treated: {mts_completed:.1f}, waiting: {mts_waiting:.1f} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_avg_weighted:.2f} ({mts_avg_weighted*15:.0f} min)\n")
         
         if neural_avg_weighted < esi_avg_weighted:
             improvement = ((esi_avg_weighted - neural_avg_weighted) / esi_avg_weighted) * 100
@@ -548,12 +562,127 @@ def full_training_multi_seed_explanation():
             improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
             f.write(f"   -> Neural beats MTS by {improvement:.1f}% (weighted wait)\n")
     
-    print(f"   📄 Results saved to: logs/analysis_logs/comprehensive_neural_evaluation.txt")
-    print(f"   📋 Patient arrivals saved to: logs/patient_arrivals/testing/")
+    print(f"   Results saved to: logs/analysis_logs/comprehensive_neural_evaluation.txt")
+    print(f"   Patient arrivals saved to: logs/patient_arrivals/")
     
+    # Create output directory for this run
+    output_dir = "report_visualizations/neural_evaluation"
+    os.makedirs(output_dir, exist_ok=True)
+    
+    print(f"\nGENERATING INDIVIDUAL CHARTS...")
+    print(f"   Output directory: {output_dir}/")
+    
+    # Chart 1: Performance Comparison Bar Chart
+    plt.figure(figsize=(12, 8))
+    policies = ['Neural\\nNetwork', 'ESI\\nBaseline', 'MTS\\nBaseline']
+    weighted_times = [neural_avg_weighted_hours, esi_avg_weighted_hours, mts_avg_weighted_hours]
+    avg_times = [neural_avg_wait_hours, esi_avg_wait_hours, mts_avg_wait_hours]
+    
+    x = np.arange(len(policies))
+    width = 0.35
+    
+    bars1 = plt.bar(x - width/2, weighted_times, width, label='Weighted Wait Time', 
+                    color=['#2E8B57', '#CD853F', '#DC143C'], alpha=0.8)
+    bars2 = plt.bar(x + width/2, avg_times, width, label='Average Wait Time',
+                    color=['#3CB371', '#F4A460', '#FF6B6B'], alpha=0.8)
+    
+    plt.title('Triage Policy Performance Comparison (Lower is Better)', fontsize=16, fontweight='bold', pad=20)
+    plt.xlabel('Triage Policy', fontsize=12, fontweight='bold')
+    plt.ylabel('Wait Time (Hours)', fontsize=12, fontweight='bold')
+    plt.legend(fontsize=11)
+    plt.grid(axis='y', alpha=0.3)
+    
+    # Add value labels on bars
+    for bar in bars1:
+        height = bar.get_height()
+        plt.annotate(f'{height:.1f}h', xy=(bar.get_x() + bar.get_width()/2, height),
+                    xytext=(0, 3), textcoords="offset points", ha='center', va='bottom',
+                    fontweight='bold', fontsize=10)
+    for bar in bars2:
+        height = bar.get_height()
+        plt.annotate(f'{height:.1f}h', xy=(bar.get_x() + bar.get_width()/2, height),
+                    xytext=(0, 3), textcoords="offset points", ha='center', va='bottom',
+                    fontweight='bold', fontsize=10)
+    
+    plt.tight_layout()
+    chart1_path = f"{output_dir}/1_performance_comparison.png"
+    plt.savefig(chart1_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"   Performance comparison saved: {chart1_path}")
+    
+    # Chart 2: Neural decision margins distribution
+    plt.figure(figsize=(10, 6))
+    
+    # Reuse the margins calculated in the decision analysis section
+    all_decisions = []
+    for result in all_results:
+        all_decisions.extend(result['explanations'])
+    
+    decision_margins = []
+    if all_decisions:
+        for decision in all_decisions:
+            if decision['alternatives']:
+                margin = decision['chosen_score'] - decision['alternatives'][0][1]
+                decision_margins.append(margin)
+    
+    if decision_margins:
+        plt.hist(decision_margins, bins=20, color='#3498DB', alpha=0.7, edgecolor='black')
+        plt.title(f'Neural Decision Margins ({len(decision_margins)} decisions)', 
+                 fontsize=16, fontweight='bold')
+        plt.xlabel('Decision Margin (Confidence)')
+        plt.ylabel('Frequency')
+        plt.axvline(statistics.mean(decision_margins), color='red', linestyle='--', 
+                   label=f'Mean: {statistics.mean(decision_margins):.3f}')
+        plt.legend()
+        plt.grid(alpha=0.3)
+    else:
+        plt.text(0.5, 0.5, 'No decision margin data available', ha='center', va='center', 
+                transform=plt.gca().transAxes, fontsize=14)
+        plt.title('Neural Decision Margins', fontsize=16, fontweight='bold')
+    
+    plt.tight_layout()
+    chart2_path = f"{output_dir}/2_decision_confidence.png"
+    plt.savefig(chart2_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"   Decision confidence saved: {chart2_path}")
+    
+    # Chart 3: Patient treatment distribution
+    plt.figure(figsize=(10, 6))
+    patients_treated = completed_counts
+    plt.hist(patients_treated, bins=15, color='#E74C3C', alpha=0.7, edgecolor='black')
+    plt.title('Patient Treatment Distribution (Across 100 Seeds)', fontsize=16, fontweight='bold')
+    plt.xlabel('Patients Treated per Seed')
+    plt.ylabel('Frequency')
+    plt.axvline(statistics.mean(patients_treated), color='red', linestyle='--', 
+               label=f'Mean: {statistics.mean(patients_treated):.1f}')
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    chart3_path = f"{output_dir}/3_patient_treatment.png"
+    plt.savefig(chart3_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"   Patient treatment saved: {chart3_path}")
+    
+    # Chart 4: Wait time distribution
+    plt.figure(figsize=(10, 6))
+    wait_times_all = weighted_waits
+    plt.hist(wait_times_all, bins=15, color='#27AE60', alpha=0.7, edgecolor='black')
+    plt.title('Wait Time Distribution (Across 100 Seeds)', fontsize=16, fontweight='bold')
+    plt.xlabel('Weighted Wait Time (Timesteps)')
+    plt.ylabel('Frequency')
+    plt.axvline(statistics.mean(wait_times_all), color='red', linestyle='--', 
+               label=f'Mean: {statistics.mean(wait_times_all):.1f}')
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    chart4_path = f"{output_dir}/4_wait_time_distribution.png"
+    plt.savefig(chart4_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"   Wait time distribution saved: {chart4_path}")
+    print(f"\nAll charts generated successfully in: {output_dir}/")
+
     print(f"\nCOMPREHENSIVE EVALUATION COMPLETE!")
     print("=" * 80)
-    print("=" * 50)
     print("The neural network has been fully trained and tested across")
     print("multiple random seeds with detailed decision explanations.")
     print("This provides robust evidence of its decision-making patterns!")

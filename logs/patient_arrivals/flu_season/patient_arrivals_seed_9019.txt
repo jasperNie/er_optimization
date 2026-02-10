@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Flu_Season Testing
+Seed: 9019
+Total timesteps: 96
+============================================================
+
+T 0: No arrival
+T 1: No arrival
+T 2: No arrival
+T 3: No arrival
+T 4: No arrival
+T 5: No arrival
+T 6: Patient 0 | Sev:2 Det:0.40 Treat:9min cough | HR:95 SpO2:100 Res:2
+T 7: No arrival
+T 8: No arrival
+T 9: No arrival
+T10: No arrival
+T11: No arrival
+T12: No arrival
+T13: No arrival
+T14: Patient 1 | Sev:3 Det:0.49 Treat:11min shortness_of_breath | HR:85 SpO2:93 Res:2
+T15: No arrival
+T16: No arrival
+T17: Patient 2 | Sev:3 Det:0.44 Treat:14min respiratory_distress | HR:103 SpO2:97 Res:1
+T18: Patient 3 | Sev:2 Det:0.36 Treat:12min shortness_of_breath | HR:75 SpO2:98 Res:2
+T19: No arrival
+T20: Patient 4 | Sev:4 Det:0.58 Treat:18min respiratory_distress | HR:112 SpO2:88 Res:3
+T21: No arrival
+T22: No arrival
+T23: No arrival
+T24: No arrival
+T25: Patient 5 | Sev:4 Det:0.59 Treat:15min respiratory_distress | HR:125 SpO2:92 Res:1
+T26: No arrival
+T27: No arrival
+T28: Patient 6 | Sev:3 Det:0.42 Treat:16min respiratory_distress | HR:97 SpO2:95 Res:2
+T29: Patient 7 | Sev:3 Det:0.46 Treat:16min flu_like_symptoms | HR:114 SpO2:96 Res:0
+T30: No arrival
+T31: No arrival
+T32: No arrival
+T33: Patient 8 | Sev:4 Det:0.59 Treat:14min cough | HR:132 SpO2:96 Res:1
+T34: Patient 9 | Sev:2 Det:0.32 Treat:11min respiratory_distress | HR:97 SpO2:98 Res:1
+T35: Patient 10 | Sev:5 Det:0.65 Treat:19min flu_like_symptoms | HR:137 SpO2:88 Res:1
+T36: Patient 11 | Sev:2 Det:0.33 Treat:9min fever | HR:89 SpO2:97 Res:0
+T37: No arrival
+T38: Patient 12 | Sev:2 Det:0.28 Treat:11min cough | HR:63 SpO2:99 Res:2
+T39: Patient 13 | Sev:2 Det:0.33 Treat:12min respiratory_distress | HR:74 SpO2:98 Res:0
+T40: Patient 14 | Sev:1 Det:0.22 Treat:5min cough | HR:96 SpO2:100 Res:3
+T41: Patient 15 | Sev:4 Det:0.55 Treat:15min shortness_of_breath | HR:123 SpO2:93 Res:3
+T42: No arrival
+T43: No arrival
+T44: Patient 16 | Sev:1 Det:0.23 Treat:6min flu_like_symptoms | HR:82 SpO2:99 Res:3
+T45: No arrival
+T46: Patient 17 | Sev:3 Det:0.48 Treat:16min shortness_of_breath | HR:83 SpO2:97 Res:0
+T47: No arrival
+T48: No arrival
+T49: No arrival
+T50: No arrival
+T51: No arrival
+T52: Patient 18 | Sev:1 Det:0.24 Treat:7min flu_like_symptoms | HR:60 SpO2:96 Res:1
+T53: No arrival
+T54: Patient 19 | Sev:3 Det:0.54 Treat:14min fever | HR:109 SpO2:97 Res:1
+T55: No arrival
+T56: No arrival
+T57: Patient 20 | Sev:2 Det:0.30 Treat:11min flu_like_symptoms | HR:65 SpO2:98 Res:1
+T58: No arrival
+T59: No arrival
+T60: Patient 21 | Sev:3 Det:0.54 Treat:12min shortness_of_breath | HR:111 SpO2:94 Res:2
+T61: Patient 22 | Sev:3 Det:0.45 Treat:14min flu_like_symptoms | HR:105 SpO2:98 Res:3
+T62: No arrival
+T63: Patient 23 | Sev:4 Det:0.57 Treat:15min shortness_of_breath | HR:101 SpO2:92 Res:3
+T64: No arrival
+T65: Patient 24 | Sev:4 Det:0.58 Treat:13min shortness_of_breath | HR:113 SpO2:96 Res:0
+T66: No arrival
+T67: No arrival
+T68: No arrival
+T69: Patient 25 | Sev:4 Det:0.57 Treat:16min fever | HR:133 SpO2:88 Res:0
+T70: Patient 26 | Sev:1 Det:0.17 Treat:9min fever | HR:97 SpO2:96 Res:1
+T71: No arrival
+T72: No arrival
+T73: Patient 27 | Sev:4 Det:0.57 Treat:16min fever | HR:119 SpO2:96 Res:0
+T74: No arrival
+T75: No arrival
+T76: Patient 28 | Sev:2 Det:0.30 Treat:10min cough | HR:77 SpO2:100 Res:3
+T77: No arrival
+T78: No arrival
+T79: No arrival
+T80: No arrival
+T81: No arrival
+T82: No arrival
+T83: No arrival
+T84: Patient 29 | Sev:1 Det:0.16 Treat:9min respiratory_distress | HR:98 SpO2:98 Res:3
+T85: No arrival
+T86: No arrival
+T87: No arrival
+T88: No arrival
+T89: No arrival
+T90: Patient 30 | Sev:4 Det:0.56 Treat:17min cough | HR:117 SpO2:92 Res:1
+T91: Patient 31 | Sev:3 Det:0.52 Treat:14min fever | HR:120 SpO2:92 Res:0
+T92: No arrival
+T93: No arrival
+T94: Patient 32 | Sev:3 Det:0.42 Treat:16min respiratory_distress | HR:114 SpO2:98 Res:0
+T95: Patient 33 | Sev:2 Det:0.34 Treat:9min shortness_of_breath | HR:88 SpO2:100 Res:1
+
+SUMMARY
+Total patients arrived: 34
+Arrival rate: 35.4%

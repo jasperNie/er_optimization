@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Flu_Season Testing
+Seed: 9081
+Total timesteps: 96
+============================================================
+
+T 0: Patient 0 | Sev:1 Det:0.23 Treat:9min shortness_of_breath | HR:87 SpO2:96 Res:3
+T 1: No arrival
+T 2: Patient 1 | Sev:3 Det:0.55 Treat:12min fever | HR:110 SpO2:98 Res:0
+T 3: Patient 2 | Sev:2 Det:0.36 Treat:12min shortness_of_breath | HR:90 SpO2:98 Res:2
+T 4: Patient 3 | Sev:3 Det:0.43 Treat:14min flu_like_symptoms | HR:91 SpO2:98 Res:1
+T 5: No arrival
+T 6: No arrival
+T 7: No arrival
+T 8: No arrival
+T 9: No arrival
+T10: No arrival
+T11: No arrival
+T12: Patient 4 | Sev:3 Det:0.40 Treat:16min cough | HR:92 SpO2:93 Res:1
+T13: Patient 5 | Sev:4 Det:0.60 Treat:14min shortness_of_breath | HR:134 SpO2:89 Res:3
+T14: No arrival
+T15: No arrival
+T16: Patient 6 | Sev:3 Det:0.45 Treat:13min flu_like_symptoms | HR:98 SpO2:92 Res:1
+T17: No arrival
+T18: No arrival
+T19: Patient 7 | Sev:2 Det:0.34 Treat:9min respiratory_distress | HR:60 SpO2:96 Res:2
+T20: No arrival
+T21: No arrival
+T22: No arrival
+T23: Patient 8 | Sev:3 Det:0.41 Treat:11min fever | HR:103 SpO2:95 Res:0
+T24: No arrival
+T25: No arrival
+T26: No arrival
+T27: Patient 9 | Sev:1 Det:0.20 Treat:7min flu_like_symptoms | HR:94 SpO2:99 Res:2
+T28: No arrival
+T29: Patient 10 | Sev:4 Det:0.57 Treat:16min shortness_of_breath | HR:123 SpO2:92 Res:0
+T30: No arrival
+T31: No arrival
+T32: No arrival
+T33: Patient 11 | Sev:3 Det:0.43 Treat:11min fever | HR:93 SpO2:93 Res:3
+T34: No arrival
+T35: Patient 12 | Sev:3 Det:0.51 Treat:16min respiratory_distress | HR:80 SpO2:94 Res:1
+T36: No arrival
+T37: No arrival
+T38: No arrival
+T39: Patient 13 | Sev:2 Det:0.36 Treat:9min shortness_of_breath | HR:78 SpO2:96 Res:3
+T40: Patient 14 | Sev:4 Det:0.59 Treat:17min cough | HR:112 SpO2:92 Res:3
+T41: Patient 15 | Sev:2 Det:0.29 Treat:11min shortness_of_breath | HR:98 SpO2:98 Res:3
+T42: Patient 16 | Sev:3 Det:0.40 Treat:13min fever | HR:115 SpO2:96 Res:1
+T43: Patient 17 | Sev:3 Det:0.45 Treat:12min fever | HR:114 SpO2:94 Res:3
+T44: No arrival
+T45: Patient 18 | Sev:3 Det:0.51 Treat:15min respiratory_distress | HR:111 SpO2:97 Res:3
+T46: No arrival
+T47: Patient 19 | Sev:2 Det:0.32 Treat:8min flu_like_symptoms | HR:72 SpO2:96 Res:1
+T48: Patient 20 | Sev:1 Det:0.13 Treat:7min fever | HR:97 SpO2:99 Res:0
+T49: Patient 21 | Sev:2 Det:0.36 Treat:7min cough | HR:96 SpO2:96 Res:3
+T50: Patient 22 | Sev:2 Det:0.33 Treat:8min flu_like_symptoms | HR:90 SpO2:100 Res:1
+T51: No arrival
+T52: No arrival
+T53: Patient 23 | Sev:4 Det:0.58 Treat:18min respiratory_distress | HR:116 SpO2:89 Res:1
+T54: Patient 24 | Sev:3 Det:0.47 Treat:15min respiratory_distress | HR:108 SpO2:95 Res:2
+T55: No arrival
+T56: No arrival
+T57: No arrival
+T58: No arrival
+T59: Patient 25 | Sev:1 Det:0.11 Treat:7min shortness_of_breath | HR:81 SpO2:100 Res:0
+T60: No arrival
+T61: No arrival
+T62: No arrival
+T63: No arrival
+T64: Patient 26 | Sev:3 Det:0.46 Treat:16min shortness_of_breath | HR:120 SpO2:93 Res:3
+T65: No arrival
+T66: No arrival
+T67: Patient 27 | Sev:2 Det:0.27 Treat:8min shortness_of_breath | HR:69 SpO2:98 Res:0
+T68: Patient 28 | Sev:5 Det:0.63 Treat:16min cough | HR:102 SpO2:92 Res:0
+T69: Patient 29 | Sev:2 Det:0.37 Treat:9min flu_like_symptoms | HR:90 SpO2:96 Res:3
+T70: No arrival
+T71: No arrival
+T72: Patient 30 | Sev:3 Det:0.49 Treat:12min respiratory_distress | HR:108 SpO2:96 Res:1
+T73: Patient 31 | Sev:1 Det:0.14 Treat:10min fever | HR:67 SpO2:97 Res:1
+T74: No arrival
+T75: No arrival
+T76: No arrival
+T77: Patient 32 | Sev:4 Det:0.57 Treat:18min shortness_of_breath | HR:129 SpO2:89 Res:0
+T78: No arrival
+T79: Patient 33 | Sev:5 Det:0.65 Treat:18min fever | HR:121 SpO2:88 Res:3
+T80: No arrival
+T81: No arrival
+T82: No arrival
+T83: Patient 34 | Sev:1 Det:0.15 Treat:7min flu_like_symptoms | HR:92 SpO2:97 Res:1
+T84: Patient 35 | Sev:3 Det:0.44 Treat:14min fever | HR:117 SpO2:93 Res:2
+T85: No arrival
+T86: No arrival
+T87: Patient 36 | Sev:3 Det:0.45 Treat:16min shortness_of_breath | HR:99 SpO2:94 Res:2
+T88: Patient 37 | Sev:4 Det:0.60 Treat:17min fever | HR:133 SpO2:96 Res:2
+T89: Patient 38 | Sev:2 Det:0.33 Treat:7min flu_like_symptoms | HR:66 SpO2:98 Res:1
+T90: Patient 39 | Sev:3 Det:0.42 Treat:13min fever | HR:91 SpO2:95 Res:2
+T91: No arrival
+T92: No arrival
+T93: No arrival
+T94: No arrival
+T95: No arrival
+
+SUMMARY
+Total patients arrived: 40
+Arrival rate: 41.7%

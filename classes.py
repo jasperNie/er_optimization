@@ -268,20 +268,43 @@ class ERSimulation:
         while self.time < self.total_time:
             self.step()
 
-        # Collect metrics
+        # Collect metrics - Include ALL patients (treated + still waiting)
+        all_patients = []
+        
+        # Add completed patients (those who were treated)
         if self.started_patients:
-            waits = [wait for _, wait in self.started_patients]
+            all_patients.extend(self.started_patients)
+        
+        # Add patients still waiting at the end of simulation
+        for patient in self.waiting_patients:
+            all_patients.append((patient, patient.wait_time))
+        
+        if all_patients:
+            waits = [wait for _, wait in all_patients]
             weighted_waits = [
                 wait * p.severity * (1 + p.deterioration_chance)
-                for p, wait in self.started_patients
+                for p, wait in all_patients
             ]
             avg_wait = statistics.mean(waits)
             avg_weighted_wait = statistics.mean(weighted_waits)
             
-            # Calculate severity-specific metrics
+            # Also keep track of treated patients only for comparison
+            if self.started_patients:
+                treated_waits = [wait for _, wait in self.started_patients]
+                treated_weighted_waits = [
+                    wait * p.severity * (1 + p.deterioration_chance)
+                    for p, wait in self.started_patients
+                ]
+                avg_treated_wait = statistics.mean(treated_waits)
+                avg_treated_weighted_wait = statistics.mean(treated_weighted_waits)
+            else:
+                avg_treated_wait = 0
+                avg_treated_weighted_wait = 0
+            
+            # Calculate severity-specific metrics (all patients)
             severity_metrics = {}
             for severity in range(1, 6):  # Severity levels 1-5
-                sev_patients = [(p, wait) for p, wait in self.started_patients if p.severity == severity]
+                sev_patients = [(p, wait) for p, wait in all_patients if p.severity == severity]
                 if sev_patients:
                     sev_waits = [wait for _, wait in sev_patients]
                     sev_weighted_waits = [wait * p.severity * (1 + p.deterioration_chance) for p, wait in sev_patients]
@@ -300,13 +323,16 @@ class ERSimulation:
             return {
                 'completed': len(self.completed_patients),
                 'still_waiting': len(self.waiting_patients),
-                'avg_wait': avg_wait,
+                'avg_wait': avg_wait,  # All patients (treated + waiting)
                 'max_wait': max(waits),
-                'avg_weighted_wait': avg_weighted_wait,
+                'avg_weighted_wait': avg_weighted_wait,  # All patients (treated + waiting)
+                'avg_treated_wait': avg_treated_wait,  # Only treated patients
+                'avg_treated_weighted_wait': avg_treated_weighted_wait,  # Only treated patients
+                'total_patients': len(all_patients),
                 'severity_metrics': severity_metrics
             }
         else:
-            # No patients treated - initialize empty severity metrics
+            # No patients at all - initialize empty severity metrics
             severity_metrics = {}
             for severity in range(1, 6):
                 severity_metrics[f'sev_{severity}'] = {
@@ -321,6 +347,9 @@ class ERSimulation:
                 'avg_wait': None,
                 'max_wait': None,
                 'avg_weighted_wait': None,
+                'avg_treated_wait': None,
+                'avg_treated_weighted_wait': None,
+                'total_patients': 0,
                 'severity_metrics': severity_metrics
             }
 

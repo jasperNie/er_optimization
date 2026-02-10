@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Weekend Testing
+Seed: 9055
+Total timesteps: 96
+============================================================
+
+T 0: Patient 0 | Sev:4 Det:0.55 Treat:15min motor_vehicle_accident | HR:127 SpO2:88 Res:3
+T 1: Patient 1 | Sev:5 Det:0.62 Treat:17min assault | HR:113 SpO2:90 Res:1
+T 2: Patient 2 | Sev:2 Det:0.27 Treat:10min assault | HR:92 SpO2:97 Res:1
+T 3: Patient 3 | Sev:1 Det:0.12 Treat:11min assault | HR:83 SpO2:97 Res:3
+T 4: Patient 4 | Sev:5 Det:0.65 Treat:19min trauma | HR:133 SpO2:88 Res:2
+T 5: No arrival
+T 6: Patient 5 | Sev:1 Det:0.10 Treat:11min trauma | HR:82 SpO2:99 Res:2
+T 7: No arrival
+T 8: No arrival
+T 9: Patient 6 | Sev:4 Det:0.58 Treat:16min assault | HR:128 SpO2:91 Res:0
+T10: Patient 7 | Sev:3 Det:0.41 Treat:15min trauma | HR:108 SpO2:98 Res:1
+T11: Patient 8 | Sev:5 Det:0.65 Treat:17min trauma | HR:140 SpO2:94 Res:2
+T12: Patient 9 | Sev:3 Det:0.51 Treat:13min alcohol_poisoning | HR:89 SpO2:97 Res:1
+T13: Patient 10 | Sev:2 Det:0.39 Treat:13min sports_injury | HR:64 SpO2:99 Res:2
+T14: Patient 11 | Sev:1 Det:0.15 Treat:11min sports_injury | HR:90 SpO2:97 Res:1
+T15: No arrival
+T16: No arrival
+T17: No arrival
+T18: No arrival
+T19: Patient 12 | Sev:5 Det:0.63 Treat:15min assault | HR:126 SpO2:96 Res:3
+T20: No arrival
+T21: No arrival
+T22: No arrival
+T23: No arrival
+T24: No arrival
+T25: No arrival
+T26: Patient 13 | Sev:3 Det:0.47 Treat:13min sports_injury | HR:111 SpO2:97 Res:2
+T27: No arrival
+T28: No arrival
+T29: Patient 14 | Sev:3 Det:0.53 Treat:11min trauma | HR:116 SpO2:93 Res:3
+T30: No arrival
+T31: No arrival
+T32: Patient 15 | Sev:4 Det:0.59 Treat:13min trauma | HR:133 SpO2:94 Res:1
+T33: No arrival
+T34: No arrival
+T35: No arrival
+T36: No arrival
+T37: No arrival
+T38: No arrival
+T39: Patient 16 | Sev:4 Det:0.58 Treat:14min assault | HR:139 SpO2:89 Res:0
+T40: Patient 17 | Sev:2 Det:0.32 Treat:14min trauma | HR:87 SpO2:100 Res:3
+T41: Patient 18 | Sev:2 Det:0.27 Treat:10min assault | HR:73 SpO2:98 Res:1
+T42: Patient 19 | Sev:5 Det:0.64 Treat:18min trauma | HR:134 SpO2:93 Res:0
+T43: No arrival
+T44: No arrival
+T45: Patient 20 | Sev:5 Det:0.61 Treat:18min motor_vehicle_accident | HR:108 SpO2:88 Res:3
+T46: No arrival
+T47: No arrival
+T48: No arrival
+T49: No arrival
+T50: No arrival
+T51: No arrival
+T52: Patient 21 | Sev:4 Det:0.57 Treat:14min assault | HR:103 SpO2:96 Res:1
+T53: Patient 22 | Sev:3 Det:0.40 Treat:11min alcohol_poisoning | HR:99 SpO2:94 Res:2
+T54: No arrival
+T55: Patient 23 | Sev:1 Det:0.15 Treat:11min alcohol_poisoning | HR:69 SpO2:98 Res:3
+T56: No arrival
+T57: Patient 24 | Sev:1 Det:0.23 Treat:8min motor_vehicle_accident | HR:87 SpO2:98 Res:3
+T58: No arrival
+T59: No arrival
+T60: No arrival
+T61: Patient 25 | Sev:3 Det:0.54 Treat:16min alcohol_poisoning | HR:101 SpO2:92 Res:1
+T62: No arrival
+T63: No arrival
+T64: No arrival
+T65: No arrival
+T66: Patient 26 | Sev:3 Det:0.43 Treat:14min motor_vehicle_accident | HR:99 SpO2:98 Res:2
+T67: No arrival
+T68: Patient 27 | Sev:5 Det:0.62 Treat:15min motor_vehicle_accident | HR:120 SpO2:93 Res:2
+T69: No arrival
+T70: No arrival
+T71: No arrival
+T72: No arrival
+T73: No arrival
+T74: No arrival
+T75: No arrival
+T76: No arrival
+T77: No arrival
+T78: No arrival
+T79: No arrival
+T80: No arrival
+T81: Patient 28 | Sev:5 Det:0.63 Treat:17min assault | HR:133 SpO2:95 Res:3
+T82: No arrival
+T83: Patient 29 | Sev:3 Det:0.44 Treat:16min assault | HR:86 SpO2:92 Res:3
+T84: Patient 30 | Sev:3 Det:0.46 Treat:16min alcohol_poisoning | HR:80 SpO2:97 Res:1
+T85: Patient 31 | Sev:3 Det:0.48 Treat:15min sports_injury | HR:82 SpO2:96 Res:0
+T86: No arrival
+T87: No arrival
+T88: No arrival
+T89: Patient 32 | Sev:4 Det:0.59 Treat:18min motor_vehicle_accident | HR:139 SpO2:93 Res:2
+T90: No arrival
+T91: No arrival
+T92: Patient 33 | Sev:3 Det:0.52 Treat:15min sports_injury | HR:114 SpO2:95 Res:1
+T93: No arrival
+T94: Patient 34 | Sev:4 Det:0.60 Treat:15min assault | HR:101 SpO2:88 Res:0
+T95: No arrival
+
+SUMMARY
+Total patients arrived: 35
+Arrival rate: 36.5%

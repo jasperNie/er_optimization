@@ -1,0 +1,106 @@
+PATIENT ARRIVALS LOG
+Scenario Type: Weekend Training
+Seed: 8038
+Total timesteps: 96
+============================================================
+
+T 0: Patient 0 | Sev:2 Det:0.25 Treat:12min sports_injury | HR:80 SpO2:96 Res:1
+T 1: No arrival
+T 2: No arrival
+T 3: Patient 1 | Sev:5 Det:0.67 Treat:18min alcohol_poisoning | HR:114 SpO2:91 Res:3
+T 4: Patient 2 | Sev:5 Det:0.65 Treat:18min assault | HR:124 SpO2:95 Res:2
+T 5: No arrival
+T 6: Patient 3 | Sev:4 Det:0.56 Treat:14min assault | HR:111 SpO2:88 Res:0
+T 7: Patient 4 | Sev:1 Det:0.10 Treat:10min sports_injury | HR:74 SpO2:99 Res:2
+T 8: No arrival
+T 9: Patient 5 | Sev:4 Det:0.57 Treat:15min alcohol_poisoning | HR:113 SpO2:91 Res:2
+T10: Patient 6 | Sev:4 Det:0.57 Treat:18min trauma | HR:101 SpO2:91 Res:1
+T11: Patient 7 | Sev:3 Det:0.50 Treat:11min alcohol_poisoning | HR:116 SpO2:93 Res:3
+T12: Patient 8 | Sev:3 Det:0.40 Treat:14min motor_vehicle_accident | HR:116 SpO2:98 Res:0
+T13: Patient 9 | Sev:5 Det:0.60 Treat:15min alcohol_poisoning | HR:108 SpO2:88 Res:3
+T14: Patient 10 | Sev:5 Det:0.66 Treat:20min assault | HR:127 SpO2:91 Res:0
+T15: Patient 11 | Sev:1 Det:0.15 Treat:10min assault | HR:61 SpO2:99 Res:0
+T16: No arrival
+T17: No arrival
+T18: Patient 12 | Sev:3 Det:0.44 Treat:12min motor_vehicle_accident | HR:90 SpO2:98 Res:0
+T19: Patient 13 | Sev:3 Det:0.41 Treat:12min assault | HR:111 SpO2:95 Res:0
+T20: No arrival
+T21: No arrival
+T22: No arrival
+T23: Patient 14 | Sev:3 Det:0.53 Treat:11min assault | HR:115 SpO2:94 Res:1
+T24: No arrival
+T25: No arrival
+T26: No arrival
+T27: No arrival
+T28: No arrival
+T29: No arrival
+T30: No arrival
+T31: No arrival
+T32: No arrival
+T33: No arrival
+T34: No arrival
+T35: No arrival
+T36: No arrival
+T37: No arrival
+T38: No arrival
+T39: No arrival
+T40: No arrival
+T41: No arrival
+T42: No arrival
+T43: No arrival
+T44: Patient 15 | Sev:1 Det:0.15 Treat:7min sports_injury | HR:66 SpO2:96 Res:2
+T45: No arrival
+T46: No arrival
+T47: No arrival
+T48: Patient 16 | Sev:3 Det:0.46 Treat:13min sports_injury | HR:89 SpO2:92 Res:1
+T49: No arrival
+T50: No arrival
+T51: No arrival
+T52: No arrival
+T53: Patient 17 | Sev:5 Det:0.66 Treat:15min assault | HR:125 SpO2:92 Res:0
+T54: No arrival
+T55: No arrival
+T56: No arrival
+T57: Patient 18 | Sev:4 Det:0.58 Treat:15min trauma | HR:102 SpO2:93 Res:1
+T58: No arrival
+T59: Patient 19 | Sev:2 Det:0.37 Treat:9min motor_vehicle_accident | HR:60 SpO2:98 Res:2
+T60: No arrival
+T61: No arrival
+T62: No arrival
+T63: No arrival
+T64: No arrival
+T65: No arrival
+T66: No arrival
+T67: No arrival
+T68: No arrival
+T69: No arrival
+T70: Patient 20 | Sev:4 Det:0.59 Treat:18min trauma | HR:135 SpO2:89 Res:3
+T71: No arrival
+T72: No arrival
+T73: No arrival
+T74: No arrival
+T75: No arrival
+T76: Patient 21 | Sev:4 Det:0.59 Treat:15min trauma | HR:132 SpO2:88 Res:2
+T77: No arrival
+T78: No arrival
+T79: No arrival
+T80: No arrival
+T81: No arrival
+T82: No arrival
+T83: Patient 22 | Sev:2 Det:0.36 Treat:9min sports_injury | HR:85 SpO2:100 Res:1
+T84: No arrival
+T85: No arrival
+T86: No arrival
+T87: No arrival
+T88: Patient 23 | Sev:5 Det:0.64 Treat:20min trauma | HR:124 SpO2:93 Res:2
+T89: Patient 24 | Sev:4 Det:0.56 Treat:13min motor_vehicle_accident | HR:110 SpO2:96 Res:0
+T90: No arrival
+T91: Patient 25 | Sev:5 Det:0.65 Treat:19min trauma | HR:128 SpO2:91 Res:1
+T92: No arrival
+T93: No arrival
+T94: Patient 26 | Sev:4 Det:0.59 Treat:14min motor_vehicle_accident | HR:108 SpO2:91 Res:1
+T95: No arrival
+
+SUMMARY
+Total patients arrived: 27
+Arrival rate: 28.1%
