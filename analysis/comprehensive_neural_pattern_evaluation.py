@@ -18,7 +18,6 @@ from optimizers.neural_optimizer import FairNeuralEvolutionOptimizer
 from classes import ERSimulation
 from enhanced_evaluation import log_patient_arrivals
 from arrival_patterns import ARRIVAL_PATTERNS, get_pattern_description
-import statistics
 
 def explain_patient_decision(chosen_patient_str, chosen_score, alt_patient_str, alt_score):
     """Create a human-readable explanation of why one patient was prioritized"""
@@ -113,10 +112,10 @@ def explain_patient_decision(chosen_patient_str, chosen_score, alt_patient_str, 
     reason = ", ".join(primary_reasons)
     return f"Patient {chosen['id']} chosen over Patient {alt['id']}: {reason} (margin: {score_diff:+.3f}, confidence: {confidence})"
 
-def evaluate_pattern(pattern_name='standard'):
+def evaluate_pattern(pattern_name='standard', num_nurses=4):
     """
-    Comprehensive evaluation with specified arrival pattern
-    IDENTICAL to comprehensive_neural_evaluation.py except for arrival pattern
+    Comprehensive evaluation with specified arrival pattern and nurse count
+    IDENTICAL to comprehensive_neural_evaluation.py except for arrival pattern and nurse count
     """
     
     # IDENTICAL training and testing parameters
@@ -140,7 +139,7 @@ def evaluate_pattern(pattern_name='standard'):
     
     # IDENTICAL training parameters
     training_params = {
-        'num_nurses': 4,  # Same as enhanced_evaluation testing
+        'num_nurses': num_nurses,  # Use specified nurse count
         'total_time': 96,
         'arrival_prob': 0.3,
         'seed': training_seeds[0]  # Use first training seed
@@ -153,7 +152,9 @@ def evaluate_pattern(pattern_name='standard'):
     )
     
     # Train the neural network using the specified pattern
-    neural_policy = optimizer.run(f"logs/full_training_neural_{pattern_name}_comprehensive.txt")
+    training_log_path = f"logs/complete_evaluation/neural/{pattern_name}_{num_nurses}nurses_training.txt"
+    os.makedirs(os.path.dirname(training_log_path), exist_ok=True)
+    neural_policy = optimizer.run(training_log_path)
     print("Full training complete!")
     
     # Create callable function from neural policy
@@ -272,7 +273,7 @@ def evaluate_pattern(pattern_name='standard'):
         
         # IDENTICAL simulation runs
         sim = ExplainableSimulation(
-            num_nurses=4,  # Same as enhanced_evaluation testing
+            num_nurses=num_nurses,  # Use specified nurse count
             total_time=96,  # 24 hours
             arrival_prob=0.3,  # Same as enhanced_evaluation
             triage_policy=neural_triage_function,
@@ -293,7 +294,7 @@ def evaluate_pattern(pattern_name='standard'):
         # IDENTICAL baseline comparisons with same arrivals
         from triage_policies import esi_policy
         esi_sim = ERSimulation(
-            num_nurses=4,
+            num_nurses=num_nurses,
             total_time=96,
             arrival_prob=0.3,
             triage_policy=esi_policy,
@@ -306,7 +307,7 @@ def evaluate_pattern(pattern_name='standard'):
         
         from triage_policies import mts_policy
         mts_sim = ERSimulation(
-            num_nurses=4,
+            num_nurses=num_nurses,
             total_time=96,
             arrival_prob=0.3,
             triage_policy=mts_policy,
@@ -460,9 +461,12 @@ def evaluate_pattern(pattern_name='standard'):
     print(f"\nSAVING DETAILED RESULTS:")
     print("─" * 30)
     
-    with open(f"logs/analysis_logs/comprehensive_neural_{pattern_name}_evaluation.txt", "w", encoding='utf-8') as f:
+    analysis_log_path = f"logs/complete_evaluation/neural/{pattern_name}_{num_nurses}nurses_analysis.txt"
+    os.makedirs(os.path.dirname(analysis_log_path), exist_ok=True)
+    
+    with open(analysis_log_path, "w", encoding='utf-8') as f:
         f.write("=" * 80 + "\n")
-        f.write(f"   COMPREHENSIVE NEURAL NETWORK EVALUATION - {pattern_name.upper()} PATTERN\n")
+        f.write(f"   COMPREHENSIVE NEURAL NETWORK EVALUATION - {pattern_name.upper()} PATTERN - {num_nurses} NURSES\n")
         f.write("=" * 80 + "\n\n")
         
         f.write(f"ARRIVAL PATTERN: {get_pattern_description(pattern_name)}\n\n")
@@ -538,10 +542,10 @@ def evaluate_pattern(pattern_name='standard'):
             improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
             f.write(f"   -> Neural beats MTS by {improvement:.1f}% (weighted wait)\n")
     
-    print(f"   Results saved to: logs/analysis_logs/comprehensive_neural_{pattern_name}_evaluation.txt")
+    print(f"   Results saved to: {analysis_log_path}")
     
     # Create output directory for this run
-    output_dir = f"report_visualizations/{pattern_name}_neural_evaluation"
+    output_dir = f"logs/complete_evaluation/neural/{pattern_name}_{num_nurses}nurses_charts"
     os.makedirs(output_dir, exist_ok=True)
     
     print(f"\nGENERATING INDIVIDUAL CHARTS...")
@@ -562,7 +566,7 @@ def evaluate_pattern(pattern_name='standard'):
     bars2 = plt.bar(x + width/2, avg_times, width, label='Average Wait Time',
                     color=['#3CB371', '#F4A460', '#FF6B6B'], alpha=0.8)
     
-    plt.title(f'Triage Policy Performance - {pattern_name.title()} Pattern (Lower is Better)', fontsize=16, fontweight='bold', pad=20)
+    plt.title(f'Triage Policy Performance - {pattern_name.title()} Pattern - {num_nurses} Nurses (Lower is Better)', fontsize=16, fontweight='bold', pad=20)
     plt.xlabel('Triage Policy', fontsize=12, fontweight='bold')
     plt.ylabel('Wait Time (Hours)', fontsize=12, fontweight='bold')
     plt.legend(fontsize=11)
@@ -655,14 +659,15 @@ def evaluate_pattern(pattern_name='standard'):
 
     print(f"\nCOMPREHENSIVE {pattern_name.upper()} EVALUATION COMPLETE!")
     print("=" * 80)
-    print(f"The neural network has been tested with {pattern_name} arrival pattern")
+    print(f"The neural network has been tested with {pattern_name} arrival pattern and {num_nurses} nurses")
     print("using identical methodology to the comprehensive evaluation!")
 
 if __name__ == "__main__":
     import sys
     pattern = sys.argv[1] if len(sys.argv) > 1 else 'standard'
+    num_nurses = int(sys.argv[2]) if len(sys.argv) > 2 else 4
     if pattern not in ARRIVAL_PATTERNS:
         print(f"Unknown pattern: {pattern}")
         print(f"Available patterns: {list(ARRIVAL_PATTERNS.keys())}")
     else:
-        evaluate_pattern(pattern)
+        evaluate_pattern(pattern, num_nurses)

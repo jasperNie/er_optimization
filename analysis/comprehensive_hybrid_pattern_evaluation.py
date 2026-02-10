@@ -199,9 +199,9 @@ def explain_patient_decision(chosen_patient_str, chosen_score, alt_patient_str, 
     reason = ", ".join(primary_reasons)
     return f"Patient {chosen['id']} chosen over Patient {alt['id']}: {reason} (margin: {score_diff:+.3f}, confidence: {confidence})"
 
-def evaluate_pattern(pattern_name='standard'):
+def evaluate_pattern(pattern_name='standard', num_nurses=4):
     """
-    Comprehensive evaluation with specified arrival pattern
+    Comprehensive evaluation with specified arrival pattern and nurse count
     IDENTICAL to comprehensive_neural_evaluation.py except for arrival pattern
     """
     
@@ -210,7 +210,7 @@ def evaluate_pattern(pattern_name='standard'):
     test_seeds = list(range(9000, 9100))  # 100 test seeds (9000-9099)
     
     print("\n" + "=" * 80)
-    print(f"   COMPREHENSIVE HYBRID TRIAGE EVALUATION - {pattern_name.upper()} PATTERN")
+    print(f"   COMPREHENSIVE HYBRID TRIAGE EVALUATION - {pattern_name.upper()} PATTERN ({num_nurses} NURSES)")
     print("=" * 80)
     print(f"Pattern: {get_pattern_description(pattern_name)}")
     print(f"Training on {len(training_seeds)} seeds: {training_seeds[0]}-{training_seeds[-1]}")
@@ -226,7 +226,7 @@ def evaluate_pattern(pattern_name='standard'):
     
     # IDENTICAL training parameters
     training_params = {
-        'num_nurses': 4,  # Same as enhanced_evaluation testing
+        'num_nurses': num_nurses,
         'total_time': 96,
         'arrival_prob': 0.3,
         'seed': training_seeds[0]  # Use first training seed
@@ -239,7 +239,9 @@ def evaluate_pattern(pattern_name='standard'):
     )
     
     # Train the neural network using the specified pattern
-    neural_policy = optimizer.run(f"logs/full_training_{pattern_name}_comprehensive.txt")
+    training_log_path = f"logs/complete_evaluation/hybrid/{pattern_name}_{num_nurses}nurses_training.txt"
+    os.makedirs(os.path.dirname(training_log_path), exist_ok=True)
+    neural_policy = optimizer.run(training_log_path)
     print("Full training complete!")
     
     # Create hybrid triage function from neural policy
@@ -253,11 +255,13 @@ def evaluate_pattern(pattern_name='standard'):
 
     
     # IDENTICAL explainable simulation class
-    class ExplainableSimulation(ERSimulation):
+    class HybridExplainableSimulation(ERSimulation):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.explanation_log = []
             self.decision_count = 0
+            self.esi_fallback_count = 0  # Track ESI fallbacks
+            self.neural_decision_count = 0  # Track neural decisions
             
         def step(self):
             """Enhanced step with decision explanations"""
@@ -303,21 +307,79 @@ def evaluate_pattern(pattern_name='standard'):
                     self.started_patients.append((patient, patient.wait_time))
                 return
             
-            # Multiple patients - explain the decision
+            # Multiple patients - implement hybrid logic
             sim_state = {
                 'current_time': self.time,
                 'queue_length': len(self.waiting_patients),
                 'nurse_availability': len(free_nurses) / len(self.nurses)
             }
             
-            # Score all patients
-            patient_scores = []
+            # Get neural network scores
+            neural_scores = []
             for patient in self.waiting_patients:
                 score = optimizer.fair_neural_triage_score(patient, sim_state, neural_policy)
-                patient_scores.append((patient, score))
+                neural_scores.append((patient, score))
+            neural_scores.sort(key=lambda x: x[1], reverse=True)
             
-            # Sort by priority
-            patient_scores.sort(key=lambda x: x[1], reverse=True)
+            # Hybrid decision logic with confidence checking
+            if len(neural_scores) >= 2:
+                top_patient, top_score = neural_scores[0]
+                second_patient, second_score = neural_scores[1]
+                confidence_margin = top_score - second_score
+                
+                # Use the same confidence threshold as the hybrid triage function
+                base_threshold = 0.0001
+                
+                # Check if neural network is making a clinically questionable decision
+                clinically_questionable = False
+                
+                # Case 1: Lower severity chosen over significantly higher severity
+                if (second_patient.severity >= 5 and top_patient.severity <= 3 and 
+                    second_patient.wait_time >= 10):
+                    clinically_questionable = True
+                    adjusted_threshold = base_threshold * 10.0  # Much easier to trigger ESI
+                
+                # Case 2: High-severity patient waiting very long gets deprioritized
+                elif (second_patient.severity >= 5 and second_patient.wait_time >= 20):
+                    clinically_questionable = True
+                    adjusted_threshold = base_threshold * 5.0  # Easier to trigger ESI
+                
+                # Case 3: Severity 5 patient with high deterioration gets deprioritized
+                elif (second_patient.severity >= 5 and second_patient.deterioration_chance >= 0.5 and
+                      top_patient.severity < second_patient.severity):
+                    clinically_questionable = True
+                    adjusted_threshold = base_threshold * 3.0
+                
+                # Case 4: Normal threshold for clinically reasonable decisions
+                else:
+                    adjusted_threshold = base_threshold
+                
+                # Force ESI for extreme cases regardless of confidence
+                force_esi = False
+                for patient in [top_patient, second_patient]:
+                    if patient.severity >= 5 and patient.wait_time >= 30:  # Critical patient waiting 30+ timesteps
+                        force_esi = True
+                        break
+                
+                # If confidence is too low OR we're forcing ESI, fall back to ESI decision
+                if confidence_margin < adjusted_threshold or force_esi:
+                    # Use pure ESI: sort by severity (higher severity = higher priority)
+                    esi_scores = [(p, p.severity + 0.1 * p.deterioration_chance - 0.01 * p.wait_time) for p in self.waiting_patients]
+                    esi_scores.sort(key=lambda x: x[1], reverse=True)
+                    patient_scores = esi_scores
+                    decision_method = "ESI_fallback"
+                    self.esi_fallback_count += 1  # Count ESI fallback
+                else:
+                    # Use neural network decision
+                    patient_scores = neural_scores
+                    decision_method = "neural"
+                    self.neural_decision_count += 1  # Count neural decision
+            else:
+                # Single patient or empty, use neural
+                patient_scores = neural_scores
+                decision_method = "neural"
+                if len(self.waiting_patients) > 0:  # Only count if there's actually a decision
+                    self.neural_decision_count += 1
             
             # Log this decision for explanation
             self.decision_count += 1
@@ -357,10 +419,10 @@ def evaluate_pattern(pattern_name='standard'):
 
         
         # IDENTICAL simulation runs
-        sim = ExplainableSimulation(
-            num_nurses=4,  # Same as enhanced_evaluation testing
+        sim = HybridExplainableSimulation(
+            num_nurses=num_nurses,
             total_time=96,  # 24 hours
-            arrival_prob=0.3,  # Same as enhanced_evaluation
+            arrival_prob=0.3,
             triage_policy=hybrid_triage_function,
             verbose=False,
             seed=test_seed,
@@ -376,23 +438,18 @@ def evaluate_pattern(pattern_name='standard'):
         result['total_decisions'] = sim.decision_count
         
         # Add hybrid-specific metrics
-        result['neural_decisions'] = hybrid_triage_function.neural_decisions
-        result['fallback_decisions'] = hybrid_triage_function.fallback_decisions
-        result['neural_percentage'] = (hybrid_triage_function.neural_decisions / 
-                                     max(1, hybrid_triage_function.neural_decisions + hybrid_triage_function.fallback_decisions)) * 100
+        result['neural_decisions'] = sim.neural_decision_count
+        result['fallback_decisions'] = sim.esi_fallback_count
+        result['neural_percentage'] = (sim.neural_decision_count / 
+                                     max(1, sim.neural_decision_count + sim.esi_fallback_count)) * 100
         result['hybrid_explanations'] = hybrid_triage_function.explained_decisions
         
         all_results.append(result)
         
-        # Reset counters for next iteration
-        hybrid_triage_function.neural_decisions = 0
-        hybrid_triage_function.fallback_decisions = 0
-        hybrid_triage_function.explained_decisions = []
-        
         # IDENTICAL baseline comparisons with same arrivals
         from triage_policies import esi_policy
         esi_sim = ERSimulation(
-            num_nurses=4,
+            num_nurses=num_nurses,
             total_time=96,
             arrival_prob=0.3,
             triage_policy=esi_policy,
@@ -405,7 +462,7 @@ def evaluate_pattern(pattern_name='standard'):
         
         from triage_policies import mts_policy
         mts_sim = ERSimulation(
-            num_nurses=4,
+            num_nurses=num_nurses,
             total_time=96,
             arrival_prob=0.3,
             triage_policy=mts_policy,
@@ -566,9 +623,12 @@ def evaluate_pattern(pattern_name='standard'):
     print(f"\nSAVING DETAILED RESULTS:")
     print("─" * 30)
     
-    with open(f"logs/analysis_logs/comprehensive_hybrid_{pattern_name}_evaluation.txt", "w", encoding='utf-8') as f:
+    analysis_log_path = f"logs/complete_evaluation/hybrid/{pattern_name}_{num_nurses}nurses_analysis.txt"
+    os.makedirs(os.path.dirname(analysis_log_path), exist_ok=True)
+    
+    with open(analysis_log_path, "w", encoding='utf-8') as f:
         f.write("=" * 80 + "\n")
-        f.write(f"   COMPREHENSIVE HYBRID TRIAGE EVALUATION - {pattern_name.upper()} PATTERN\n")
+        f.write(f"   COMPREHENSIVE HYBRID TRIAGE EVALUATION - {pattern_name.upper()} PATTERN ({num_nurses} NURSES)\n")
         f.write("=" * 80 + "\n\n")
         
         f.write(f"ARRIVAL PATTERN: {get_pattern_description(pattern_name)}\n\n")
@@ -647,10 +707,10 @@ def evaluate_pattern(pattern_name='standard'):
             improvement = ((mts_avg_weighted - neural_avg_weighted) / mts_avg_weighted) * 100
             f.write(f"   -> Neural beats MTS by {improvement:.1f}% (weighted wait)\n")
     
-    print(f"   Results saved to: logs/analysis_logs/comprehensive_hybrid_{pattern_name}_evaluation.txt")
+    print(f"   Results saved to: {analysis_log_path}")
     
     # Create output directory for this run
-    output_dir = f"report_visualizations/{pattern_name}_hybrid_evaluation"
+    output_dir = f"logs/complete_evaluation/hybrid/{pattern_name}_{num_nurses}nurses_charts"
     os.makedirs(output_dir, exist_ok=True)
     
     print(f"\nGENERATING INDIVIDUAL CHARTS...")
@@ -695,8 +755,23 @@ def evaluate_pattern(pattern_name='standard'):
     plt.close()
     print(f"   Performance comparison saved: {chart1_path}")
     
-    # IDENTICAL remaining charts
-    # Chart 2: Neural decision margins distribution
+    # Chart 2: Decision breakdown pie chart (Neural vs ESI Fallback)
+    plt.figure(figsize=(8, 8))
+    neural_pct = avg_neural_percentage
+    esi_pct = 100 - avg_neural_percentage
+    total_all_decisions = sum(total_decisions)
+    
+    plt.pie([neural_pct, esi_pct], labels=['Neural Network', 'ESI Fallback'], 
+           colors=['#27AE60', '#E67E22'], autopct='%1.1f%%', startangle=90)
+    plt.title(f'Decision Method Distribution - {pattern_name.title()} Pattern\n({total_all_decisions} total decisions)', 
+             fontsize=16, fontweight='bold')
+    plt.tight_layout()
+    chart2_path = f"{output_dir}/2_decision_breakdown.png"
+    plt.savefig(chart2_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"   Decision breakdown saved: {chart2_path}")
+    
+    # Chart 3: Neural decision margins distribution
     plt.figure(figsize=(10, 6))
     
     decision_margins = []
@@ -722,12 +797,12 @@ def evaluate_pattern(pattern_name='standard'):
         plt.title(f'Neural Decision Margins - {pattern_name.title()} Pattern', fontsize=16, fontweight='bold')
     
     plt.tight_layout()
-    chart2_path = f"{output_dir}/2_decision_confidence.png"
-    plt.savefig(chart2_path, dpi=300, bbox_inches='tight')
+    chart3_path = f"{output_dir}/3_decision_confidence.png"
+    plt.savefig(chart3_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"   Decision confidence saved: {chart2_path}")
+    print(f"   Decision confidence saved: {chart3_path}")
     
-    # Chart 3: Patient treatment distribution
+    # Chart 4: Patient treatment distribution
     plt.figure(figsize=(10, 6))
     patients_treated = completed_counts
     plt.hist(patients_treated, bins=15, color='#E74C3C', alpha=0.7, edgecolor='black')
@@ -739,12 +814,12 @@ def evaluate_pattern(pattern_name='standard'):
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    chart3_path = f"{output_dir}/3_patient_treatment.png"
-    plt.savefig(chart3_path, dpi=300, bbox_inches='tight')
+    chart4_path = f"{output_dir}/4_patient_treatment.png"
+    plt.savefig(chart4_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"   Patient treatment saved: {chart3_path}")
+    print(f"   Patient treatment saved: {chart4_path}")
     
-    # Chart 4: Wait time distribution
+    # Chart 5: Wait time distribution
     plt.figure(figsize=(10, 6))
     wait_times_all = weighted_waits
     plt.hist(wait_times_all, bins=15, color='#27AE60', alpha=0.7, edgecolor='black')
@@ -756,22 +831,24 @@ def evaluate_pattern(pattern_name='standard'):
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    chart4_path = f"{output_dir}/4_wait_time_distribution.png"
-    plt.savefig(chart4_path, dpi=300, bbox_inches='tight')
+    chart5_path = f"{output_dir}/5_wait_time_distribution.png"
+    plt.savefig(chart5_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"   Wait time distribution saved: {chart4_path}")
+    print(f"   Wait time distribution saved: {chart5_path}")
     print(f"\nAll charts generated successfully in: {output_dir}/")
 
     print(f"\nCOMPREHENSIVE {pattern_name.upper()} EVALUATION COMPLETE!")
     print("=" * 80)
-    print(f"The neural network has been tested with {pattern_name} arrival pattern")
+    print(f"The hybrid neural network has been tested with {pattern_name} arrival pattern and {num_nurses} nurses")
     print("using identical methodology to the comprehensive evaluation!")
 
 if __name__ == "__main__":
     import sys
     pattern = sys.argv[1] if len(sys.argv) > 1 else 'standard'
+    num_nurses = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+    
     if pattern not in ARRIVAL_PATTERNS:
         print(f"Unknown pattern: {pattern}")
         print(f"Available patterns: {list(ARRIVAL_PATTERNS.keys())}")
     else:
-        evaluate_pattern(pattern)
+        evaluate_pattern(pattern, num_nurses)

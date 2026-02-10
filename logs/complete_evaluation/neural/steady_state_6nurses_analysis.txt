@@ -1,0 +1,1518 @@
+================================================================================
+   COMPREHENSIVE NEURAL NETWORK EVALUATION - STEADY_STATE PATTERN - 6 NURSES
+================================================================================
+
+ARRIVAL PATTERN: Minimal variation baseline for controlled testing
+
+TRAINING CONFIGURATION:
+   Generations: 100
+   Population: 80
+   Training seeds: 50 seeds (8000-8049)
+   Test seeds: 100 seeds (9000-9099)
+   Simulation: 24 hours (96 timesteps of 15 minutes each)
+
+SEED 9000 RESULTS:
+   Patients treated: 17
+   Patients waiting: 3
+   Average wait: 3.62 timesteps (54 minutes)
+   Weighted wait: 17.86 timesteps (268 minutes)
+   Decisions explained: 5
+   ESI treated: 18, waiting: 2 | avg: 7.24 timesteps (109 min), weighted: 37.66 (565 min)
+   MTS treated: 18, waiting: 2 | avg: 10.86 timesteps (163 min), weighted: 57.01 (855 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:45: Patient 17 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.61 vs 0.42 rate), longer wait (90min vs 75min) (margin: +0.050, confidence: low)
+     2. t=21:15: Patient 18 chosen over Patient 19: longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     3. t=21:30: Patient 22 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.20 rate) (margin: +0.050, confidence: low)
+     4. t=22:00: Patient 23 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.70 vs 0.20 rate) (margin: +0.050, confidence: low)
+     5. t=24:00: Patient 28 chosen over Patient 27: close call: severity edge to Patient 28 (3 vs 5), wait time edge to Patient 27, deterioration edge to Patient 27, treatment speed edge to Patient 28 (margin: +0.057, confidence: moderate)
+
+SEED 9001 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 2.00 timesteps (30 minutes)
+   Weighted wait: 12.94 timesteps (194 minutes)
+   Decisions explained: 3
+   ESI treated: 19, waiting: 0 | avg: 4.00 timesteps (60 min), weighted: 25.59 (384 min)
+   MTS treated: 19, waiting: 0 | avg: 6.00 timesteps (90 min), weighted: 38.23 (573 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:15: Patient 11 chosen over Patient 12: higher severity (level 5 vs 3), deteriorating faster (0.69 vs 0.42 rate), longer wait (30min vs 15min) (margin: +0.026, confidence: low)
+     2. t=22:45: Patient 22 chosen over Patient 23: longer wait (60min vs 45min), quicker treatment (240min vs 270min) (margin: +0.000, confidence: low)
+     3. t=24:00: Patient 25 chosen over Patient 26: higher severity (level 5 vs 4), deteriorating faster (0.65 vs 0.27 rate), much longer wait (90min vs 15min) (margin: +0.090, confidence: moderate)
+
+SEED 9002 RESULTS:
+   Patients treated: 28
+   Patients waiting: 0
+   Average wait: 2.24 timesteps (34 minutes)
+   Weighted wait: 13.05 timesteps (196 minutes)
+   Decisions explained: 6
+   ESI treated: 27, waiting: 0 | avg: 4.47 timesteps (67 min), weighted: 26.29 (394 min)
+   MTS treated: 27, waiting: 0 | avg: 6.71 timesteps (101 min), weighted: 39.01 (585 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:45: Patient 18 chosen over Patient 19: deteriorating faster (0.65 vs 0.28 rate), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     2. t=21:30: Patient 27 chosen over Patient 28: much longer wait (105min vs 45min) (margin: +0.000, confidence: low)
+     3. t=22:15: Patient 28 chosen over Patient 29: much longer wait (90min vs 30min) (margin: +0.000, confidence: low)
+     4. t=23:15: Patient 29 chosen over Patient 30: deteriorating faster (0.68 vs 0.29 rate), longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     5. t=23:30: Patient 30 chosen over Patient 31: much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     6. t=24:00: Patient 33 chosen over Patient 31: deteriorating faster (0.67 vs 0.29 rate) (margin: +0.349, confidence: high)
+
+SEED 9003 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 2.06 timesteps (31 minutes)
+   Weighted wait: 12.16 timesteps (182 minutes)
+   Decisions explained: 11
+   ESI treated: 27, waiting: 0 | avg: 4.06 timesteps (61 min), weighted: 24.13 (362 min)
+   MTS treated: 27, waiting: 0 | avg: 6.12 timesteps (92 min), weighted: 36.29 (544 min)
+   ALL TRIAGE DECISIONS:
+     1. t=06:15: Patient 9 chosen over Patient 10: higher severity (level 5 vs 4), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     2. t=06:30: Patient 11 chosen over Patient 10: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     3. t=06:45: Patient 12 chosen over Patient 10: higher severity (level 5 vs 4), deteriorating faster (0.68 vs 0.27 rate) (margin: +0.116, confidence: high)
+     4. t=07:30: Patient 10 chosen over Patient 13: higher severity (level 4 vs 3), deteriorating faster (0.27 vs 0.17 rate), much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     5. t=08:30: Patient 14 chosen over Patient 15: longer wait (45min vs 30min), much quicker treatment (195min vs 270min) (margin: +0.000, confidence: low)
+     6. t=09:00: Patient 17 chosen over Patient 15: close call: same severity (level 5), wait time edge to Patient 15, similar deterioration rates (~0.63), similar treatment times (~285min) (margin: +0.000, confidence: low)
+     7. t=09:45: Patient 15 chosen over Patient 16: longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     8. t=19:00: Patient 25 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.67 vs 0.27 rate) (margin: +0.050, confidence: low)
+     9. t=19:45: Patient 24 chosen over Patient 26: much longer wait (105min vs 45min) (margin: +0.000, confidence: low)
+     10. t=23:15: Patient 29 chosen over Patient 30: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     11. t=24:00: Patient 32 chosen over Patient 31: deteriorating faster (0.43 vs 0.28 rate) (margin: +0.286, confidence: high)
+
+SEED 9004 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 1.70 timesteps (26 minutes)
+   Weighted wait: 9.49 timesteps (142 minutes)
+   Decisions explained: 3
+   ESI treated: 20, waiting: 0 | avg: 3.41 timesteps (51 min), weighted: 19.65 (295 min)
+   MTS treated: 20, waiting: 0 | avg: 5.11 timesteps (77 min), weighted: 29.70 (446 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:15: Patient 11 chosen over Patient 10: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.08 rate) (margin: +0.050, confidence: low)
+     2. t=22:45: Patient 22 chosen over Patient 23: higher severity (level 5 vs 1), longer wait (60min vs 30min) (margin: +0.050, confidence: low)
+     3. t=24:00: Patient 25 chosen over Patient 24: deteriorating faster (0.67 vs 0.28 rate) (margin: +0.426, confidence: high)
+
+SEED 9005 RESULTS:
+   Patients treated: 16
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 6.20 timesteps (93 minutes)
+   Decisions explained: 0
+   ESI treated: 16, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 12.79 (192 min)
+   MTS treated: 16, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 19.72 (296 min)
+
+SEED 9006 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 2.21 timesteps (33 minutes)
+   Weighted wait: 12.77 timesteps (192 minutes)
+   Decisions explained: 4
+   ESI treated: 18, waiting: 0 | avg: 4.42 timesteps (66 min), weighted: 26.26 (394 min)
+   MTS treated: 18, waiting: 0 | avg: 6.62 timesteps (99 min), weighted: 40.29 (604 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:45: Patient 18 chosen over Patient 19: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     2. t=21:00: Patient 19 chosen over Patient 20: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     3. t=23:30: Patient 21 chosen over Patient 22: longer wait (105min vs 90min), much quicker treatment (225min vs 300min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 23 chosen over Patient 22: close call: same severity (level 5), wait time edge to Patient 22, similar deterioration rates (~0.65), treatment speed edge to Patient 23 (margin: +0.284, confidence: high)
+
+SEED 9007 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 3.00 timesteps (45 minutes)
+   Weighted wait: 16.81 timesteps (252 minutes)
+   Decisions explained: 10
+   ESI treated: 26, waiting: 0 | avg: 6.11 timesteps (92 min), weighted: 32.84 (493 min)
+   MTS treated: 26, waiting: 0 | avg: 9.39 timesteps (141 min), weighted: 50.18 (753 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:15: Patient 11 chosen over Patient 10: higher severity (level 5 vs 3), deteriorating faster (0.64 vs 0.20 rate) (margin: +0.050, confidence: low)
+     2. t=10:00: Patient 10 chosen over Patient 14: much longer wait (120min vs 15min) (margin: +0.000, confidence: low)
+     3. t=10:15: Patient 14 chosen over Patient 12: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.23 rate) (margin: +0.050, confidence: low)
+     4. t=11:15: Patient 12 chosen over Patient 13: higher severity (level 5 vs 2), longer wait (120min vs 105min) (margin: +0.050, confidence: low)
+     5. t=11:30: Patient 15 chosen over Patient 13: higher severity (level 5 vs 2), deteriorating faster (0.64 vs 0.09 rate) (margin: +0.050, confidence: low)
+     6. t=11:45: Patient 13 chosen over Patient 16: much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+     7. t=12:45: Patient 16 chosen over Patient 17: longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     8. t=13:45: Patient 17 chosen over Patient 18: longer wait (120min vs 105min), quicker treatment (195min vs 210min) (margin: +0.000, confidence: low)
+     9. t=14:00: Patient 18 chosen over Patient 19: much longer wait (120min vs 75min) (margin: +0.000, confidence: low)
+     10. t=14:30: Patient 19 chosen over Patient 20: much longer wait (105min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9008 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 3.00 timesteps (45 minutes)
+   Weighted wait: 17.34 timesteps (260 minutes)
+   Decisions explained: 7
+   ESI treated: 23, waiting: 0 | avg: 6.00 timesteps (90 min), weighted: 35.42 (531 min)
+   MTS treated: 23, waiting: 0 | avg: 9.00 timesteps (135 min), weighted: 52.89 (793 min)
+   ALL TRIAGE DECISIONS:
+     1. t=14:45: Patient 16 chosen over Patient 17: higher severity (level 5 vs 3), deteriorating faster (0.68 vs 0.42 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     2. t=17:00: Patient 19 chosen over Patient 20: longer wait (30min vs 15min), quicker treatment (270min vs 285min) (margin: +0.000, confidence: low)
+     3. t=19:00: Patient 21 chosen over Patient 22: much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     4. t=21:30: Patient 23 chosen over Patient 24: much longer wait (135min vs 75min) (margin: +0.000, confidence: low)
+     5. t=22:15: Patient 24 chosen over Patient 26: much longer wait (120min vs 60min) (margin: +0.000, confidence: low)
+     6. t=23:00: Patient 26 chosen over Patient 27: deteriorating faster (0.28 vs 0.14 rate), longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+     7. t=24:00: Patient 29 chosen over Patient 28: close call: severity edge to Patient 29 (2 vs 5), wait time edge to Patient 28, deterioration edge to Patient 28, similar treatment times (~195min) (margin: +0.465, confidence: high)
+
+SEED 9009 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 3.40 timesteps (51 minutes)
+   Weighted wait: 17.78 timesteps (267 minutes)
+   Decisions explained: 4
+   ESI treated: 21, waiting: 0 | avg: 6.80 timesteps (102 min), weighted: 36.42 (546 min)
+   MTS treated: 21, waiting: 0 | avg: 10.20 timesteps (153 min), weighted: 56.21 (843 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:30: Patient 21 chosen over Patient 24: much longer wait (105min vs 30min) (margin: +0.000, confidence: low)
+     2. t=21:00: Patient 23 chosen over Patient 24: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     3. t=22:30: Patient 24 chosen over Patient 26: deteriorating faster (0.68 vs 0.13 rate), much longer wait (150min vs 60min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 28 chosen over Patient 25: deteriorating faster (0.66 vs 0.11 rate) (margin: +0.345, confidence: high)
+
+SEED 9010 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 3.89 timesteps (58 minutes)
+   Weighted wait: 20.41 timesteps (306 minutes)
+   Decisions explained: 11
+   ESI treated: 19, waiting: 0 | avg: 7.48 timesteps (112 min), weighted: 42.63 (639 min)
+   MTS treated: 19, waiting: 0 | avg: 11.37 timesteps (171 min), weighted: 64.72 (971 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:15: Patient 14 chosen over Patient 15: higher severity (level 5 vs 4), much longer wait (120min vs 60min) (margin: +0.050, confidence: low)
+     2. t=18:45: Patient 15 chosen over Patient 16: higher severity (level 5 vs 3), longer wait (90min vs 75min) (margin: +0.050, confidence: low)
+     3. t=19:00: Patient 16 chosen over Patient 17: much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     4. t=19:45: Patient 17 chosen over Patient 18: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.09 rate), longer wait (90min vs 75min) (margin: +0.050, confidence: low)
+     5. t=20:15: Patient 20 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.30 vs 0.04 rate) (margin: +0.050, confidence: low)
+     6. t=21:45: Patient 21 chosen over Patient 22: longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     7. t=22:30: Patient 22 chosen over Patient 23: deteriorating faster (0.29 vs 0.12 rate), longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+     8. t=22:45: Patient 23 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.12 vs 0.02 rate) (margin: +0.050, confidence: low)
+     9. t=23:30: Patient 24 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.02 rate) (margin: +0.050, confidence: low)
+     10. t=23:45: Patient 26 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.02 rate) (margin: +0.050, confidence: low)
+     11. t=24:00: Patient 25 chosen over Patient 18: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.02 rate) (margin: +0.050, confidence: low)
+
+SEED 9011 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 2.44 timesteps (37 minutes)
+   Weighted wait: 11.07 timesteps (166 minutes)
+   Decisions explained: 6
+   ESI treated: 22, waiting: 0 | avg: 4.93 timesteps (74 min), weighted: 22.48 (337 min)
+   MTS treated: 22, waiting: 0 | avg: 7.41 timesteps (111 min), weighted: 34.26 (514 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:00: Patient 18 chosen over Patient 19: higher severity (level 5 vs 3), deteriorating faster (0.69 vs 0.46 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     2. t=19:15: Patient 20 chosen over Patient 21: much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     3. t=20:00: Patient 21 chosen over Patient 22: higher severity (level 5 vs 1), deteriorating faster (0.28 vs 0.17 rate), longer wait (75min vs 45min) (margin: +0.050, confidence: low)
+     4. t=21:45: Patient 22 chosen over Patient 23: much longer wait (150min vs 75min) (margin: +0.000, confidence: low)
+     5. t=22:30: Patient 23 chosen over Patient 24: longer wait (120min vs 90min) (margin: +0.000, confidence: low)
+     6. t=22:45: Patient 24 chosen over Patient 25: longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+
+SEED 9012 RESULTS:
+   Patients treated: 21
+   Patients waiting: 2
+   Average wait: 2.94 timesteps (44 minutes)
+   Weighted wait: 15.96 timesteps (239 minutes)
+   Decisions explained: 7
+   ESI treated: 22, waiting: 1 | avg: 5.69 timesteps (85 min), weighted: 33.57 (504 min)
+   MTS treated: 21, waiting: 2 | avg: 8.62 timesteps (129 min), weighted: 50.97 (765 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:15: Patient 12 chosen over Patient 11: higher severity (level 5 vs 2), deteriorating faster (0.63 vs 0.29 rate) (margin: +0.050, confidence: low)
+     2. t=11:45: Patient 13 chosen over Patient 11: higher severity (level 5 vs 4), deteriorating faster (0.60 vs 0.07 rate) (margin: +0.050, confidence: low)
+     3. t=20:30: Patient 22 chosen over Patient 23: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     4. t=21:00: Patient 23 chosen over Patient 24: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     5. t=21:45: Patient 24 chosen over Patient 26: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     6. t=23:15: Patient 26 chosen over Patient 27: deteriorating faster (0.64 vs 0.29 rate), longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     7. t=24:00: Patient 31 chosen over Patient 30: close call: severity edge to Patient 31 (1 vs 5), wait time edge to Patient 30, deterioration edge to Patient 30, treatment speed edge to Patient 31 (margin: +0.041, confidence: low)
+
+SEED 9013 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 1.57 timesteps (24 minutes)
+   Weighted wait: 9.02 timesteps (135 minutes)
+   Decisions explained: 4
+   ESI treated: 24, waiting: 0 | avg: 3.13 timesteps (47 min), weighted: 18.47 (277 min)
+   MTS treated: 24, waiting: 0 | avg: 4.70 timesteps (70 min), weighted: 28.00 (420 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:00: Patient 12 chosen over Patient 13: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     2. t=10:00: Patient 15 chosen over Patient 14: deteriorating faster (0.49 vs 0.21 rate), quicker treatment (210min vs 240min) (margin: +0.036, confidence: low)
+     3. t=18:45: Patient 22 chosen over Patient 23: deteriorating faster (0.30 vs 0.12 rate), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 29 chosen over Patient 28: close call: same severity (level 5), similar wait times (~15min), similar deterioration rates (~0.69), similar treatment times (~225min) (margin: +0.140, confidence: high)
+
+SEED 9014 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 2.36 timesteps (35 minutes)
+   Weighted wait: 12.09 timesteps (181 minutes)
+   Decisions explained: 7
+   ESI treated: 27, waiting: 0 | avg: 4.76 timesteps (71 min), weighted: 26.63 (399 min)
+   MTS treated: 27, waiting: 0 | avg: 7.12 timesteps (107 min), weighted: 40.05 (601 min)
+   ALL TRIAGE DECISIONS:
+     1. t=13:30: Patient 17 chosen over Patient 16: higher severity (level 5 vs 2), deteriorating faster (0.29 vs 0.09 rate) (margin: +0.050, confidence: low)
+     2. t=16:15: Patient 22 chosen over Patient 24: deteriorating faster (0.68 vs 0.29 rate), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     3. t=17:00: Patient 21 chosen over Patient 24: much longer wait (105min vs 60min) (margin: +0.000, confidence: low)
+     4. t=17:15: Patient 24 chosen over Patient 25: longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+     5. t=18:15: Patient 25 chosen over Patient 23: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.17 rate) (margin: +0.050, confidence: low)
+     6. t=23:45: Patient 31 chosen over Patient 30: higher severity (level 5 vs 2), deteriorating faster (0.63 vs 0.12 rate) (margin: +0.050, confidence: low)
+     7. t=24:00: Patient 32 chosen over Patient 30: higher severity (level 4 vs 2), deteriorating faster (0.56 vs 0.12 rate) (margin: +0.261, confidence: high)
+
+SEED 9015 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 5.56 timesteps (83 minutes)
+   Decisions explained: 0
+   ESI treated: 22, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 11.29 (169 min)
+   MTS treated: 22, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 17.09 (256 min)
+
+SEED 9016 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 1.63 timesteps (24 minutes)
+   Weighted wait: 9.58 timesteps (144 minutes)
+   Decisions explained: 2
+   ESI treated: 20, waiting: 0 | avg: 3.26 timesteps (49 min), weighted: 19.48 (292 min)
+   MTS treated: 20, waiting: 0 | avg: 4.89 timesteps (73 min), weighted: 29.22 (438 min)
+   ALL TRIAGE DECISIONS:
+     1. t=22:30: Patient 23 chosen over Patient 22: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.21 rate) (margin: +0.050, confidence: low)
+     2. t=24:00: Patient 25 chosen over Patient 26: higher severity (level 5 vs 4), deteriorating faster (0.63 vs 0.23 rate), longer wait (30min vs 15min) (margin: +0.405, confidence: high)
+
+SEED 9017 RESULTS:
+   Patients treated: 17
+   Patients waiting: 0
+   Average wait: 1.14 timesteps (17 minutes)
+   Weighted wait: 5.24 timesteps (79 minutes)
+   Decisions explained: 0
+   ESI treated: 17, waiting: 0 | avg: 2.27 timesteps (34 min), weighted: 10.92 (164 min)
+   MTS treated: 17, waiting: 0 | avg: 3.41 timesteps (51 min), weighted: 16.61 (249 min)
+
+SEED 9018 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 2.28 timesteps (34 minutes)
+   Weighted wait: 12.18 timesteps (183 minutes)
+   Decisions explained: 7
+   ESI treated: 21, waiting: 0 | avg: 4.52 timesteps (68 min), weighted: 25.12 (377 min)
+   MTS treated: 21, waiting: 0 | avg: 6.80 timesteps (102 min), weighted: 38.04 (571 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:15: Patient 17 chosen over Patient 18: deteriorating faster (0.61 vs 0.29 rate), longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     2. t=19:00: Patient 18 chosen over Patient 19: higher severity (level 5 vs 3), much longer wait (75min vs 30min) (margin: +0.050, confidence: low)
+     3. t=19:45: Patient 21 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.20 rate) (margin: +0.050, confidence: low)
+     4. t=20:00: Patient 19 chosen over Patient 20: higher severity (level 4 vs 3), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     5. t=23:00: Patient 20 chosen over Patient 22: higher severity (level 5 vs 3), much longer wait (240min vs 15min) (margin: +0.050, confidence: low)
+     6. t=23:30: Patient 22 chosen over Patient 23: deteriorating faster (0.41 vs 0.22 rate), longer wait (45min vs 30min), quicker treatment (180min vs 225min) (margin: +0.000, confidence: low)
+     7. t=23:45: Patient 23 chosen over Patient 24: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9019 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 2.69 timesteps (40 minutes)
+   Weighted wait: 15.44 timesteps (232 minutes)
+   Decisions explained: 5
+   ESI treated: 23, waiting: 0 | avg: 5.38 timesteps (81 min), weighted: 31.01 (465 min)
+   MTS treated: 23, waiting: 0 | avg: 8.08 timesteps (121 min), weighted: 46.69 (700 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:45: Patient 14 chosen over Patient 15: deteriorating faster (0.70 vs 0.30 rate), much longer wait (105min vs 60min) (margin: +0.000, confidence: low)
+     2. t=13:15: Patient 15 chosen over Patient 13: higher severity (level 5 vs 3), deteriorating faster (0.30 vs 0.04 rate) (margin: +0.050, confidence: low)
+     3. t=13:30: Patient 13 chosen over Patient 16: higher severity (level 3 vs 2), much longer wait (165min vs 30min) (margin: +0.000, confidence: low)
+     4. t=16:45: Patient 19 chosen over Patient 20: higher severity (level 5 vs 2), deteriorating faster (0.67 vs 0.31 rate), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     5. t=21:00: Patient 23 chosen over Patient 24: longer wait (105min vs 90min), much quicker treatment (195min vs 285min) (margin: +0.000, confidence: low)
+
+SEED 9020 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 1.96 timesteps (29 minutes)
+   Weighted wait: 8.37 timesteps (125 minutes)
+   Decisions explained: 4
+   ESI treated: 25, waiting: 0 | avg: 3.93 timesteps (59 min), weighted: 18.29 (274 min)
+   MTS treated: 25, waiting: 0 | avg: 5.89 timesteps (88 min), weighted: 27.54 (413 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:00: Patient 20 chosen over Patient 21: higher severity (level 5 vs 2), deteriorating faster (0.14 vs 0.06 rate), longer wait (60min vs 45min) (margin: +0.050, confidence: low)
+     2. t=17:45: Patient 22 chosen over Patient 21: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.06 rate) (margin: +0.050, confidence: low)
+     3. t=20:00: Patient 24 chosen over Patient 25: higher severity (level 5 vs 1), deteriorating faster (0.66 vs 0.14 rate), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     4. t=20:45: Patient 26 chosen over Patient 25: higher severity (level 5 vs 1), deteriorating faster (0.65 vs 0.14 rate) (margin: +0.050, confidence: low)
+
+SEED 9021 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 2.20 timesteps (33 minutes)
+   Weighted wait: 10.53 timesteps (158 minutes)
+   Decisions explained: 3
+   ESI treated: 23, waiting: 0 | avg: 4.37 timesteps (66 min), weighted: 22.10 (331 min)
+   MTS treated: 22, waiting: 0 | avg: 6.57 timesteps (98 min), weighted: 33.14 (497 min)
+   ALL TRIAGE DECISIONS:
+     1. t=21:30: Patient 25 chosen over Patient 24: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.11 rate) (margin: +0.050, confidence: low)
+     2. t=22:45: Patient 28 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.67 vs 0.03 rate) (margin: +0.050, confidence: low)
+     3. t=24:00: Patient 26 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.12 vs 0.03 rate) (margin: +0.050, confidence: low)
+
+SEED 9022 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 1.09 timesteps (16 minutes)
+   Weighted wait: 5.89 timesteps (88 minutes)
+   Decisions explained: 1
+   ESI treated: 19, waiting: 0 | avg: 2.18 timesteps (33 min), weighted: 11.99 (180 min)
+   MTS treated: 19, waiting: 0 | avg: 3.27 timesteps (49 min), weighted: 18.16 (272 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:30: Patient 19 chosen over Patient 20: deteriorating faster (0.66 vs 0.28 rate), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9023 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.85 timesteps (28 minutes)
+   Weighted wait: 9.02 timesteps (135 minutes)
+   Decisions explained: 4
+   ESI treated: 22, waiting: 0 | avg: 3.78 timesteps (57 min), weighted: 19.55 (293 min)
+   MTS treated: 22, waiting: 0 | avg: 5.70 timesteps (86 min), weighted: 31.02 (465 min)
+   ALL TRIAGE DECISIONS:
+     1. t=19:30: Patient 19 chosen over Patient 20: much longer wait (75min vs 15min) (margin: +0.000, confidence: low)
+     2. t=23:30: Patient 24 chosen over Patient 23: higher severity (level 5 vs 2), deteriorating faster (0.61 vs 0.09 rate) (margin: +0.050, confidence: low)
+     3. t=23:45: Patient 25 chosen over Patient 23: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.09 rate) (margin: +0.050, confidence: low)
+     4. t=24:00: Patient 26 chosen over Patient 23: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.09 rate) (margin: +0.050, confidence: low)
+
+SEED 9024 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 1.67 timesteps (25 minutes)
+   Weighted wait: 10.50 timesteps (157 minutes)
+   Decisions explained: 4
+   ESI treated: 24, waiting: 0 | avg: 3.30 timesteps (50 min), weighted: 20.84 (313 min)
+   MTS treated: 24, waiting: 0 | avg: 4.97 timesteps (74 min), weighted: 31.46 (472 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:30: Patient 22 chosen over Patient 23: deteriorating faster (0.68 vs 0.29 rate), longer wait (30min vs 15min), quicker treatment (240min vs 255min) (margin: +0.000, confidence: low)
+     2. t=19:15: Patient 23 chosen over Patient 24: longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     3. t=22:30: Patient 26 chosen over Patient 27: higher severity (level 5 vs 4), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     4. t=24:00: Patient 28 chosen over Patient 29: longer wait (30min vs 15min), much quicker treatment (120min vs 210min) (margin: +0.049, confidence: low)
+
+SEED 9025 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 1.84 timesteps (28 minutes)
+   Weighted wait: 8.68 timesteps (130 minutes)
+   Decisions explained: 4
+   ESI treated: 19, waiting: 0 | avg: 3.68 timesteps (55 min), weighted: 17.71 (266 min)
+   MTS treated: 19, waiting: 0 | avg: 5.52 timesteps (83 min), weighted: 26.67 (400 min)
+   ALL TRIAGE DECISIONS:
+     1. t=21:00: Patient 21 chosen over Patient 20: higher severity (level 5 vs 3), deteriorating faster (0.70 vs 0.17 rate) (margin: +0.050, confidence: low)
+     2. t=21:45: Patient 22 chosen over Patient 20: higher severity (level 5 vs 4), deteriorating faster (0.62 vs 0.09 rate) (margin: +0.050, confidence: low)
+     3. t=22:15: Patient 20 chosen over Patient 23: higher severity (level 4 vs 3), much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 23 chosen over Patient 24: much longer wait (120min vs 30min) (margin: +0.000, confidence: low)
+
+SEED 9026 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 3.25 timesteps (49 minutes)
+   Weighted wait: 17.06 timesteps (256 minutes)
+   Decisions explained: 12
+   ESI treated: 23, waiting: 0 | avg: 6.54 timesteps (98 min), weighted: 36.22 (543 min)
+   MTS treated: 24, waiting: 0 | avg: 9.82 timesteps (147 min), weighted: 56.41 (846 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:30: Patient 11 chosen over Patient 10: higher severity (level 5 vs 4), deteriorating faster (0.66 vs 0.27 rate) (margin: +0.050, confidence: low)
+     2. t=13:00: Patient 10 chosen over Patient 12: much longer wait (75min vs 15min) (margin: +0.000, confidence: low)
+     3. t=14:00: Patient 13 chosen over Patient 14: higher severity (level 3 vs 1), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     4. t=15:15: Patient 17 chosen over Patient 14: higher severity (level 5 vs 2), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.050, confidence: low)
+     5. t=16:30: Patient 18 chosen over Patient 15: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.07 rate) (margin: +0.050, confidence: low)
+     6. t=17:00: Patient 19 chosen over Patient 15: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.07 rate) (margin: +0.050, confidence: low)
+     7. t=17:30: Patient 15 chosen over Patient 16: longer wait (210min vs 180min) (margin: +0.000, confidence: low)
+     8. t=19:15: Patient 20 chosen over Patient 21: much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     9. t=20:00: Patient 21 chosen over Patient 24: much longer wait (75min vs 15min) (margin: +0.000, confidence: low)
+     10. t=20:15: Patient 24 chosen over Patient 22: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.09 rate) (margin: +0.050, confidence: low)
+     11. t=20:30: Patient 22 chosen over Patient 23: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     12. t=23:45: Patient 26 chosen over Patient 27: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.20 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+
+SEED 9027 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 3.15 timesteps (47 minutes)
+   Weighted wait: 16.15 timesteps (242 minutes)
+   Decisions explained: 8
+   ESI treated: 21, waiting: 0 | avg: 6.31 timesteps (95 min), weighted: 33.80 (507 min)
+   MTS treated: 22, waiting: 0 | avg: 9.50 timesteps (142 min), weighted: 50.58 (759 min)
+   ALL TRIAGE DECISIONS:
+     1. t=15:45: Patient 13 chosen over Patient 12: higher severity (level 5 vs 3), deteriorating faster (0.67 vs 0.19 rate) (margin: +0.050, confidence: low)
+     2. t=16:00: Patient 14 chosen over Patient 15: higher severity (level 2 vs 1), deteriorating faster (0.27 vs 0.14 rate), longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     3. t=17:15: Patient 16 chosen over Patient 15: higher severity (level 5 vs 2), deteriorating faster (0.29 vs 0.07 rate) (margin: +0.050, confidence: low)
+     4. t=17:30: Patient 15 chosen over Patient 17: much longer wait (120min vs 75min) (margin: +0.000, confidence: low)
+     5. t=18:45: Patient 18 chosen over Patient 19: longer wait (105min vs 90min), quicker treatment (210min vs 225min) (margin: +0.000, confidence: low)
+     6. t=19:15: Patient 19 chosen over Patient 20: higher severity (level 5 vs 3), much longer wait (120min vs 60min) (margin: +0.050, confidence: low)
+     7. t=20:15: Patient 20 chosen over Patient 21: longer wait (120min vs 90min) (margin: +0.000, confidence: low)
+     8. t=24:00: Patient 25 chosen over Patient 24: close call: severity edge to Patient 25 (4 vs 5), wait time edge to Patient 24, similar deterioration rates (~0.56), similar treatment times (~240min) (margin: +0.116, confidence: high)
+
+SEED 9028 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 3.94 timesteps (59 minutes)
+   Weighted wait: 22.36 timesteps (335 minutes)
+   Decisions explained: 15
+   ESI treated: 24, waiting: 0 | avg: 7.29 timesteps (109 min), weighted: 44.42 (666 min)
+   MTS treated: 23, waiting: 0 | avg: 11.35 timesteps (170 min), weighted: 68.40 (1026 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:00: Patient 11 chosen over Patient 12: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     2. t=11:45: Patient 12 chosen over Patient 13: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.09 rate), longer wait (60min vs 45min) (margin: +0.050, confidence: low)
+     3. t=12:15: Patient 13 chosen over Patient 14: higher severity (level 4 vs 1), much longer wait (75min vs 15min) (margin: +0.000, confidence: low)
+     4. t=12:45: Patient 15 chosen over Patient 16: higher severity (level 5 vs 4), deteriorating faster (0.68 vs 0.58 rate), longer wait (30min vs 15min) (margin: +0.033, confidence: low)
+     5. t=13:15: Patient 16 chosen over Patient 14: higher severity (level 5 vs 2), deteriorating faster (0.29 vs 0.10 rate) (margin: +0.050, confidence: low)
+     6. t=14:45: Patient 17 chosen over Patient 18: deteriorating faster (0.52 vs 0.21 rate), longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     7. t=17:00: Patient 20 chosen over Patient 19: higher severity (level 5 vs 2), deteriorating faster (0.67 vs 0.32 rate) (margin: +0.050, confidence: low)
+     8. t=18:45: Patient 21 chosen over Patient 23: much longer wait (105min vs 30min) (margin: +0.000, confidence: low)
+     9. t=19:00: Patient 23 chosen over Patient 22: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     10. t=20:15: Patient 22 chosen over Patient 25: much longer wait (135min vs 30min) (margin: +0.000, confidence: low)
+     11. t=21:45: Patient 24 chosen over Patient 25: much longer wait (195min vs 120min) (margin: +0.000, confidence: low)
+     12. t=22:30: Patient 25 chosen over Patient 26: longer wait (165min vs 135min) (margin: +0.000, confidence: low)
+     13. t=22:45: Patient 26 chosen over Patient 28: deteriorating faster (0.60 vs 0.29 rate), much longer wait (150min vs 45min) (margin: +0.000, confidence: low)
+     14. t=23:00: Patient 28 chosen over Patient 27: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.14 rate) (margin: +0.050, confidence: low)
+     15. t=24:00: Patient 27 chosen over Patient 29: much longer wait (180min vs 60min) (margin: +0.000, confidence: low)
+
+SEED 9029 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 1.56 timesteps (23 minutes)
+   Weighted wait: 7.89 timesteps (118 minutes)
+   Decisions explained: 1
+   ESI treated: 20, waiting: 0 | avg: 3.12 timesteps (47 min), weighted: 16.50 (248 min)
+   MTS treated: 20, waiting: 0 | avg: 4.68 timesteps (70 min), weighted: 25.54 (383 min)
+   ALL TRIAGE DECISIONS:
+     1. t=23:30: Patient 23 chosen over Patient 24: higher severity (level 5 vs 3), longer wait (90min vs 60min) (margin: +0.050, confidence: low)
+
+SEED 9030 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 2.91 timesteps (44 minutes)
+   Weighted wait: 17.50 timesteps (262 minutes)
+   Decisions explained: 4
+   ESI treated: 25, waiting: 0 | avg: 5.81 timesteps (87 min), weighted: 34.57 (519 min)
+   MTS treated: 25, waiting: 0 | avg: 8.72 timesteps (131 min), weighted: 51.75 (776 min)
+   ALL TRIAGE DECISIONS:
+     1. t=14:00: Patient 19 chosen over Patient 20: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     2. t=22:30: Patient 26 chosen over Patient 27: longer wait (120min vs 105min), much quicker treatment (165min vs 285min) (margin: +0.000, confidence: low)
+     3. t=23:00: Patient 27 chosen over Patient 28: deteriorating faster (0.66 vs 0.28 rate), longer wait (135min vs 120min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 28 chosen over Patient 29: longer wait (180min vs 165min), quicker treatment (240min vs 285min) (margin: +0.000, confidence: low)
+
+SEED 9031 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 2.37 timesteps (36 minutes)
+   Weighted wait: 15.67 timesteps (235 minutes)
+   Decisions explained: 4
+   ESI treated: 23, waiting: 0 | avg: 4.74 timesteps (71 min), weighted: 31.31 (470 min)
+   MTS treated: 23, waiting: 0 | avg: 7.11 timesteps (107 min), weighted: 46.96 (704 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:45: Patient 15 chosen over Patient 13: close call: severity edge to Patient 15 (2 vs 5), wait time edge to Patient 13, deterioration edge to Patient 13, treatment speed edge to Patient 15 (margin: +0.034, confidence: low)
+     2. t=12:30: Patient 13 chosen over Patient 14: deteriorating faster (0.62 vs 0.14 rate), much longer wait (165min vs 105min) (margin: +0.000, confidence: low)
+     3. t=13:30: Patient 14 chosen over Patient 16: much longer wait (165min vs 90min) (margin: +0.000, confidence: low)
+     4. t=22:45: Patient 24 chosen over Patient 25: higher severity (level 5 vs 2), deteriorating faster (0.67 vs 0.29 rate), much longer wait (120min vs 60min) (margin: +0.050, confidence: low)
+
+SEED 9032 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 4.17 timesteps (63 minutes)
+   Weighted wait: 23.50 timesteps (352 minutes)
+   Decisions explained: 8
+   ESI treated: 24, waiting: 0 | avg: 8.21 timesteps (123 min), weighted: 45.46 (682 min)
+   MTS treated: 24, waiting: 0 | avg: 12.55 timesteps (188 min), weighted: 68.53 (1028 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:15: Patient 20 chosen over Patient 21: longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     2. t=19:00: Patient 21 chosen over Patient 22: deteriorating faster (0.29 vs 0.11 rate), longer wait (165min vs 150min) (margin: +0.000, confidence: low)
+     3. t=19:30: Patient 22 chosen over Patient 23: longer wait (180min vs 150min) (margin: +0.000, confidence: low)
+     4. t=19:45: Patient 23 chosen over Patient 24: deteriorating faster (0.28 vs 0.05 rate), much longer wait (165min vs 120min) (margin: +0.000, confidence: low)
+     5. t=21:45: Patient 24 chosen over Patient 25: much longer wait (240min vs 150min) (margin: +0.000, confidence: low)
+     6. t=22:15: Patient 25 chosen over Patient 26: longer wait (180min vs 165min), quicker treatment (225min vs 240min) (margin: +0.000, confidence: low)
+     7. t=23:15: Patient 26 chosen over Patient 27: higher severity (level 5 vs 2), deteriorating faster (0.68 vs 0.07 rate), longer wait (225min vs 195min) (margin: +0.050, confidence: low)
+     8. t=23:30: Patient 27 chosen over Patient 28: much longer wait (210min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9033 RESULTS:
+   Patients treated: 29
+   Patients waiting: 0
+   Average wait: 2.15 timesteps (32 minutes)
+   Weighted wait: 12.48 timesteps (187 minutes)
+   Decisions explained: 5
+   ESI treated: 29, waiting: 0 | avg: 4.36 timesteps (65 min), weighted: 26.06 (391 min)
+   MTS treated: 29, waiting: 0 | avg: 6.55 timesteps (98 min), weighted: 39.63 (594 min)
+   ALL TRIAGE DECISIONS:
+     1. t=10:00: Patient 15 chosen over Patient 16: longer wait (30min vs 15min), quicker treatment (270min vs 285min) (margin: +0.000, confidence: low)
+     2. t=14:00: Patient 20 chosen over Patient 21: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     3. t=14:30: Patient 22 chosen over Patient 21: higher severity (level 5 vs 4), deteriorating faster (0.30 vs 0.23 rate) (margin: +0.050, confidence: low)
+     4. t=17:30: Patient 25 chosen over Patient 26: longer wait (90min vs 75min), quicker treatment (240min vs 270min) (margin: +0.000, confidence: low)
+     5. t=20:30: Patient 29 chosen over Patient 30: deteriorating faster (0.67 vs 0.28 rate), much longer wait (105min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9034 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.71 timesteps (26 minutes)
+   Weighted wait: 9.99 timesteps (150 minutes)
+   Decisions explained: 4
+   ESI treated: 26, waiting: 0 | avg: 3.50 timesteps (52 min), weighted: 20.57 (308 min)
+   MTS treated: 26, waiting: 0 | avg: 5.21 timesteps (78 min), weighted: 30.57 (459 min)
+   ALL TRIAGE DECISIONS:
+     1. t=13:30: Patient 18 chosen over Patient 17: higher severity (level 5 vs 3) (margin: +0.050, confidence: low)
+     2. t=14:30: Patient 17 chosen over Patient 19: much longer wait (105min vs 45min) (margin: +0.000, confidence: low)
+     3. t=17:45: Patient 21 chosen over Patient 22: higher severity (level 5 vs 3), longer wait (45min vs 30min) (margin: +0.050, confidence: low)
+     4. t=18:00: Patient 22 chosen over Patient 23: higher severity (level 4 vs 3), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9035 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 1.84 timesteps (28 minutes)
+   Weighted wait: 9.33 timesteps (140 minutes)
+   Decisions explained: 4
+   ESI treated: 25, waiting: 0 | avg: 3.69 timesteps (55 min), weighted: 19.42 (291 min)
+   MTS treated: 25, waiting: 0 | avg: 5.53 timesteps (83 min), weighted: 30.14 (452 min)
+   ALL TRIAGE DECISIONS:
+     1. t=22:15: Patient 25 chosen over Patient 28: much longer wait (120min vs 15min) (margin: +0.000, confidence: low)
+     2. t=22:30: Patient 26 chosen over Patient 27: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     3. t=23:15: Patient 27 chosen over Patient 29: higher severity (level 5 vs 3), much longer wait (105min vs 30min) (margin: +0.050, confidence: low)
+     4. t=24:00: Patient 30 chosen over Patient 29: deteriorating faster (0.49 vs 0.20 rate) (margin: +0.290, confidence: high)
+
+SEED 9036 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 1.78 timesteps (27 minutes)
+   Weighted wait: 8.62 timesteps (129 minutes)
+   Decisions explained: 2
+   ESI treated: 22, waiting: 0 | avg: 3.56 timesteps (53 min), weighted: 17.39 (261 min)
+   MTS treated: 22, waiting: 0 | avg: 5.33 timesteps (80 min), weighted: 26.15 (392 min)
+   ALL TRIAGE DECISIONS:
+     1. t=22:45: Patient 24 chosen over Patient 26: deteriorating faster (0.62 vs 0.28 rate), much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     2. t=24:00: Patient 26 chosen over Patient 25: higher severity (level 5 vs 1), deteriorating faster (0.28 vs 0.16 rate) (margin: +0.050, confidence: low)
+
+SEED 9037 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 2.30 timesteps (34 minutes)
+   Weighted wait: 11.61 timesteps (174 minutes)
+   Decisions explained: 4
+   ESI treated: 20, waiting: 0 | avg: 4.59 timesteps (69 min), weighted: 24.43 (366 min)
+   MTS treated: 20, waiting: 0 | avg: 6.89 timesteps (103 min), weighted: 36.81 (552 min)
+   ALL TRIAGE DECISIONS:
+     1. t=21:15: Patient 20 chosen over Patient 21: higher severity (level 4 vs 3), deteriorating faster (0.21 vs 0.13 rate), longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     2. t=23:15: Patient 22 chosen over Patient 24: longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     3. t=23:30: Patient 24 chosen over Patient 25: longer wait (90min vs 75min), quicker treatment (165min vs 210min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 25 chosen over Patient 26: deteriorating faster (0.29 vs 0.12 rate), longer wait (105min vs 90min), quicker treatment (210min vs 225min) (margin: +0.000, confidence: low)
+
+SEED 9038 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 1.71 timesteps (26 minutes)
+   Weighted wait: 10.51 timesteps (158 minutes)
+   Decisions explained: 4
+   ESI treated: 27, waiting: 0 | avg: 3.48 timesteps (52 min), weighted: 21.24 (319 min)
+   MTS treated: 27, waiting: 0 | avg: 5.19 timesteps (78 min), weighted: 31.73 (476 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:15: Patient 26 chosen over Patient 27: deteriorating faster (0.65 vs 0.10 rate), longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     2. t=20:30: Patient 27 chosen over Patient 28: higher severity (level 5 vs 3), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     3. t=22:00: Patient 29 chosen over Patient 28: higher severity (level 5 vs 4), deteriorating faster (0.68 vs 0.26 rate) (margin: +0.050, confidence: low)
+     4. t=22:30: Patient 28 chosen over Patient 30: much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9039 RESULTS:
+   Patients treated: 34
+   Patients waiting: 0
+   Average wait: 4.85 timesteps (73 minutes)
+   Weighted wait: 24.61 timesteps (369 minutes)
+   Decisions explained: 22
+   ESI treated: 34, waiting: 0 | avg: 9.56 timesteps (143 min), weighted: 52.39 (786 min)
+   MTS treated: 35, waiting: 0 | avg: 14.44 timesteps (217 min), weighted: 79.64 (1195 min)
+   ALL TRIAGE DECISIONS:
+     1. t=08:30: Patient 13 chosen over Patient 12: deteriorating faster (0.69 vs 0.29 rate) (margin: +0.145, confidence: high)
+     2. t=08:45: Patient 11 chosen over Patient 12: longer wait (60min vs 45min), quicker treatment (165min vs 210min) (margin: +0.000, confidence: low)
+     3. t=09:15: Patient 15 chosen over Patient 12: deteriorating faster (0.53 vs 0.29 rate) (margin: +0.147, confidence: high)
+     4. t=09:45: Patient 12 chosen over Patient 14: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.15 rate), much longer wait (105min vs 60min) (margin: +0.050, confidence: low)
+     5. t=11:00: Patient 14 chosen over Patient 17: much longer wait (135min vs 60min) (margin: +0.000, confidence: low)
+     6. t=11:30: Patient 17 chosen over Patient 19: much longer wait (90min vs 30min) (margin: +0.000, confidence: low)
+     7. t=12:00: Patient 20 chosen over Patient 19: close call: severity edge to Patient 20 (2 vs 5), wait time edge to Patient 19, similar deterioration rates (~0.28), treatment speed edge to Patient 20 (margin: +0.002, confidence: low)
+     8. t=12:15: Patient 21 chosen over Patient 16: higher severity (level 5 vs 4), deteriorating faster (0.62 vs 0.09 rate) (margin: +0.050, confidence: low)
+     9. t=13:15: Patient 16 chosen over Patient 18: higher severity (level 4 vs 3), much longer wait (210min vs 150min) (margin: +0.000, confidence: low)
+     10. t=14:15: Patient 24 chosen over Patient 18: higher severity (level 5 vs 3) (margin: +0.050, confidence: low)
+     11. t=14:30: Patient 18 chosen over Patient 22: much longer wait (225min vs 75min) (margin: +0.000, confidence: low)
+     12. t=15:30: Patient 25 chosen over Patient 22: higher severity (level 5 vs 4), deteriorating faster (0.63 vs 0.09 rate) (margin: +0.050, confidence: low)
+     13. t=16:00: Patient 26 chosen over Patient 22: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.09 rate) (margin: +0.050, confidence: low)
+     14. t=17:00: Patient 28 chosen over Patient 29: longer wait (45min vs 30min), quicker treatment (195min vs 240min) (margin: +0.000, confidence: low)
+     15. t=17:15: Patient 29 chosen over Patient 23: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.03 rate) (margin: +0.050, confidence: low)
+     16. t=17:30: Patient 23 chosen over Patient 27: higher severity (level 4 vs 2), much longer wait (240min vs 90min) (margin: +0.000, confidence: low)
+     17. t=19:30: Patient 30 chosen over Patient 31: longer wait (135min vs 120min), much quicker treatment (135min vs 225min) (margin: +0.000, confidence: low)
+     18. t=19:45: Patient 27 chosen over Patient 32: much longer wait (225min vs 120min) (margin: +0.000, confidence: low)
+     19. t=20:15: Patient 32 chosen over Patient 33: higher severity (level 4 vs 3), deteriorating faster (0.21 vs 0.13 rate), longer wait (150min vs 135min) (margin: +0.000, confidence: low)
+     20. t=20:30: Patient 33 chosen over Patient 34: much longer wait (150min vs 75min) (margin: +0.000, confidence: low)
+     21. t=23:15: Patient 36 chosen over Patient 37: longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     22. t=23:30: Patient 37 chosen over Patient 38: higher severity (level 5 vs 3), deteriorating faster (0.61 vs 0.40 rate), much longer wait (90min vs 45min) (margin: +0.050, confidence: low)
+
+SEED 9040 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 2.43 timesteps (36 minutes)
+   Weighted wait: 14.76 timesteps (221 minutes)
+   Decisions explained: 9
+   ESI treated: 25, waiting: 0 | avg: 4.87 timesteps (73 min), weighted: 29.66 (445 min)
+   MTS treated: 26, waiting: 0 | avg: 7.43 timesteps (112 min), weighted: 45.54 (683 min)
+   ALL TRIAGE DECISIONS:
+     1. t=10:30: Patient 14 chosen over Patient 12: deteriorating faster (0.69 vs 0.62 rate) (margin: +0.088, confidence: moderate)
+     2. t=10:45: Patient 12 chosen over Patient 13: deteriorating faster (0.62 vs 0.28 rate), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     3. t=12:15: Patient 13 chosen over Patient 15: much longer wait (150min vs 45min) (margin: +0.000, confidence: low)
+     4. t=14:45: Patient 18 chosen over Patient 19: higher severity (level 5 vs 2), deteriorating faster (0.62 vs 0.40 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     5. t=15:15: Patient 19 chosen over Patient 20: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     6. t=15:45: Patient 20 chosen over Patient 21: higher severity (level 4 vs 3), deteriorating faster (0.27 vs 0.17 rate), longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     7. t=16:00: Patient 22 chosen over Patient 21: higher severity (level 5 vs 3), deteriorating faster (0.64 vs 0.17 rate) (margin: +0.050, confidence: low)
+     8. t=18:45: Patient 23 chosen over Patient 24: deteriorating faster (0.50 vs 0.20 rate), longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     9. t=19:45: Patient 25 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.20 rate) (margin: +0.050, confidence: low)
+
+SEED 9041 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.37 timesteps (20 minutes)
+   Weighted wait: 8.16 timesteps (122 minutes)
+   Decisions explained: 1
+   ESI treated: 26, waiting: 0 | avg: 2.73 timesteps (41 min), weighted: 16.64 (250 min)
+   MTS treated: 26, waiting: 0 | avg: 4.13 timesteps (62 min), weighted: 25.69 (385 min)
+   ALL TRIAGE DECISIONS:
+     1. t=16:30: Patient 21 chosen over Patient 22: deteriorating faster (0.56 vs 0.28 rate), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9042 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 1.48 timesteps (22 minutes)
+   Weighted wait: 6.90 timesteps (104 minutes)
+   Decisions explained: 1
+   ESI treated: 20, waiting: 0 | avg: 2.96 timesteps (44 min), weighted: 14.55 (218 min)
+   MTS treated: 20, waiting: 0 | avg: 4.43 timesteps (67 min), weighted: 21.99 (330 min)
+   ALL TRIAGE DECISIONS:
+     1. t=19:30: Patient 18 chosen over Patient 19: higher severity (level 5 vs 1), deteriorating faster (0.28 vs 0.19 rate), much longer wait (60min vs 15min) (margin: +0.050, confidence: low)
+
+SEED 9043 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 1.13 timesteps (17 minutes)
+   Weighted wait: 5.38 timesteps (81 minutes)
+   Decisions explained: 0
+   ESI treated: 18, waiting: 0 | avg: 2.26 timesteps (34 min), weighted: 11.05 (166 min)
+   MTS treated: 18, waiting: 0 | avg: 3.39 timesteps (51 min), weighted: 16.57 (249 min)
+
+SEED 9044 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 1.44 timesteps (22 minutes)
+   Weighted wait: 7.88 timesteps (118 minutes)
+   Decisions explained: 1
+   ESI treated: 23, waiting: 0 | avg: 2.80 timesteps (42 min), weighted: 15.75 (236 min)
+   MTS treated: 23, waiting: 0 | avg: 4.16 timesteps (62 min), weighted: 23.49 (352 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:45: Patient 13 chosen over Patient 14: longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9045 RESULTS:
+   Patients treated: 31
+   Patients waiting: 0
+   Average wait: 2.79 timesteps (42 minutes)
+   Weighted wait: 15.36 timesteps (230 minutes)
+   Decisions explained: 9
+   ESI treated: 31, waiting: 0 | avg: 5.58 timesteps (84 min), weighted: 31.15 (467 min)
+   MTS treated: 31, waiting: 0 | avg: 8.37 timesteps (126 min), weighted: 46.87 (703 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:30: Patient 16 chosen over Patient 17: deteriorating faster (0.50 vs 0.29 rate), longer wait (30min vs 15min) (margin: +0.009, confidence: low)
+     2. t=09:45: Patient 17 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.18 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     3. t=18:15: Patient 28 chosen over Patient 29: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.18 rate), much longer wait (75min vs 30min) (margin: +0.050, confidence: low)
+     4. t=19:45: Patient 30 chosen over Patient 31: higher severity (level 4 vs 3), longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     5. t=21:00: Patient 31 chosen over Patient 32: longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     6. t=22:15: Patient 32 chosen over Patient 34: much longer wait (150min vs 90min) (margin: +0.000, confidence: low)
+     7. t=22:30: Patient 34 chosen over Patient 35: longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+     8. t=23:15: Patient 35 chosen over Patient 36: much longer wait (135min vs 60min) (margin: +0.000, confidence: low)
+     9. t=24:00: Patient 37 chosen over Patient 36: close call: same severity (level 5), wait time edge to Patient 36, similar deterioration rates (~0.69), similar treatment times (~255min) (margin: +0.309, confidence: high)
+
+SEED 9046 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 4.15 timesteps (62 minutes)
+   Weighted wait: 25.66 timesteps (385 minutes)
+   Decisions explained: 5
+   ESI treated: 18, waiting: 0 | avg: 8.30 timesteps (124 min), weighted: 50.90 (763 min)
+   MTS treated: 18, waiting: 0 | avg: 12.44 timesteps (187 min), weighted: 75.87 (1138 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:00: Patient 14 chosen over Patient 13: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.18 rate) (margin: +0.050, confidence: low)
+     2. t=19:30: Patient 17 chosen over Patient 18: deteriorating faster (0.66 vs 0.29 rate), longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     3. t=20:15: Patient 18 chosen over Patient 19: longer wait (120min vs 90min) (margin: +0.000, confidence: low)
+     4. t=21:30: Patient 20 chosen over Patient 21: much longer wait (120min vs 75min) (margin: +0.000, confidence: low)
+     5. t=24:00: Patient 25 chosen over Patient 24: close call: same severity (level 5), wait time edge to Patient 24, similar deterioration rates (~0.65), treatment speed edge to Patient 24 (margin: +0.189, confidence: high)
+
+SEED 9047 RESULTS:
+   Patients treated: 28
+   Patients waiting: 1
+   Average wait: 3.03 timesteps (45 minutes)
+   Weighted wait: 16.61 timesteps (249 minutes)
+   Decisions explained: 11
+   ESI treated: 29, waiting: 0 | avg: 6.13 timesteps (92 min), weighted: 33.55 (503 min)
+   MTS treated: 28, waiting: 1 | avg: 9.29 timesteps (139 min), weighted: 50.45 (757 min)
+   ALL TRIAGE DECISIONS:
+     1. t=10:00: Patient 14 chosen over Patient 15: much longer wait (75min vs 15min) (margin: +0.000, confidence: low)
+     2. t=11:30: Patient 17 chosen over Patient 18: higher severity (level 5 vs 2), much longer wait (60min vs 15min) (margin: +0.050, confidence: low)
+     3. t=18:15: Patient 25 chosen over Patient 26: deteriorating faster (0.28 vs 0.13 rate), longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     4. t=18:30: Patient 26 chosen over Patient 27: longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+     5. t=19:45: Patient 27 chosen over Patient 28: much longer wait (120min vs 60min) (margin: +0.000, confidence: low)
+     6. t=20:00: Patient 28 chosen over Patient 30: much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     7. t=20:30: Patient 30 chosen over Patient 31: deteriorating faster (0.64 vs 0.28 rate), much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     8. t=21:30: Patient 31 chosen over Patient 32: much longer wait (75min vs 30min) (margin: +0.000, confidence: low)
+     9. t=22:00: Patient 32 chosen over Patient 29: higher severity (level 5 vs 2), deteriorating faster (0.64 vs 0.06 rate) (margin: +0.050, confidence: low)
+     10. t=23:45: Patient 33 chosen over Patient 35: much longer wait (150min vs 45min) (margin: +0.000, confidence: low)
+     11. t=24:00: Patient 37 chosen over Patient 35: deteriorating faster (0.69 vs 0.28 rate) (margin: +0.543, confidence: high)
+
+SEED 9048 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.67 timesteps (25 minutes)
+   Weighted wait: 8.33 timesteps (125 minutes)
+   Decisions explained: 2
+   ESI treated: 26, waiting: 0 | avg: 3.33 timesteps (50 min), weighted: 17.67 (265 min)
+   MTS treated: 26, waiting: 0 | avg: 5.00 timesteps (75 min), weighted: 26.80 (402 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:30: Patient 13 chosen over Patient 14: higher severity (level 5 vs 3), deteriorating faster (0.68 vs 0.15 rate), longer wait (90min vs 60min) (margin: +0.050, confidence: low)
+     2. t=10:00: Patient 16 chosen over Patient 15: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+
+SEED 9049 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 4.88 timesteps (73 minutes)
+   Weighted wait: 22.61 timesteps (339 minutes)
+   Decisions explained: 11
+   ESI treated: 23, waiting: 0 | avg: 9.81 timesteps (147 min), weighted: 50.50 (758 min)
+   MTS treated: 22, waiting: 1 | avg: 14.72 timesteps (221 min), weighted: 76.02 (1140 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:00: Patient 18 chosen over Patient 19: higher severity (level 4 vs 1), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     2. t=18:00: Patient 20 chosen over Patient 21: longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     3. t=18:15: Patient 21 chosen over Patient 23: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     4. t=19:45: Patient 22 chosen over Patient 23: longer wait (120min vs 105min), much quicker treatment (225min vs 300min) (margin: +0.000, confidence: low)
+     5. t=20:15: Patient 23 chosen over Patient 19: higher severity (level 5 vs 2), deteriorating faster (0.69 vs 0.09 rate) (margin: +0.050, confidence: low)
+     6. t=20:30: Patient 26 chosen over Patient 19: higher severity (level 5 vs 2), deteriorating faster (0.29 vs 0.09 rate) (margin: +0.050, confidence: low)
+     7. t=22:30: Patient 28 chosen over Patient 19: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.04 rate) (margin: +0.050, confidence: low)
+     8. t=22:45: Patient 19 chosen over Patient 24: higher severity (level 3 vs 2), much longer wait (360min vs 255min) (margin: +0.000, confidence: low)
+     9. t=23:30: Patient 31 chosen over Patient 24: higher severity (level 5 vs 2), deteriorating faster (0.66 vs 0.06 rate) (margin: +0.050, confidence: low)
+     10. t=23:45: Patient 24 chosen over Patient 25: much longer wait (315min vs 240min) (margin: +0.000, confidence: low)
+     11. t=24:00: Patient 25 chosen over Patient 27: much longer wait (255min vs 195min) (margin: +0.000, confidence: low)
+
+SEED 9050 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 4.03 timesteps (61 minutes)
+   Weighted wait: 24.32 timesteps (365 minutes)
+   Decisions explained: 9
+   ESI treated: 22, waiting: 0 | avg: 8.07 timesteps (121 min), weighted: 50.45 (757 min)
+   MTS treated: 22, waiting: 0 | avg: 12.03 timesteps (181 min), weighted: 75.19 (1128 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:15: Patient 18 chosen over Patient 20: much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     2. t=18:00: Patient 20 chosen over Patient 19: higher severity (level 5 vs 3), deteriorating faster (0.61 vs 0.19 rate) (margin: +0.050, confidence: low)
+     3. t=18:15: Patient 19 chosen over Patient 21: much longer wait (120min vs 15min) (margin: +0.000, confidence: low)
+     4. t=19:30: Patient 23 chosen over Patient 24: deteriorating faster (0.69 vs 0.29 rate), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     5. t=21:15: Patient 21 chosen over Patient 22: longer wait (195min vs 180min), quicker treatment (180min vs 210min) (margin: +0.000, confidence: low)
+     6. t=21:45: Patient 22 chosen over Patient 24: much longer wait (210min vs 150min) (margin: +0.000, confidence: low)
+     7. t=22:15: Patient 24 chosen over Patient 26: much longer wait (180min vs 45min) (margin: +0.000, confidence: low)
+     8. t=23:45: Patient 26 chosen over Patient 27: much longer wait (135min vs 90min) (margin: +0.000, confidence: low)
+     9. t=24:00: Patient 28 chosen over Patient 27: close call: same severity (level 5), wait time edge to Patient 27, similar deterioration rates (~0.69), similar treatment times (~225min) (margin: +0.192, confidence: high)
+
+SEED 9051 RESULTS:
+   Patients treated: 32
+   Patients waiting: 0
+   Average wait: 1.73 timesteps (26 minutes)
+   Weighted wait: 9.00 timesteps (135 minutes)
+   Decisions explained: 4
+   ESI treated: 32, waiting: 0 | avg: 3.45 timesteps (52 min), weighted: 17.99 (270 min)
+   MTS treated: 32, waiting: 0 | avg: 5.18 timesteps (78 min), weighted: 26.84 (403 min)
+   ALL TRIAGE DECISIONS:
+     1. t=16:00: Patient 25 chosen over Patient 26: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     2. t=18:30: Patient 28 chosen over Patient 29: longer wait (75min vs 60min), quicker treatment (105min vs 150min) (margin: +0.000, confidence: low)
+     3. t=19:15: Patient 30 chosen over Patient 29: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.18 rate) (margin: +0.050, confidence: low)
+     4. t=19:45: Patient 29 chosen over Patient 31: much longer wait (135min vs 30min) (margin: +0.000, confidence: low)
+
+SEED 9052 RESULTS:
+   Patients treated: 20
+   Patients waiting: 2
+   Average wait: 3.26 timesteps (49 minutes)
+   Weighted wait: 18.56 timesteps (278 minutes)
+   Decisions explained: 5
+   ESI treated: 20, waiting: 2 | avg: 6.52 timesteps (98 min), weighted: 38.31 (575 min)
+   MTS treated: 20, waiting: 2 | avg: 9.77 timesteps (147 min), weighted: 57.36 (860 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:45: Patient 20 chosen over Patient 21: higher severity (level 5 vs 3), deteriorating faster (0.67 vs 0.15 rate), longer wait (90min vs 60min) (margin: +0.050, confidence: low)
+     2. t=22:00: Patient 22 chosen over Patient 23: much longer wait (105min vs 60min) (margin: +0.000, confidence: low)
+     3. t=22:15: Patient 23 chosen over Patient 24: deteriorating faster (0.67 vs 0.29 rate), longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     4. t=23:30: Patient 24 chosen over Patient 25: deteriorating faster (0.29 vs 0.11 rate), longer wait (135min vs 120min), quicker treatment (195min vs 240min) (margin: +0.000, confidence: low)
+     5. t=24:00: Patient 30 chosen over Patient 25: deteriorating faster (0.44 vs 0.11 rate) (margin: +0.513, confidence: high)
+
+SEED 9053 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 4.42 timesteps (66 minutes)
+   Decisions explained: 0
+   ESI treated: 18, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 9.25 (139 min)
+   MTS treated: 18, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 14.16 (212 min)
+
+SEED 9054 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 3.80 timesteps (57 minutes)
+   Weighted wait: 20.74 timesteps (311 minutes)
+   Decisions explained: 6
+   ESI treated: 18, waiting: 0 | avg: 7.44 timesteps (112 min), weighted: 42.72 (641 min)
+   MTS treated: 18, waiting: 0 | avg: 11.44 timesteps (172 min), weighted: 64.03 (960 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:45: Patient 16 chosen over Patient 17: longer wait (45min vs 30min), quicker treatment (210min vs 255min) (margin: +0.000, confidence: low)
+     2. t=19:15: Patient 17 chosen over Patient 18: deteriorating faster (0.30 vs 0.12 rate), longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     3. t=20:00: Patient 18 chosen over Patient 19: longer wait (90min vs 75min), much quicker treatment (210min vs 300min) (margin: +0.000, confidence: low)
+     4. t=22:15: Patient 20 chosen over Patient 22: deteriorating faster (0.65 vs 0.11 rate), much longer wait (180min vs 120min) (margin: +0.000, confidence: low)
+     5. t=23:30: Patient 22 chosen over Patient 23: longer wait (195min vs 180min), much quicker treatment (165min vs 225min) (margin: +0.000, confidence: low)
+     6. t=24:00: Patient 24 chosen over Patient 21: deteriorating faster (0.17 vs 0.02 rate) (margin: +0.029, confidence: low)
+
+SEED 9055 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.66 timesteps (25 minutes)
+   Weighted wait: 9.11 timesteps (137 minutes)
+   Decisions explained: 4
+   ESI treated: 26, waiting: 0 | avg: 3.31 timesteps (50 min), weighted: 19.28 (289 min)
+   MTS treated: 26, waiting: 0 | avg: 4.97 timesteps (75 min), weighted: 29.57 (444 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:45: Patient 17 chosen over Patient 16: higher severity (level 5 vs 3), deteriorating faster (0.64 vs 0.14 rate) (margin: +0.050, confidence: low)
+     2. t=13:15: Patient 18 chosen over Patient 16: higher severity (level 5 vs 3), deteriorating faster (0.61 vs 0.14 rate) (margin: +0.050, confidence: low)
+     3. t=20:45: Patient 26 chosen over Patient 27: higher severity (level 5 vs 4), deteriorating faster (0.66 vs 0.23 rate), much longer wait (90min vs 45min) (margin: +0.050, confidence: low)
+     4. t=24:00: Patient 31 chosen over Patient 30: close call: same severity (level 3), wait time edge to Patient 30, similar deterioration rates (~0.42), treatment speed edge to Patient 31 (margin: +0.185, confidence: high)
+
+SEED 9056 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 3.13 timesteps (47 minutes)
+   Weighted wait: 15.13 timesteps (227 minutes)
+   Decisions explained: 6
+   ESI treated: 22, waiting: 0 | avg: 6.27 timesteps (94 min), weighted: 31.30 (469 min)
+   MTS treated: 22, waiting: 0 | avg: 9.40 timesteps (141 min), weighted: 47.13 (707 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:45: Patient 19 chosen over Patient 20: deteriorating faster (0.68 vs 0.12 rate), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     2. t=18:30: Patient 20 chosen over Patient 21: higher severity (level 5 vs 4), longer wait (105min vs 90min), quicker treatment (195min vs 210min) (margin: +0.050, confidence: low)
+     3. t=20:30: Patient 22 chosen over Patient 23: higher severity (level 5 vs 4), deteriorating faster (0.65 vs 0.23 rate), much longer wait (105min vs 60min) (margin: +0.050, confidence: low)
+     4. t=21:45: Patient 25 chosen over Patient 26: deteriorating faster (0.70 vs 0.28 rate), longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     5. t=22:15: Patient 23 chosen over Patient 24: higher severity (level 4 vs 2), deteriorating faster (0.23 vs 0.07 rate), much longer wait (165min vs 120min) (margin: +0.000, confidence: low)
+     6. t=24:00: Patient 29 chosen over Patient 24: higher severity (level 5 vs 2), deteriorating faster (0.61 vs 0.07 rate) (margin: +0.507, confidence: high)
+
+SEED 9057 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 3.03 timesteps (46 minutes)
+   Weighted wait: 18.17 timesteps (273 minutes)
+   Decisions explained: 9
+   ESI treated: 24, waiting: 0 | avg: 6.23 timesteps (94 min), weighted: 38.79 (582 min)
+   MTS treated: 24, waiting: 0 | avg: 9.43 timesteps (142 min), weighted: 59.02 (885 min)
+   ALL TRIAGE DECISIONS:
+     1. t=09:30: Patient 13 chosen over Patient 10: close call: severity edge to Patient 13 (3 vs 5), wait time edge to Patient 10, deterioration edge to Patient 10, treatment speed edge to Patient 13 (margin: +0.031, confidence: low)
+     2. t=09:45: Patient 10 chosen over Patient 11: deteriorating faster (0.68 vs 0.13 rate), longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+     3. t=10:00: Patient 11 chosen over Patient 12: longer wait (105min vs 90min), quicker treatment (210min vs 255min) (margin: +0.000, confidence: low)
+     4. t=12:00: Patient 12 chosen over Patient 14: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.20 rate), much longer wait (210min vs 60min) (margin: +0.050, confidence: low)
+     5. t=20:15: Patient 23 chosen over Patient 24: much longer wait (150min vs 75min) (margin: +0.000, confidence: low)
+     6. t=21:15: Patient 25 chosen over Patient 26: longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     7. t=21:30: Patient 26 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.64 vs 0.07 rate) (margin: +0.050, confidence: low)
+     8. t=22:30: Patient 27 chosen over Patient 28: higher severity (level 5 vs 4), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     9. t=24:00: Patient 28 chosen over Patient 29: much longer wait (105min vs 30min) (margin: +0.000, confidence: low)
+
+SEED 9058 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 5.23 timesteps (78 minutes)
+   Decisions explained: 0
+   ESI treated: 18, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 10.61 (159 min)
+   MTS treated: 18, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 15.92 (239 min)
+
+SEED 9059 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 2.10 timesteps (32 minutes)
+   Weighted wait: 12.30 timesteps (184 minutes)
+   Decisions explained: 4
+   ESI treated: 23, waiting: 0 | avg: 4.20 timesteps (63 min), weighted: 24.68 (370 min)
+   MTS treated: 23, waiting: 0 | avg: 6.30 timesteps (94 min), weighted: 37.10 (556 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:45: Patient 23 chosen over Patient 24: longer wait (45min vs 30min), quicker treatment (240min vs 270min) (margin: +0.000, confidence: low)
+     2. t=21:45: Patient 24 chosen over Patient 25: deteriorating faster (0.67 vs 0.13 rate), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     3. t=23:00: Patient 26 chosen over Patient 27: longer wait (105min vs 90min), quicker treatment (240min vs 255min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 27 chosen over Patient 28: deteriorating faster (0.28 vs 0.14 rate), much longer wait (150min vs 90min) (margin: +0.000, confidence: low)
+
+SEED 9060 RESULTS:
+   Patients treated: 30
+   Patients waiting: 0
+   Average wait: 1.94 timesteps (29 minutes)
+   Weighted wait: 10.26 timesteps (154 minutes)
+   Decisions explained: 7
+   ESI treated: 30, waiting: 0 | avg: 3.89 timesteps (58 min), weighted: 21.71 (326 min)
+   MTS treated: 30, waiting: 0 | avg: 5.83 timesteps (87 min), weighted: 32.68 (490 min)
+   ALL TRIAGE DECISIONS:
+     1. t=06:00: Patient 12 chosen over Patient 11: higher severity (level 4 vs 1), deteriorating faster (0.56 vs 0.15 rate) (margin: +0.079, confidence: moderate)
+     2. t=11:45: Patient 20 chosen over Patient 21: deteriorating faster (0.67 vs 0.29 rate), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     3. t=13:30: Patient 21 chosen over Patient 22: higher severity (level 5 vs 4), much longer wait (120min vs 45min) (margin: +0.050, confidence: low)
+     4. t=14:00: Patient 23 chosen over Patient 22: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     5. t=16:15: Patient 25 chosen over Patient 26: higher severity (level 3 vs 2), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     6. t=17:30: Patient 27 chosen over Patient 26: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.16 rate) (margin: +0.050, confidence: low)
+     7. t=23:30: Patient 32 chosen over Patient 33: higher severity (level 5 vs 2), deteriorating faster (0.60 vs 0.36 rate), much longer wait (75min vs 15min) (margin: +0.050, confidence: low)
+
+SEED 9061 RESULTS:
+   Patients treated: 16
+   Patients waiting: 0
+   Average wait: 1.19 timesteps (18 minutes)
+   Weighted wait: 5.41 timesteps (81 minutes)
+   Decisions explained: 1
+   ESI treated: 16, waiting: 0 | avg: 2.38 timesteps (36 min), weighted: 11.19 (168 min)
+   MTS treated: 16, waiting: 0 | avg: 3.57 timesteps (54 min), weighted: 16.79 (252 min)
+   ALL TRIAGE DECISIONS:
+     1. t=23:15: Patient 20 chosen over Patient 19: higher severity (level 5 vs 3), deteriorating faster (0.69 vs 0.52 rate) (margin: +0.050, confidence: low)
+
+SEED 9062 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 2.29 timesteps (34 minutes)
+   Weighted wait: 13.05 timesteps (196 minutes)
+   Decisions explained: 12
+   ESI treated: 27, waiting: 0 | avg: 4.57 timesteps (69 min), weighted: 26.13 (392 min)
+   MTS treated: 27, waiting: 0 | avg: 6.86 timesteps (103 min), weighted: 39.26 (589 min)
+   ALL TRIAGE DECISIONS:
+     1. t=15:15: Patient 16 chosen over Patient 17: higher severity (level 5 vs 4), deteriorating faster (0.63 vs 0.57 rate), much longer wait (60min vs 15min) (margin: +0.050, confidence: low)
+     2. t=15:45: Patient 17 chosen over Patient 18: higher severity (level 5 vs 3), longer wait (45min vs 30min) (margin: +0.050, confidence: low)
+     3. t=16:30: Patient 20 chosen over Patient 19: higher severity (level 5 vs 2), deteriorating faster (0.30 vs 0.07 rate) (margin: +0.050, confidence: low)
+     4. t=18:30: Patient 22 chosen over Patient 23: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     5. t=19:00: Patient 23 chosen over Patient 21: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.07 rate) (margin: +0.050, confidence: low)
+     6. t=19:30: Patient 21 chosen over Patient 24: higher severity (level 5 vs 4), much longer wait (135min vs 15min) (margin: +0.050, confidence: low)
+     7. t=20:00: Patient 24 chosen over Patient 25: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     8. t=20:15: Patient 26 chosen over Patient 25: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.22 rate) (margin: +0.050, confidence: low)
+     9. t=22:30: Patient 27 chosen over Patient 28: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     10. t=22:45: Patient 28 chosen over Patient 29: deteriorating faster (0.29 vs 0.12 rate), longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+     11. t=23:15: Patient 30 chosen over Patient 32: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     12. t=24:00: Patient 34 chosen over Patient 33: close call: severity edge to Patient 34 (1 vs 5), similar wait times (~15min), deterioration edge to Patient 33, treatment speed edge to Patient 34 (margin: +0.004, confidence: low)
+
+SEED 9063 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 4.92 timesteps (74 minutes)
+   Decisions explained: 0
+   ESI treated: 21, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 10.00 (150 min)
+   MTS treated: 21, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 15.12 (227 min)
+
+SEED 9064 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 3.27 timesteps (49 minutes)
+   Weighted wait: 19.70 timesteps (296 minutes)
+   Decisions explained: 12
+   ESI treated: 24, waiting: 0 | avg: 6.40 timesteps (96 min), weighted: 38.86 (583 min)
+   MTS treated: 23, waiting: 0 | avg: 9.80 timesteps (147 min), weighted: 60.81 (912 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:30: Patient 13 chosen over Patient 12: higher severity (level 5 vs 3), deteriorating faster (0.67 vs 0.15 rate) (margin: +0.050, confidence: low)
+     2. t=13:00: Patient 14 chosen over Patient 15: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     3. t=13:30: Patient 15 chosen over Patient 16: deteriorating faster (0.64 vs 0.28 rate), longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     4. t=14:15: Patient 16 chosen over Patient 12: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.08 rate) (margin: +0.050, confidence: low)
+     5. t=14:45: Patient 12 chosen over Patient 17: higher severity (level 4 vs 3), much longer wait (240min vs 30min) (margin: +0.000, confidence: low)
+     6. t=15:45: Patient 17 chosen over Patient 18: higher severity (level 4 vs 3), deteriorating faster (0.28 vs 0.14 rate), longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     7. t=17:00: Patient 19 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.14 rate) (margin: +0.050, confidence: low)
+     8. t=20:15: Patient 23 chosen over Patient 24: deteriorating faster (0.69 vs 0.11 rate), longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     9. t=20:45: Patient 24 chosen over Patient 25: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     10. t=21:15: Patient 25 chosen over Patient 26: longer wait (90min vs 60min) (margin: +0.000, confidence: low)
+     11. t=21:30: Patient 26 chosen over Patient 27: higher severity (level 5 vs 4), much longer wait (75min vs 30min) (margin: +0.050, confidence: low)
+     12. t=24:00: Patient 29 chosen over Patient 28: deteriorating faster (0.62 vs 0.28 rate) (margin: +0.094, confidence: moderate)
+
+SEED 9065 RESULTS:
+   Patients treated: 30
+   Patients waiting: 0
+   Average wait: 1.97 timesteps (30 minutes)
+   Weighted wait: 9.83 timesteps (148 minutes)
+   Decisions explained: 4
+   ESI treated: 30, waiting: 0 | avg: 3.94 timesteps (59 min), weighted: 20.65 (310 min)
+   MTS treated: 30, waiting: 0 | avg: 5.91 timesteps (89 min), weighted: 31.10 (467 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:00: Patient 27 chosen over Patient 28: deteriorating faster (0.61 vs 0.12 rate), longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+     2. t=21:00: Patient 30 chosen over Patient 31: higher severity (level 3 vs 1), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     3. t=23:00: Patient 31 chosen over Patient 32: higher severity (level 3 vs 2), much longer wait (135min vs 30min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 32 chosen over Patient 33: longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+
+SEED 9066 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.03 timesteps (16 minutes)
+   Weighted wait: 5.15 timesteps (77 minutes)
+   Decisions explained: 0
+   ESI treated: 26, waiting: 0 | avg: 2.07 timesteps (31 min), weighted: 10.50 (158 min)
+   MTS treated: 26, waiting: 0 | avg: 3.10 timesteps (47 min), weighted: 15.93 (239 min)
+
+SEED 9067 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 1.04 timesteps (16 minutes)
+   Weighted wait: 5.22 timesteps (78 minutes)
+   Decisions explained: 1
+   ESI treated: 18, waiting: 0 | avg: 2.08 timesteps (31 min), weighted: 10.59 (159 min)
+   MTS treated: 18, waiting: 0 | avg: 3.12 timesteps (47 min), weighted: 15.96 (239 min)
+   ALL TRIAGE DECISIONS:
+     1. t=24:00: Patient 23 chosen over Patient 22: close call: severity edge to Patient 23 (2 vs 5), similar wait times (~15min), similar deterioration rates (~0.30), treatment speed edge to Patient 23 (margin: +0.304, confidence: high)
+
+SEED 9068 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 1.10 timesteps (16 minutes)
+   Weighted wait: 5.34 timesteps (80 minutes)
+   Decisions explained: 0
+   ESI treated: 18, waiting: 0 | avg: 2.19 timesteps (33 min), weighted: 10.81 (162 min)
+   MTS treated: 18, waiting: 0 | avg: 3.29 timesteps (49 min), weighted: 16.21 (243 min)
+
+SEED 9069 RESULTS:
+   Patients treated: 29
+   Patients waiting: 0
+   Average wait: 2.28 timesteps (34 minutes)
+   Weighted wait: 13.37 timesteps (201 minutes)
+   Decisions explained: 6
+   ESI treated: 29, waiting: 0 | avg: 5.00 timesteps (75 min), weighted: 27.23 (408 min)
+   MTS treated: 29, waiting: 0 | avg: 7.72 timesteps (116 min), weighted: 41.55 (623 min)
+   ALL TRIAGE DECISIONS:
+     1. t=08:30: Patient 14 chosen over Patient 13: higher severity (level 4 vs 1), deteriorating faster (0.55 vs 0.10 rate) (margin: +0.036, confidence: low)
+     2. t=10:00: Patient 17 chosen over Patient 15: close call: severity edge to Patient 17 (3 vs 5), wait time edge to Patient 15, deterioration edge to Patient 15, treatment speed edge to Patient 17 (margin: +0.049, confidence: low)
+     3. t=10:45: Patient 15 chosen over Patient 16: deteriorating faster (0.65 vs 0.28 rate), longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     4. t=18:30: Patient 27 chosen over Patient 26: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     5. t=20:00: Patient 26 chosen over Patient 28: higher severity (level 5 vs 4), much longer wait (135min vs 60min) (margin: +0.050, confidence: low)
+     6. t=22:45: Patient 30 chosen over Patient 31: much longer wait (120min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9070 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 4.26 timesteps (64 minutes)
+   Weighted wait: 22.28 timesteps (334 minutes)
+   Decisions explained: 8
+   ESI treated: 24, waiting: 0 | avg: 8.52 timesteps (128 min), weighted: 48.69 (730 min)
+   MTS treated: 24, waiting: 0 | avg: 12.77 timesteps (192 min), weighted: 75.95 (1139 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:45: Patient 20 chosen over Patient 22: deteriorating faster (0.65 vs 0.28 rate), much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     2. t=18:15: Patient 22 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.050, confidence: low)
+     3. t=19:15: Patient 21 chosen over Patient 24: much longer wait (165min vs 60min) (margin: +0.000, confidence: low)
+     4. t=21:00: Patient 26 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.050, confidence: low)
+     5. t=21:30: Patient 19 chosen over Patient 23: much longer wait (330min vs 255min) (margin: +0.000, confidence: low)
+     6. t=21:45: Patient 27 chosen over Patient 23: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.07 rate) (margin: +0.050, confidence: low)
+     7. t=23:00: Patient 29 chosen over Patient 25: higher severity (level 5 vs 2), deteriorating faster (0.67 vs 0.09 rate) (margin: +0.050, confidence: low)
+     8. t=24:00: Patient 30 chosen over Patient 25: higher severity (level 5 vs 3), deteriorating faster (0.60 vs 0.04 rate) (margin: +0.300, confidence: high)
+
+SEED 9071 RESULTS:
+   Patients treated: 24
+   Patients waiting: 6
+   Average wait: 6.26 timesteps (94 minutes)
+   Weighted wait: 37.81 timesteps (567 minutes)
+   Decisions explained: 9
+   ESI treated: 24, waiting: 6 | avg: 12.33 timesteps (185 min), weighted: 74.26 (1114 min)
+   MTS treated: 24, waiting: 6 | avg: 18.69 timesteps (280 min), weighted: 111.38 (1671 min)
+   ALL TRIAGE DECISIONS:
+     1. t=16:30: Patient 20 chosen over Patient 21: higher severity (level 5 vs 4), longer wait (30min vs 15min), quicker treatment (225min vs 240min) (margin: +0.050, confidence: low)
+     2. t=17:30: Patient 21 chosen over Patient 22: longer wait (75min vs 60min) (margin: +0.000, confidence: low)
+     3. t=18:15: Patient 22 chosen over Patient 23: longer wait (105min vs 90min) (margin: +0.000, confidence: low)
+     4. t=19:15: Patient 23 chosen over Patient 24: longer wait (150min vs 135min), much quicker treatment (195min vs 270min) (margin: +0.000, confidence: low)
+     5. t=20:15: Patient 24 chosen over Patient 27: deteriorating faster (0.69 vs 0.13 rate), much longer wait (195min vs 120min) (margin: +0.000, confidence: low)
+     6. t=21:30: Patient 34 chosen over Patient 27: deteriorating faster (0.70 vs 0.13 rate) (margin: +0.022, confidence: low)
+     7. t=22:15: Patient 27 chosen over Patient 28: much longer wait (240min vs 195min) (margin: +0.000, confidence: low)
+     8. t=22:30: Patient 28 chosen over Patient 29: longer wait (210min vs 180min) (margin: +0.000, confidence: low)
+     9. t=24:00: Patient 37 chosen over Patient 36: close call: same severity (level 5), wait time edge to Patient 36, similar deterioration rates (~0.65), similar treatment times (~270min) (margin: +0.127, confidence: high)
+
+SEED 9072 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.32 timesteps (20 minutes)
+   Weighted wait: 6.48 timesteps (97 minutes)
+   Decisions explained: 0
+   ESI treated: 21, waiting: 0 | avg: 2.64 timesteps (40 min), weighted: 13.27 (199 min)
+   MTS treated: 21, waiting: 0 | avg: 3.96 timesteps (59 min), weighted: 20.05 (301 min)
+
+SEED 9073 RESULTS:
+   Patients treated: 20
+   Patients waiting: 0
+   Average wait: 2.71 timesteps (41 minutes)
+   Weighted wait: 19.40 timesteps (291 minutes)
+   Decisions explained: 3
+   ESI treated: 20, waiting: 0 | avg: 5.43 timesteps (81 min), weighted: 38.57 (579 min)
+   MTS treated: 20, waiting: 0 | avg: 8.14 timesteps (122 min), weighted: 57.92 (869 min)
+   ALL TRIAGE DECISIONS:
+     1. t=22:30: Patient 21 chosen over Patient 22: longer wait (135min vs 120min), much quicker treatment (195min vs 255min) (margin: +0.000, confidence: low)
+     2. t=23:15: Patient 22 chosen over Patient 23: much longer wait (165min vs 105min) (margin: +0.000, confidence: low)
+     3. t=24:00: Patient 26 chosen over Patient 25: close call: same severity (level 5), similar wait times (~90min), similar deterioration rates (~0.65), similar treatment times (~270min) (margin: +0.045, confidence: low)
+
+SEED 9074 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 2.19 timesteps (33 minutes)
+   Weighted wait: 12.67 timesteps (190 minutes)
+   Decisions explained: 8
+   ESI treated: 25, waiting: 0 | avg: 4.45 timesteps (67 min), weighted: 26.48 (397 min)
+   MTS treated: 25, waiting: 0 | avg: 6.71 timesteps (101 min), weighted: 40.34 (605 min)
+   ALL TRIAGE DECISIONS:
+     1. t=08:15: Patient 12 chosen over Patient 11: deteriorating faster (0.70 vs 0.29 rate) (margin: +0.073, confidence: moderate)
+     2. t=09:45: Patient 13 chosen over Patient 14: longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     3. t=10:00: Patient 14 chosen over Patient 15: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.21 rate), much longer wait (60min vs 15min) (margin: +0.050, confidence: low)
+     4. t=10:30: Patient 15 chosen over Patient 16: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     5. t=12:15: Patient 17 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.63 vs 0.47 rate), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     6. t=13:00: Patient 20 chosen over Patient 18: higher severity (level 5 vs 3), deteriorating faster (0.70 vs 0.47 rate) (margin: +0.081, confidence: moderate)
+     7. t=14:00: Patient 19 chosen over Patient 21: much longer wait (105min vs 30min) (margin: +0.000, confidence: low)
+     8. t=24:00: Patient 30 chosen over Patient 29: deteriorating faster (0.56 vs 0.21 rate), quicker treatment (195min vs 210min) (margin: +0.314, confidence: high)
+
+SEED 9075 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.42 timesteps (21 minutes)
+   Weighted wait: 8.04 timesteps (121 minutes)
+   Decisions explained: 1
+   ESI treated: 21, waiting: 0 | avg: 2.83 timesteps (42 min), weighted: 16.26 (244 min)
+   MTS treated: 20, waiting: 0 | avg: 4.29 timesteps (64 min), weighted: 24.48 (367 min)
+   ALL TRIAGE DECISIONS:
+     1. t=19:45: Patient 19 chosen over Patient 20: much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+
+SEED 9076 RESULTS:
+   Patients treated: 23
+   Patients waiting: 1
+   Average wait: 3.18 timesteps (48 minutes)
+   Weighted wait: 17.57 timesteps (264 minutes)
+   Decisions explained: 5
+   ESI treated: 23, waiting: 1 | avg: 6.24 timesteps (94 min), weighted: 35.89 (538 min)
+   MTS treated: 23, waiting: 1 | avg: 9.42 timesteps (141 min), weighted: 54.40 (816 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:15: Patient 22 chosen over Patient 23: longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     2. t=20:30: Patient 23 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.23 rate), longer wait (90min vs 60min) (margin: +0.050, confidence: low)
+     3. t=22:00: Patient 27 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.69 vs 0.23 rate) (margin: +0.050, confidence: low)
+     4. t=23:15: Patient 24 chosen over Patient 28: much longer wait (225min vs 45min) (margin: +0.000, confidence: low)
+     5. t=24:00: Patient 28 chosen over Patient 32: deteriorating faster (0.69 vs 0.29 rate), much longer wait (90min vs 30min) (margin: +0.307, confidence: high)
+
+SEED 9077 RESULTS:
+   Patients treated: 25
+   Patients waiting: 0
+   Average wait: 3.47 timesteps (52 minutes)
+   Weighted wait: 17.07 timesteps (256 minutes)
+   Decisions explained: 8
+   ESI treated: 25, waiting: 0 | avg: 6.83 timesteps (102 min), weighted: 35.82 (537 min)
+   MTS treated: 25, waiting: 0 | avg: 10.30 timesteps (154 min), weighted: 57.64 (865 min)
+   ALL TRIAGE DECISIONS:
+     1. t=11:15: Patient 14 chosen over Patient 15: longer wait (45min vs 30min), much quicker treatment (195min vs 255min) (margin: +0.000, confidence: low)
+     2. t=18:45: Patient 22 chosen over Patient 21: higher severity (level 5 vs 3), deteriorating faster (0.68 vs 0.12 rate) (margin: +0.050, confidence: low)
+     3. t=19:15: Patient 21 chosen over Patient 23: much longer wait (150min vs 90min) (margin: +0.000, confidence: low)
+     4. t=19:45: Patient 23 chosen over Patient 24: higher severity (level 5 vs 3), longer wait (120min vs 90min) (margin: +0.050, confidence: low)
+     5. t=20:00: Patient 24 chosen over Patient 25: deteriorating faster (0.13 vs 0.07 rate), longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     6. t=21:45: Patient 27 chosen over Patient 25: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.07 rate) (margin: +0.050, confidence: low)
+     7. t=23:00: Patient 28 chosen over Patient 29: longer wait (75min vs 45min) (margin: +0.000, confidence: low)
+     8. t=23:30: Patient 25 chosen over Patient 26: much longer wait (285min vs 225min) (margin: +0.000, confidence: low)
+
+SEED 9078 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 3.39 timesteps (51 minutes)
+   Weighted wait: 17.27 timesteps (259 minutes)
+   Decisions explained: 8
+   ESI treated: 22, waiting: 0 | avg: 6.71 timesteps (101 min), weighted: 36.02 (540 min)
+   MTS treated: 22, waiting: 0 | avg: 10.03 timesteps (150 min), weighted: 53.93 (809 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:00: Patient 18 chosen over Patient 19: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.21 rate), longer wait (120min vs 90min) (margin: +0.050, confidence: low)
+     2. t=18:30: Patient 19 chosen over Patient 20: higher severity (level 5 vs 4), longer wait (120min vs 105min) (margin: +0.050, confidence: low)
+     3. t=18:45: Patient 20 chosen over Patient 21: much longer wait (120min vs 60min) (margin: +0.000, confidence: low)
+     4. t=19:15: Patient 21 chosen over Patient 22: higher severity (level 4 vs 2), much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     5. t=21:15: Patient 24 chosen over Patient 25: much longer wait (120min vs 15min) (margin: +0.000, confidence: low)
+     6. t=21:45: Patient 25 chosen over Patient 22: higher severity (level 5 vs 4), deteriorating faster (0.69 vs 0.10 rate) (margin: +0.050, confidence: low)
+     7. t=22:00: Patient 22 chosen over Patient 23: longer wait (210min vs 180min) (margin: +0.000, confidence: low)
+     8. t=24:00: Patient 30 chosen over Patient 28: close call: severity edge to Patient 30 (3 vs 5), wait time edge to Patient 28, deterioration edge to Patient 28, treatment speed edge to Patient 30 (margin: +0.138, confidence: high)
+
+SEED 9079 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 2.78 timesteps (42 minutes)
+   Weighted wait: 16.99 timesteps (255 minutes)
+   Decisions explained: 10
+   ESI treated: 25, waiting: 0 | avg: 6.62 timesteps (99 min), weighted: 41.22 (618 min)
+   MTS treated: 26, waiting: 0 | avg: 9.41 timesteps (141 min), weighted: 58.45 (877 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:15: Patient 14 chosen over Patient 15: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     2. t=13:45: Patient 17 chosen over Patient 16: higher severity (level 5 vs 3) (margin: +0.050, confidence: low)
+     3. t=14:15: Patient 16 chosen over Patient 18: higher severity (level 4 vs 2), much longer wait (90min vs 30min) (margin: +0.000, confidence: low)
+     4. t=14:30: Patient 19 chosen over Patient 18: higher severity (level 5 vs 2) (margin: +0.050, confidence: low)
+     5. t=16:00: Patient 18 chosen over Patient 20: higher severity (level 4 vs 3), much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+     6. t=18:00: Patient 21 chosen over Patient 22: higher severity (level 5 vs 3), longer wait (45min vs 30min) (margin: +0.050, confidence: low)
+     7. t=20:45: Patient 26 chosen over Patient 27: higher severity (level 5 vs 4), deteriorating faster (0.29 vs 0.21 rate), much longer wait (105min vs 60min) (margin: +0.050, confidence: low)
+     8. t=22:15: Patient 28 chosen over Patient 29: longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     9. t=22:45: Patient 27 chosen over Patient 29: much longer wait (180min vs 105min) (margin: +0.000, confidence: low)
+     10. t=24:00: Patient 30 chosen over Patient 31: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9080 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.71 timesteps (26 minutes)
+   Weighted wait: 9.73 timesteps (146 minutes)
+   Decisions explained: 3
+   ESI treated: 21, waiting: 0 | avg: 3.43 timesteps (51 min), weighted: 19.58 (294 min)
+   MTS treated: 21, waiting: 0 | avg: 5.14 timesteps (77 min), weighted: 29.37 (441 min)
+   ALL TRIAGE DECISIONS:
+     1. t=22:45: Patient 22 chosen over Patient 23: deteriorating faster (0.30 vs 0.11 rate), longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     2. t=23:00: Patient 23 chosen over Patient 24: higher severity (level 5 vs 4), much longer wait (60min vs 15min) (margin: +0.050, confidence: low)
+     3. t=24:00: Patient 27 chosen over Patient 26: close call: severity edge to Patient 27 (1 vs 5), similar wait times (~15min), deterioration edge to Patient 26, treatment speed edge to Patient 27 (margin: +0.115, confidence: high)
+
+SEED 9081 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 1.71 timesteps (26 minutes)
+   Weighted wait: 9.13 timesteps (137 minutes)
+   Decisions explained: 2
+   ESI treated: 23, waiting: 0 | avg: 3.50 timesteps (52 min), weighted: 19.61 (294 min)
+   MTS treated: 24, waiting: 0 | avg: 5.21 timesteps (78 min), weighted: 29.28 (439 min)
+   ALL TRIAGE DECISIONS:
+     1. t=20:45: Patient 23 chosen over Patient 24: longer wait (90min vs 75min), much quicker treatment (165min vs 240min) (margin: +0.000, confidence: low)
+     2. t=21:30: Patient 24 chosen over Patient 25: higher severity (level 5 vs 4), much longer wait (120min vs 45min) (margin: +0.050, confidence: low)
+
+SEED 9082 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 1.24 timesteps (19 minutes)
+   Weighted wait: 7.10 timesteps (107 minutes)
+   Decisions explained: 1
+   ESI treated: 21, waiting: 0 | avg: 2.48 timesteps (37 min), weighted: 14.29 (214 min)
+   MTS treated: 21, waiting: 0 | avg: 3.72 timesteps (56 min), weighted: 21.44 (322 min)
+   ALL TRIAGE DECISIONS:
+     1. t=23:45: Patient 23 chosen over Patient 24: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9083 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 1.24 timesteps (19 minutes)
+   Weighted wait: 5.48 timesteps (82 minutes)
+   Decisions explained: 0
+   ESI treated: 27, waiting: 0 | avg: 2.48 timesteps (37 min), weighted: 11.19 (168 min)
+   MTS treated: 27, waiting: 0 | avg: 3.72 timesteps (56 min), weighted: 16.87 (253 min)
+
+SEED 9084 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 4.80 timesteps (72 minutes)
+   Decisions explained: 0
+   ESI treated: 27, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 9.99 (150 min)
+   MTS treated: 27, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 15.31 (230 min)
+
+SEED 9085 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 1.85 timesteps (28 minutes)
+   Weighted wait: 9.60 timesteps (144 minutes)
+   Decisions explained: 3
+   ESI treated: 23, waiting: 0 | avg: 3.69 timesteps (55 min), weighted: 19.61 (294 min)
+   MTS treated: 23, waiting: 0 | avg: 5.54 timesteps (83 min), weighted: 29.51 (443 min)
+   ALL TRIAGE DECISIONS:
+     1. t=10:15: Patient 9 chosen over Patient 10: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     2. t=17:30: Patient 17 chosen over Patient 18: higher severity (level 4 vs 3), deteriorating faster (0.10 vs 0.03 rate), longer wait (105min vs 75min) (margin: +0.000, confidence: low)
+     3. t=17:45: Patient 18 chosen over Patient 19: longer wait (90min vs 75min), much quicker treatment (165min vs 240min) (margin: +0.000, confidence: low)
+
+SEED 9086 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 1.96 timesteps (29 minutes)
+   Weighted wait: 10.49 timesteps (157 minutes)
+   Decisions explained: 8
+   ESI treated: 19, waiting: 0 | avg: 3.92 timesteps (59 min), weighted: 21.18 (318 min)
+   MTS treated: 19, waiting: 0 | avg: 5.96 timesteps (89 min), weighted: 32.33 (485 min)
+   ALL TRIAGE DECISIONS:
+     1. t=16:30: Patient 13 chosen over Patient 14: higher severity (level 5 vs 3), deteriorating faster (0.60 vs 0.50 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     2. t=17:45: Patient 14 chosen over Patient 15: higher severity (level 4 vs 3), much longer wait (90min vs 15min) (margin: +0.000, confidence: low)
+     3. t=18:00: Patient 15 chosen over Patient 16: higher severity (level 4 vs 3), longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     4. t=18:30: Patient 16 chosen over Patient 17: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     5. t=19:00: Patient 17 chosen over Patient 18: higher severity (level 5 vs 1), deteriorating faster (0.28 vs 0.17 rate), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     6. t=20:15: Patient 19 chosen over Patient 18: higher severity (level 5 vs 1), deteriorating faster (0.68 vs 0.17 rate) (margin: +0.050, confidence: low)
+     7. t=23:30: Patient 22 chosen over Patient 23: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     8. t=24:00: Patient 25 chosen over Patient 23: close call: same severity (level 5), wait time edge to Patient 23, similar deterioration rates (~0.67), similar treatment times (~225min) (margin: +0.121, confidence: high)
+
+SEED 9087 RESULTS:
+   Patients treated: 21
+   Patients waiting: 0
+   Average wait: 2.75 timesteps (41 minutes)
+   Weighted wait: 16.57 timesteps (249 minutes)
+   Decisions explained: 5
+   ESI treated: 22, waiting: 0 | avg: 5.33 timesteps (80 min), weighted: 32.65 (490 min)
+   MTS treated: 22, waiting: 0 | avg: 8.00 timesteps (120 min), weighted: 48.58 (729 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:30: Patient 18 chosen over Patient 19: deteriorating faster (0.63 vs 0.12 rate), longer wait (150min vs 120min) (margin: +0.000, confidence: low)
+     2. t=18:45: Patient 19 chosen over Patient 21: much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+     3. t=19:15: Patient 21 chosen over Patient 22: longer wait (45min vs 15min) (margin: +0.000, confidence: low)
+     4. t=20:00: Patient 22 chosen over Patient 20: higher severity (level 5 vs 4), deteriorating faster (0.68 vs 0.08 rate) (margin: +0.050, confidence: low)
+     5. t=22:30: Patient 20 chosen over Patient 23: much longer wait (255min vs 75min) (margin: +0.000, confidence: low)
+
+SEED 9088 RESULTS:
+   Patients treated: 18
+   Patients waiting: 0
+   Average wait: 3.11 timesteps (47 minutes)
+   Weighted wait: 18.40 timesteps (276 minutes)
+   Decisions explained: 4
+   ESI treated: 18, waiting: 0 | avg: 6.22 timesteps (93 min), weighted: 38.70 (580 min)
+   MTS treated: 18, waiting: 0 | avg: 9.33 timesteps (140 min), weighted: 58.92 (884 min)
+   ALL TRIAGE DECISIONS:
+     1. t=21:00: Patient 18 chosen over Patient 19: longer wait (120min vs 105min), quicker treatment (255min vs 270min) (margin: +0.000, confidence: low)
+     2. t=21:45: Patient 20 chosen over Patient 21: deteriorating faster (0.68 vs 0.28 rate), much longer wait (90min vs 45min) (margin: +0.000, confidence: low)
+     3. t=23:30: Patient 21 chosen over Patient 24: much longer wait (150min vs 75min) (margin: +0.000, confidence: low)
+     4. t=24:00: Patient 25 chosen over Patient 24: close call: same severity (level 5), similar wait times (~90min), deterioration edge to Patient 25, similar treatment times (~270min) (margin: +0.147, confidence: high)
+
+SEED 9089 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 3.74 timesteps (56 minutes)
+   Weighted wait: 19.72 timesteps (296 minutes)
+   Decisions explained: 8
+   ESI treated: 28, waiting: 0 | avg: 6.48 timesteps (97 min), weighted: 36.62 (549 min)
+   MTS treated: 26, waiting: 0 | avg: 10.42 timesteps (156 min), weighted: 60.11 (902 min)
+   ALL TRIAGE DECISIONS:
+     1. t=12:30: Patient 18 chosen over Patient 14: deteriorating faster (0.56 vs 0.28 rate) (margin: +0.104, confidence: high)
+     2. t=12:45: Patient 15 chosen over Patient 17: much longer wait (120min vs 75min) (margin: +0.000, confidence: low)
+     3. t=13:15: Patient 17 chosen over Patient 16: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     4. t=15:45: Patient 20 chosen over Patient 21: higher severity (level 5 vs 4), longer wait (45min vs 15min) (margin: +0.050, confidence: low)
+     5. t=19:45: Patient 26 chosen over Patient 27: deteriorating faster (0.29 vs 0.10 rate), longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     6. t=20:30: Patient 27 chosen over Patient 24: higher severity (level 5 vs 3) (margin: +0.050, confidence: low)
+     7. t=21:30: Patient 28 chosen over Patient 24: higher severity (level 5 vs 3), deteriorating faster (0.28 vs 0.05 rate) (margin: +0.050, confidence: low)
+     8. t=23:15: Patient 25 chosen over Patient 29: much longer wait (315min vs 90min) (margin: +0.000, confidence: low)
+
+SEED 9090 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 1.96 timesteps (29 minutes)
+   Weighted wait: 10.04 timesteps (151 minutes)
+   Decisions explained: 3
+   ESI treated: 23, waiting: 0 | avg: 3.93 timesteps (59 min), weighted: 20.63 (309 min)
+   MTS treated: 23, waiting: 0 | avg: 5.89 timesteps (88 min), weighted: 31.08 (466 min)
+   ALL TRIAGE DECISIONS:
+     1. t=21:45: Patient 24 chosen over Patient 23: higher severity (level 5 vs 4), deteriorating faster (0.60 vs 0.10 rate) (margin: +0.050, confidence: low)
+     2. t=23:45: Patient 27 chosen over Patient 25: higher severity (level 5 vs 4) (margin: +0.050, confidence: low)
+     3. t=24:00: Patient 25 chosen over Patient 26: higher severity (level 5 vs 3), deteriorating faster (0.12 vs 0.05 rate), longer wait (120min vs 105min) (margin: +0.050, confidence: low)
+
+SEED 9091 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 2.88 timesteps (43 minutes)
+   Weighted wait: 17.60 timesteps (264 minutes)
+   Decisions explained: 9
+   ESI treated: 24, waiting: 0 | avg: 5.84 timesteps (88 min), weighted: 35.03 (525 min)
+   MTS treated: 24, waiting: 0 | avg: 8.91 timesteps (134 min), weighted: 53.33 (800 min)
+   ALL TRIAGE DECISIONS:
+     1. t=15:00: Patient 16 chosen over Patient 17: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.14 rate), longer wait (30min vs 15min) (margin: +0.050, confidence: low)
+     2. t=15:15: Patient 18 chosen over Patient 17: higher severity (level 5 vs 3), deteriorating faster (0.67 vs 0.14 rate) (margin: +0.050, confidence: low)
+     3. t=16:15: Patient 19 chosen over Patient 17: higher severity (level 5 vs 3), deteriorating faster (0.29 vs 0.14 rate) (margin: +0.050, confidence: low)
+     4. t=17:15: Patient 20 chosen over Patient 21: longer wait (30min vs 15min) (margin: +0.000, confidence: low)
+     5. t=18:45: Patient 21 chosen over Patient 22: higher severity (level 5 vs 4), much longer wait (105min vs 60min) (margin: +0.050, confidence: low)
+     6. t=20:30: Patient 24 chosen over Patient 25: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     7. t=22:00: Patient 25 chosen over Patient 26: deteriorating faster (0.68 vs 0.14 rate), much longer wait (120min vs 75min) (margin: +0.000, confidence: low)
+     8. t=22:30: Patient 27 chosen over Patient 28: higher severity (level 5 vs 4), deteriorating faster (0.60 vs 0.27 rate), longer wait (75min vs 45min) (margin: +0.050, confidence: low)
+     9. t=24:00: Patient 30 chosen over Patient 28: deteriorating faster (0.61 vs 0.14 rate) (margin: +0.084, confidence: moderate)
+
+SEED 9092 RESULTS:
+   Patients treated: 22
+   Patients waiting: 0
+   Average wait: 1.16 timesteps (17 minutes)
+   Weighted wait: 6.87 timesteps (103 minutes)
+   Decisions explained: 0
+   ESI treated: 22, waiting: 0 | avg: 2.32 timesteps (35 min), weighted: 14.08 (211 min)
+   MTS treated: 22, waiting: 0 | avg: 3.48 timesteps (52 min), weighted: 21.21 (318 min)
+
+SEED 9093 RESULTS:
+   Patients treated: 28
+   Patients waiting: 0
+   Average wait: 2.16 timesteps (32 minutes)
+   Weighted wait: 11.67 timesteps (175 minutes)
+   Decisions explained: 5
+   ESI treated: 27, waiting: 0 | avg: 4.45 timesteps (67 min), weighted: 24.48 (367 min)
+   MTS treated: 27, waiting: 0 | avg: 6.68 timesteps (100 min), weighted: 36.93 (554 min)
+   ALL TRIAGE DECISIONS:
+     1. t=15:15: Patient 20 chosen over Patient 21: longer wait (45min vs 30min), much quicker treatment (195min vs 255min) (margin: +0.000, confidence: low)
+     2. t=18:15: Patient 24 chosen over Patient 23: higher severity (level 5 vs 2), deteriorating faster (0.70 vs 0.08 rate) (margin: +0.050, confidence: low)
+     3. t=18:30: Patient 23 chosen over Patient 25: much longer wait (105min vs 30min) (margin: +0.000, confidence: low)
+     4. t=20:00: Patient 26 chosen over Patient 25: higher severity (level 5 vs 4), deteriorating faster (0.64 vs 0.21 rate) (margin: +0.050, confidence: low)
+     5. t=20:15: Patient 25 chosen over Patient 27: higher severity (level 4 vs 3), much longer wait (135min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9094 RESULTS:
+   Patients treated: 27
+   Patients waiting: 0
+   Average wait: 3.21 timesteps (48 minutes)
+   Weighted wait: 17.62 timesteps (264 minutes)
+   Decisions explained: 8
+   ESI treated: 27, waiting: 0 | avg: 6.41 timesteps (96 min), weighted: 36.08 (541 min)
+   MTS treated: 26, waiting: 0 | avg: 9.62 timesteps (144 min), weighted: 54.09 (811 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:00: Patient 22 chosen over Patient 21: higher severity (level 5 vs 3), deteriorating faster (0.61 vs 0.18 rate) (margin: +0.050, confidence: low)
+     2. t=17:45: Patient 23 chosen over Patient 21: higher severity (level 5 vs 4), deteriorating faster (0.61 vs 0.09 rate) (margin: +0.050, confidence: low)
+     3. t=18:00: Patient 21 chosen over Patient 24: higher severity (level 4 vs 3), much longer wait (120min vs 15min) (margin: +0.000, confidence: low)
+     4. t=18:45: Patient 26 chosen over Patient 24: higher severity (level 5 vs 4), deteriorating faster (0.65 vs 0.10 rate) (margin: +0.050, confidence: low)
+     5. t=20:30: Patient 24 chosen over Patient 25: longer wait (165min vs 135min) (margin: +0.000, confidence: low)
+     6. t=21:30: Patient 30 chosen over Patient 25: higher severity (level 5 vs 4), deteriorating faster (0.60 vs 0.06 rate) (margin: +0.050, confidence: low)
+     7. t=22:45: Patient 27 chosen over Patient 29: longer wait (135min vs 105min) (margin: +0.000, confidence: low)
+     8. t=24:00: Patient 33 chosen over Patient 32: close call: same severity (level 5), wait time edge to Patient 32, deterioration edge to Patient 32, similar treatment times (~270min) (margin: +0.429, confidence: high)
+
+SEED 9095 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 2.68 timesteps (40 minutes)
+   Weighted wait: 14.94 timesteps (224 minutes)
+   Decisions explained: 9
+   ESI treated: 25, waiting: 0 | avg: 5.19 timesteps (78 min), weighted: 30.84 (463 min)
+   MTS treated: 25, waiting: 0 | avg: 7.61 timesteps (114 min), weighted: 45.86 (688 min)
+   ALL TRIAGE DECISIONS:
+     1. t=16:30: Patient 19 chosen over Patient 20: longer wait (45min vs 30min), quicker treatment (225min vs 270min) (margin: +0.000, confidence: low)
+     2. t=17:00: Patient 20 chosen over Patient 21: deteriorating faster (0.62 vs 0.28 rate), longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     3. t=17:15: Patient 21 chosen over Patient 22: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     4. t=18:15: Patient 22 chosen over Patient 23: deteriorating faster (0.62 vs 0.28 rate), longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     5. t=19:30: Patient 23 chosen over Patient 24: higher severity (level 5 vs 2), much longer wait (150min vs 105min) (margin: +0.050, confidence: low)
+     6. t=20:15: Patient 25 chosen over Patient 24: higher severity (level 5 vs 2), deteriorating faster (0.62 vs 0.26 rate) (margin: +0.050, confidence: low)
+     7. t=21:30: Patient 24 chosen over Patient 26: much longer wait (225min vs 75min) (margin: +0.000, confidence: low)
+     8. t=23:15: Patient 27 chosen over Patient 28: longer wait (75min vs 60min), much quicker treatment (165min vs 225min) (margin: +0.000, confidence: low)
+     9. t=24:00: Patient 29 chosen over Patient 28: deteriorating faster (0.60 vs 0.10 rate) (margin: +0.290, confidence: high)
+
+SEED 9096 RESULTS:
+   Patients treated: 26
+   Patients waiting: 0
+   Average wait: 1.90 timesteps (29 minutes)
+   Weighted wait: 11.77 timesteps (177 minutes)
+   Decisions explained: 5
+   ESI treated: 26, waiting: 0 | avg: 3.84 timesteps (58 min), weighted: 23.95 (359 min)
+   MTS treated: 26, waiting: 0 | avg: 5.74 timesteps (86 min), weighted: 35.78 (537 min)
+   ALL TRIAGE DECISIONS:
+     1. t=08:45: Patient 10 chosen over Patient 11: longer wait (60min vs 30min) (margin: +0.000, confidence: low)
+     2. t=15:15: Patient 19 chosen over Patient 20: higher severity (level 5 vs 4), deteriorating faster (0.62 vs 0.55 rate), longer wait (60min vs 30min) (margin: +0.050, confidence: low)
+     3. t=23:00: Patient 27 chosen over Patient 28: longer wait (45min vs 30min), much quicker treatment (180min vs 270min) (margin: +0.000, confidence: low)
+     4. t=23:15: Patient 28 chosen over Patient 29: higher severity (level 5 vs 4), deteriorating faster (0.28 vs 0.21 rate), longer wait (45min vs 30min) (margin: +0.050, confidence: low)
+     5. t=23:45: Patient 29 chosen over Patient 30: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+
+SEED 9097 RESULTS:
+   Patients treated: 24
+   Patients waiting: 0
+   Average wait: 2.13 timesteps (32 minutes)
+   Weighted wait: 11.91 timesteps (179 minutes)
+   Decisions explained: 7
+   ESI treated: 24, waiting: 0 | avg: 4.26 timesteps (64 min), weighted: 24.35 (365 min)
+   MTS treated: 24, waiting: 0 | avg: 6.39 timesteps (96 min), weighted: 37.16 (557 min)
+   ALL TRIAGE DECISIONS:
+     1. t=17:45: Patient 18 chosen over Patient 19: deteriorating faster (0.69 vs 0.29 rate), longer wait (90min vs 75min) (margin: +0.000, confidence: low)
+     2. t=18:45: Patient 21 chosen over Patient 20: higher severity (level 5 vs 1), deteriorating faster (0.64 vs 0.22 rate) (margin: +0.050, confidence: low)
+     3. t=19:00: Patient 22 chosen over Patient 20: higher severity (level 5 vs 1), deteriorating faster (0.66 vs 0.22 rate) (margin: +0.050, confidence: low)
+     4. t=21:30: Patient 23 chosen over Patient 24: higher severity (level 4 vs 2), deteriorating faster (0.27 vs 0.09 rate), much longer wait (105min vs 60min) (margin: +0.000, confidence: low)
+     5. t=23:00: Patient 26 chosen over Patient 27: much longer wait (60min vs 15min) (margin: +0.000, confidence: low)
+     6. t=23:30: Patient 27 chosen over Patient 28: longer wait (45min vs 30min) (margin: +0.000, confidence: low)
+     7. t=24:00: Patient 30 chosen over Patient 29: close call: same severity (level 5), similar wait times (~15min), similar deterioration rates (~0.69), similar treatment times (~255min) (margin: +0.087, confidence: moderate)
+
+SEED 9098 RESULTS:
+   Patients treated: 23
+   Patients waiting: 0
+   Average wait: 2.29 timesteps (34 minutes)
+   Weighted wait: 10.14 timesteps (152 minutes)
+   Decisions explained: 5
+   ESI treated: 23, waiting: 0 | avg: 4.50 timesteps (68 min), weighted: 20.65 (310 min)
+   MTS treated: 23, waiting: 0 | avg: 6.75 timesteps (101 min), weighted: 32.03 (481 min)
+   ALL TRIAGE DECISIONS:
+     1. t=18:00: Patient 18 chosen over Patient 19: higher severity (level 3 vs 2), longer wait (60min vs 45min), quicker treatment (150min vs 165min) (margin: +0.000, confidence: low)
+     2. t=18:15: Patient 19 chosen over Patient 20: longer wait (60min vs 45min) (margin: +0.000, confidence: low)
+     3. t=20:15: Patient 20 chosen over Patient 21: higher severity (level 5 vs 2), longer wait (165min vs 135min) (margin: +0.050, confidence: low)
+     4. t=23:30: Patient 26 chosen over Patient 25: higher severity (level 5 vs 3), deteriorating faster (0.68 vs 0.50 rate) (margin: +0.050, confidence: low)
+     5. t=24:00: Patient 27 chosen over Patient 25: higher severity (level 5 vs 4), deteriorating faster (0.62 vs 0.25 rate) (margin: +0.404, confidence: high)
+
+SEED 9099 RESULTS:
+   Patients treated: 19
+   Patients waiting: 0
+   Average wait: 1.00 timesteps (15 minutes)
+   Weighted wait: 6.13 timesteps (92 minutes)
+   Decisions explained: 0
+   ESI treated: 19, waiting: 0 | avg: 2.00 timesteps (30 min), weighted: 12.43 (186 min)
+   MTS treated: 19, waiting: 0 | avg: 3.00 timesteps (45 min), weighted: 18.64 (280 min)
+
+AGGREGATE STATISTICS:
+   Mean patients treated: 23.1 +/- 3.7
+   Mean weighted wait: 12.79 +/- 5.93 hours
+   Total decisions explained: 504
+
+BASELINE COMPARISON:
+   Neural Network: 3.20 hours weighted (0.58 hours avg)
+   ESI Baseline: 6.57 hours weighted (1.16 hours avg)
+   MTS Baseline: 9.95 hours weighted (1.75 hours avg)
+
+BASELINE PERFORMANCE DETAILS:
+   ESI treated: 23.1, waiting: 0.1 | avg: 4.66 timesteps (70 min), weighted: 26.28 (394 min)
+   MTS treated: 23.0, waiting: 0.1 | avg: 7.01 timesteps (105 min), weighted: 39.79 (597 min)
+   -> Neural beats ESI by 51.3% (weighted wait)
+   -> Neural beats MTS by 67.8% (weighted wait)
