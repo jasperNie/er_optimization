@@ -132,18 +132,14 @@ def evaluate_full_combination(num_nurses=4):
     print(f"\nPHASE 2: RANDOM MIX TESTING")
     print("─" * 50)
     
-    # Create test scenarios - 50 random seeds from each pattern 
+    # Create test scenarios - 50 random scenarios, each with a random pattern and seed
     all_test_scenarios = []
-    test_seeds_per_pattern = 50
-    
-    for pattern_name in all_patterns:
-        pattern_seeds = random.sample(range(9000, 10000), test_seeds_per_pattern)  # 50 random seeds
-        for seed in pattern_seeds:
-            all_test_scenarios.append((pattern_name, seed))
-    
-    # Shuffle so we test in random order
-    random.shuffle(all_test_scenarios)
-    print(f"Generated {len(all_test_scenarios)} test scenarios, testing in random order...")
+    num_test_scenarios = 50
+    for _ in range(num_test_scenarios):
+        pattern_name = random.choice(all_patterns)
+        seed = random.randint(9000, 9999)
+        all_test_scenarios.append((pattern_name, seed))
+    print(f"Generated {len(all_test_scenarios)} test scenarios (random mix of patterns and seeds)...")
     
     # Use EXACT explainable simulation class from working script
     class ExplainableSimulation(ERSimulation):
@@ -491,8 +487,8 @@ def evaluate_full_combination(num_nurses=4):
         f.write(f"   FULL COMBINATION HYBRID TEST RESULTS - {num_nurses} NURSES\n")
         f.write("=" * 80 + "\n\n")
         f.write(f"CONFIGURATION:\n")
-        f.write(f"   Training: Standard pattern, seeds 8000+ (100 gen, 80 pop)\n")
-        f.write(f"   Testing: 300 random scenarios (50 from each of 6 patterns)\n")
+        f.write(f"   Training: 50 seeds from each of 6 patterns (8000–8299), total 300 scenarios (100 gen, 80 pop)\n")
+        f.write(f"   Testing: 50 random scenarios (each with a random pattern and seed)\n")
         f.write(f"   Simulation: 24 hours (96 timesteps of 15 minutes each)\n\n")
         
         # Add all individual results with detailed explanations
