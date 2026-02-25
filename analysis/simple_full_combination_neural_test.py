@@ -442,7 +442,7 @@ def evaluate_full_combination(num_nurses=4):
         for i, result in enumerate(all_results):
             avg_wait = result['avg_wait'] if result['avg_wait'] is not None else 0
             weighted_wait = result['avg_weighted_wait'] if result['avg_weighted_wait'] is not None else 0
-            
+
             # Get corresponding baseline results
             esi_result = all_esi_results[i]
             mts_result = all_mts_results[i]
@@ -450,20 +450,34 @@ def evaluate_full_combination(num_nurses=4):
             esi_weighted_wait = esi_result['avg_weighted_wait'] if esi_result['avg_weighted_wait'] is not None else 0
             mts_avg_wait = mts_result['avg_wait'] if mts_result['avg_wait'] is not None else 0
             mts_weighted_wait = mts_result['avg_weighted_wait'] if mts_result['avg_weighted_wait'] is not None else 0
-            
+
+            # Severity breakdowns
+            treated_by_severity = result.get('treated_by_severity', {})
+            waiting_by_severity = result.get('waiting_by_severity', {})
+            esi_treated_by_severity = esi_result.get('treated_by_severity', {})
+            esi_waiting_by_severity = esi_result.get('waiting_by_severity', {})
+            mts_treated_by_severity = mts_result.get('treated_by_severity', {})
+            mts_waiting_by_severity = mts_result.get('waiting_by_severity', {})
+
             f.write(f"SEED {result['seed']} ({result['pattern']}) RESULTS:\n")
             f.write(f"   Patients treated: {result['completed']}\n")
             f.write(f"   Patients waiting: {result['still_waiting']}\n")
             f.write(f"   Average wait: {avg_wait:.2f} timesteps ({avg_wait*15:.0f} minutes)\n")
             f.write(f"   Weighted wait: {weighted_wait:.2f} timesteps ({weighted_wait*15:.0f} minutes)\n")
             f.write(f"   Decisions explained: {result['total_decisions']}\n")
+            f.write(f"   Neural treated by severity: {treated_by_severity}\n")
+            f.write(f"   Neural waiting by severity: {waiting_by_severity}\n")
             f.write(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_weighted_wait:.2f} ({esi_weighted_wait*15:.0f} min)\n")
+            f.write(f"   ESI treated by severity: {esi_treated_by_severity}\n")
+            f.write(f"   ESI waiting by severity: {esi_waiting_by_severity}\n")
             f.write(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_weighted_wait:.2f} ({mts_weighted_wait*15:.0f} min)\n")
-            
+            f.write(f"   MTS treated by severity: {mts_treated_by_severity}\n")
+            f.write(f"   MTS waiting by severity: {mts_waiting_by_severity}\n")
+
             # Add detailed triage decision explanations
             if result['explanations']:
                 f.write(f"   ALL TRIAGE DECISIONS:\n")
-                
+
                 decision_count = 0
                 for decision in result['explanations']:
                     decision_count += 1

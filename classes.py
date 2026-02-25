@@ -270,15 +270,20 @@ class ERSimulation:
 
         # Collect metrics - Include ALL patients (treated + still waiting)
         all_patients = []
-        
+        treated_by_severity = {sev: 0 for sev in range(1, 6)}
+        waiting_by_severity = {sev: 0 for sev in range(1, 6)}
+
         # Add completed patients (those who were treated)
         if self.started_patients:
-            all_patients.extend(self.started_patients)
-        
+            for p, wait in self.started_patients:
+                all_patients.append((p, wait))
+                treated_by_severity[p.severity] += 1
+
         # Add patients still waiting at the end of simulation
         for patient in self.waiting_patients:
             all_patients.append((patient, patient.wait_time))
-        
+            waiting_by_severity[patient.severity] += 1
+
         if all_patients:
             waits = [wait for _, wait in all_patients]
             weighted_waits = [
@@ -329,7 +334,9 @@ class ERSimulation:
                 'avg_treated_wait': avg_treated_wait,  # Only treated patients
                 'avg_treated_weighted_wait': avg_treated_weighted_wait,  # Only treated patients
                 'total_patients': len(all_patients),
-                'severity_metrics': severity_metrics
+                'severity_metrics': severity_metrics,
+                'treated_by_severity': treated_by_severity,
+                'waiting_by_severity': waiting_by_severity
             }
         else:
             # No patients at all - initialize empty severity metrics

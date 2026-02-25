@@ -512,8 +512,15 @@ def evaluate_full_combination(num_nurses=4):
             f.write(f"   Decisions explained: {result['total_decisions']}\n")
             f.write(f"   Neural decisions: {result['neural_decisions']} ({result['neural_percentage']:.1f}%)\n")
             f.write(f"   ESI fallbacks: {result['fallback_decisions']} ({100-result['neural_percentage']:.1f}%)\n")
+            # Output treated and waiting by severity for hybrid, ESI, and MTS as dicts (neural script format, no extra indentation)
+            f.write(f"   Hybrid treated by severity: {result.get('treated_by_severity', {})}\n")
+            f.write(f"   Hybrid waiting by severity: {result.get('waiting_by_severity', {})}\n")
             f.write(f"   ESI treated: {esi_result['completed']}, waiting: {esi_result['still_waiting']} | avg: {esi_avg_wait:.2f} timesteps ({esi_avg_wait*15:.0f} min), weighted: {esi_weighted_wait:.2f} ({esi_weighted_wait*15:.0f} min)\n")
+            f.write(f"   ESI treated by severity: {esi_result.get('treated_by_severity', {})}\n")
+            f.write(f"   ESI waiting by severity: {esi_result.get('waiting_by_severity', {})}\n")
             f.write(f"   MTS treated: {mts_result['completed']}, waiting: {mts_result['still_waiting']} | avg: {mts_avg_wait:.2f} timesteps ({mts_avg_wait*15:.0f} min), weighted: {mts_weighted_wait:.2f} ({mts_weighted_wait*15:.0f} min)\n")
+            f.write(f"   MTS treated by severity: {mts_result.get('treated_by_severity', {})}\n")
+            f.write(f"   MTS waiting by severity: {mts_result.get('waiting_by_severity', {})}\n")
             
             # Add detailed triage decision explanations
             if result['explanations']:

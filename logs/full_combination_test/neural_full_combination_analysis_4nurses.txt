@@ -13,8 +13,14 @@ SEED 9519 (weekend) RESULTS:
    Average wait: 2.89 timesteps (43 minutes)
    Weighted wait: 17.33 timesteps (260 minutes)
    Decisions explained: 6
+   Neural treated by severity: {1: 0, 2: 0, 3: 1, 4: 8, 5: 18}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 21, waiting: 0 | avg: 5.74 timesteps (86 min), weighted: 35.80 (537 min)
+   ESI treated by severity: {1: 0, 2: 0, 3: 1, 4: 3, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 21, waiting: 0 | avg: 8.67 timesteps (130 min), weighted: 53.86 (808 min)
+   MTS treated by severity: {1: 0, 2: 0, 3: 1, 4: 3, 5: 23}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=13:45: Patient 15 chosen over Patient 14: quicker treatment (240min vs 255min) (margin: +0.027, confidence: low)
      2. t=15:30: Patient 16 chosen over Patient 17: deteriorating faster (0.29 vs 0.10 rate), longer wait (60min vs 45min) (margin: +0.032, confidence: low)
@@ -29,8 +35,14 @@ SEED 9372 (disaster) RESULTS:
    Average wait: 11.00 timesteps (165 minutes)
    Weighted wait: 68.40 timesteps (1026 minutes)
    Decisions explained: 16
+   Neural treated by severity: {1: 4, 2: 5, 3: 4, 4: 7, 5: 14}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 19}
    ESI treated: 29, waiting: 19 | avg: 21.91 timesteps (329 min), weighted: 138.97 (2085 min)
+   ESI treated by severity: {1: 1, 2: 5, 3: 4, 4: 2, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 1, 4: 0, 5: 18}
    MTS treated: 30, waiting: 18 | avg: 32.89 timesteps (493 min), weighted: 208.83 (3133 min)
+   MTS treated by severity: {1: 1, 2: 5, 3: 3, 4: 2, 5: 25}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 17}
    ALL TRIAGE DECISIONS:
      1. t=04:30: Patient 7 chosen over Patient 8: longer wait (30min vs 15min), quicker treatment (210min vs 225min) (margin: +0.007, confidence: low)
      2. t=05:00: Patient 9 chosen over Patient 10: higher severity (level 4 vs 1), longer wait (30min vs 15min) (margin: +0.276, confidence: high)
@@ -55,8 +67,14 @@ SEED 9678 (steady_state) RESULTS:
    Average wait: 4.52 timesteps (68 minutes)
    Weighted wait: 28.25 timesteps (424 minutes)
    Decisions explained: 9
+   Neural treated by severity: {1: 1, 2: 2, 3: 3, 4: 10, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 22, waiting: 1 | avg: 8.97 timesteps (134 min), weighted: 57.01 (855 min)
+   ESI treated by severity: {1: 1, 2: 1, 3: 1, 4: 4, 5: 21}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    MTS treated: 22, waiting: 1 | avg: 13.28 timesteps (199 min), weighted: 84.35 (1265 min)
+   MTS treated by severity: {1: 1, 2: 1, 3: 1, 4: 4, 5: 21}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=09:45: Patient 13 chosen over Patient 12: higher severity (level 4 vs 3), quicker treatment (195min vs 225min) (margin: +0.060, confidence: moderate)
      2. t=15:45: Patient 19 chosen over Patient 17: close call: neural network decision (margin: +0.032, confidence: low)
@@ -74,8 +92,14 @@ SEED 9513 (weekend) RESULTS:
    Average wait: 4.69 timesteps (70 minutes)
    Weighted wait: 28.44 timesteps (427 minutes)
    Decisions explained: 10
+   Neural treated by severity: {1: 1, 2: 1, 3: 5, 4: 7, 5: 8}
+   Neural waiting by severity: {1: 1, 2: 0, 3: 0, 4: 0, 5: 3}
    ESI treated: 16, waiting: 4 | avg: 9.08 timesteps (136 min), weighted: 56.12 (842 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 4, 4: 4, 5: 13}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 3}
    MTS treated: 15, waiting: 5 | avg: 14.42 timesteps (216 min), weighted: 90.25 (1354 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 3, 4: 2, 5: 15}
+   MTS waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 4}
    ALL TRIAGE DECISIONS:
      1. t=15:45: Patient 10 chosen over Patient 9: deteriorating faster (0.21 vs 0.10 rate) (margin: +0.163, confidence: high)
      2. t=16:00: Patient 12 chosen over Patient 9: deteriorating faster (0.42 vs 0.10 rate) (margin: +0.167, confidence: high)
@@ -94,8 +118,14 @@ SEED 9706 (standard) RESULTS:
    Average wait: 7.71 timesteps (116 minutes)
    Weighted wait: 44.54 timesteps (668 minutes)
    Decisions explained: 23
+   Neural treated by severity: {1: 0, 2: 2, 3: 6, 4: 9, 5: 21}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 33, waiting: 0 | avg: 15.92 timesteps (239 min), weighted: 91.67 (1375 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 1, 4: 5, 5: 31}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 33, waiting: 0 | avg: 24.63 timesteps (369 min), weighted: 140.72 (2111 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 1, 4: 2, 5: 34}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=05:00: Patient 9 chosen over Patient 6: close call: neural network decision (margin: +0.177, confidence: high)
      2. t=05:15: Patient 6 chosen over Patient 8: higher severity (level 5 vs 3), deteriorating faster (0.62 vs 0.14 rate), longer wait (75min vs 45min) (margin: +0.041, confidence: low)
@@ -127,8 +157,14 @@ SEED 9635 (disaster) RESULTS:
    Average wait: 12.09 timesteps (181 minutes)
    Weighted wait: 72.92 timesteps (1094 minutes)
    Decisions explained: 24
+   Neural treated by severity: {1: 0, 2: 3, 3: 9, 4: 9, 5: 17}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 2, 4: 1, 5: 13}
    ESI treated: 31, waiting: 17 | avg: 25.37 timesteps (381 min), weighted: 151.87 (2278 min)
+   ESI treated by severity: {1: 0, 2: 0, 3: 3, 4: 5, 5: 29}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 1, 4: 2, 5: 14}
    MTS treated: 32, waiting: 16 | avg: 38.80 timesteps (582 min), weighted: 231.05 (3466 min)
+   MTS treated by severity: {1: 0, 2: 0, 3: 2, 4: 4, 5: 32}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 4, 5: 12}
    ALL TRIAGE DECISIONS:
      1. t=06:15: Patient 10 chosen over Patient 12: deteriorating faster (0.62 vs 0.29 rate), much longer wait (75min vs 30min) (margin: +0.038, confidence: low)
      2. t=07:00: Patient 13 chosen over Patient 15: longer wait (45min vs 15min) (margin: +0.096, confidence: moderate)
@@ -161,8 +197,14 @@ SEED 9429 (flu_season) RESULTS:
    Average wait: 15.49 timesteps (232 minutes)
    Weighted wait: 87.26 timesteps (1309 minutes)
    Decisions explained: 18
+   Neural treated by severity: {1: 2, 2: 3, 3: 10, 4: 13, 5: 5}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 12}
    ESI treated: 25, waiting: 14 | avg: 32.04 timesteps (481 min), weighted: 179.25 (2689 min)
+   ESI treated by severity: {1: 2, 2: 1, 3: 3, 4: 5, 5: 20}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 0, 4: 1, 5: 12}
    MTS treated: 25, waiting: 14 | avg: 48.71 timesteps (731 min), weighted: 271.63 (4074 min)
+   MTS treated by severity: {1: 2, 2: 1, 3: 2, 4: 2, 5: 24}
+   MTS waiting by severity: {1: 0, 2: 1, 3: 0, 4: 2, 5: 11}
    ALL TRIAGE DECISIONS:
      1. t=09:15: Patient 12 chosen over Patient 11: close call: neural network decision (margin: +0.019, confidence: low)
      2. t=09:30: Patient 13 chosen over Patient 10: close call: neural network decision (margin: +0.026, confidence: low)
@@ -189,8 +231,14 @@ SEED 9765 (peak_hours) RESULTS:
    Average wait: 5.54 timesteps (83 minutes)
    Weighted wait: 31.28 timesteps (469 minutes)
    Decisions explained: 8
+   Neural treated by severity: {1: 1, 2: 2, 3: 6, 4: 7, 5: 11}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 21, waiting: 1 | avg: 11.21 timesteps (168 min), weighted: 64.22 (963 min)
+   ESI treated by severity: {1: 1, 2: 2, 3: 2, 4: 5, 5: 17}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    MTS treated: 21, waiting: 1 | avg: 16.89 timesteps (253 min), weighted: 95.39 (1431 min)
+   MTS treated by severity: {1: 1, 2: 2, 3: 2, 4: 3, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=08:00: Patient 11 chosen over Patient 10: higher severity (level 3 vs 2), deteriorating faster (0.49 vs 0.31 rate) (margin: +0.160, confidence: high)
      2. t=08:45: Patient 12 chosen over Patient 10: deteriorating faster (0.49 vs 0.15 rate) (margin: +0.112, confidence: high)
@@ -207,8 +255,14 @@ SEED 9849 (flu_season) RESULTS:
    Average wait: 9.80 timesteps (147 minutes)
    Weighted wait: 43.57 timesteps (654 minutes)
    Decisions explained: 23
+   Neural treated by severity: {1: 0, 2: 1, 3: 12, 4: 15, 5: 10}
+   Neural waiting by severity: {1: 0, 2: 2, 3: 0, 4: 0, 5: 1}
    ESI treated: 32, waiting: 3 | avg: 18.90 timesteps (284 min), weighted: 93.51 (1403 min)
+   ESI treated by severity: {1: 0, 2: 0, 3: 4, 4: 9, 5: 25}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 2, 4: 0, 5: 1}
    MTS treated: 30, waiting: 5 | avg: 28.51 timesteps (428 min), weighted: 147.26 (2209 min)
+   MTS treated by severity: {1: 0, 2: 0, 3: 3, 4: 5, 5: 28}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 1, 4: 2, 5: 2}
    ALL TRIAGE DECISIONS:
      1. t=04:30: Patient 7 chosen over Patient 6: higher severity (level 5 vs 3), deteriorating faster (0.60 vs 0.20 rate) (margin: +0.098, confidence: moderate)
      2. t=10:15: Patient 15 chosen over Patient 14: deteriorating faster (0.30 vs 0.14 rate) (margin: +0.047, confidence: low)
@@ -240,8 +294,14 @@ SEED 9653 (steady_state) RESULTS:
    Average wait: 3.96 timesteps (59 minutes)
    Weighted wait: 24.57 timesteps (369 minutes)
    Decisions explained: 7
+   Neural treated by severity: {1: 1, 2: 1, 3: 4, 4: 8, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 20, waiting: 1 | avg: 7.89 timesteps (118 min), weighted: 48.62 (729 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 4, 4: 5, 5: 16}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    MTS treated: 20, waiting: 1 | avg: 11.81 timesteps (177 min), weighted: 73.45 (1102 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 3, 4: 5, 5: 17}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=18:00: Patient 19 chosen over Patient 18: quicker treatment (255min vs 300min) (margin: +0.001, confidence: low)
      2. t=19:00: Patient 18 chosen over Patient 17: deteriorating faster (0.64 vs 0.11 rate) (margin: +0.105, confidence: high)
@@ -257,8 +317,14 @@ SEED 9434 (flu_season) RESULTS:
    Average wait: 6.00 timesteps (90 minutes)
    Weighted wait: 27.37 timesteps (411 minutes)
    Decisions explained: 17
+   Neural treated by severity: {1: 3, 2: 4, 3: 9, 4: 10, 5: 9}
+   Neural waiting by severity: {1: 1, 2: 0, 3: 0, 4: 0, 5: 2}
    ESI treated: 27, waiting: 5 | avg: 12.03 timesteps (180 min), weighted: 61.02 (915 min)
+   ESI treated by severity: {1: 2, 2: 4, 3: 1, 4: 8, 5: 18}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 2, 4: 0, 5: 3}
    MTS treated: 29, waiting: 3 | avg: 17.89 timesteps (268 min), weighted: 95.97 (1440 min)
+   MTS treated by severity: {1: 2, 2: 3, 3: 2, 4: 6, 5: 22}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 2}
    ALL TRIAGE DECISIONS:
      1. t=09:30: Patient 13 chosen over Patient 14: higher severity (level 5 vs 1), deteriorating faster (0.64 vs 0.14 rate), longer wait (45min vs 30min) (margin: +0.261, confidence: high)
      2. t=10:15: Patient 15 chosen over Patient 14: higher severity (level 3 vs 1) (margin: +0.191, confidence: high)
@@ -284,8 +350,14 @@ SEED 9873 (flu_season) RESULTS:
    Average wait: 4.97 timesteps (75 minutes)
    Weighted wait: 24.26 timesteps (364 minutes)
    Decisions explained: 18
+   Neural treated by severity: {1: 1, 2: 6, 3: 8, 4: 11, 5: 11}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 33, waiting: 0 | avg: 9.92 timesteps (149 min), weighted: 47.94 (719 min)
+   ESI treated by severity: {1: 1, 2: 2, 3: 6, 4: 13, 5: 15}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 33, waiting: 0 | avg: 15.00 timesteps (225 min), weighted: 73.76 (1106 min)
+   MTS treated by severity: {1: 1, 2: 2, 3: 4, 4: 10, 5: 20}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=10:15: Patient 16 chosen over Patient 17: longer wait (30min vs 15min), quicker treatment (195min vs 240min) (margin: +0.026, confidence: low)
      2. t=10:30: Patient 17 chosen over Patient 14: higher severity (level 5 vs 4), deteriorating faster (0.63 vs 0.09 rate) (margin: +0.014, confidence: low)
@@ -312,8 +384,14 @@ SEED 9054 (standard) RESULTS:
    Average wait: 12.49 timesteps (187 minutes)
    Weighted wait: 80.60 timesteps (1209 minutes)
    Decisions explained: 33
+   Neural treated by severity: {1: 0, 2: 2, 3: 10, 4: 13, 5: 17}
+   Neural waiting by severity: {1: 1, 2: 0, 3: 0, 4: 0, 5: 6}
    ESI treated: 35, waiting: 8 | avg: 26.51 timesteps (398 min), weighted: 158.76 (2381 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 1, 4: 4, 5: 35}
+   ESI waiting by severity: {1: 1, 2: 0, 3: 1, 4: 0, 5: 6}
    MTS treated: 33, waiting: 10 | avg: 40.57 timesteps (609 min), weighted: 241.05 (3616 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 0, 4: 1, 5: 37}
+   MTS waiting by severity: {1: 1, 2: 0, 3: 1, 4: 0, 5: 8}
    ALL TRIAGE DECISIONS:
      1. t=04:15: Patient 7 chosen over Patient 11: higher severity (level 4 vs 3), much longer wait (105min vs 15min) (margin: +0.016, confidence: low)
      2. t=04:30: Patient 10 chosen over Patient 8: close call: neural network decision (margin: +0.042, confidence: low)
@@ -355,8 +433,14 @@ SEED 9565 (peak_hours) RESULTS:
    Average wait: 8.47 timesteps (127 minutes)
    Weighted wait: 46.05 timesteps (691 minutes)
    Decisions explained: 15
+   Neural treated by severity: {1: 1, 2: 0, 3: 6, 4: 7, 5: 11}
+   Neural waiting by severity: {1: 1, 2: 0, 3: 0, 4: 0, 5: 4}
    ESI treated: 19, waiting: 5 | avg: 16.63 timesteps (250 min), weighted: 93.74 (1406 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 1, 4: 5, 5: 18}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 2, 4: 1, 5: 2}
    MTS treated: 18, waiting: 6 | avg: 25.47 timesteps (382 min), weighted: 143.40 (2151 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 1, 4: 2, 5: 20}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 2, 4: 1, 5: 3}
    ALL TRIAGE DECISIONS:
      1. t=10:15: Patient 7 chosen over Patient 8: deteriorating faster (0.63 vs 0.13 rate), longer wait (75min vs 60min) (margin: +0.089, confidence: moderate)
      2. t=11:00: Patient 9 chosen over Patient 10: longer wait (45min vs 30min) (margin: +0.004, confidence: low)
@@ -380,8 +464,14 @@ SEED 9132 (steady_state) RESULTS:
    Average wait: 2.96 timesteps (44 minutes)
    Weighted wait: 15.92 timesteps (239 minutes)
    Decisions explained: 8
+   Neural treated by severity: {1: 1, 2: 2, 3: 4, 4: 8, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 22, waiting: 0 | avg: 5.93 timesteps (89 min), weighted: 31.54 (473 min)
+   ESI treated by severity: {1: 0, 2: 2, 3: 4, 4: 7, 5: 14}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 22, waiting: 0 | avg: 8.89 timesteps (133 min), weighted: 47.26 (709 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 4, 4: 7, 5: 15}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=04:45: Patient 7 chosen over Patient 6: quicker treatment (165min vs 195min) (margin: +0.117, confidence: high)
      2. t=18:30: Patient 20 chosen over Patient 19: deteriorating faster (0.70 vs 0.11 rate) (margin: +0.131, confidence: high)
@@ -398,8 +488,14 @@ SEED 9596 (peak_hours) RESULTS:
    Average wait: 6.31 timesteps (95 minutes)
    Weighted wait: 31.89 timesteps (478 minutes)
    Decisions explained: 9
+   Neural treated by severity: {1: 0, 2: 3, 3: 4, 4: 6, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 4}
    ESI treated: 18, waiting: 5 | avg: 12.59 timesteps (189 min), weighted: 67.17 (1008 min)
+   ESI treated by severity: {1: 0, 2: 3, 3: 0, 4: 5, 5: 16}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 4}
    MTS treated: 18, waiting: 5 | avg: 18.86 timesteps (283 min), weighted: 102.98 (1545 min)
+   MTS treated by severity: {1: 0, 2: 2, 3: 1, 4: 2, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 2, 5: 3}
    ALL TRIAGE DECISIONS:
      1. t=09:45: Patient 8 chosen over Patient 7: deteriorating faster (0.26 vs 0.07 rate) (margin: +0.067, confidence: moderate)
      2. t=11:00: Patient 9 chosen over Patient 7: higher severity (level 5 vs 2), deteriorating faster (0.29 vs 0.07 rate) (margin: +0.126, confidence: high)
@@ -417,8 +513,14 @@ SEED 9152 (weekend) RESULTS:
    Average wait: 3.48 timesteps (52 minutes)
    Weighted wait: 18.35 timesteps (275 minutes)
    Decisions explained: 6
+   Neural treated by severity: {1: 3, 2: 2, 3: 3, 4: 7, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 23, waiting: 0 | avg: 6.93 timesteps (104 min), weighted: 38.28 (574 min)
+   ESI treated by severity: {1: 2, 2: 1, 3: 2, 4: 6, 5: 16}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 22, waiting: 0 | avg: 10.41 timesteps (156 min), weighted: 58.27 (874 min)
+   MTS treated by severity: {1: 2, 2: 1, 3: 1, 4: 5, 5: 18}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=04:00: Patient 8 chosen over Patient 7: higher severity (level 4 vs 2) (margin: +0.152, confidence: high)
      2. t=04:30: Patient 10 chosen over Patient 6: deteriorating faster (0.59 vs 0.10 rate) (margin: +0.283, confidence: high)
@@ -433,8 +535,14 @@ SEED 9569 (steady_state) RESULTS:
    Average wait: 1.86 timesteps (28 minutes)
    Weighted wait: 10.53 timesteps (158 minutes)
    Decisions explained: 2
+   Neural treated by severity: {1: 1, 2: 3, 3: 1, 4: 5, 5: 11}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 16, waiting: 0 | avg: 3.71 timesteps (56 min), weighted: 21.49 (322 min)
+   ESI treated by severity: {1: 1, 2: 2, 3: 2, 4: 3, 5: 13}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 16, waiting: 0 | avg: 5.57 timesteps (84 min), weighted: 32.38 (486 min)
+   MTS treated by severity: {1: 1, 2: 2, 3: 1, 4: 4, 5: 13}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=21:00: Patient 17 chosen over Patient 16: close call: neural network decision (margin: +0.016, confidence: low)
      2. t=24:00: Patient 18 chosen over Patient 20: much longer wait (105min vs 15min) (margin: +0.044, confidence: low)
@@ -445,8 +553,14 @@ SEED 9921 (weekend) RESULTS:
    Average wait: 3.31 timesteps (50 minutes)
    Weighted wait: 17.83 timesteps (267 minutes)
    Decisions explained: 10
+   Neural treated by severity: {1: 1, 2: 2, 3: 5, 4: 8, 5: 18}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 2}
    ESI treated: 28, waiting: 2 | avg: 6.56 timesteps (98 min), weighted: 37.39 (561 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 2, 4: 10, 5: 21}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 2, 5: 0}
    MTS treated: 28, waiting: 2 | avg: 9.86 timesteps (148 min), weighted: 57.54 (863 min)
+   MTS treated by severity: {1: 0, 2: 0, 3: 3, 4: 8, 5: 23}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 2, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=04:15: Patient 7 chosen over Patient 6: deteriorating faster (0.60 vs 0.11 rate) (margin: +0.072, confidence: moderate)
      2. t=08:45: Patient 13 chosen over Patient 14: deteriorating faster (0.66 vs 0.29 rate), longer wait (30min vs 15min) (margin: +0.075, confidence: moderate)
@@ -465,8 +579,14 @@ SEED 9314 (flu_season) RESULTS:
    Average wait: 6.56 timesteps (98 minutes)
    Weighted wait: 33.05 timesteps (496 minutes)
    Decisions explained: 21
+   Neural treated by severity: {1: 2, 2: 3, 3: 10, 4: 16, 5: 6}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 3}
    ESI treated: 32, waiting: 3 | avg: 13.20 timesteps (198 min), weighted: 68.69 (1030 min)
+   ESI treated by severity: {1: 1, 2: 4, 3: 1, 4: 11, 5: 21}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 2, 4: 0, 5: 0}
    MTS treated: 31, waiting: 4 | avg: 19.98 timesteps (300 min), weighted: 105.68 (1585 min)
+   MTS treated by severity: {1: 1, 2: 4, 3: 1, 4: 4, 5: 27}
+   MTS waiting by severity: {1: 0, 2: 1, 3: 2, 4: 1, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=09:45: Patient 13 chosen over Patient 14: much longer wait (75min vs 30min) (margin: +0.072, confidence: moderate)
      2. t=10:15: Patient 16 chosen over Patient 15: close call: neural network decision (margin: +0.118, confidence: high)
@@ -496,8 +616,14 @@ SEED 9333 (weekend) RESULTS:
    Average wait: 5.31 timesteps (80 minutes)
    Weighted wait: 27.29 timesteps (409 minutes)
    Decisions explained: 17
+   Neural treated by severity: {1: 2, 2: 2, 3: 7, 4: 5, 5: 16}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 4}
    ESI treated: 25, waiting: 5 | avg: 10.86 timesteps (163 min), weighted: 59.63 (894 min)
+   ESI treated by severity: {1: 0, 2: 3, 3: 1, 4: 4, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 2, 4: 1, 5: 2}
    MTS treated: 25, waiting: 5 | avg: 16.89 timesteps (253 min), weighted: 95.17 (1427 min)
+   MTS treated by severity: {1: 0, 2: 3, 3: 1, 4: 1, 5: 26}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 2, 4: 0, 5: 3}
    ALL TRIAGE DECISIONS:
      1. t=06:15: Patient 9 chosen over Patient 8: higher severity (level 2 vs 1) (margin: +0.062, confidence: moderate)
      2. t=06:30: Patient 10 chosen over Patient 8: higher severity (level 5 vs 1), deteriorating faster (0.67 vs 0.22 rate) (margin: +0.303, confidence: high)
@@ -523,8 +649,14 @@ SEED 9518 (peak_hours) RESULTS:
    Average wait: 7.33 timesteps (110 minutes)
    Weighted wait: 43.91 timesteps (659 minutes)
    Decisions explained: 12
+   Neural treated by severity: {1: 0, 2: 1, 3: 4, 4: 7, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 18, waiting: 0 | avg: 14.88 timesteps (223 min), weighted: 88.62 (1329 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 0, 4: 8, 5: 15}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 18, waiting: 0 | avg: 22.71 timesteps (341 min), weighted: 137.12 (2057 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 0, 4: 4, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=12:15: Patient 11 chosen over Patient 9: deteriorating faster (0.60 vs 0.08 rate) (margin: +0.130, confidence: high)
      2. t=12:30: Patient 12 chosen over Patient 8: close call: neural network decision (margin: +0.105, confidence: high)
@@ -545,8 +677,14 @@ SEED 9275 (weekend) RESULTS:
    Average wait: 4.69 timesteps (70 minutes)
    Weighted wait: 22.00 timesteps (330 minutes)
    Decisions explained: 16
+   Neural treated by severity: {1: 3, 2: 3, 3: 5, 4: 15, 5: 6}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 3}
    ESI treated: 26, waiting: 3 | avg: 9.31 timesteps (140 min), weighted: 48.45 (727 min)
+   ESI treated by severity: {1: 1, 2: 3, 3: 2, 4: 8, 5: 18}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 2}
    MTS treated: 26, waiting: 3 | avg: 14.00 timesteps (210 min), weighted: 72.75 (1091 min)
+   MTS treated by severity: {1: 1, 2: 3, 3: 1, 4: 7, 5: 20}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 2}
    ALL TRIAGE DECISIONS:
      1. t=03:15: Patient 7 chosen over Patient 6: close call: neural network decision (margin: +0.048, confidence: low)
      2. t=03:30: Patient 6 chosen over Patient 8: higher severity (level 5 vs 2), longer wait (105min vs 75min) (margin: +0.057, confidence: moderate)
@@ -571,8 +709,14 @@ SEED 9070 (standard) RESULTS:
    Average wait: 8.41 timesteps (126 minutes)
    Weighted wait: 48.97 timesteps (735 minutes)
    Decisions explained: 27
+   Neural treated by severity: {1: 0, 2: 3, 3: 7, 4: 4, 5: 25}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 1}
    ESI treated: 34, waiting: 1 | avg: 17.39 timesteps (261 min), weighted: 102.67 (1540 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 3, 4: 5, 5: 31}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 1, 4: 0, 5: 0}
    MTS treated: 32, waiting: 3 | avg: 26.93 timesteps (404 min), weighted: 158.14 (2372 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 2, 4: 2, 5: 33}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 1, 4: 1, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=05:45: Patient 8 chosen over Patient 10: deteriorating faster (0.28 vs 0.12 rate), longer wait (75min vs 45min) (margin: +0.016, confidence: low)
      2. t=06:00: Patient 12 chosen over Patient 10: deteriorating faster (0.20 vs 0.12 rate) (margin: +0.075, confidence: moderate)
@@ -608,8 +752,14 @@ SEED 9355 (weekend) RESULTS:
    Average wait: 5.64 timesteps (85 minutes)
    Weighted wait: 38.87 timesteps (583 minutes)
    Decisions explained: 16
+   Neural treated by severity: {1: 1, 2: 0, 3: 3, 4: 10, 5: 17}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 5}
    ESI treated: 25, waiting: 5 | avg: 11.69 timesteps (175 min), weighted: 77.14 (1157 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 0, 4: 6, 5: 24}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 1, 4: 0, 5: 4}
    MTS treated: 24, waiting: 6 | avg: 18.08 timesteps (271 min), weighted: 117.03 (1755 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 0, 4: 4, 5: 25}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 1, 4: 0, 5: 5}
    ALL TRIAGE DECISIONS:
      1. t=04:00: Patient 8 chosen over Patient 6: close call: neural network decision (margin: +0.092, confidence: moderate)
      2. t=04:15: Patient 9 chosen over Patient 6: close call: neural network decision (margin: +0.086, confidence: moderate)
@@ -634,8 +784,14 @@ SEED 9942 (peak_hours) RESULTS:
    Average wait: 7.90 timesteps (118 minutes)
    Weighted wait: 40.11 timesteps (602 minutes)
    Decisions explained: 19
+   Neural treated by severity: {1: 2, 2: 2, 3: 5, 4: 6, 5: 15}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 23, waiting: 1 | avg: 15.87 timesteps (238 min), weighted: 86.77 (1302 min)
+   ESI treated by severity: {1: 2, 2: 0, 3: 0, 4: 3, 5: 24}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    MTS treated: 24, waiting: 0 | avg: 23.77 timesteps (356 min), weighted: 132.07 (1981 min)
+   MTS treated by severity: {1: 2, 2: 1, 3: 0, 4: 1, 5: 26}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=09:00: Patient 8 chosen over Patient 7: higher severity (level 4 vs 2), deteriorating faster (0.57 vs 0.28 rate) (margin: +0.292, confidence: high)
      2. t=09:30: Patient 9 chosen over Patient 7: higher severity (level 3 vs 2), deteriorating faster (0.53 vs 0.28 rate) (margin: +0.191, confidence: high)
@@ -663,8 +819,14 @@ SEED 9402 (steady_state) RESULTS:
    Average wait: 6.85 timesteps (103 minutes)
    Weighted wait: 39.96 timesteps (599 minutes)
    Decisions explained: 11
+   Neural treated by severity: {1: 0, 2: 3, 3: 2, 4: 9, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    ESI treated: 19, waiting: 2 | avg: 14.07 timesteps (211 min), weighted: 81.28 (1219 min)
+   ESI treated by severity: {1: 0, 2: 2, 3: 2, 4: 5, 5: 16}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 2, 4: 0, 5: 0}
    MTS treated: 20, waiting: 1 | avg: 21.19 timesteps (318 min), weighted: 121.11 (1817 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 4, 4: 5, 5: 16}
+   MTS waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=14:15: Patient 15 chosen over Patient 14: close call: neural network decision (margin: +0.042, confidence: low)
      2. t=15:15: Patient 18 chosen over Patient 16: close call: neural network decision (margin: +0.042, confidence: low)
@@ -684,8 +846,14 @@ SEED 9444 (peak_hours) RESULTS:
    Average wait: 13.00 timesteps (195 minutes)
    Weighted wait: 75.17 timesteps (1128 minutes)
    Decisions explained: 16
+   Neural treated by severity: {1: 0, 2: 4, 3: 4, 4: 8, 5: 11}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 7}
    ESI treated: 20, waiting: 8 | avg: 25.91 timesteps (389 min), weighted: 150.23 (2253 min)
+   ESI treated by severity: {1: 0, 2: 3, 3: 1, 4: 5, 5: 17}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 1, 4: 2, 5: 5}
    MTS treated: 21, waiting: 7 | avg: 39.00 timesteps (585 min), weighted: 224.36 (3365 min)
+   MTS treated by severity: {1: 0, 2: 3, 3: 1, 4: 2, 5: 21}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 1, 4: 5, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=09:30: Patient 10 chosen over Patient 9: much quicker treatment (240min vs 300min) (margin: +0.011, confidence: low)
      2. t=10:15: Patient 11 chosen over Patient 9: close call: neural network decision (margin: +0.047, confidence: low)
@@ -710,8 +878,14 @@ SEED 9232 (disaster) RESULTS:
    Average wait: 10.93 timesteps (164 minutes)
    Weighted wait: 59.02 timesteps (885 minutes)
    Decisions explained: 24
+   Neural treated by severity: {1: 0, 2: 3, 3: 8, 4: 18, 5: 10}
+   Neural waiting by severity: {1: 1, 2: 3, 3: 0, 4: 0, 5: 12}
    ESI treated: 33, waiting: 16 | avg: 21.56 timesteps (323 min), weighted: 120.50 (1807 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 1, 4: 7, 5: 30}
+   ESI waiting by severity: {1: 0, 2: 3, 3: 1, 4: 0, 5: 12}
    MTS treated: 33, waiting: 16 | avg: 33.00 timesteps (495 min), weighted: 183.85 (2758 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 1, 4: 5, 5: 32}
+   MTS waiting by severity: {1: 0, 2: 3, 3: 0, 4: 1, 5: 12}
    ALL TRIAGE DECISIONS:
      1. t=04:30: Patient 7 chosen over Patient 6: close call: neural network decision (margin: +0.008, confidence: low)
      2. t=04:45: Patient 6 chosen over Patient 8: higher severity (level 5 vs 1), deteriorating faster (0.70 vs 0.11 rate), much longer wait (60min vs 15min) (margin: +0.271, confidence: high)
@@ -744,8 +918,14 @@ SEED 9867 (weekend) RESULTS:
    Average wait: 5.72 timesteps (86 minutes)
    Weighted wait: 37.20 timesteps (558 minutes)
    Decisions explained: 12
+   Neural treated by severity: {1: 2, 2: 1, 3: 4, 4: 6, 5: 18}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 24, waiting: 2 | avg: 12.16 timesteps (182 min), weighted: 79.02 (1185 min)
+   ESI treated by severity: {1: 1, 2: 2, 3: 2, 4: 2, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 1}
    MTS treated: 24, waiting: 2 | avg: 18.59 timesteps (279 min), weighted: 120.70 (1811 min)
+   MTS treated by severity: {1: 1, 2: 2, 3: 2, 4: 2, 5: 23}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=05:00: Patient 8 chosen over Patient 10: higher severity (level 4 vs 3), much longer wait (90min vs 15min) (margin: +0.012, confidence: low)
      2. t=05:30: Patient 10 chosen over Patient 11: longer wait (45min vs 30min) (margin: +0.020, confidence: low)
@@ -766,8 +946,14 @@ SEED 9163 (disaster) RESULTS:
    Average wait: 18.16 timesteps (272 minutes)
    Weighted wait: 116.95 timesteps (1754 minutes)
    Decisions explained: 29
+   Neural treated by severity: {1: 1, 2: 2, 3: 6, 4: 11, 5: 16}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 14}
    ESI treated: 28, waiting: 16 | avg: 38.30 timesteps (574 min), weighted: 237.23 (3558 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 1, 4: 4, 5: 28}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 15}
    MTS treated: 30, waiting: 14 | avg: 58.02 timesteps (870 min), weighted: 365.75 (5486 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 0, 4: 2, 5: 33}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 2, 5: 12}
    ALL TRIAGE DECISIONS:
      1. t=04:00: Patient 7 chosen over Patient 6: close call: neural network decision (margin: +0.019, confidence: low)
      2. t=04:30: Patient 6 chosen over Patient 9: higher severity (level 5 vs 2), deteriorating faster (0.68 vs 0.32 rate), much longer wait (90min vs 15min) (margin: +0.076, confidence: moderate)
@@ -805,8 +991,14 @@ SEED 9359 (steady_state) RESULTS:
    Average wait: 4.93 timesteps (74 minutes)
    Weighted wait: 28.24 timesteps (424 minutes)
    Decisions explained: 7
+   Neural treated by severity: {1: 0, 2: 2, 3: 7, 4: 2, 5: 16}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 22, waiting: 0 | avg: 10.00 timesteps (150 min), weighted: 60.85 (913 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 2, 4: 6, 5: 19}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 22, waiting: 0 | avg: 15.11 timesteps (227 min), weighted: 92.22 (1383 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 0, 4: 6, 5: 21}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=05:00: Patient 7 chosen over Patient 6: close call: neural network decision (margin: +0.045, confidence: low)
      2. t=05:15: Patient 8 chosen over Patient 6: close call: neural network decision (margin: +0.057, confidence: moderate)
@@ -822,8 +1014,14 @@ SEED 9044 (steady_state) RESULTS:
    Average wait: 4.72 timesteps (71 minutes)
    Weighted wait: 24.60 timesteps (369 minutes)
    Decisions explained: 9
+   Neural treated by severity: {1: 1, 2: 1, 3: 4, 4: 7, 5: 12}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 22, waiting: 0 | avg: 9.52 timesteps (143 min), weighted: 52.48 (787 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 3, 4: 4, 5: 17}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 21, waiting: 0 | avg: 14.44 timesteps (217 min), weighted: 81.28 (1219 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 3, 4: 3, 5: 18}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=11:45: Patient 11 chosen over Patient 14: much longer wait (120min vs 45min) (margin: +0.012, confidence: low)
      2. t=12:15: Patient 14 chosen over Patient 13: deteriorating faster (0.62 vs 0.11 rate) (margin: +0.108, confidence: high)
@@ -841,8 +1039,14 @@ SEED 9241 (steady_state) RESULTS:
    Average wait: 4.74 timesteps (71 minutes)
    Weighted wait: 24.78 timesteps (372 minutes)
    Decisions explained: 19
+   Neural treated by severity: {1: 1, 2: 3, 3: 8, 4: 7, 5: 15}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 28, waiting: 0 | avg: 9.21 timesteps (138 min), weighted: 50.78 (762 min)
+   ESI treated by severity: {1: 1, 2: 2, 3: 2, 4: 10, 5: 19}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 28, waiting: 0 | avg: 14.15 timesteps (212 min), weighted: 81.29 (1219 min)
+   MTS treated by severity: {1: 1, 2: 2, 3: 2, 4: 6, 5: 23}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=03:45: Patient 7 chosen over Patient 6: deteriorating faster (0.54 vs 0.29 rate) (margin: +0.129, confidence: high)
      2. t=04:15: Patient 8 chosen over Patient 6: close call: neural network decision (margin: +0.044, confidence: low)
@@ -870,8 +1074,14 @@ SEED 9137 (flu_season) RESULTS:
    Average wait: 10.56 timesteps (158 minutes)
    Weighted wait: 57.81 timesteps (867 minutes)
    Decisions explained: 17
+   Neural treated by severity: {1: 1, 2: 4, 3: 8, 4: 12, 5: 9}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 5}
    ESI treated: 28, waiting: 5 | avg: 22.49 timesteps (337 min), weighted: 125.21 (1878 min)
+   ESI treated by severity: {1: 1, 2: 1, 3: 4, 4: 5, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 3, 4: 0, 5: 2}
    MTS treated: 27, waiting: 6 | avg: 34.74 timesteps (521 min), weighted: 194.76 (2921 min)
+   MTS treated by severity: {1: 1, 2: 1, 3: 4, 4: 3, 5: 24}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 3, 4: 0, 5: 3}
    ALL TRIAGE DECISIONS:
      1. t=08:45: Patient 13 chosen over Patient 12: deteriorating faster (0.20 vs 0.13 rate) (margin: +0.069, confidence: moderate)
      2. t=10:15: Patient 14 chosen over Patient 15: longer wait (75min vs 60min), much quicker treatment (105min vs 240min) (margin: +0.106, confidence: high)
@@ -897,8 +1107,14 @@ SEED 9064 (peak_hours) RESULTS:
    Average wait: 4.28 timesteps (64 minutes)
    Weighted wait: 22.70 timesteps (340 minutes)
    Decisions explained: 8
+   Neural treated by severity: {1: 0, 2: 2, 3: 3, 4: 4, 5: 15}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    ESI treated: 18, waiting: 1 | avg: 8.56 timesteps (128 min), weighted: 48.17 (723 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 2, 4: 5, 5: 16}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    MTS treated: 18, waiting: 1 | avg: 12.84 timesteps (193 min), weighted: 74.03 (1110 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 2, 4: 2, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=16:15: Patient 13 chosen over Patient 14: higher severity (level 4 vs 3), deteriorating faster (0.28 vs 0.14 rate), longer wait (60min vs 30min) (margin: +0.104, confidence: high)
      2. t=17:30: Patient 15 chosen over Patient 16: longer wait (60min vs 30min) (margin: +0.069, confidence: moderate)
@@ -915,8 +1131,14 @@ SEED 9730 (disaster) RESULTS:
    Average wait: 15.62 timesteps (234 minutes)
    Weighted wait: 100.05 timesteps (1501 minutes)
    Decisions explained: 14
+   Neural treated by severity: {1: 3, 2: 2, 3: 4, 4: 11, 5: 15}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 17}
    ESI treated: 29, waiting: 17 | avg: 30.63 timesteps (460 min), weighted: 194.09 (2911 min)
+   ESI treated by severity: {1: 2, 2: 1, 3: 3, 4: 2, 5: 27}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 17}
    MTS treated: 27, waiting: 19 | avg: 45.94 timesteps (689 min), weighted: 291.36 (4370 min)
+   MTS treated by severity: {1: 2, 2: 0, 3: 4, 4: 1, 5: 26}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 19}
    ALL TRIAGE DECISIONS:
      1. t=08:00: Patient 13 chosen over Patient 14: higher severity (level 3 vs 1), longer wait (30min vs 15min) (margin: +0.150, confidence: high)
      2. t=10:15: Patient 16 chosen over Patient 17: deteriorating faster (0.57 vs 0.10 rate), longer wait (60min vs 45min) (margin: +0.091, confidence: moderate)
@@ -939,8 +1161,14 @@ SEED 9307 (peak_hours) RESULTS:
    Average wait: 8.68 timesteps (130 minutes)
    Weighted wait: 53.62 timesteps (804 minutes)
    Decisions explained: 12
+   Neural treated by severity: {1: 1, 2: 0, 3: 2, 4: 10, 5: 13}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 2}
    ESI treated: 20, waiting: 2 | avg: 17.00 timesteps (255 min), weighted: 106.63 (1599 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 0, 4: 1, 5: 24}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 1}
    MTS treated: 20, waiting: 2 | avg: 25.46 timesteps (382 min), weighted: 159.08 (2386 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 0, 4: 1, 5: 24}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=10:15: Patient 10 chosen over Patient 9: close call: neural network decision (margin: +0.040, confidence: low)
      2. t=10:45: Patient 9 chosen over Patient 8: close call: neural network decision (margin: +0.006, confidence: low)
@@ -961,8 +1189,14 @@ SEED 9537 (peak_hours) RESULTS:
    Average wait: 10.86 timesteps (163 minutes)
    Weighted wait: 57.03 timesteps (855 minutes)
    Decisions explained: 15
+   Neural treated by severity: {1: 0, 2: 3, 3: 3, 4: 8, 5: 10}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 3}
    ESI treated: 19, waiting: 3 | avg: 21.46 timesteps (322 min), weighted: 121.91 (1829 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 2, 4: 2, 5: 20}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 2}
    MTS treated: 18, waiting: 4 | avg: 32.71 timesteps (491 min), weighted: 190.99 (2865 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 1, 4: 1, 5: 21}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 4}
    ALL TRIAGE DECISIONS:
      1. t=10:45: Patient 6 chosen over Patient 7: deteriorating faster (0.69 vs 0.29 rate), longer wait (75min vs 60min) (margin: +0.082, confidence: moderate)
      2. t=12:30: Patient 11 chosen over Patient 9: higher severity (level 2 vs 1) (margin: +0.090, confidence: moderate)
@@ -986,8 +1220,14 @@ SEED 9821 (steady_state) RESULTS:
    Average wait: 7.74 timesteps (116 minutes)
    Weighted wait: 43.88 timesteps (658 minutes)
    Decisions explained: 18
+   Neural treated by severity: {1: 0, 2: 2, 3: 3, 4: 5, 5: 22}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 1}
    ESI treated: 28, waiting: 0 | avg: 15.32 timesteps (230 min), weighted: 88.06 (1321 min)
+   ESI treated by severity: {1: 0, 2: 0, 3: 2, 4: 3, 5: 29}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 28, waiting: 0 | avg: 23.12 timesteps (347 min), weighted: 136.09 (2041 min)
+   MTS treated by severity: {1: 0, 2: 0, 3: 0, 4: 4, 5: 30}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=10:30: Patient 13 chosen over Patient 16: much longer wait (60min vs 15min) (margin: +0.030, confidence: low)
      2. t=10:45: Patient 17 chosen over Patient 16: close call: neural network decision (margin: +0.026, confidence: low)
@@ -1014,8 +1254,14 @@ SEED 9462 (flu_season) RESULTS:
    Average wait: 6.33 timesteps (95 minutes)
    Weighted wait: 32.74 timesteps (491 minutes)
    Decisions explained: 19
+   Neural treated by severity: {1: 0, 2: 3, 3: 5, 4: 21, 5: 8}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 3}
    ESI treated: 32, waiting: 2 | avg: 11.47 timesteps (172 min), weighted: 61.29 (919 min)
+   ESI treated by severity: {1: 0, 2: 3, 3: 1, 4: 11, 5: 23}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 2}
    MTS treated: 30, waiting: 4 | avg: 17.95 timesteps (269 min), weighted: 96.55 (1448 min)
+   MTS treated by severity: {1: 0, 2: 3, 3: 1, 4: 5, 5: 27}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 4}
    ALL TRIAGE DECISIONS:
      1. t=08:00: Patient 11 chosen over Patient 10: deteriorating faster (0.20 vs 0.07 rate) (margin: +0.042, confidence: low)
      2. t=08:15: Patient 12 chosen over Patient 10: deteriorating faster (0.20 vs 0.07 rate) (margin: +0.067, confidence: moderate)
@@ -1043,8 +1289,14 @@ SEED 9471 (peak_hours) RESULTS:
    Average wait: 6.92 timesteps (104 minutes)
    Weighted wait: 37.53 timesteps (563 minutes)
    Decisions explained: 12
+   Neural treated by severity: {1: 2, 2: 2, 3: 3, 4: 1, 5: 16}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 18, waiting: 0 | avg: 13.79 timesteps (207 min), weighted: 78.54 (1178 min)
+   ESI treated by severity: {1: 2, 2: 1, 3: 1, 4: 2, 5: 18}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 17, waiting: 1 | avg: 21.04 timesteps (316 min), weighted: 122.91 (1844 min)
+   MTS treated by severity: {1: 2, 2: 0, 3: 2, 4: 0, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=10:00: Patient 5 chosen over Patient 6: deteriorating faster (0.29 vs 0.12 rate), longer wait (75min vs 45min) (margin: +0.021, confidence: low)
      2. t=10:15: Patient 7 chosen over Patient 6: deteriorating faster (0.18 vs 0.12 rate) (margin: +0.071, confidence: moderate)
@@ -1065,8 +1317,14 @@ SEED 9467 (peak_hours) RESULTS:
    Average wait: 5.45 timesteps (82 minutes)
    Weighted wait: 32.12 timesteps (482 minutes)
    Decisions explained: 14
+   Neural treated by severity: {1: 1, 2: 0, 3: 7, 4: 3, 5: 17}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    ESI treated: 24, waiting: 0 | avg: 9.21 timesteps (138 min), weighted: 52.51 (788 min)
+   ESI treated by severity: {1: 1, 2: 1, 3: 5, 4: 2, 5: 20}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 24, waiting: 0 | avg: 13.00 timesteps (195 min), weighted: 72.64 (1090 min)
+   MTS treated by severity: {1: 1, 2: 1, 3: 5, 4: 2, 5: 20}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=09:00: Patient 10 chosen over Patient 11: deteriorating faster (0.41 vs 0.30 rate), longer wait (60min vs 45min) (margin: +0.054, confidence: moderate)
      2. t=09:45: Patient 12 chosen over Patient 11: deteriorating faster (0.68 vs 0.30 rate) (margin: +0.155, confidence: high)
@@ -1089,8 +1347,14 @@ SEED 9165 (flu_season) RESULTS:
    Average wait: 5.80 timesteps (87 minutes)
    Weighted wait: 27.82 timesteps (417 minutes)
    Decisions explained: 27
+   Neural treated by severity: {1: 2, 2: 3, 3: 16, 4: 11, 5: 10}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 3, 4: 0, 5: 1}
    ESI treated: 36, waiting: 4 | avg: 11.72 timesteps (176 min), weighted: 61.15 (917 min)
+   ESI treated by severity: {1: 2, 2: 1, 3: 5, 4: 7, 5: 27}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 3, 4: 0, 5: 1}
    MTS treated: 35, waiting: 5 | avg: 17.83 timesteps (267 min), weighted: 95.57 (1434 min)
+   MTS treated by severity: {1: 2, 2: 0, 3: 5, 4: 2, 5: 32}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 3, 4: 1, 5: 1}
    ALL TRIAGE DECISIONS:
      1. t=08:30: Patient 13 chosen over Patient 14: higher severity (level 4 vs 2), longer wait (30min vs 15min) (margin: +0.128, confidence: high)
      2. t=08:45: Patient 14 chosen over Patient 12: higher severity (level 2 vs 1), deteriorating faster (0.37 vs 0.11 rate) (margin: +0.175, confidence: high)
@@ -1126,8 +1390,14 @@ SEED 9659 (peak_hours) RESULTS:
    Average wait: 7.04 timesteps (106 minutes)
    Weighted wait: 39.43 timesteps (591 minutes)
    Decisions explained: 16
+   Neural treated by severity: {1: 0, 2: 2, 3: 2, 4: 11, 5: 9}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 19, waiting: 0 | avg: 13.67 timesteps (205 min), weighted: 80.56 (1208 min)
+   ESI treated by severity: {1: 0, 2: 1, 3: 0, 4: 5, 5: 18}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    MTS treated: 18, waiting: 0 | avg: 21.12 timesteps (317 min), weighted: 122.32 (1835 min)
+   MTS treated by severity: {1: 0, 2: 1, 3: 0, 4: 4, 5: 19}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=12:00: Patient 8 chosen over Patient 9: much longer wait (75min vs 30min) (margin: +0.002, confidence: low)
      2. t=12:30: Patient 9 chosen over Patient 7: close call: neural network decision (margin: +0.030, confidence: low)
@@ -1152,8 +1422,14 @@ SEED 9988 (steady_state) RESULTS:
    Average wait: 4.35 timesteps (65 minutes)
    Weighted wait: 23.79 timesteps (357 minutes)
    Decisions explained: 4
+   Neural treated by severity: {1: 2, 2: 3, 3: 1, 4: 4, 5: 15}
+   Neural waiting by severity: {1: 1, 2: 0, 3: 0, 4: 0, 5: 0}
    ESI treated: 19, waiting: 1 | avg: 8.88 timesteps (133 min), weighted: 49.87 (748 min)
+   ESI treated by severity: {1: 1, 2: 4, 3: 1, 4: 2, 5: 17}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 0, 4: 0, 5: 0}
    MTS treated: 19, waiting: 1 | avg: 13.42 timesteps (201 min), weighted: 76.17 (1143 min)
+   MTS treated by severity: {1: 1, 2: 3, 3: 2, 4: 2, 5: 17}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 1, 4: 0, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=19:00: Patient 20 chosen over Patient 18: close call: neural network decision (margin: +0.033, confidence: low)
      2. t=21:30: Patient 21 chosen over Patient 22: deteriorating faster (0.28 vs 0.13 rate), longer wait (120min vs 105min), quicker treatment (195min vs 225min) (margin: +0.021, confidence: low)
@@ -1166,8 +1442,14 @@ SEED 9837 (disaster) RESULTS:
    Average wait: 20.12 timesteps (302 minutes)
    Weighted wait: 130.08 timesteps (1951 minutes)
    Decisions explained: 25
+   Neural treated by severity: {1: 1, 2: 1, 3: 6, 4: 9, 5: 19}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 12}
    ESI treated: 27, waiting: 15 | avg: 41.48 timesteps (622 min), weighted: 261.51 (3923 min)
+   ESI treated by severity: {1: 1, 2: 0, 3: 0, 4: 2, 5: 30}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 15}
    MTS treated: 27, waiting: 15 | avg: 62.08 timesteps (931 min), weighted: 400.12 (6002 min)
+   MTS treated by severity: {1: 1, 2: 0, 3: 0, 4: 2, 5: 30}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 15}
    ALL TRIAGE DECISIONS:
      1. t=04:15: Patient 9 chosen over Patient 8: deteriorating faster (0.47 vs 0.28 rate) (margin: +0.111, confidence: high)
      2. t=04:45: Patient 11 chosen over Patient 10: higher severity (level 5 vs 3), deteriorating faster (0.66 vs 0.18 rate) (margin: +0.050, confidence: low)
@@ -1201,8 +1483,14 @@ SEED 9449 (weekend) RESULTS:
    Average wait: 4.59 timesteps (69 minutes)
    Weighted wait: 28.73 timesteps (431 minutes)
    Decisions explained: 10
+   Neural treated by severity: {1: 1, 2: 2, 3: 4, 4: 8, 5: 15}
+   Neural waiting by severity: {1: 0, 2: 1, 3: 1, 4: 0, 5: 5}
    ESI treated: 25, waiting: 6 | avg: 9.27 timesteps (139 min), weighted: 57.26 (859 min)
+   ESI treated by severity: {1: 1, 2: 1, 3: 2, 4: 2, 5: 25}
+   ESI waiting by severity: {1: 0, 2: 1, 3: 0, 4: 2, 5: 3}
    MTS treated: 25, waiting: 6 | avg: 13.86 timesteps (208 min), weighted: 84.98 (1275 min)
+   MTS treated by severity: {1: 1, 2: 1, 3: 2, 4: 2, 5: 25}
+   MTS waiting by severity: {1: 0, 2: 1, 3: 0, 4: 1, 5: 4}
    ALL TRIAGE DECISIONS:
      1. t=08:45: Patient 14 chosen over Patient 13: higher severity (level 5 vs 1), deteriorating faster (0.30 vs 0.16 rate) (margin: +0.210, confidence: high)
      2. t=14:15: Patient 20 chosen over Patient 19: close call: neural network decision (margin: +0.022, confidence: low)
@@ -1221,8 +1509,14 @@ SEED 9033 (weekend) RESULTS:
    Average wait: 5.05 timesteps (76 minutes)
    Weighted wait: 29.51 timesteps (443 minutes)
    Decisions explained: 19
+   Neural treated by severity: {1: 1, 2: 2, 3: 4, 4: 11, 5: 18}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 1}
    ESI treated: 30, waiting: 1 | avg: 10.08 timesteps (151 min), weighted: 59.80 (897 min)
+   ESI treated by severity: {1: 1, 2: 1, 3: 1, 4: 9, 5: 24}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 0}
    MTS treated: 30, waiting: 1 | avg: 15.08 timesteps (226 min), weighted: 89.22 (1338 min)
+   MTS treated by severity: {1: 1, 2: 1, 3: 1, 4: 6, 5: 27}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 1, 5: 0}
    ALL TRIAGE DECISIONS:
      1. t=04:00: Patient 10 chosen over Patient 8: higher severity (level 4 vs 3), deteriorating faster (0.59 vs 0.41 rate) (margin: +0.118, confidence: high)
      2. t=04:45: Patient 7 chosen over Patient 6: deteriorating faster (0.68 vs 0.62 rate) (margin: +0.017, confidence: low)
@@ -1250,8 +1544,14 @@ SEED 9899 (disaster) RESULTS:
    Average wait: 10.45 timesteps (157 minutes)
    Weighted wait: 68.30 timesteps (1024 minutes)
    Decisions explained: 25
+   Neural treated by severity: {1: 0, 2: 4, 3: 5, 4: 10, 5: 19}
+   Neural waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 20}
    ESI treated: 32, waiting: 20 | avg: 21.21 timesteps (318 min), weighted: 136.10 (2042 min)
+   ESI treated by severity: {1: 0, 2: 3, 3: 2, 4: 3, 5: 30}
+   ESI waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 20}
    MTS treated: 32, waiting: 20 | avg: 32.29 timesteps (484 min), weighted: 205.91 (3089 min)
+   MTS treated by severity: {1: 0, 2: 3, 3: 2, 4: 1, 5: 32}
+   MTS waiting by severity: {1: 0, 2: 0, 3: 0, 4: 0, 5: 20}
    ALL TRIAGE DECISIONS:
      1. t=03:00: Patient 7 chosen over Patient 6: deteriorating faster (0.33 vs 0.12 rate) (margin: +0.060, confidence: moderate)
      2. t=04:30: Patient 8 chosen over Patient 9: deteriorating faster (0.61 vs 0.11 rate), longer wait (90min vs 75min) (margin: +0.090, confidence: moderate)
