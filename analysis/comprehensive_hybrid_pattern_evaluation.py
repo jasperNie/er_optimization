@@ -644,7 +644,13 @@ def evaluate_pattern(pattern_name='standard', num_nurses=4):
         for i, result in enumerate(all_results):
             f.write(f"SEED {result['seed']} RESULTS:\n")
             f.write(f"   Patients treated: {result['completed']}\n")
+            if 'treated_by_severity' in result:
+                for sev in sorted(result['treated_by_severity'].keys()):
+                    f.write(f"      Treated severity {sev}: {result['treated_by_severity'][sev]}\n")
             f.write(f"   Patients waiting: {result['still_waiting']}\n")
+            if 'waiting_by_severity' in result:
+                for sev in sorted(result['waiting_by_severity'].keys()):
+                    f.write(f"      Waiting severity {sev}: {result['waiting_by_severity'][sev]}\n")
             f.write(f"   Average wait: {result['avg_wait']:.2f} timesteps ({result['avg_wait']*15:.0f} minutes)\n")
             f.write(f"   Weighted wait: {result['avg_weighted_wait']:.2f} timesteps ({result['avg_weighted_wait']*15:.0f} minutes)\n")
             f.write(f"   Decisions explained: {result['total_decisions']}\n")
